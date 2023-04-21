@@ -138,7 +138,10 @@ checksum = "e2b183d6ce6ca4cf30e3db37abf5b52568b5f9015c97d9fbdd7026aa5dcdd758"
 name = "elf-verify"
 version = "0.1.0"
 dependencies = [
+ "clap",
  "common",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

@@ -18,7 +18,7 @@ pub struct BinaryInfo {
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LibraryInfo {
     pub needed: Vec<String>,
-    pub defined: Vec<String>,
+    pub symbols: Vec<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]

@@ -1,7 +1,8 @@
-use std::collections::HashMap;
-use std::fs::File;
+use std::collections::BTreeMap;
+use std::fs::{DirEntry, File};
 use std::io::{BufRead, BufReader, BufWriter, Error, ErrorKind, Read};
 use std::path::{Path, PathBuf};
+use std::process::exit;
 
 use clap::Parser;
 use path_slash::PathBufExt as _;
@@ -11,8 +12,8 @@ use common::{FirmwareInfo, LibraryInfo};
 
 #[derive(Parser, Debug)]
 struct Args {
-    #[arg(short, long)]
-    input: String,
+    #[arg(short, long, num_args(1..))]
+    inputs: Vec<String>,
     #[arg(short, long)]
     output: String,
     #[arg(short, long, action = clap::ArgAction::Count)]
@@ -21,64 +22,89 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    run(args).unwrap();
+    if let Err(e) = run(args) {
+        eprintln!("{}", e.to_string());
+        exit(1);
+    }
 }
 
 fn run(args: Args) -> Result<(), Error> {
-    let input = Path::new(&args.input);
-    let output = Path::new(&args.output);
-    let fw_info = extract_fw_info(input)?;
-    println!("Extracting information from {fw_info}");
-    let lib_paths = extract_lib_paths(input)?;
-    let so_regex = Regex::new("^.+.so(\\.\\w+)*$").unwrap();
-    let mut mappings: HashMap<String, String> = HashMap::new();
-    for lib_path in lib_paths {
-        if let Ok(dir) = lib_path.read_dir() {
-            for ent in dir {
-                match ent {
-                    Ok(ent) => {
-                        if let (Some(name), Some(metadata)) =
-                            (ent.file_name().to_str(), ent.metadata().ok()) {
-                            if !so_regex.is_match(name) {
-                                continue;
-                            }
-                            if metadata.is_file() {
-                                let lib_info = match LibraryInfo::parse(File::open(ent.path())?) {
-                                    Ok(info) => info,
-                                    Err(e) => {
-                                        eprintln!("Ignoring library {name}: {e:?}");
-                                        continue;
-                                    }
-                                };
-                                println!("Saving symbols list for {name}");
-                                let symbols_name = format!("{}.json", name);
-                                let writer = BufWriter::new(File::create(output.join(&symbols_name))?);
-                                serde_json::to_writer_pretty(writer, &lib_info)
-                                    .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Failed to write {:?}", e)))?;
-                                mappings.insert(String::from(name), symbols_name);
-                            } else if metadata.is_symlink() {
-                                if let Some(target_name) = ent.path().read_link().ok().as_ref().map(|target| target.file_name()
-                                    .map(|target_name| target_name.to_str()).flatten()).flatten() {
-                                    mappings.insert(String::from(name), format!("{}.json", target_name));
-                                }
-                            }
+    for input in args.inputs {
+        let input = Path::new(&input);
+        let fw_info = extract_fw_info(input)?;
+        let output = Path::new(&args.output)
+            .join(format!("{}-{}", fw_info.version, fw_info.ota_id));
+        if !output.exists() {
+            std::fs::create_dir_all(output.clone())?;
+        }
+        println!("Extracting information from {fw_info}");
+        let lib_paths = extract_lib_paths(input)?;
+        let so_regex = Regex::new("^.+.so(\\.\\w+)*$").unwrap();
+        let mut mappings: BTreeMap<String, String> = BTreeMap::new();
+        for lib_path in lib_paths {
+            if let Ok(dir) = lib_path.read_dir() {
+                for ent in dir {
+                    match ent {
+                        Ok(ent) => {
+                            handle_entry(ent, &so_regex, &mut mappings, &output, args.debug);
                         }
+                        Err(e) => { eprintln!("{e:?}"); }
                     }
-                    Err(e) => { eprintln!("{e:?}"); }
                 }
             }
         }
+        let writer = BufWriter::new(File::create(output.join("index.json"))?);
+        serde_json::to_writer_pretty(writer, &mappings)
+            .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Failed to write index {:?}", e)))?;
+        let writer = BufWriter::new(File::create(output.join("info.json"))?);
+        serde_json::to_writer_pretty(writer, &fw_info)
+            .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Failed to write firmware info {:?}", e)))?;
     }
-    let writer = BufWriter::new(File::create(output.join("index.json"))?);
-    serde_json::to_writer_pretty(writer, &mappings)
-        .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Failed to write {:?}", e)))?;
     return Ok(());
+}
+
+fn handle_entry<P>(ent: DirEntry, so_regex: &Regex, mappings: &mut BTreeMap<String, String>,
+                   output: P, debug: u8)
+    where P: AsRef<Path> {
+    let ent_path = ent.path();
+    if let (Some(name), Some(metadata)) =
+        (ent_path.file_name().unwrap().to_str(), ent.metadata().ok()) {
+        if !so_regex.is_match(name) {
+            return;
+        }
+        if metadata.is_file() {
+            let lib_info = match File::open(&ent_path)
+                .and_then(|file| LibraryInfo::parse(file)
+                    .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Failed to parse library {name}: {e:?}")))) {
+                Ok(info) => info,
+                Err(e) => {
+                    eprintln!("Ignoring library {name}: {e:?}");
+                    return;
+                }
+            };
+            if debug > 0 {
+                println!("Saving symbols list for {name}");
+            }
+            let symbols_name = format!("{}.json", name);
+            File::create(output.as_ref().join(&symbols_name)).and_then(|file| {
+                let writer = BufWriter::new(file);
+                return serde_json::to_writer_pretty(writer, &lib_info)
+                    .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Failed to write {:?}", e)));
+            }).unwrap();
+            mappings.insert(String::from(name), symbols_name);
+        } else if metadata.is_symlink() {
+            if let Some(target_name) = ent_path.read_link().ok().as_ref().map(|target| target.file_name()
+                .map(|target_name| target_name.to_str()).flatten()).flatten() {
+                mappings.insert(String::from(name), format!("{}.json", target_name));
+            }
+        }
+    }
 }
 
 fn extract_fw_info(input: &Path) -> Result<FirmwareInfo, Error> {
     let (version, ota_id) = input.file_name().map(|name| name.to_str()).flatten()
-        .ok_or_else(|| Error::new(ErrorKind::NotFound, format!("Bad input path {}", input.display())))?
-        .split_once("-").unwrap();
+        .map(|s| s.split_once("-")).flatten()
+        .ok_or_else(|| Error::new(ErrorKind::NotFound, format!("Bad input path {}", input.display())))?;
     let mut starfish_release = String::new();
 
     File::open(input.join("rootfs.pak.unsquashfs").join("etc").join("starfish-release"))?

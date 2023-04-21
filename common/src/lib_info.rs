@@ -5,6 +5,11 @@ use elf::symbol::Symbol;
 
 use crate::LibraryInfo;
 
+const IGNORED_SYMBOLS: &[&str] = &[
+    "__bss_end__", "_bss_end__", "__bss_start", "__bss_start__", "__end__", "_end", "_fini",
+    "_init", "_edata"
+];
+
 impl LibraryInfo {
     pub fn parse<S>(source: S) -> Result<Self, ParseError>
         where S: std::io::Read + std::io::Seek {
@@ -30,8 +35,8 @@ impl LibraryInfo {
         let symbols: Vec<(Symbol, String)> = sym_table.iter().map(move |sym|
             (sym.clone(), String::from(str.get(sym.st_name as usize).unwrap_or("")))).collect();
         let ver_table = elf.symbol_version_table()?;
-        let mut defined: Vec<String> = symbols.iter().enumerate().flat_map(|(index, (sym, name))| {
-            if sym.is_undefined() || sym.st_name == 0 {
+        let mut symbols: Vec<String> = symbols.iter().enumerate().flat_map(|(index, (sym, name))| {
+            if sym.is_undefined() || sym.st_name == 0 || IGNORED_SYMBOLS.contains(&&**name) {
                 return vec![];
             }
             if let Some(ver_table) = &ver_table {
@@ -48,11 +53,11 @@ impl LibraryInfo {
         }).collect();
 
         needed.sort_unstable();
-        defined.sort_unstable();
+        symbols.sort_unstable();
 
         return Ok(Self {
             needed,
-            defined,
+            symbols,
         });
     }
 }
