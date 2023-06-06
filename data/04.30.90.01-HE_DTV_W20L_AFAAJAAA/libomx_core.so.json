@@ -1,0 +1,18 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libomxrtk_utils.so"
+  ],
+  "symbols": [
+    "OMX_ComponentNameEnum",
+    "OMX_Deinit",
+    "OMX_FreeHandle",
+    "OMX_GetComponentsOfRole",
+    "OMX_GetHandle",
+    "OMX_GetRolesOfComponent",
+    "OMX_Init",
+    "OMX_SetupTunnel"
+  ]
+}

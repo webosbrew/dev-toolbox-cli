@@ -1,0 +1,24 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_vt.so.0"
+  ],
+  "symbols": [
+    "DILE_VT_Create",
+    "DILE_VT_DEBUG_ERROR_PRINT",
+    "DILE_VT_DEBUG_GetPmLogContext",
+    "DILE_VT_DEBUG_INFO_PRINT",
+    "DILE_VT_Debug",
+    "DILE_VT_DebugMenu",
+    "DILE_VT_Destroy",
+    "DILE_VT_GetAllVideoFrameBufferProperty",
+    "DILE_VT_GetBoardInfo",
+    "DILE_VT_GetCurrentVideoFrameBufferProperty",
+    "DILE_VT_GetDeviceCapability",
+    "DILE_VT_GetVideoFrameBufferCapability",
+    "DILE_VT_GetVideoFrameOutputDeviceState",
+    "DILE_VT_SetEventHandler",
+    "DILE_VT_SetVideoFrameOutputDeviceState"
+  ]
+}

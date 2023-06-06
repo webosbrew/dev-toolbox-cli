@@ -1,0 +1,16 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032413GetStackTraceEPPvii",
+    "_ZN4absl12lts_2021032414GetStackFramesEPPvPiii",
+    "_ZN4absl12lts_2021032416SetStackUnwinderEPFiPPvPiiiPKvS3_E",
+    "_ZN4absl12lts_2021032418debugging_internal22StackTraceWorksForTestEv",
+    "_ZN4absl12lts_2021032420DefaultStackUnwinderEPPvPiiiPKvS3_",
+    "_ZN4absl12lts_2021032424GetStackTraceWithContextEPPviiPKvPi",
+    "_ZN4absl12lts_2021032425GetStackFramesWithContextEPPvPiiiPKvS3_"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "FileReadWithTimeout",
+    "SM_ACCESSUSB_AUITV_GetValidationInfo",
+    "SM_ACCESSUSB_AUITV_InitLib",
+    "SM_ACCESSUSB_AUITV_OpenAccessUsb",
+    "SM_ACCESSUSB_AUITV_VerifyAccessPermit",
+    "SM_CRYPTO_BF_Decrypt",
+    "SM_CRYPTO_BF_Encrypt",
+    "SM_CRYPTO_Finalize",
+    "SM_CRYPTO_GetMsgDigest",
+    "SM_CRYPTO_Init",
+    "SM_CRYPTO_IsValidMDName",
+    "SM_CRYPTO_RegisterSubscribeStatusResp",
+    "SM_DBG_Print",
+    "SM_ERR_Print",
+    "SM_UTIL_CompareBinData",
+    "SM_UTIL_FileToBuffer",
+    "SM_UTIL_FindValueInCmdline",
+    "SM_UTIL_GetDeviceMac",
+    "SM_UTIL_GetEth0MacAddr_FromSocket",
+    "SM_UTIL_GetFileLenWithFilename",
+    "SM_UTIL_GetFileLength",
+    "SM_UTIL_Memdup",
+    "SM_UTIL_Mkdir",
+    "SM_UTIL_StrHex2Bin",
+    "SM_UTIL_bin2hex",
+    "SM_UTIL_hex2bin",
+    "SM_UTIL_hexdump",
+    "g_readdata",
+    "g_senddata",
+    "g_sm_trace_enabled",
+    "makeDataField_NonceReq",
+    "parse_NonceResp_init",
+    "parse_NonceResp_update",
+    "parse_UsbVerResp",
+    "sendUsbVerReq"
+  ]
+}

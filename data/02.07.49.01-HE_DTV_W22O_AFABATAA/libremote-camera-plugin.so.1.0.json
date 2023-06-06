@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z27create_remote_camera_handlev",
+    "create_handle",
+    "destroy_handle",
+    "rc_library"
+  ]
+}

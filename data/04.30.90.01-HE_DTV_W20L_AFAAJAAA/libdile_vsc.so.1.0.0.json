@@ -1,0 +1,14 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_vsc.so"
+  ],
+  "symbols": [
+    "DILE_VSC_DEBUG_GetPmLogContext",
+    "DILE_VSC_DEBUG_PRINT",
+    "DILE_VSC_RegisterWindowSettingDelayCallback",
+    "_DILE_VSC_CheckWindowSettingDelay"
+  ]
+}

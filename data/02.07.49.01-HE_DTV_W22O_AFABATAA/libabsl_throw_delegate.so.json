@@ -1,0 +1,28 @@
+{
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032413base_internal16ThrowStdBadAllocEv",
+    "_ZN4absl12lts_2021032413base_internal18ThrowStdLogicErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal18ThrowStdLogicErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal18ThrowStdOutOfRangeEPKc",
+    "_ZN4absl12lts_2021032413base_internal18ThrowStdOutOfRangeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal18ThrowStdRangeErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal18ThrowStdRangeErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal19ThrowStdDomainErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal19ThrowStdDomainErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal19ThrowStdLengthErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal19ThrowStdLengthErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal20ThrowStdRuntimeErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal20ThrowStdRuntimeErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal21ThrowStdOverflowErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal21ThrowStdOverflowErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal22ThrowStdUnderflowErrorEPKc",
+    "_ZN4absl12lts_2021032413base_internal22ThrowStdUnderflowErrorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032413base_internal23ThrowStdBadFunctionCallEv",
+    "_ZN4absl12lts_2021032413base_internal23ThrowStdInvalidArgumentEPKc",
+    "_ZN4absl12lts_2021032413base_internal23ThrowStdInvalidArgumentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"
+  ]
+}

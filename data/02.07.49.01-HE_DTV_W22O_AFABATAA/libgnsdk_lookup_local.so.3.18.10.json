@@ -1,0 +1,24 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libgnsdk_manager.so.3.18.10",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "gnsdk_lookup_local_get_build_date",
+    "gnsdk_lookup_local_get_version",
+    "gnsdk_lookup_local_initialize",
+    "gnsdk_lookup_local_shutdown",
+    "gnsdk_lookup_local_storage_info_count",
+    "gnsdk_lookup_local_storage_info_get",
+    "gnsdk_lookup_local_storage_location_set",
+    "gnsdk_lookup_local_storage_validate",
+    "gnsdk_lookup_local_storage_version_get"
+  ]
+}

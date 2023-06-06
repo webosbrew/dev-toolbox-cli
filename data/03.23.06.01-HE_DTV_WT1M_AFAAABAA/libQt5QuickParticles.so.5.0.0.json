@@ -1,0 +1,24 @@
+{
+  "needed": [
+    "libGLESv2.so",
+    "libQt5Core.so.5",
+    "libQt5Gui.so.5",
+    "libQt5Qml.so.5",
+    "libQt5Quick.so.5",
+    "libQt5V8.so.5",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN11QMetaMethod10fromSignalIM18QQuickTrailEmitterFv12QQmlV8HandleS2_EEES_T_",
+    "_ZN11QMetaMethod10fromSignalIM20QQuickCustomAffectorFv12QQmlV8HandlefEEES_T_",
+    "_ZN11QMetaMethod10fromSignalIM21QQuickParticleEmitterFv12QQmlV8HandleEEES_T_",
+    "_ZN11QMetaMethod10fromSignalIM22QQuickParticleAffectorFvffEEES_T_",
+    "_ZN21QQuickParticlesModule12defineModuleEv",
+    "_ZTIN9QV8Engine9DeletableE",
+    "_ZTSN9QV8Engine9DeletableE",
+    "_ZTVN9QV8Engine9DeletableE"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgstrtkutils-1.0.so.0",
+    "libomx_vdec.so",
+    "libpthread.so.0",
+    "libracodec.so",
+    "librpccore.so"
+  ],
+  "symbols": [
+    "gst_rtk_sdec_get_wall_clock"
+  ]
+}

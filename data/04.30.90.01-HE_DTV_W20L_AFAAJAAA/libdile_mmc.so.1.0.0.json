@@ -1,0 +1,17 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_mmc.so"
+  ],
+  "symbols": [
+    "DILE_MMC_Close",
+    "DILE_MMC_Get_CID",
+    "DILE_MMC_Get_CSD",
+    "DILE_MMC_Get_ExtCSD",
+    "DILE_MMC_Get_SMART_Report",
+    "DILE_MMC_Open",
+    "DILE_MMC_PON_Long",
+    "DILE_MMC_PON_Short"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032418debugging_internal8DemangleEPKcPci"
+  ]
+}

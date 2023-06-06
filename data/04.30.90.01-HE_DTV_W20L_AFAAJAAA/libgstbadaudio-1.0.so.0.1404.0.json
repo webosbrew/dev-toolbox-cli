@@ -1,0 +1,21 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstaudio-1.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libm.so.6",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "gst_nonstream_audio_decoder_allocate_output_buffer",
+    "gst_nonstream_audio_decoder_get_downstream_info",
+    "gst_nonstream_audio_decoder_get_type",
+    "gst_nonstream_audio_decoder_handle_loop",
+    "gst_nonstream_audio_decoder_set_output_format",
+    "gst_nonstream_audio_decoder_set_output_format_simple"
+  ]
+}

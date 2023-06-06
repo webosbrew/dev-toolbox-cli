@@ -1,0 +1,12 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "NSSMDNS_0@NSSMDNS_0",
+    "_nss_mdns6_minimal_gethostbyaddr_r@NSSMDNS_0",
+    "_nss_mdns6_minimal_gethostbyname2_r@NSSMDNS_0",
+    "_nss_mdns6_minimal_gethostbyname_r@NSSMDNS_0"
+  ]
+}

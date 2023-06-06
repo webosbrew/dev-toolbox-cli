@@ -1,0 +1,27 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so"
+  ],
+  "symbols": [
+    "RSA_encrypt",
+    "get_build_info_str",
+    "get_fragment_offset",
+    "get_total_fragments_size",
+    "sb_build_info_str",
+    "sb_get_app_sign_size",
+    "sb_get_fragment_number",
+    "sb_get_fragment_number_ex",
+    "sb_key_dec",
+    "sb_key_enc",
+    "sb_sign_image",
+    "sb_sign_image_ex",
+    "sb_sign_snapshot_image",
+    "sb_verify_application",
+    "sb_verify_application_ex",
+    "sb_verify_data",
+    "sb_verify_image",
+    "sb_version_string"
+  ]
+}

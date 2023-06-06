@@ -1,0 +1,40 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstcool-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgstvideo-1.0.so.0",
+    "libpf-observer-1.0.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN13mediapipeline15WaylandPipeline10isScalableEv",
+    "_ZN13mediapipeline15WaylandPipeline13isReadyToPlayEv",
+    "_ZN13mediapipeline15WaylandPipeline17handleBusCallbackEP7_GstBusP11_GstMessagePv",
+    "_ZN13mediapipeline15WaylandPipeline21handleSyncBusCallbackEP7_GstBusP11_GstMessagePv",
+    "_ZN13mediapipeline15WaylandPipeline23setDestinationDimensionEjj",
+    "_ZN13mediapipeline15WaylandPipeline4loadEv",
+    "_ZN13mediapipeline15WaylandPipeline4playEv",
+    "_ZN13mediapipeline15WaylandPipeline4seekEy",
+    "_ZN13mediapipeline15WaylandPipeline5pauseEv",
+    "_ZN13mediapipeline15WaylandPipeline6unloadEv",
+    "_ZN13mediapipeline15WaylandPipelineC1EOSt10unique_ptrINS_15GraphicResourceESt14default_deleteIS2_EESt10shared_ptrINS_13ChangeManagerEE",
+    "_ZN13mediapipeline15WaylandPipelineC2EOSt10unique_ptrINS_15GraphicResourceESt14default_deleteIS2_EESt10shared_ptrINS_13ChangeManagerEE",
+    "_ZN13mediapipeline15WaylandPipelineD0Ev",
+    "_ZN13mediapipeline15WaylandPipelineD1Ev",
+    "_ZN13mediapipeline15WaylandPipelineD2Ev",
+    "_ZNSt10unique_ptrIN13mediapipeline15GraphicResourceESt14default_deleteIS1_EED1Ev",
+    "_ZNSt10unique_ptrIN13mediapipeline15GraphicResourceESt14default_deleteIS1_EED2Ev",
+    "_ZNSt10unique_ptrIN13mediapipeline6AspectESt14default_deleteIS1_EED1Ev",
+    "_ZNSt10unique_ptrIN13mediapipeline6AspectESt14default_deleteIS1_EED2Ev",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N5boost3anyEESt10_Select1stISA_ESt4lessIS5_ESaISA_EE8_M_eraseEPSt13_Rb_tree_nodeISA_E",
+    "_ZTIN13mediapipeline15WaylandPipelineE",
+    "_ZTSN13mediapipeline15WaylandPipelineE",
+    "_ZTVN13mediapipeline15WaylandPipelineE"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.2"
+  ],
+  "symbols": [
+    "CMNIO_GPIO_GetInputPort",
+    "CMNIO_GPIO_GetInputPortArray",
+    "CMNIO_GPIO_GetIntrCntDur",
+    "CMNIO_GPIO_Init",
+    "CMNIO_GPIO_SetIntrCallBack",
+    "CMNIO_GPIO_SetOutputPort",
+    "CMNIO_GPIO_SetOutputPortArray",
+    "CMNIO_GPIO_SetPortDirection",
+    "HAL_GPIO_GetInputPhysicalPort",
+    "HAL_GPIO_GetInputPort",
+    "HAL_GPIO_GetInputPortArray",
+    "HAL_GPIO_GetIntrCntDur",
+    "HAL_GPIO_GetIntrCount",
+    "HAL_GPIO_I2C_ReadWriteByte",
+    "HAL_GPIO_Init",
+    "HAL_GPIO_InitEx",
+    "HAL_GPIO_SetIntrCallBack",
+    "HAL_GPIO_SetOutputPhysicalPort",
+    "HAL_GPIO_SetOutputPort",
+    "HAL_GPIO_SetOutputPortArray",
+    "HAL_GPIO_SetPhysicalPortDirection",
+    "HAL_GPIO_SetPortDirection",
+    "HAL_GPIO_SetPortDirection_SP",
+    "gHalGpioLogmFd"
+  ]
+}

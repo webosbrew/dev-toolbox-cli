@@ -1,0 +1,27 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6",
+    "libv8.so"
+  ],
+  "symbols": [
+    "_ZNKSt6vectorISsSaISsEE12_M_check_lenEjPKc@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIISsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIJSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJRKSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE9push_backERKSs@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEEC1ESt16initializer_listISsERKS0_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEEC2ESt16initializer_listISsERKS0_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEED1Ev@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEED2Ev@libnetcast_inj.so",
+    "_ZNSt6vectorIbSaIbEEC1ESt16initializer_listIbERKS0_@libnetcast_inj.so",
+    "_ZNSt6vectorIbSaIbEEC2ESt16initializer_listIbERKS0_@libnetcast_inj.so",
+    "_ZNSt6vectorIbSaIbEED1Ev@libnetcast_inj.so",
+    "_ZNSt6vectorIbSaIbEED2Ev@libnetcast_inj.so",
+    "_ZSteqIcEN9__gnu_cxx11__enable_ifIXsrSt9__is_charIT_E7__valueEbE6__typeERKSbIS3_St11char_traitsIS3_ESaIS3_EESC_@libnetcast_inj.so",
+    "createInjection@libnetcast_inj.so"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_BOARDINFO_GetBootVersion",
+    "DILE_BOARDINFO_GetCountryGroupCode",
+    "DILE_BOARDINFO_GetDebugMode",
+    "DILE_BOARDINFO_GetDisplayInterface",
+    "DILE_BOARDINFO_GetDisplayResolution",
+    "DILE_BOARDINFO_GetDisplayType",
+    "DILE_BOARDINFO_GetEventBoardType",
+    "DILE_BOARDINFO_GetGraphicResolution",
+    "DILE_BOARDINFO_GetInternalStorageSize",
+    "DILE_BOARDINFO_GetMainBoardType",
+    "DILE_BOARDINFO_GetModelName",
+    "DILE_BOARDINFO_GetModuleInch",
+    "DILE_BOARDINFO_GetOTAID",
+    "DILE_BOARDINFO_GetPrintStatus",
+    "DILE_BOARDINFO_GetRAMSize",
+    "DILE_BOARDINFO_GetSerialNumber",
+    "DILE_BOARDINFO_GetSoCChipRevision",
+    "DILE_BOARDINFO_Initialze",
+    "DILE_BOARDINFO_IsSupportD9",
+    "DILE_BOARDINFO_IsSupportMirrorMode",
+    "cfgOption",
+    "countryGrpMatch",
+    "dispTypeMatch",
+    "eventBoardMatch",
+    "mainBoardMatch"
+  ]
+}

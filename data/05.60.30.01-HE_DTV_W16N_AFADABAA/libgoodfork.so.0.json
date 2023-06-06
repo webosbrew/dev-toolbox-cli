@@ -1,0 +1,11 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "good_fork",
+    "good_spawn",
+    "good_system"
+  ]
+}

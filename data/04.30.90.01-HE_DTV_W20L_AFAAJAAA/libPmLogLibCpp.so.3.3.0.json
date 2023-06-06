@@ -1,0 +1,32 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN5pmlog5PmLog11formatErrorB5cxx11E8PmLogErr",
+    "_ZN5pmlog5PmLog4infoERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLog5debugERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLog5errorERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLog6Stream3putERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLog6Stream3putERKSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_E",
+    "_ZN5pmlog5PmLog6Stream3putERKSt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiE",
+    "_ZN5pmlog5PmLog6Stream3putEi",
+    "_ZN5pmlog5PmLog6Stream5clearEv",
+    "_ZN5pmlog5PmLog6Stream5flushEv",
+    "_ZN5pmlog5PmLog6StreamC1EPK16PmLogContextInfoRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE10PmLogLevel",
+    "_ZN5pmlog5PmLog6StreamC2EPK16PmLogContextInfoRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE10PmLogLevel",
+    "_ZN5pmlog5PmLog6StreamD1Ev",
+    "_ZN5pmlog5PmLog6StreamD2Ev",
+    "_ZN5pmlog5PmLog7warningERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLog8criticalERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLogC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5PmLogC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5pmlog5flushEPNS_5PmLog6StreamE",
+    "_ZN9__gnu_cxx12__to_xstringINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEcEET_PFiPT0_jPKS8_St9__va_listEjSB_z",
+    "_ZNK5pmlog5PmLog6Stream10errorStateEv",
+    "_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_RKS8_"
+  ]
+}

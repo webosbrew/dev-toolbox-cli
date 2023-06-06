@@ -1,0 +1,9 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "mod_access_plugin_init"
+  ]
+}

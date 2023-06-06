@@ -1,0 +1,22 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "st_CloseSharedStreamReaderFromFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CloseSharedStreamWriterToFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateAudioInFromFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateAudioInFromStream@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreatePagePoolStreamReaderFromFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateSharedStreamReaderFromFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateSharedStreamWriterToFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateStreamReaderFromFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateStreamReaderFromMemory@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateStreamWriterToFile@XXXXXXXXXXXXXXXXXXXXXX",
+    "st_CreateStreamWriterToMemory@XXXXXXXXXXXXXXXXXXXXXX"
+  ]
+}

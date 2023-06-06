@@ -1,0 +1,36 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libabsl_spinlock_wait.so",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032413base_internal10CycleClock3NowEv",
+    "_ZN4absl12lts_2021032413base_internal10CycleClock9FrequencyEv",
+    "_ZN4absl12lts_2021032413base_internal12CallOnceImplIRFvPFvPvEEJRS5_EEEvPSt6atomicIjENS1_14SchedulingModeEOT_DpOT0_",
+    "_ZN4absl12lts_2021032413base_internal12GetCachedTIDEv",
+    "_ZN4absl12lts_2021032413base_internal19NominalCPUFrequencyEv",
+    "_ZN4absl12lts_2021032413base_internal24RegisterSpinLockProfilerEPFvPKvxE",
+    "_ZN4absl12lts_2021032413base_internal24SetCurrentThreadIdentityEPNS1_14ThreadIdentityEPFvPvE",
+    "_ZN4absl12lts_2021032413base_internal26ClearCurrentThreadIdentityEv",
+    "_ZN4absl12lts_2021032413base_internal30CurrentThreadIdentityIfPresentEv",
+    "_ZN4absl12lts_2021032413base_internal6GetTIDEv",
+    "_ZN4absl12lts_2021032413base_internal7NumCPUsEv",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock10SlowUnlockEj",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock13kSpinLockHeldE",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock13kWaitTimeMaskE",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock16DecodeWaitCyclesEj",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock16EncodeWaitCyclesExx",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock16kSpinLockSleeperE",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock20kSpinLockCooperativeE",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock27kSpinLockDisabledSchedulingE",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock8SlowLockEv",
+    "_ZN4absl12lts_2021032413base_internal8SpinLock8SpinLoopEv",
+    "_ZN4absl12lts_2021032413base_internal8SpinLockC1ENS1_14SchedulingModeE",
+    "_ZN4absl12lts_2021032413base_internal8SpinLockC2ENS1_14SchedulingModeE",
+    "_ZZN4absl12lts_2021032413base_internal12CallOnceImplIRFvPFvPvEEJRS5_EEEvPSt6atomicIjENS1_14SchedulingModeEOT_DpOT0_E5trans"
+  ]
+}

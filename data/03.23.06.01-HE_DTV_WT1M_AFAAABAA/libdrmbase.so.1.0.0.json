@@ -1,0 +1,14 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN3drm4base4impl8LockImpl4LockEv",
+    "_ZN3drm4base4impl8LockImpl6UnlockEv",
+    "_ZN3drm4base4impl8LockImplC1Ev",
+    "_ZN3drm4base4impl8LockImplC2Ev",
+    "_ZN3drm4base4impl8LockImplD1Ev",
+    "_ZN3drm4base4impl8LockImplD2Ev"
+  ]
+}

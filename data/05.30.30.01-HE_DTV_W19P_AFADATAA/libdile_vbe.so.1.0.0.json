@@ -1,0 +1,12 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_VBE_GetOSDAlphaVal",
+    "DILE_VBE_SetOSDRGBLvl",
+    "DILE_VBE_SetScreenMute",
+    "DILE_VBE_SetVideoMirror"
+  ]
+}

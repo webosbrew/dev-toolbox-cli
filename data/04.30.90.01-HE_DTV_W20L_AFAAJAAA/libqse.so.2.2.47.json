@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "libqsi.so",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "qs_deregister_event_listener@libqse.so",
+    "qs_execute@libqse.so",
+    "qs_get_info_version@libqse.so",
+    "qs_get_version@libqse.so",
+    "qs_register_event_listener@libqse.so",
+    "qs_register_logger@libqse.so",
+    "qs_release_buffer@libqse.so",
+    "qs_set_log_level@libqse.so"
+  ]
+}

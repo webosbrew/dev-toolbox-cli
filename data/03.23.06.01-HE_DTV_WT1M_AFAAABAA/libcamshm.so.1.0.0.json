@@ -1,0 +1,17 @@
+{
+  "needed": [
+    "libc.so.6"
+  ],
+  "symbols": [
+    "CloseShmem",
+    "CreateShmem",
+    "OpenShmem",
+    "ReadLastShmem",
+    "ReadShmem",
+    "WriteShmem",
+    "_IncreseReadIndex",
+    "_OpenShmem",
+    "_ReadShmem",
+    "getShmemCount"
+  ]
+}

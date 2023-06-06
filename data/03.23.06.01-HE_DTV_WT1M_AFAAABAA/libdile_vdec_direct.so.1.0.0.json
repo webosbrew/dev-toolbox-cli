@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_vdec_direct.so.0"
+  ],
+  "symbols": [
+    "DILE_VDEC_DIRECT_Close",
+    "DILE_VDEC_DIRECT_GetVideoInfo",
+    "DILE_VDEC_DIRECT_Open",
+    "DILE_VDEC_DIRECT_Play",
+    "DILE_VDEC_DIRECT_SetDEId",
+    "DILE_VDEC_DIRECT_Stop"
+  ]
+}

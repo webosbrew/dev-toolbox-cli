@@ -1,0 +1,13 @@
+{
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032415CommandLineFlag9ParseFromENS0_11string_viewEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZNK4absl12lts_2021032415CommandLineFlag9IsRetiredEv",
+    "_ZTIN4absl12lts_2021032415CommandLineFlagE",
+    "_ZTSN4absl12lts_2021032415CommandLineFlagE",
+    "_ZTVN4absl12lts_2021032415CommandLineFlagE"
+  ]
+}

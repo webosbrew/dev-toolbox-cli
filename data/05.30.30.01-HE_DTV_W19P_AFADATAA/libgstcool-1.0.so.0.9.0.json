@@ -1,0 +1,41 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstaudio-1.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgsttag-1.0.so.0",
+    "libm.so.6",
+    "libpcre.so.1",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libz.so.1"
+  ],
+  "symbols": [
+    "get_smart_property_from_source",
+    "gst_cool_caps_to_info",
+    "gst_cool_find_type",
+    "gst_cool_get_configuration",
+    "gst_cool_get_external_video_decoder",
+    "gst_cool_get_external_video_sink",
+    "gst_cool_give_priority_sw_decoder",
+    "gst_cool_init",
+    "gst_cool_init_check",
+    "gst_cool_playbin_get_q2",
+    "gst_cool_playbin_init",
+    "gst_cool_playbin_is_resource_mode",
+    "gst_cool_playbin_no_resource_mode",
+    "gst_cool_playbin_set_q2_conf",
+    "gst_cool_set_decode_buffer_size",
+    "gst_cool_set_rank",
+    "gst_cool_taglist_to_info",
+    "make_unsupported_codec",
+    "negotiate_default_caps"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdile_i2c.so.1",
+    "libgcc_s.so.1",
+    "libhal_sys.so.2"
+  ],
+  "symbols": [
+    "DILE_SYS_GetDFTMemTestResult",
+    "DILE_SYS_GetPWMCapability",
+    "DILE_SYS_GetPWMData",
+    "DILE_SYS_SetPWM",
+    "DILE_SYS_StartDFTMemTest",
+    "_dile_sys_f22_get_dft_mem_test",
+    "_dile_sys_f22_i2c_init",
+    "_dile_sys_f22_i2c_read",
+    "_dile_sys_f22_i2c_write",
+    "_dile_sys_f22_start_dft_mem_test"
+  ]
+}

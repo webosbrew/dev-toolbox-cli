@@ -1,0 +1,8 @@
+{
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN14lls_error_code12getErrorTextEi"
+  ]
+}

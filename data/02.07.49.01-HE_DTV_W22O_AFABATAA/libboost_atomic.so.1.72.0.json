@@ -1,0 +1,14 @@
+{
+  "needed": [
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "_ZN5boost7atomics6detail8lockpool11scoped_lockC1EPVKv",
+    "_ZN5boost7atomics6detail8lockpool11scoped_lockC2EPVKv",
+    "_ZN5boost7atomics6detail8lockpool11scoped_lockD1Ev",
+    "_ZN5boost7atomics6detail8lockpool11scoped_lockD2Ev",
+    "_ZN5boost7atomics6detail8lockpool12signal_fenceEv",
+    "_ZN5boost7atomics6detail8lockpool12thread_fenceEv"
+  ]
+}

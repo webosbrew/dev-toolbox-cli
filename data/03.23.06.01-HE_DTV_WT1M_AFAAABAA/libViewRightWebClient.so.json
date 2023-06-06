@@ -1,0 +1,40 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN18ViewRightWebClient10GetVersionEv",
+    "_ZN18ViewRightWebClient10SetLoggingEb",
+    "_ZN18ViewRightWebClient11GetInstanceEv",
+    "_ZN18ViewRightWebClient11m_pInstanceE",
+    "_ZN18ViewRightWebClient13InitializeSSLEv",
+    "_ZN18ViewRightWebClient15GetClientStatusEPNS_24VRWebClientStatus_StructE",
+    "_ZN18ViewRightWebClient15RetrieveKeyFileEPKcPc",
+    "_ZN18ViewRightWebClient19CheckVCASConnectionEv",
+    "_ZN18ViewRightWebClient19GetUniqueIdentifierEPPcPi",
+    "_ZN18ViewRightWebClient19IsDeviceProvisionedEv",
+    "_ZN18ViewRightWebClient19SetUniqueIdentifierEPKcS1_",
+    "_ZN18ViewRightWebClient25ConnectAndProvisionDeviceEv",
+    "_ZN18ViewRightWebClient29SetKeyRetrievalStatusCallbackEPvPFvS0_PKcmE",
+    "_ZN18ViewRightWebClient35SetVCASCommunicationHandlerSettingsEPKcS1_S1_",
+    "_ZN18ViewRightWebClientC1Ev",
+    "_ZN18ViewRightWebClientC2Ev",
+    "_ZN18ViewRightWebClientD0Ev",
+    "_ZN18ViewRightWebClientD1Ev",
+    "_ZN18ViewRightWebClientD2Ev",
+    "_ZNSt12_Destroy_auxILb0EE9__destroyIPSbIwSt11char_traitsIwESaIwEEEEvT_S7_",
+    "_ZNSt12_Destroy_auxILb0EE9__destroyIPSsEEvT_S3_",
+    "_ZNSt6vectorISbIwSt11char_traitsIwESaIwEESaIS3_EE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPS3_S5_EERKS3_",
+    "_ZNSt6vectorISbIwSt11char_traitsIwESaIwEESaIS3_EED1Ev",
+    "_ZNSt6vectorISbIwSt11char_traitsIwESaIwEESaIS3_EED2Ev",
+    "_ZNSt6vectorISsSaISsEE13_M_insert_auxEN9__gnu_cxx17__normal_iteratorIPSsS1_EERKSs",
+    "_ZNSt6vectorISsSaISsEED1Ev",
+    "_ZNSt6vectorISsSaISsEED2Ev",
+    "_ZTI18ViewRightWebClient",
+    "_ZTS18ViewRightWebClient",
+    "_ZTV18ViewRightWebClient"
+  ]
+}

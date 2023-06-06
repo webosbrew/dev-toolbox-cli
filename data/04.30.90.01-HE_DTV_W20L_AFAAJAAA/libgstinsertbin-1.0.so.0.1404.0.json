@@ -1,0 +1,19 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "gst_insert_bin_append",
+    "gst_insert_bin_get_type",
+    "gst_insert_bin_insert_after",
+    "gst_insert_bin_insert_before",
+    "gst_insert_bin_new",
+    "gst_insert_bin_prepend",
+    "gst_insert_bin_remove"
+  ]
+}

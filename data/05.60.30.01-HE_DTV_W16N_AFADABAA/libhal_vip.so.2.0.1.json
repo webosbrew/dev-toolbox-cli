@@ -1,0 +1,24 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "HAL_VIP_Close",
+    "HAL_VIP_Del_Format",
+    "HAL_VIP_Del_Input_Buffer",
+    "HAL_VIP_Del_Output_Buffer",
+    "HAL_VIP_Finalize",
+    "HAL_VIP_GetLibraryVer",
+    "HAL_VIP_Get_State",
+    "HAL_VIP_Init",
+    "HAL_VIP_Run",
+    "HAL_VIP_Run_Single",
+    "HAL_VIP_SetGestureMode",
+    "HAL_VIP_SetScreenRes",
+    "HAL_VIP_Set_Format",
+    "HAL_VIP_Set_Input_Buffer",
+    "HAL_VIP_Set_Output_Buffer",
+    "HAL_VIP_Wait_Done"
+  ]
+}

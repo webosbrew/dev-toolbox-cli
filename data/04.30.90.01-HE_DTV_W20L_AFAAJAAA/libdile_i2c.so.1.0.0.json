@@ -1,0 +1,16 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdile_boardinfo.so.1",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_I2C_GetConfig",
+    "DILE_I2C_Initialize",
+    "DILE_I2C_Read",
+    "DILE_I2C_Write",
+    "_DILE_I2C_InitConfigTable",
+    "gsI2cAllConf"
+  ]
+}

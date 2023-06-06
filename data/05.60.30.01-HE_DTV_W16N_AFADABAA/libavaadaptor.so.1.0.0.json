@@ -1,0 +1,17 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libavacontroller.so.1",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN10AvaAdaptor10IsActivateEv",
+    "_ZN10AvaAdaptor11GetInstanceEPKc",
+    "_ZN10AvaAdaptor18GetAvaProxyAddressEv",
+    "_ZN10AvaAdaptor24GetAvaExtendedHttpHeaderEv",
+    "_ZN10AvaAdaptor7DestroyEv",
+    "_ZN10AvaAdaptorC1EPKc",
+    "_ZN10AvaAdaptorC2EPKc"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6",
+    "libumedia_api.so.1"
+  ],
+  "symbols": [
+    "_Z18uMediaClientAttachPvPc",
+    "_ZTI11MediaPlayer",
+    "_ZTS11MediaPlayer",
+    "_ZTV11MediaPlayer",
+    "uMediaClientCreate",
+    "uMediaClientCreatePrivate",
+    "uMediaClientDestroy",
+    "uMediaClientLoad",
+    "uMediaClientPause",
+    "uMediaClientPlay",
+    "uMediaClientSeek",
+    "uMediaClientUnload"
+  ]
+}

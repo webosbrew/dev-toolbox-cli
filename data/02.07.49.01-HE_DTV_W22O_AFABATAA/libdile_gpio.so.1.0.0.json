@@ -1,0 +1,21 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_GPIO_GetGPIOPortNum",
+    "DILE_GPIO_Initialize",
+    "DILE_GPIO_ReadInputPort",
+    "DILE_GPIO_WriteOutputPort",
+    "dile_GPIO_GetGPIOMap",
+    "dile_GPIO_KERNEL_GetInputPort",
+    "dile_GPIO_KERNEL_SetOutputPort",
+    "dile_GPIO_initializeMap",
+    "gGPIMapTable",
+    "gGPIMapTable_M2",
+    "gGPOMapTable",
+    "gGPOMapTable_M2"
+  ]
+}

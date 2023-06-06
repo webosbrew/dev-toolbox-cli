@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.0"
+  ],
+  "symbols": [
+    "HAL_VT_DEBUG_Test",
+    "HAL_VT_DEBUG_TestMenu",
+    "HAL_VT_Finalize",
+    "HAL_VT_GetAllVideoFrameBufferProperty",
+    "HAL_VT_GetDeviceCapability",
+    "HAL_VT_GetVideoFrameBufferCapability",
+    "HAL_VT_GetVideoFrameBufferIndex",
+    "HAL_VT_GetVideoFrameOutputDeviceCapability",
+    "HAL_VT_GetVideoFrameOutputDeviceFramerate",
+    "HAL_VT_GetVideoFrameOutputDeviceState",
+    "HAL_VT_Init",
+    "HAL_VT_SetVideoFrameOutputDeviceState",
+    "HAL_VT_WaitVsync",
+    "_gHalVtDebugPrintOn"
+  ]
+}

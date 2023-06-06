@@ -1,0 +1,13 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "FREEBL_GetVector@NSSprivate_3.11",
+    "NSSLOW_GetVector@NSSprivate_3.16",
+    "NSSprivate_3.11@NSSprivate_3.11",
+    "NSSprivate_3.16@NSSprivate_3.16"
+  ]
+}

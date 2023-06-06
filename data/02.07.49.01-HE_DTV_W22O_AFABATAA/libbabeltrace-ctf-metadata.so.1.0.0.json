@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libbabeltrace.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libpopt.so.0",
+    "libpthread.so.0",
+    "libuuid.so.1"
+  ],
+  "symbols": [
+    "bt_ctf_metadata_hook"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "ACR_CreateVideoFPModule",
+    "ACR_DeleteVideoFPModule",
+    "ACR_GetContentInfo",
+    "ACR_RegisterEventCallback",
+    "ACR_SaveCapturedFrames",
+    "ACR_SetLogLevel",
+    "API_VIDEO_CaptureDestroy",
+    "API_VIDEO_CaptureInitialize",
+    "API_VIDEO_CaptureVideoFrameRGB",
+    "API_VIDEO_CaptureVideoRegionRGB",
+    "API_VIDEO_CaptureVideoRegionsRGB",
+    "API_VIDEO_CaptureVideoRegionsYCbCr",
+    "_Z20API_CAPTURE_ACR_Exitv",
+    "_Z20API_CAPTURE_ACR_Initv",
+    "_Z22API_CAPTURE_ACR_SimplePKcPK7tagRectjj23CAPTURE_OUTPUT_FORMAT_T",
+    "_Z28API_VIDEO_CaptureVideoRegionP10VIDEO_RECTPhS1_",
+    "_Z7handlerPv",
+    "captureHandle",
+    "dumpFrameCount",
+    "gCaptureNum",
+    "gFileIdx",
+    "gHeight",
+    "gNumFrames",
+    "gShmFlag",
+    "gTVISFlag",
+    "gWidth",
+    "g_myLastCaptureNumRect",
+    "g_myLastCaptureRects",
+    "gpGenericControls",
+    "pAddr"
+  ]
+}

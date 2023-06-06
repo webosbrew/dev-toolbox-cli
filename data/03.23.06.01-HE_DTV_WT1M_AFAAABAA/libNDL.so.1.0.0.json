@@ -1,0 +1,41 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhelpers.so.2",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "NDL_GetParamBool",
+    "NDL_GetParamDouble",
+    "NDL_GetParamInt",
+    "NDL_GetParamJson",
+    "NDL_GetParamString",
+    "NDL_ParamExists",
+    "NDL_ServiceCall",
+    "NDL_ServiceCallWithCallback",
+    "NDL_ServiceGetError",
+    "NDL_ServiceInit",
+    "NDL_ServiceQuit",
+    "NDL_UnregisterServiceCallback",
+    "_Z12userCallbackiPKcPv",
+    "_Z15NDL_GetLSCallerv",
+    "_Z19NDL_ServiceCallProcPvS_S_",
+    "_Z24NDL_ServiceCall_OriginalPKcS0_",
+    "_Z24NDL_ServiceInit_Originali",
+    "_Z24NDL_ServiceQuit_Originali",
+    "_Z36NDL_ServiceCallWithCallback_OriginalPKcS0_PFbP21NDL_ServiceParametersPvES3_b",
+    "_Z38NDL_UnregisterServiceCallback_OriginalPFbP21NDL_ServiceParametersPvE",
+    "_ZN19UserCallbackContextC1Ev",
+    "_ZN19UserCallbackContextC2Ev",
+    "g_contextID",
+    "g_dispatchMutex",
+    "g_hcontextlist",
+    "g_init",
+    "g_loop",
+    "g_lsCaller",
+    "g_lscallMutex",
+    "g_userCallbackContextList"
+  ]
+}

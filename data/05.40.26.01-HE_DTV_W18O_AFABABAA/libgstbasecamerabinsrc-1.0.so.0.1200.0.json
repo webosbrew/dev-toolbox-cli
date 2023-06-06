@@ -1,0 +1,32 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstapp-1.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libm.so.6",
+    "libpcre.so.1",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "gst_base_camera_src_finish_capture",
+    "gst_base_camera_src_get_type",
+    "gst_base_camera_src_post_preview",
+    "gst_base_camera_src_set_mode",
+    "gst_base_camera_src_setup_preview",
+    "gst_base_camera_src_setup_zoom",
+    "gst_camerabin_create_preview_pipeline",
+    "gst_camerabin_destroy_preview_pipeline",
+    "gst_camerabin_mode_get_type",
+    "gst_camerabin_preview_pipeline_post",
+    "gst_camerabin_preview_set_caps",
+    "gst_camerabin_preview_set_filter"
+  ]
+}

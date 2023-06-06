@@ -1,0 +1,20 @@
+{
+  "needed": [
+    "libQt5Core.so.5",
+    "libQt5Gui.so.5",
+    "libQt5Qml.so.5",
+    "libQt5Quick.so.5",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libmali.so",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "Qt_5_PRIVATE_API@Qt_5_PRIVATE_API",
+    "_ZN10QByteArray7reserveEi@Qt_5_PRIVATE_API",
+    "_ZN21QQuickParticlesModule12defineModuleEv@Qt_5_PRIVATE_API",
+    "_ZTIN9QV8Engine9DeletableE@Qt_5_PRIVATE_API",
+    "_ZTSN9QV8Engine9DeletableE@Qt_5_PRIVATE_API"
+  ]
+}

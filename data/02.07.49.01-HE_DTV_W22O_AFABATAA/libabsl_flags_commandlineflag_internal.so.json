@@ -1,0 +1,14 @@
+{
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032414flags_internal18FlagStateInterfaceD0Ev",
+    "_ZN4absl12lts_2021032414flags_internal18FlagStateInterfaceD1Ev",
+    "_ZN4absl12lts_2021032414flags_internal18FlagStateInterfaceD2Ev",
+    "_ZTIN4absl12lts_2021032414flags_internal18FlagStateInterfaceE",
+    "_ZTSN4absl12lts_2021032414flags_internal18FlagStateInterfaceE",
+    "_ZTVN4absl12lts_2021032414flags_internal18FlagStateInterfaceE"
+  ]
+}

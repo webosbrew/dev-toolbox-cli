@@ -1,0 +1,9 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "audio_get_dsp_data"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "SHMIPC_close_channel",
+    "SHMIPC_disable_locking",
+    "SHMIPC_get_config",
+    "SHMIPC_initialize_receiver",
+    "SHMIPC_initialize_sender",
+    "SHMIPC_open_audio_in_channel",
+    "SHMIPC_open_audio_out_channel",
+    "SHMIPC_open_channel",
+    "SHMIPC_open_video_in_channel",
+    "SHMIPC_open_video_out_channel",
+    "SHMIPC_put_config",
+    "SHMIPC_recv_packet",
+    "SHMIPC_send_packet",
+    "SHMIPC_wait_for_connection"
+  ]
+}

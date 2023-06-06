@@ -1,0 +1,35 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libpbnjson_c.so.2",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "PmLogDumpData_",
+    "PmLogFacilityToString",
+    "PmLogFindContext",
+    "PmLogGetContext",
+    "PmLogGetContextInline",
+    "PmLogGetContextLevel",
+    "PmLogGetContextName",
+    "PmLogGetErrDbgString",
+    "PmLogGetIndContext",
+    "PmLogGetNumContexts",
+    "PmLogLevelToString",
+    "PmLogPrint_",
+    "PmLogPrvGlobals",
+    "PmLogPrvLock",
+    "PmLogPrvReadConfigs",
+    "PmLogPrvTest",
+    "PmLogPrvUnlock",
+    "PmLogSetContextLevel",
+    "PmLogStringToFacility",
+    "PmLogStringToLevel",
+    "PmLogString_",
+    "PmLogVPrint_",
+    "_PmLogMsgKV"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "dav1d_close",
+    "dav1d_data_create",
+    "dav1d_data_unref",
+    "dav1d_data_wrap",
+    "dav1d_data_wrap_user_data",
+    "dav1d_default_settings",
+    "dav1d_flush",
+    "dav1d_get_picture",
+    "dav1d_open",
+    "dav1d_parse_sequence_header",
+    "dav1d_picture_unref",
+    "dav1d_send_data",
+    "dav1d_set_cpu_flags_mask",
+    "dav1d_version"
+  ]
+}

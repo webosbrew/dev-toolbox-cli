@@ -1,0 +1,14 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z12roleGenerateSsSsSsSs",
+    "_Z15ndkGenerateRoleSsSs",
+    "_Z15pdkGenerateRoleSsSs",
+    "_Z18tritonGenerateRoleSs",
+    "_ZStplIcSt11char_traitsIcESaIcEESbIT_T0_T1_EPKS3_RKS6_"
+  ]
+}

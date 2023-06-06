@@ -1,0 +1,31 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HMI",
+    "_ZSt3maxIiERKT_S2_S2_",
+    "_ZSt3maxIxERKT_S2_S2_",
+    "_ZSt3minIiERKT_S2_S2_",
+    "adev_close_input_stream",
+    "adev_close_output_stream",
+    "adev_open",
+    "adev_open_input_stream",
+    "adev_open_output_stream",
+    "audio_set_trace_level",
+    "config_dump",
+    "config_get_bool",
+    "config_get_int",
+    "config_get_string",
+    "config_new",
+    "log_config_via_api",
+    "log_deinit",
+    "log_deinit_via_api",
+    "log_init",
+    "log_init_via_api",
+    "log_write"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "needed": [
+    "libc.so.6"
+  ],
+  "symbols": [
+    "GLIBC_2.4@GLIBC_2.4",
+    "__ctype_get_mb_cur_max@GLIBC_2.4"
+  ]
+}

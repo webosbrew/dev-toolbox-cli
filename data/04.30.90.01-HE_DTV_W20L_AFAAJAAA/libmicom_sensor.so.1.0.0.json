@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libmicom_cmnio.so.1"
+  ],
+  "symbols": [
+    "micom_sensor_Get_EyeSensorData",
+    "micom_sensor_Get_EyeSensorStatus",
+    "micom_sensor_Get_EyeSensorType",
+    "micom_sensor_Init_CM3212",
+    "micom_sensor_Set_EnableEyeSensor"
+  ]
+}

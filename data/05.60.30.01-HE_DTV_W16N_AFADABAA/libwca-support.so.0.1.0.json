@@ -1,0 +1,25 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libluna-service2.so.3",
+    "libpbnjson_c.so.2",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "gLogContext",
+    "pdm_available_cb",
+    "pdm_status_cookie",
+    "power_on_wifi",
+    "wca_support_init",
+    "wca_support_release",
+    "wca_support_wifi_configure_country_code",
+    "wca_support_wifi_disable_tethering",
+    "wca_support_wifi_enable_tethering",
+    "wca_support_wifi_set_passthrough_params",
+    "wifi_country_settings"
+  ]
+}

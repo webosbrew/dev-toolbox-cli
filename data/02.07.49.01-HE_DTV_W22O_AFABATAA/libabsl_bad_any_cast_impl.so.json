@@ -1,0 +1,16 @@
+{
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032412any_internal15ThrowBadAnyCastEv",
+    "_ZN4absl12lts_2021032412bad_any_castD0Ev",
+    "_ZN4absl12lts_2021032412bad_any_castD1Ev",
+    "_ZN4absl12lts_2021032412bad_any_castD2Ev",
+    "_ZNK4absl12lts_2021032412bad_any_cast4whatEv",
+    "_ZTIN4absl12lts_2021032412bad_any_castE",
+    "_ZTSN4absl12lts_2021032412bad_any_castE",
+    "_ZTVN4absl12lts_2021032412bad_any_castE"
+  ]
+}

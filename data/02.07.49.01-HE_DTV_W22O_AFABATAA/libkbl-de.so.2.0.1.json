@@ -1,0 +1,8 @@
+{
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "de_get_fw_data"
+  ]
+}

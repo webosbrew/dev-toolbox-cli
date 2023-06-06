@@ -1,0 +1,21 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so"
+  ],
+  "symbols": [
+    "TZIF_ClearContentKey",
+    "TZIF_DecodePackets",
+    "TZIF_GetCaCert",
+    "TZIF_GetCaCertSize",
+    "TZIF_GetClientCert",
+    "TZIF_GetClientCertSize",
+    "TZIF_GetClientKey",
+    "TZIF_GetClientKeySize",
+    "TZIF_GetDeviceID",
+    "TZIF_GetRootCert",
+    "TZIF_GetRootCertSize",
+    "TZIF_SetContentKey"
+  ]
+}

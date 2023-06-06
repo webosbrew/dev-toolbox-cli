@@ -1,0 +1,29 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "__free_hook",
+    "__malloc_hook",
+    "__malloc_initialize_hook",
+    "__malloc_initialized",
+    "__memalign_hook",
+    "__realloc_hook",
+    "calloc",
+    "free",
+    "independent_calloc",
+    "independent_comalloc",
+    "mallinfo",
+    "malloc",
+    "malloc_stats",
+    "malloc_trim",
+    "malloc_usable_size",
+    "mallopt",
+    "memalign",
+    "posix_memalign",
+    "realloc",
+    "valloc"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN10farmhashcc14Fingerprint128EPKcj",
+    "_ZN10farmhashcc14Hash32WithSeedEPKcjj",
+    "_ZN10farmhashcc19CityHash128WithSeedEPKcjSt4pairIyyE",
+    "_ZN10farmhashcc6Hash32EPKcj",
+    "_ZN10farmhashmk14Hash32WithSeedEPKcjj",
+    "_ZN10farmhashmk6Hash32EPKcj",
+    "_ZN10farmhashna14Hash64WithSeedEPKcjy",
+    "_ZN10farmhashna15Hash64WithSeedsEPKcjyy",
+    "_ZN10farmhashna6Hash64EPKcj",
+    "_ZN10farmhashnt14Hash32WithSeedEPKcjj",
+    "_ZN10farmhashnt6Hash32EPKcj",
+    "_ZN10farmhashsa14Hash32WithSeedEPKcjj",
+    "_ZN10farmhashsa6Hash32EPKcj",
+    "_ZN10farmhashsu14Hash32WithSeedEPKcjj",
+    "_ZN10farmhashsu6Hash32EPKcj",
+    "_ZN10farmhashte14Hash64WithSeedEPKcjy",
+    "_ZN10farmhashte15Hash64WithSeedsEPKcjyy",
+    "_ZN10farmhashte6Hash64EPKcj",
+    "_ZN10farmhashuo14Hash64WithSeedEPKcjy",
+    "_ZN10farmhashuo15Hash64WithSeedsEPKcjyy",
+    "_ZN10farmhashuo6Hash64EPKcj",
+    "_ZN10farmhashxo14Hash64WithSeedEPKcjy",
+    "_ZN10farmhashxo15Hash64WithSeedsEPKcjyy",
+    "_ZN10farmhashxo6Hash64EPKcj",
+    "_ZN4util13Fingerprint32EPKcj",
+    "_ZN4util13Fingerprint64EPKcj",
+    "_ZN4util14Fingerprint128EPKcj",
+    "_ZN4util14Hash32WithSeedEPKcjj",
+    "_ZN4util14Hash64WithSeedEPKcjy",
+    "_ZN4util15Hash128WithSeedEPKcjSt4pairIyyE",
+    "_ZN4util15Hash64WithSeedsEPKcjyy",
+    "_ZN4util4HashEPKcj",
+    "_ZN4util6Hash32EPKcj",
+    "_ZN4util6Hash64EPKcj",
+    "_ZN4util7Hash128EPKcj"
+  ]
+}

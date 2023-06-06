@@ -1,0 +1,16 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "test_icd_app_log",
+    "test_icd_close_app_log",
+    "test_icd_close_stub_log",
+    "test_icd_get_app_log",
+    "test_icd_get_stub_log",
+    "test_icd_initialize_app_log",
+    "test_icd_initialize_stub_log",
+    "test_icd_stub_log"
+  ]
+}

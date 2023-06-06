@@ -1,0 +1,41 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhma.so.0",
+    "libkadaptor.so.0",
+    "liblxv.so.0"
+  ],
+  "symbols": [
+    "HAL_JPEG_Close",
+    "HAL_JPEG_Config",
+    "HAL_JPEG_Connect",
+    "HAL_JPEG_Decode",
+    "HAL_JPEG_Decode2XRGB",
+    "HAL_JPEG_Decode2YUV",
+    "HAL_JPEG_Encode",
+    "HAL_JPEG_Open",
+    "HAL_PNG_Close",
+    "HAL_PNG_Config",
+    "HAL_PNG_Connect",
+    "HAL_PNG_Decode",
+    "HAL_PNG_Decode2XRGB",
+    "HAL_PNG_Open",
+    "HAL_VO_Close",
+    "HAL_VO_Config",
+    "HAL_VO_Connect",
+    "HAL_VO_DisplayPicture",
+    "HAL_VO_DisplayPictureUHD",
+    "HAL_VO_Open",
+    "HAL_VO_RedrawPicture",
+    "gHalJpeg",
+    "gHalPng",
+    "g_hal_jpeg_log_level",
+    "g_hal_jpeg_logm_fd",
+    "g_hal_png_log_level",
+    "g_hal_png_logm_fd",
+    "g_hal_vo_log_level",
+    "g_hal_vo_logm_fd",
+    "hal_vo_mutex"
+  ]
+}

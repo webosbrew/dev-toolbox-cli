@@ -1,0 +1,36 @@
+{
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdrmadaptor.so.1",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN10cxmlparser16getNodeAttributeEPcjjS0_jPjS1_9DATA_TYPE",
+    "_ZN10cxmlparser17_getNextAttributeEPcjj9DATA_TYPEPjS2_S2_S2_S2_",
+    "_ZN10cxmlparser18_scanAttributeNodeEPcjjS0_jP7XML_TAG",
+    "_ZN10cxmlparser5_trimEPcPjS1_",
+    "_ZN10cxmlparser7getNodeEPcjjS0_jjS0_S0_jPjS1_S1_S1_jb",
+    "_ZN10cxmlparser8_scanTagEPcjjPjP7XML_TAG",
+    "_ZN10cxmlparser9_checkTagEPcP7XML_TAGS0_jjS0_S0_",
+    "_ZN11DrmUtilUuid11geneateUUIDEP8DRM_UUID",
+    "_ZN11DrmUtilUuid18convertBytestoUUIDEPhP8DRM_UUID",
+    "_ZN11DrmUtilUuid19convertStringtoUUIDEPcP8DRM_UUID",
+    "_ZN11DrmUtilUuid19convertUUIDtoStringEP8DRM_UUIDPc17DRM_UUID_STR_FORM",
+    "_ZN11DrmUtilUuid20compareUUIDsAreEqualEPK8DRM_UUIDS2_",
+    "_ZN13DrmUtilBase6410DECODE_MAPE",
+    "_ZN13DrmUtilBase6410ENCODE_MAPE",
+    "_ZN13DrmUtilBase6414guessDecodeLenEj",
+    "_ZN13DrmUtilBase6414guessEncodeLenEj",
+    "_ZN13DrmUtilBase646decodeEPcPPhPj",
+    "_ZN13DrmUtilBase646encodeEPhjPPc",
+    "_ZN13DrmUtilBase647_decodeEPcjPhPj",
+    "_ZN13DrmUtilBase647_encodeEPhjPcj",
+    "_ZN14DrmUtilLogging10initializeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14DrmUtilLogging11getInstanceEv",
+    "_ZN14DrmUtilLogging15releaseInstanceEv",
+    "_ZN14DrmUtilLogging5printEPKcz",
+    "_ZN14DrmUtilLogging9pInstanceE"
+  ]
+}

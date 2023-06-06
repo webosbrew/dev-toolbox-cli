@@ -1,0 +1,29 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "AsmQmfConvI",
+    "AsmQmfConvO",
+    "NewAptxEnc",
+    "Qmf_innerCoeffs",
+    "Qmf_outerCoeffs",
+    "SizeofAptxbtenc",
+    "aptXStereoEncoder",
+    "aptxbtenc_build",
+    "aptxbtenc_encodestereo",
+    "aptxbtenc_init",
+    "aptxbtenc_version",
+    "clearmem",
+    "processSubband",
+    "processSubbandHL",
+    "processSubbandLL",
+    "quantiseDifferenceHH",
+    "quantiseDifferenceHL",
+    "quantiseDifferenceLH",
+    "quantiseDifferenceLL",
+    "swbuild",
+    "swversion"
+  ]
+}

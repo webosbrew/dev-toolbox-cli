@@ -1,0 +1,30 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgm.so.1",
+    "libmicro-toolkit.so.1",
+    "libstarfish-subtitle.so.1"
+  ],
+  "symbols": [
+    "FONT_MAP",
+    "gm_util_clear_screen",
+    "gm_util_close_rendering_screen",
+    "gm_util_draw",
+    "gm_util_free_surface_info",
+    "gm_util_get_surface_info",
+    "gm_util_open_rendering_screen",
+    "gm_util_update_screen",
+    "starfish_renderer_initialize_microtoolkit",
+    "starfish_subtitle_renderer_destroy",
+    "starfish_subtitle_renderer_draw_bmp",
+    "starfish_subtitle_renderer_draw_text",
+    "starfish_subtitle_renderer_erase_bmp",
+    "starfish_subtitle_renderer_erase_text",
+    "starfish_subtitle_renderer_init",
+    "starfish_subtitle_renderer_set_text_color",
+    "starfish_subtitle_renderer_set_text_size",
+    "starfish_subtitle_renderer_set_y_position"
+  ]
+}

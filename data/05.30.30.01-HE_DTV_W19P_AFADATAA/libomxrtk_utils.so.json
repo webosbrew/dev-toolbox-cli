@@ -1,0 +1,34 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "OMXRTK_RM_AcquireResource",
+    "OMXRTK_RM_DeleteResourceRequest",
+    "OMXRTK_RM_Init",
+    "OMXRTK_RM_ReleaseResource",
+    "OMXRTK_RM_RequestResource",
+    "ddts_config",
+    "ddts_dumpFrameTitle",
+    "ddts_dumpInputFrameInfo",
+    "ddts_dumpOutputFrameInfo",
+    "ddts_formatInputFrameInfo",
+    "ddts_formatOutputFrameInfo",
+    "get_ddts_config",
+    "isPathValid",
+    "omxrtk_log_println_full",
+    "omxrtk_log_vprintln_full",
+    "ringbuffer_create",
+    "ringbuffer_free",
+    "ringbuffer_mlock",
+    "ringbuffer_munlock",
+    "ringbuffer_read",
+    "ringbuffer_read_advance",
+    "ringbuffer_read_space",
+    "ringbuffer_reset",
+    "ringbuffer_write",
+    "ringbuffer_write_advance",
+    "ringbuffer_write_space"
+  ]
+}

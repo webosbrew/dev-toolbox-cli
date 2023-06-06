@@ -1,0 +1,38 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libunwind.so.8"
+  ],
+  "symbols": [
+    "_Uarm_create_addr_space",
+    "_Uarm_destroy_addr_space",
+    "_Uarm_dwarf_find_debug_frame",
+    "_Uarm_dwarf_find_unwind_table",
+    "_Uarm_dwarf_search_unwind_table",
+    "_Uarm_flush_cache",
+    "_Uarm_get_accessors",
+    "_Uarm_get_elf_image",
+    "_Uarm_get_fpreg",
+    "_Uarm_get_proc_info",
+    "_Uarm_get_proc_info_by_ip",
+    "_Uarm_get_proc_name",
+    "_Uarm_get_reg",
+    "_Uarm_get_save_loc",
+    "_Uarm_handle_signal_frame",
+    "_Uarm_init_local",
+    "_Uarm_init_remote",
+    "_Uarm_is_fpreg",
+    "_Uarm_is_signal_frame",
+    "_Uarm_local_addr_space",
+    "_Uarm_regname",
+    "_Uarm_resume",
+    "_Uarm_search_unwind_table",
+    "_Uarm_set_caching_policy",
+    "_Uarm_set_fpreg",
+    "_Uarm_set_reg",
+    "_Uarm_step",
+    "_Uarm_strerror"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "liblttng-ust.so.0"
+  ],
+  "symbols": [
+    "_PmtBlockEntry",
+    "_PmtBlockExit",
+    "_PmtLog",
+    "_PmtMarker",
+    "_PmtPerfLog",
+    "__start___tracepoints_ptrs",
+    "__stop___tracepoints_ptrs",
+    "__tracepoint_pmtrace___block_entry",
+    "__tracepoint_pmtrace___block_exit",
+    "__tracepoint_pmtrace___log",
+    "__tracepoint_pmtrace___marker",
+    "__tracepoint_pmtrace___perflog",
+    "__tracepoint_provider_pmtrace"
+  ]
+}

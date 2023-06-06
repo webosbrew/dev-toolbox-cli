@@ -1,0 +1,29 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libwayland-client.so.0"
+  ],
+  "symbols": [
+    "input_method_context_interface",
+    "input_method_interface",
+    "input_panel_interface",
+    "input_panel_surface_interface",
+    "text_model_factory_interface",
+    "text_model_interface",
+    "wl_webos_accelerometer_interface",
+    "wl_webos_exported_interface",
+    "wl_webos_foreign_interface",
+    "wl_webos_gyroscope_interface",
+    "wl_webos_imported_interface",
+    "wl_webos_input_manager_interface",
+    "wl_webos_seat_interface",
+    "wl_webos_shell_interface",
+    "wl_webos_shell_surface_interface",
+    "wl_webos_surface_group_compositor_interface",
+    "wl_webos_surface_group_interface",
+    "wl_webos_surface_group_layer_interface",
+    "wl_webos_xinput_extension_interface",
+    "wl_webos_xinput_interface"
+  ]
+}

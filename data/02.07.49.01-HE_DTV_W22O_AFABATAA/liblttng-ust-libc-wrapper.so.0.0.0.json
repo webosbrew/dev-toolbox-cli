@@ -1,0 +1,32 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "liblttng-ust-tracepoint.so.0",
+    "liblttng-ust.so.0",
+    "libpthread.so.0",
+    "librt.so.1",
+    "liburcu-bp.so.6",
+    "liburcu-cds.so.6"
+  ],
+  "symbols": [
+    "__start___tracepoints_ptrs",
+    "__stop___tracepoints_ptrs",
+    "__tracepoint_lttng_ust_libc___calloc",
+    "__tracepoint_lttng_ust_libc___free",
+    "__tracepoint_lttng_ust_libc___malloc",
+    "__tracepoint_lttng_ust_libc___memalign",
+    "__tracepoint_lttng_ust_libc___posix_memalign",
+    "__tracepoint_lttng_ust_libc___realloc",
+    "__tracepoint_provider_lttng_ust_libc",
+    "calloc",
+    "free",
+    "lttng_ust_malloc_wrapper_init",
+    "malloc",
+    "memalign",
+    "posix_memalign",
+    "realloc"
+  ]
+}

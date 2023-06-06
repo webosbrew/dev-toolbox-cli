@@ -1,0 +1,42 @@
+{
+  "needed": [
+    "libabsl_flags_program_name.so",
+    "libabsl_strings.so",
+    "libabsl_synchronization.so",
+    "libabsl_throw_delegate.so",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "AbslInternalReportFatalUsageError_lts_20210324",
+    "_ZN4absl12lts_2021032414flags_internal14GetUsageConfigEv",
+    "_ZN4absl12lts_2021032414flags_internal16ReportUsageErrorENS0_11string_viewEb",
+    "_ZN4absl12lts_2021032419SetFlagsUsageConfigENS0_16FlagsUsageConfigE",
+    "_ZNSt14_Function_base13_Base_managerIPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEEE10_M_managerERSt9_Any_dataRKSD_St18_Manager_operation",
+    "_ZNSt14_Function_base13_Base_managerIPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvEE10_M_managerERSt9_Any_dataRKSA_St18_Manager_operation",
+    "_ZNSt14_Function_base13_Base_managerIPFbN4absl12lts_2021032411string_viewEEE10_M_managerERSt9_Any_dataRKS7_St18_Manager_operation",
+    "_ZNSt17_Function_handlerIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEEPS9_E9_M_invokeERKSt9_Any_dataOS8_",
+    "_ZNSt17_Function_handlerIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvEPS6_E9_M_invokeERKSt9_Any_data",
+    "_ZNSt17_Function_handlerIFbN4absl12lts_2021032411string_viewEEPS3_E9_M_invokeERKSt9_Any_dataOS2_",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag",
+    "_ZNSt8functionIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEEEC1ERKSA_",
+    "_ZNSt8functionIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEEEC2ERKSA_",
+    "_ZNSt8functionIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvEEC1ERKS7_",
+    "_ZNSt8functionIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvEEC2ERKS7_",
+    "_ZNSt8functionIFbN4absl12lts_2021032411string_viewEEEC1ERKS4_",
+    "_ZNSt8functionIFbN4absl12lts_2021032411string_viewEEEC2ERKS4_",
+    "_ZTIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEE",
+    "_ZTIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTIFbN4absl12lts_2021032411string_viewEE",
+    "_ZTIPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEE",
+    "_ZTIPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTIPFbN4absl12lts_2021032411string_viewEE",
+    "_ZTSFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEE",
+    "_ZTSFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTSFbN4absl12lts_2021032411string_viewEE",
+    "_ZTSPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN4absl12lts_2021032411string_viewEE",
+    "_ZTSPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTSPFbN4absl12lts_2021032411string_viewEE"
+  ]
+}

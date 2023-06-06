@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libasound.so.2",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libomxrtk_utils.so",
+    "librpccore.so"
+  ],
+  "symbols": [
+    "OMX_ComponentInit",
+    "OMX_Log",
+    "logfp"
+  ]
+}

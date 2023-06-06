@@ -1,0 +1,28 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libgnsdk_manager.so.3.18.10",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "gnsdk_dsp_classifier_load",
+    "gnsdk_dsp_classifier_unload",
+    "gnsdk_dsp_feature_audio_begin",
+    "gnsdk_dsp_feature_audio_write",
+    "gnsdk_dsp_feature_end_of_write",
+    "gnsdk_dsp_feature_release",
+    "gnsdk_dsp_feature_retrieve_data",
+    "gnsdk_dsp_get_build_date",
+    "gnsdk_dsp_get_version",
+    "gnsdk_dsp_initialize",
+    "gnsdk_dsp_shutdown",
+    "gnsdk_dsp_storage_location_set",
+    "gnsdk_dsp_storage_model_add"
+  ]
+}

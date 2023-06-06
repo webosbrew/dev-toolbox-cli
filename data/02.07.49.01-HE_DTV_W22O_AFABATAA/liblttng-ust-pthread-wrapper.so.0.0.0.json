@@ -1,0 +1,26 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "liblttng-ust-tracepoint.so.0",
+    "liblttng-ust.so.0",
+    "libpthread.so.0",
+    "librt.so.1",
+    "liburcu-bp.so.6",
+    "liburcu-cds.so.6"
+  ],
+  "symbols": [
+    "__start___tracepoints_ptrs",
+    "__stop___tracepoints_ptrs",
+    "__tracepoint_lttng_ust_pthread___pthread_mutex_lock_acq",
+    "__tracepoint_lttng_ust_pthread___pthread_mutex_lock_req",
+    "__tracepoint_lttng_ust_pthread___pthread_mutex_trylock",
+    "__tracepoint_lttng_ust_pthread___pthread_mutex_unlock",
+    "__tracepoint_provider_lttng_ust_pthread",
+    "pthread_mutex_lock",
+    "pthread_mutex_trylock",
+    "pthread_mutex_unlock"
+  ]
+}

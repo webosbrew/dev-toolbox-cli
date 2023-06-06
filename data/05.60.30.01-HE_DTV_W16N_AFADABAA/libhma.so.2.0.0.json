@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "libhma_alloc",
+    "libhma_alloc_cached",
+    "libhma_cache_ctl",
+    "libhma_free",
+    "libhma_get_info",
+    "libhma_get_ump_secure_id",
+    "libhma_memcpy_tocpu"
+  ]
+}

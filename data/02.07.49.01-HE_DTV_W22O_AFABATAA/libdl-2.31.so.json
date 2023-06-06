@@ -1,0 +1,24 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6"
+  ],
+  "symbols": [
+    "GLIBC_2.4@GLIBC_2.4",
+    "GLIBC_PRIVATE@GLIBC_2.4",
+    "GLIBC_PRIVATE@GLIBC_PRIVATE",
+    "__libdl_freeres@GLIBC_2.4",
+    "__libdl_freeres@GLIBC_PRIVATE",
+    "_dlfcn_hook@GLIBC_2.4",
+    "_dlfcn_hook@GLIBC_PRIVATE",
+    "dladdr1@GLIBC_2.4",
+    "dladdr@GLIBC_2.4",
+    "dlclose@GLIBC_2.4",
+    "dlerror@GLIBC_2.4",
+    "dlinfo@GLIBC_2.4",
+    "dlmopen@GLIBC_2.4",
+    "dlopen@GLIBC_2.4",
+    "dlsym@GLIBC_2.4",
+    "dlvsym@GLIBC_2.4"
+  ]
+}

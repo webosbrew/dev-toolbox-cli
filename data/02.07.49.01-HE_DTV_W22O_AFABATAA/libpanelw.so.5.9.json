@@ -1,0 +1,25 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libncursesw.so.5",
+    "libtinfo.so.5"
+  ],
+  "symbols": [
+    "bottom_panel",
+    "del_panel",
+    "hide_panel",
+    "move_panel",
+    "new_panel",
+    "panel_above",
+    "panel_below",
+    "panel_hidden",
+    "panel_userptr",
+    "panel_window",
+    "replace_panel",
+    "set_panel_userptr",
+    "show_panel",
+    "top_panel",
+    "update_panels"
+  ]
+}

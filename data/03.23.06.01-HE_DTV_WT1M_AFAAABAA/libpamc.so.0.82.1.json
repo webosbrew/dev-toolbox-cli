@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "LIBPAMC_1.0@LIBPAMC_1.0",
+    "pamc_converse@LIBPAMC_1.0",
+    "pamc_disable@LIBPAMC_1.0",
+    "pamc_end@LIBPAMC_1.0",
+    "pamc_list_agents@LIBPAMC_1.0",
+    "pamc_load@LIBPAMC_1.0",
+    "pamc_start@LIBPAMC_1.0"
+  ]
+}

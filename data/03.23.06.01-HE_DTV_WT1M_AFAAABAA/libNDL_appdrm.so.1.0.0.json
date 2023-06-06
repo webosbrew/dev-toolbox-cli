@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhelpers.so.2",
+    "libsm_appdrm.so.1"
+  ],
+  "symbols": [
+    "NDL_AppDrmCheckEncrypted",
+    "NDL_AppDrmClose",
+    "NDL_AppDrmGetContentSize",
+    "NDL_AppDrmGetError",
+    "NDL_AppDrmGetOffset",
+    "NDL_AppDrmGetStatus",
+    "NDL_AppDrmInit",
+    "NDL_AppDrmOpen",
+    "NDL_AppDrmQuit",
+    "NDL_AppDrmRead",
+    "NDL_AppDrmSetOffset",
+    "gLGNC",
+    "g_calledInit"
+  ]
+}

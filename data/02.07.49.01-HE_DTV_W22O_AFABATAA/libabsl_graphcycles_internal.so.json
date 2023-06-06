@@ -1,0 +1,28 @@
+{
+  "needed": [
+    "libabsl_base.so",
+    "libabsl_malloc_internal.so",
+    "libabsl_raw_logging_internal.so",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles10InsertEdgeENS1_7GraphIdES3_",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles10RemoveEdgeENS1_7GraphIdES3_",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles10RemoveNodeEPv",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles13GetStackTraceENS1_7GraphIdEPPPv",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles16UpdateStackTraceENS1_7GraphIdEiPFiPPviE",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles3PtrENS1_7GraphIdE",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles5GetIdEPv",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCycles7HasNodeENS1_7GraphIdE",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCyclesC1Ev",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCyclesC2Ev",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCyclesD1Ev",
+    "_ZN4absl12lts_2021032424synchronization_internal11GraphCyclesD2Ev",
+    "_ZNK4absl12lts_2021032424synchronization_internal11GraphCycles11IsReachableENS1_7GraphIdES3_",
+    "_ZNK4absl12lts_2021032424synchronization_internal11GraphCycles15CheckInvariantsEv",
+    "_ZNK4absl12lts_2021032424synchronization_internal11GraphCycles7HasEdgeENS1_7GraphIdES3_",
+    "_ZNK4absl12lts_2021032424synchronization_internal11GraphCycles8FindPathENS1_7GraphIdES3_iPS3_"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libfribidi.so.0",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libstarfish-subtitle-renderer.so.1",
+    "libstarfish-subtitle.so.1"
+  ],
+  "symbols": [
+    "run_external_subtitle_display_task",
+    "run_internal_bmp_subtitle_display_task",
+    "run_internal_text_subtitle_display_task",
+    "starfish_subtitle_task_add_internal_bmp_subtitle_block",
+    "starfish_subtitle_task_add_internal_text_subtitle_block",
+    "starfish_subtitle_task_adjust_playtime",
+    "starfish_subtitle_task_create",
+    "starfish_subtitle_task_destroy",
+    "starfish_subtitle_task_get_text_encoding",
+    "starfish_subtitle_task_new",
+    "starfish_subtitle_task_parse_external_subtitle",
+    "starfish_subtitle_task_pause",
+    "starfish_subtitle_task_set_current_playtime",
+    "starfish_subtitle_task_set_external_track",
+    "starfish_subtitle_task_set_internal_track",
+    "starfish_subtitle_task_set_text_color",
+    "starfish_subtitle_task_set_text_encoding",
+    "starfish_subtitle_task_set_text_size",
+    "starfish_subtitle_task_set_y_position",
+    "starfish_subtitle_task_start",
+    "starfish_subtitle_task_util_check_internal_type",
+    "starfish_subtitle_task_util_get_track_num",
+    "starfish_subtitle_task_util_parse_ass_subtitle",
+    "starfish_subtitle_task_util_parse_dxsa_subtitle",
+    "starfish_subtitle_task_util_parse_dxsb_subtitle",
+    "starfish_subtitle_task_util_parse_text_subtitle",
+    "subtitle_display_task"
+  ]
+}

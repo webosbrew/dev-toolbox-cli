@@ -1,0 +1,19 @@
+{
+  "needed": [],
+  "symbols": [
+    "FPSCreateMovieSession",
+    "FPSDestroyCryptor",
+    "FPSDestroyMovieSession",
+    "FPSDestroyServerExchange",
+    "FPSDisposeStorage",
+    "FPSGenerateChallenge",
+    "FPSGenerateChallengeWithVersionList",
+    "FPSGenerateSecureStop",
+    "FPSGenerateSecureStopWithVersionList",
+    "FPSGetLibraryVersion",
+    "FPSHandleCommand",
+    "FPSInitLibrary",
+    "FPSProcessLicence",
+    "FPSProcessSample"
+  ]
+}

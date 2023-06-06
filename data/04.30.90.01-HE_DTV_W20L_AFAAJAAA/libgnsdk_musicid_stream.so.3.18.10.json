@@ -1,0 +1,32 @@
+{
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libgnsdk_manager.so.3.18.10",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "gnsdk_musicidstream_channel_audio_begin",
+    "gnsdk_musicidstream_channel_audio_end",
+    "gnsdk_musicidstream_channel_audio_write",
+    "gnsdk_musicidstream_channel_create",
+    "gnsdk_musicidstream_channel_identify",
+    "gnsdk_musicidstream_channel_identify_cancel",
+    "gnsdk_musicidstream_channel_info_get",
+    "gnsdk_musicidstream_channel_option_get",
+    "gnsdk_musicidstream_channel_option_set",
+    "gnsdk_musicidstream_channel_release",
+    "gnsdk_musicidstream_channel_set_locale",
+    "gnsdk_musicidstream_channel_set_text",
+    "gnsdk_musicidstream_channel_wait_for_identify",
+    "gnsdk_musicidstream_get_build_date",
+    "gnsdk_musicidstream_get_version",
+    "gnsdk_musicidstream_initialize",
+    "gnsdk_musicidstream_shutdown"
+  ]
+}

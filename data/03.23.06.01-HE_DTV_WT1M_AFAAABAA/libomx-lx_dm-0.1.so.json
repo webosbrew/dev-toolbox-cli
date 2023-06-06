@@ -1,0 +1,23 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libhma.so",
+    "libkadaptor.so",
+    "liblxv.so",
+    "libomx-0.1.so",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "LIM_DpbManagerDeinit",
+    "LIM_DpbManagerInit",
+    "dpb",
+    "omx_debug_init",
+    "omx_debug_print",
+    "omx_debug_print2",
+    "omx_debug_print3",
+    "omx_dump2hex",
+    "strsplit_clear"
+  ]
+}

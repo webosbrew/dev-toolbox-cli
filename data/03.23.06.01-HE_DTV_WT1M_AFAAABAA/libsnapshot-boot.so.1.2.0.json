@@ -1,0 +1,12 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "snapshot_boot_mode",
+    "snapshot_boot_ready",
+    "snapshot_boot_remake",
+    "snapshot_boot_wait"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.2"
+  ],
+  "symbols": [
+    "HAL_MMC_Close",
+    "HAL_MMC_Get_CID",
+    "HAL_MMC_Get_Register",
+    "HAL_MMC_Get_SMART_Report",
+    "HAL_MMC_Open",
+    "HAL_MMC_PON_Long",
+    "HAL_MMC_PON_Short"
+  ]
+}

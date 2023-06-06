@@ -1,0 +1,13 @@
+{
+  "needed": [
+    "libabsl_city.so",
+    "libabsl_wyhash.so",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032413hash_internal9HashState10WyhashImplEPKhj",
+    "_ZN4absl12lts_2021032413hash_internal9HashState28CombineLargeContiguousImpl32EyPKhj",
+    "_ZN4absl12lts_2021032413hash_internal9HashState28CombineLargeContiguousImpl64EyPKhj",
+    "_ZN4absl12lts_2021032413hash_internal9HashState5kSeedE"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "abort@liblibm.so.1",
+    "calloc@liblibm.so.1",
+    "close@liblibm.so.1",
+    "fork@liblibm.so.1",
+    "fprintf@liblibm.so.1",
+    "fputs@liblibm.so.1",
+    "free@liblibm.so.1",
+    "fwrite@liblibm.so.1",
+    "getenv@liblibm.so.1",
+    "libm_find_func@liblibm.so.1",
+    "libm_get_hook@liblibm.so.1",
+    "libm_get_libname@liblibm.so.1",
+    "libm_reset_hook@liblibm.so.1",
+    "libm_setup_hook@liblibm.so.1",
+    "libm_system_init@liblibm.so.1",
+    "malloc@liblibm.so.1",
+    "memalign@liblibm.so.1",
+    "mq_open@liblibm.so.1",
+    "posix_memalign@liblibm.so.1",
+    "printf@liblibm.so.1",
+    "pthread_create@liblibm.so.1",
+    "puts@liblibm.so.1",
+    "realloc@liblibm.so.1",
+    "setenv@liblibm.so.1",
+    "system@liblibm.so.1",
+    "unsetenv@liblibm.so.1",
+    "valloc@liblibm.so.1",
+    "vfprintf@liblibm.so.1",
+    "vprintf@liblibm.so.1"
+  ]
+}

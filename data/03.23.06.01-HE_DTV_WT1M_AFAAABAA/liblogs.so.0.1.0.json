@@ -1,0 +1,12 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "log_opendev",
+    "log_writef",
+    "logmm_dummy_mask",
+    "logmm_printl"
+  ]
+}
