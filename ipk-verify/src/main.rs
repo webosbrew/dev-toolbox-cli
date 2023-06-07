@@ -1,18 +1,15 @@
-use std::borrow::Cow;
 use std::collections::HashMap;
 use std::fs::File;
-use std::io::{Error, ErrorKind, Read};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use clap::Parser;
-use debpkg::{Control, DebPkg};
-use path_slash::CowExt;
 use serde::Deserialize;
 
-use common::{BinaryInfo, Firmware, LibraryInfo};
+use common::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
 
-mod application;
-mod service;
+mod component;
+mod links;
+mod package;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -25,15 +22,42 @@ struct Args {
 fn main() {
     let args = Args::parse();
     for package in args.packages {
-        match File::open(&package) {
-            Ok(file) => {
-                let package = Package::parse(file).unwrap();
-                println!("{:?}", package.app);
+        let package = match File::open(&package) {
+            Ok(file) => Package::parse(file).unwrap(),
+            Err(e) => {
+                eprintln!(
+                    "Failed to open {}: {e:?}",
+                    package.file_name().unwrap().to_string_lossy()
+                );
+                continue;
             }
-            Err(e) => eprintln!(
-                "Failed to open {}",
-                package.file_name().unwrap().to_string_lossy()
-            ),
+        };
+        println!("# Package {}", package.id);
+        for firmware in Firmware::list(Path::new("data")).unwrap() {
+            println!("## On {}", firmware.info);
+            let result = package.verify(&firmware);
+            println!("### App {}", result.app.id);
+            if let Some(app_exe) = result.app.exe {
+                println!("main {:?}", app_exe);
+                for (important, lib) in result.app.libs {
+                    if important {
+                        print!("required ");
+                    }
+                    println!("{:?}", lib);
+                }
+            } else {
+                println!("Skipping non-native application");
+            }
+
+            for service in result.services {
+                println!("### Service {}", service.id);
+                if let Some(svc_exe) = service.exe {
+                    println!("{}", svc_exe.name);
+                } else {
+                    println!("Skipping non-native service");
+                }
+            }
+            break;
         }
     }
 }
@@ -41,19 +65,21 @@ fn main() {
 #[derive(Debug)]
 struct Package {
     id: String,
-    app: Application,
-    services: Vec<Service>,
-    links: HashMap<PathBuf, PathBuf>,
+    app: Component,
+    services: Vec<Component>,
 }
 
 #[derive(Debug)]
-struct Application {
-    main: Option<BinaryInfo>,
+struct Component {
+    id: String,
+    exe: Option<BinaryInfo>,
     libs: Vec<LibraryInfo>,
 }
 
 #[derive(Debug)]
-struct Service {}
+struct Symlinks {
+    mapping: HashMap<PathBuf, PathBuf>,
+}
 
 #[derive(Debug, Deserialize)]
 pub struct PackageInfo {
@@ -64,90 +90,15 @@ pub struct PackageInfo {
     services: Vec<String>,
 }
 
-impl Package {
-    fn parse<R>(read: R) -> Result<Package, Error>
-    where
-        R: Read,
-    {
-        let mut deb = DebPkg::parse(read).map_err(Self::deb_err)?;
-        let control = Control::extract(deb.control().unwrap()).map_err(Self::deb_err)?;
-        let mut data = deb.data().map_err(Self::deb_err)?;
-        let id = String::from(control.name());
-        let tmp = tempfile::TempDir::new()?;
-        let mut links = HashMap::new();
-        for entry in data.entries()? {
-            let mut entry = entry?;
-            let entry_type = entry.header().entry_type();
-            if entry_type.is_symlink() {
-                let path = tmp
-                    .as_ref()
-                    .join(Cow::from_slash(&entry.path()?.to_string_lossy()));
-                let target = path.parent().unwrap().join(Cow::from_slash(
-                    &entry.link_name()?.unwrap().to_string_lossy(),
-                ));
-                links.insert(path, target);
-            } else if entry_type.is_file() {
-                entry.unpack_in(&tmp)?;
-            } else if !entry_type.is_dir() {
-                println!("Ignore special file {}", entry.path()?.to_string_lossy());
-            }
-        }
-        let package_info = File::open(tmp.as_ref().join(Cow::from_slash(&format!(
-            "usr/palm/packages/{id}/packageinfo.json"
-        ))))?;
-        let package_info: PackageInfo = serde_json::from_reader(package_info).map_err(|e| {
-            Error::new(
-                ErrorKind::InvalidData,
-                format!("Bad packageinfo.json: {e:?}"),
-            )
-        })?;
-        let app = Application::parse(tmp.as_ref().join(Cow::from_slash(&format!(
-            "usr/palm/applications/{}",
-            package_info.app
-        ))))?;
-        let mut services = Vec::new();
-        for id in &package_info.services {
-            services.push(Service::parse(
-                tmp.as_ref()
-                    .join(Cow::from_slash(&format!("usr/palm/services/{id}"))),
-            )?);
-        }
-        return Ok(Package {
-            id,
-            app,
-            services,
-            links,
-        });
-    }
-
-    fn deb_err(e: debpkg::Error) -> Error {
-        return Error::new(ErrorKind::InvalidData, format!("Bad package: {e:?}"));
-    }
+#[derive(Debug)]
+struct PackageVerifyResult {
+    app: ComponentVerifyResult,
+    services: Vec<ComponentVerifyResult>,
 }
 
-trait VerifyElf {
-    fn verify(&self, firmware: &Firmware) -> BinVerifyResult;
-}
-
-#[derive(Default, Debug)]
-struct BinVerifyResult {
-    missing_lib: Vec<String>,
-    undefined_sym: Vec<String>,
-}
-
-impl VerifyElf for BinaryInfo {
-    fn verify(&self, firmware: &Firmware) -> BinVerifyResult {
-        let mut result = BinVerifyResult::default();
-        result.undefined_sym.extend(self.undefined.clone());
-        for needed in &self.needed {
-            if let Some(lib) = firmware.find_library(needed) {
-                result.undefined_sym.retain(|sym| !lib.has_symbol(sym));
-            } else if let Some(lib) = self.find_library(needed) {
-                result.undefined_sym.retain(|sym| !lib.has_symbol(sym));
-            } else {
-                result.missing_lib.push(needed.clone());
-            }
-        }
-        return result;
-    }
+#[derive(Debug)]
+struct ComponentVerifyResult {
+    id: String,
+    exe: Option<BinVerifyResult>,
+    libs: Vec<(bool, BinVerifyResult)>,
 }

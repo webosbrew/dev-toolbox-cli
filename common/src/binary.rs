@@ -7,7 +7,7 @@ use std::fs::File;
 use std::io::{Error, ErrorKind};
 use std::path::Path;
 
-use crate::{BinaryInfo, LibraryInfo};
+use crate::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
 
 impl BinaryInfo {
     pub fn find_library(&self, name: &str) -> Option<LibraryInfo> {
@@ -24,7 +24,7 @@ impl BinaryInfo {
         return None;
     }
 
-    pub fn parse<S>(source: S) -> Result<Self, elf::ParseError>
+    pub fn parse<S>(source: S, name: String) -> Result<Self, elf::ParseError>
     where
         S: std::io::Read + std::io::Seek,
     {
@@ -87,10 +87,38 @@ impl BinaryInfo {
             .collect();
 
         return Ok(Self {
+            name,
             rpath,
             needed,
             undefined,
         });
+    }
+}
+
+impl VerifyWithFirmware<BinVerifyResult> for BinaryInfo {
+    fn verify(&self, firmware: &Firmware) -> BinVerifyResult {
+        let mut result = BinVerifyResult::new(self.name.clone());
+        result.undefined_sym.extend(self.undefined.clone());
+        for needed in &self.needed {
+            if let Some(lib) = firmware.find_library(needed) {
+                result.undefined_sym.retain(|sym| !lib.has_symbol(sym));
+            } else if let Some(lib) = self.find_library(needed) {
+                result.undefined_sym.retain(|sym| !lib.has_symbol(sym));
+            } else {
+                result.missing_lib.push(needed.clone());
+            }
+        }
+        return result;
+    }
+}
+
+impl BinVerifyResult {
+    pub fn new(name: String) -> Self {
+        return Self {
+            name,
+            missing_lib: Default::default(),
+            undefined_sym: Default::default(),
+        };
     }
 }
 
@@ -103,7 +131,8 @@ mod tests {
     #[test]
     fn test_parse() {
         let mut content = Cursor::new(include_bytes!("fixtures/sample.bin"));
-        let info = BinaryInfo::parse(&mut content).expect("should not have any error");
+        let info = BinaryInfo::parse(&mut content, String::from("sample.bin"))
+            .expect("should not have any error");
         assert_eq!(info.needed[0], "libc.so.6");
     }
 }

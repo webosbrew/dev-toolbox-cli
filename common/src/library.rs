@@ -1,8 +1,10 @@
+use elf::abi::STB_WEAK;
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
 use elf::{abi, ElfStream, ParseError};
 use std::cmp::Ordering;
+use std::ops::Deref;
 
 use crate::LibraryInfo;
 
@@ -19,6 +21,10 @@ const IGNORED_SYMBOLS: &[&str] = &[
 ];
 
 impl LibraryInfo {
+    pub fn has_name(&self, name: &str) -> bool {
+        return self.names.iter().find(|n| n.deref() == name).is_some();
+    }
+
     pub fn has_symbol(&self, symbol: &str) -> bool {
         return self
             .symbols
@@ -100,10 +106,14 @@ impl LibraryInfo {
                 .iter()
                 .enumerate()
                 .flat_map(|(index, (sym, name))| {
-                    if !sym.is_undefined() || sym.st_name == 0 || IGNORED_SYMBOLS.contains(&&**name)
+                    if !sym.is_undefined()
+                        || sym.st_name == 0
+                        || sym.st_bind() == STB_WEAK
+                        || IGNORED_SYMBOLS.contains(&&**name)
                     {
                         return vec![];
                     }
+
                     if let Some(ver_table) = &ver_table {
                         if let Some(ver) = ver_table.get_requirement(index).ok().flatten() {
                             return vec![format!("{name}@{}", ver.name)];
@@ -124,6 +134,7 @@ impl LibraryInfo {
             needed,
             symbols,
             undefined,
+            names: Default::default(),
         });
     }
 }
