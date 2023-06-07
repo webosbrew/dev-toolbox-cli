@@ -1,11 +1,15 @@
 use std::collections::HashMap;
 use std::fs::File;
+use std::iter;
 use std::path::{Path, PathBuf};
 
 use clap::Parser;
+use prettytable::{color, Attr, Cell, Row, Table};
 use serde::Deserialize;
 
-use common::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
+use common::{
+    BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyResult, VerifyWithFirmware,
+};
 
 mod component;
 mod links;
@@ -33,33 +37,80 @@ fn main() {
             }
         };
         println!("# Package {}", package.id);
-        for firmware in Firmware::list(Path::new("data")).unwrap() {
-            println!("## On {}", firmware.info);
-            let result = package.verify(&firmware);
-            println!("### App {}", result.app.id);
-            if let Some(app_exe) = result.app.exe {
-                println!("main {:?}", app_exe);
-                for (important, lib) in result.app.libs {
-                    if important {
-                        print!("required ");
-                    }
-                    println!("{:?}", lib);
-                }
-            } else {
-                println!("Skipping non-native application");
-            }
-
-            for service in result.services {
-                println!("### Service {}", service.id);
-                if let Some(svc_exe) = service.exe {
-                    println!("{}", svc_exe.name);
-                } else {
-                    println!("Skipping non-native service");
-                }
-            }
-            break;
+        let results: Vec<(Firmware, PackageVerifyResult)> = Firmware::list(Path::new("data"))
+            .unwrap()
+            .into_iter()
+            .map(|fw| {
+                let verify = package.verify(&fw);
+                return (fw, verify);
+            })
+            .collect();
+        let (_, result) = results.first().unwrap();
+        println!("### App {}", result.app.id);
+        print_component_results(results.iter().map(|(fw, res)| (fw, &res.app)).collect());
+        for idx in 0..result.services.len() {
+            print_component_results(
+                results
+                    .iter()
+                    .map(|(fw, res)| (fw, res.services.get(idx).unwrap()))
+                    .collect(),
+            );
         }
     }
+}
+
+fn print_component_results(results: Vec<(&Firmware, &ComponentVerifyResult)>) {
+    let mut table = Table::new();
+    table.set_format(*prettytable::format::consts::FORMAT_BOX_CHARS);
+    table.set_titles(Row::from_iter(
+        iter::once("").chain(
+            results
+                .iter()
+                .map(|(firmware, _result)| firmware.info.release.as_str()),
+        ),
+    ));
+    let (_, result) = *results.first().unwrap();
+    if let Some(exe) = &result.exe {
+        table.add_row(Row::new(
+            iter::once(Cell::new(&exe.name))
+                .chain(results.iter().map(|(_, result)| {
+                    return if result.exe.as_ref().unwrap().is_good() {
+                        let mut cell = Cell::new("OK");
+                        cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
+                        cell
+                    } else {
+                        let mut cell = Cell::new("NG");
+                        cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
+                        cell
+                    };
+                }))
+                .collect(),
+        ));
+        for (idx, (required, lib)) in result.libs.iter().enumerate() {
+            let name = if *required {
+                Cell::new(&format!("required lib {}", lib.name))
+            } else {
+                Cell::new(&format!("lib {}", lib.name))
+            };
+            table.add_row(Row::new(
+                iter::once(name)
+                    .chain(results.iter().map(|(_, result)| {
+                        let result = &result.libs.get(idx).unwrap().1;
+                        return if result.is_good() {
+                            let mut cell = Cell::new("OK");
+                            cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
+                            cell
+                        } else {
+                            let mut cell = Cell::new("NG");
+                            cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
+                            cell
+                        };
+                    }))
+                    .collect(),
+            ));
+        }
+    }
+    table.print_tty(true).unwrap();
 }
 
 #[derive(Debug)]

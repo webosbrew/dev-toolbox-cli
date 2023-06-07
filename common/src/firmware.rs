@@ -1,3 +1,4 @@
+use semver::Version;
 use std::collections::HashMap;
 use std::fmt::{Display, Formatter};
 use std::fs::File;
@@ -44,7 +45,7 @@ impl Firmware {
     where
         P: AsRef<Path>,
     {
-        return Ok(data_path
+        let mut firmwares: Vec<Firmware> = data_path
             .as_ref()
             .read_dir()?
             .filter_map(|ent| {
@@ -53,7 +54,9 @@ impl Firmware {
                 }
                 return None;
             })
-            .collect());
+            .collect();
+        firmwares.sort_by_key(|fw| Version::parse(&fw.info.release).unwrap());
+        return Ok(firmwares);
     }
 
     pub fn find_library(&self, name: &str) -> Option<LibraryInfo> {

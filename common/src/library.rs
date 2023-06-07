@@ -101,8 +101,8 @@ impl LibraryInfo {
             })
             .collect();
 
-        let mut undefined: Vec<String> = if with_undefined {
-            all_syms
+        let undefined: Vec<String> = if with_undefined {
+            let mut list: Vec<String> = all_syms
                 .iter()
                 .enumerate()
                 .flat_map(|(index, (sym, name))| {
@@ -121,14 +121,15 @@ impl LibraryInfo {
                     }
                     return vec![name.clone()];
                 })
-                .collect()
+                .collect();
+            list.sort_unstable();
+            list
         } else {
             Vec::new()
         };
 
         needed.sort_unstable();
         symbols.sort_unstable();
-        undefined.sort_unstable();
 
         return Ok(Self {
             needed,

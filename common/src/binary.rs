@@ -7,7 +7,7 @@ use std::fs::File;
 use std::io::{Error, ErrorKind};
 use std::path::Path;
 
-use crate::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
+use crate::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyResult, VerifyWithFirmware};
 
 impl BinaryInfo {
     pub fn find_library(&self, name: &str) -> Option<LibraryInfo> {
@@ -119,6 +119,12 @@ impl BinVerifyResult {
             missing_lib: Default::default(),
             undefined_sym: Default::default(),
         };
+    }
+}
+
+impl VerifyResult for BinVerifyResult {
+    fn is_good(&self) -> bool {
+        return self.missing_lib.is_empty() && self.undefined_sym.is_empty();
     }
 }
 

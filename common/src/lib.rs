@@ -18,6 +18,10 @@ pub struct BinaryInfo {
     pub undefined: Vec<String>,
 }
 
+pub trait VerifyResult {
+    fn is_good(&self)->bool;
+}
+
 #[derive(Debug)]
 pub struct BinVerifyResult {
     pub name: String,
