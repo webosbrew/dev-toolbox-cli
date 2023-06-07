@@ -1,0 +1,14 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.0",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "sb_sign_image_ex",
+    "sb_verify_image"
+  ]
+}

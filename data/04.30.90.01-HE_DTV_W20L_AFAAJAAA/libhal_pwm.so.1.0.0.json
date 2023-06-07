@@ -1,0 +1,20 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.2",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_PWM_ApplyParamSet",
+    "HAL_PWM_GetParam",
+    "HAL_PWM_Init",
+    "HAL_PWM_SetParam",
+    "_Z12rtk_pwm_openPcPKcP11PWM_PARAM_T",
+    "_Z16rtk_pwm_info_getPcP11PWM_PARAM_T",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev"
+  ]
+}

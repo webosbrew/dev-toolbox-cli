@@ -1,0 +1,43 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.0",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_SVP_CheckAuTypeIsDolbyHdrMeta",
+    "HAL_SVP_CloseSecureCpb",
+    "HAL_SVP_CloseSecureCpbEx",
+    "HAL_SVP_CopyFromSecureBuffer",
+    "HAL_SVP_CopyToSecureDecryptBuffer",
+    "HAL_SVP_FlushSecureDecryptBuffer",
+    "HAL_SVP_FlushSecureDecryptBufferEx",
+    "HAL_SVP_GetAuInformation",
+    "HAL_SVP_GetSecureCpbInformation",
+    "HAL_SVP_GetSecureDecryptBufferHandle",
+    "HAL_SVP_GetSecureDecryptBufferHandleEx",
+    "HAL_SVP_IsSecureReformatterSupported",
+    "HAL_SVP_OpenSecureCpb",
+    "HAL_SVP_OpenSecureCpbEx",
+    "HAL_SVP_SetSecureReformatter",
+    "HAL_SVP_SetSecureReformatterEx",
+    "HAL_SVP_WidevineDecryptCENC",
+    "HAL_SVP_WidevineDecryptCTR",
+    "HAL_SVP_WidevineSelectKey",
+    "HAL_SVP_WidevineSelectKey_OverV14",
+    "HAL_SVP_Widevine_DecryptAudio",
+    "HAL_SVP_Widevine_DecryptVideo",
+    "_ZN13CRTKTraceCallC1EjPKc",
+    "_ZN13CRTKTraceCallC2EjPKc",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev",
+    "gLastCipherMode",
+    "gLastSecDecBufHandle",
+    "gLastSecDecBufSize",
+    "gLastSelectedKeyId",
+    "gLastSelectedKeyIdLength"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "needed": [
+    "libCLC.so",
+    "libGAL.so",
+    "libOpenVX.so",
+    "libOpenVXU.so",
+    "libVSC.so",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libovxlib.so",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z20vxnv12ToRGBValidatorP8_vx_nodePKP13_vx_referencejPP15_vx_meta_format@libnv12ToRGB_msb.so",
+    "_Z21vxLoadVxcBinarySourcePc@libnv12ToRGB_msb.so",
+    "_Z22vxnv12ToRGBInitializerP8_vx_nodePKP13_vx_referencej@libnv12ToRGB_msb.so",
+    "_Z24vxnv12ToRGBDeinitializerP8_vx_nodePKP13_vx_referencej@libnv12ToRGB_msb.so",
+    "binaryBuf@libnv12ToRGB_msb.so",
+    "programSource@libnv12ToRGB_msb.so",
+    "vxPublishKernels@libnv12ToRGB_msb.so",
+    "vxnv12ToRGBKernelInfo@libnv12ToRGB_msb.so"
+  ]
+}

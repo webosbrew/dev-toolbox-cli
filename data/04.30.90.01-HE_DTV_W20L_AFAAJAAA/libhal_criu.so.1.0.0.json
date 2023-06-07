@@ -1,0 +1,15 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.2",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_CRIU_PostDumpNotify",
+    "HAL_CRIU_PostRestoreNotify",
+    "HAL_CRIU_PreCheckpointNotify"
+  ]
+}

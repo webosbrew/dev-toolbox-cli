@@ -1,0 +1,27 @@
+{
+  "needed": [
+    "libCLC.so",
+    "libGAL.so",
+    "libOpenVX.so",
+    "libOpenVXU.so",
+    "libVSC.so",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libovxlib.so",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z21vxLoadVxcBinarySourcePc@libconvert_to_float.so",
+    "_Z27vxconvert_to_floatValidatorP8_vx_nodePKP13_vx_referencejPP15_vx_meta_format@libconvert_to_float.so",
+    "_Z29vxconvert_to_floatInitializerP8_vx_nodePKP13_vx_referencej@libconvert_to_float.so",
+    "_Z31vxconvert_to_floatDeinitializerP8_vx_nodePKP13_vx_referencej@libconvert_to_float.so",
+    "binaryBuf@libconvert_to_float.so",
+    "programSource@libconvert_to_float.so",
+    "vxPublishKernels@libconvert_to_float.so",
+    "vxconvert_to_floatKernelInfo@libconvert_to_float.so"
+  ]
+}

@@ -1,4 +1,5 @@
 use std::collections::BTreeMap;
+use std::fs;
 use std::fs::{DirEntry, File};
 use std::io::{BufRead, BufReader, BufWriter, Error, ErrorKind, Read};
 use std::path::{Path, PathBuf};
@@ -187,11 +188,25 @@ fn extract_lib_paths(input: &Path) -> Result<Vec<PathBuf>, Error> {
                 return None;
             }
             if let Some(bsp) = trimmed.strip_prefix("mnt/bsppart/") {
-                return Some(
-                    input
-                        .join("bsppart.pak.unsquashfs")
-                        .join(PathBuf::from_slash(bsp)),
-                );
+                return fs::read_dir(input)
+                    .and_then(|mut dir| {
+                        return Ok(dir.find_map(|entry| {
+                            if let Ok(entry) = entry {
+                                let file_name = entry.file_name();
+                                if Regex::new(r"bsppart(-\w+)?.pak.unsquashfs")
+                                    .unwrap()
+                                    .is_match(&*file_name.to_string_lossy())
+                                {
+                                    return Some(
+                                        input.join(file_name).join(PathBuf::from_slash(bsp)),
+                                    );
+                                }
+                            }
+                            return None;
+                        }));
+                    })
+                    .ok()
+                    .flatten();
             }
             return Some(rootfs_path.join(PathBuf::from_slash(trimmed)));
         }))

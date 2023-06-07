@@ -1,0 +1,27 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.2",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_SPI_Init",
+    "HAL_SPI_Read",
+    "HAL_SPI_SetConfig",
+    "HAL_SPI_Write",
+    "RHAL_SPI_GetParameter",
+    "RHAL_SPI_Init",
+    "RHAL_SPI_LockFlash",
+    "RHAL_SPI_Read",
+    "RHAL_SPI_UnLockFlash",
+    "RHAL_SPI_Write",
+    "_Z17RHAL_SPI_SetClockj",
+    "_ZN13CRTKTraceCallC1EjPKc",
+    "_ZN13CRTKTraceCallC2EjPKc",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev"
+  ]
+}

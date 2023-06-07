@@ -1,0 +1,41 @@
+{
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.0",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "CMNIO_GPIO_GetInputPort",
+    "CMNIO_GPIO_SetOutputPort",
+    "HAL_GPIO_GetInputPhysicalPort",
+    "HAL_GPIO_GetInputPort",
+    "HAL_GPIO_GetInputPortArray",
+    "HAL_GPIO_GetIntrCount",
+    "HAL_GPIO_Init",
+    "HAL_GPIO_InitEx",
+    "HAL_GPIO_SetIntrCallBack",
+    "HAL_GPIO_SetOutputPhysicalPort",
+    "HAL_GPIO_SetOutputPort",
+    "HAL_GPIO_SetOutputPortArray",
+    "HAL_GPIO_SetPhysicalPortDirection",
+    "HAL_GPIO_SetPortDirection",
+    "K4LP_GPIOMap",
+    "PCB_PINS",
+    "_Z15_set_gpio_tablev",
+    "_Z16_get_GPIO_NumberjPj",
+    "_Z19_get_gpio_attributejPj",
+    "_Z19_set_K4LP_GpioTablev",
+    "_Z20_sort_Gpio_PortIndexP14GPIO_MAP_ENTRYi",
+    "_Z28HAL_GPIO_SetPortDirection_SPjj",
+    "_ZN13CRTKTraceCallC1EjPKc",
+    "_ZN13CRTKTraceCallC2EjPKc",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev",
+    "_sel_gpio",
+    "_sel_gpio_number",
+    "_sel_gpio_type"
+  ]
+}

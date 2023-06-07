@@ -49,6 +49,7 @@ fn main() {
         println!("### App {}", result.app.id);
         print_component_results(results.iter().map(|(fw, res)| (fw, &res.app)).collect());
         for idx in 0..result.services.len() {
+            println!("### Service {}", result.services.get(idx).unwrap().id);
             print_component_results(
                 results
                     .iter()
@@ -60,17 +61,17 @@ fn main() {
 }
 
 fn print_component_results(results: Vec<(&Firmware, &ComponentVerifyResult)>) {
-    let mut table = Table::new();
-    table.set_format(*prettytable::format::consts::FORMAT_BOX_CHARS);
-    table.set_titles(Row::from_iter(
-        iter::once("").chain(
-            results
-                .iter()
-                .map(|(firmware, _result)| firmware.info.release.as_str()),
-        ),
-    ));
     let (_, result) = *results.first().unwrap();
     if let Some(exe) = &result.exe {
+        let mut table = Table::new();
+        table.set_format(*prettytable::format::consts::FORMAT_BOX_CHARS);
+        table.set_titles(Row::from_iter(
+            iter::once("").chain(
+                results
+                    .iter()
+                    .map(|(firmware, _result)| firmware.info.release.as_str()),
+            ),
+        ));
         table.add_row(Row::new(
             iter::once(Cell::new(&exe.name))
                 .chain(results.iter().map(|(_, result)| {
@@ -79,6 +80,7 @@ fn print_component_results(results: Vec<(&Firmware, &ComponentVerifyResult)>) {
                         cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
                         cell
                     } else {
+                        println!("{:?}", result.exe);
                         let mut cell = Cell::new("NG");
                         cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
                         cell
@@ -109,8 +111,10 @@ fn print_component_results(results: Vec<(&Firmware, &ComponentVerifyResult)>) {
                     .collect(),
             ));
         }
+        table.print_tty(true).unwrap();
+    } else {
+        println!("Skip because this component is not native");
     }
-    table.print_tty(true).unwrap();
 }
 
 #[derive(Debug)]
