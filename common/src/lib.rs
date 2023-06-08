@@ -1,10 +1,15 @@
-use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
+
+use semver::Version;
+use serde::{Deserialize, Serialize};
+
+use version::{version_deserialize, version_serialize};
 
 pub mod binary;
 pub mod firmware;
 pub mod library;
+mod version;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
@@ -44,7 +49,11 @@ pub struct LibraryInfo {
 pub struct FirmwareInfo {
     pub version: String,
     pub ota_id: String,
-    pub release: String,
+    #[serde(
+        serialize_with = "version_serialize",
+        deserialize_with = "version_deserialize"
+    )]
+    pub release: Version,
 }
 
 #[derive(Debug)]
@@ -52,6 +61,19 @@ pub struct Firmware {
     pub info: FirmwareInfo,
     path: PathBuf,
     index: HashMap<String, String>,
+}
+
+pub enum ReleaseCodename {
+    Afro,
+    Beehive,
+    Dreadlocks,
+    Dreadlocks2,
+    Goldilocks,
+    Goldilocks2,
+    Jhericurl,
+    Kisscurl,
+    Mullet,
+    Number1,
 }
 
 pub trait VerifyWithFirmware<R> {

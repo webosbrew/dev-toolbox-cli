@@ -1,0 +1,25 @@
+{
+  "name": "libomxdebug-1.0.so.0",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgthread-2.0.so.0",
+    "libm.so.6",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "omx_debug_init",
+    "omx_debug_print",
+    "omx_debug_print2",
+    "omx_debug_print3",
+    "omx_dump2hex",
+    "strsplit_clear"
+  ]
+}

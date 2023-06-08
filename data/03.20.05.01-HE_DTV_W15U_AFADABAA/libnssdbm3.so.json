@@ -1,0 +1,21 @@
+{
+  "name": "libnssdbm3.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libnspr4.so",
+    "libnssutil3.so",
+    "libplds4.so",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "NSSDBM_3.12@NSSDBM_3.12",
+    "legacy_AddSecmodDB@NSSDBM_3.12",
+    "legacy_DeleteSecmodDB@NSSDBM_3.12",
+    "legacy_Open@NSSDBM_3.12",
+    "legacy_ReadSecmodDB@NSSDBM_3.12",
+    "legacy_ReleaseSecmodDBData@NSSDBM_3.12",
+    "legacy_SetCryptFunctions@NSSDBM_3.12",
+    "legacy_Shutdown@NSSDBM_3.12"
+  ]
+}

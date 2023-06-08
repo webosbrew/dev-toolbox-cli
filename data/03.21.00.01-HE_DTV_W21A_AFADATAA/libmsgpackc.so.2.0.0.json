@@ -1,0 +1,43 @@
+{
+  "name": "libmsgpackc.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "msgpack_object_equal",
+    "msgpack_object_print",
+    "msgpack_pack_object",
+    "msgpack_unpack",
+    "msgpack_unpack_next",
+    "msgpack_unpacker_data",
+    "msgpack_unpacker_destroy",
+    "msgpack_unpacker_execute",
+    "msgpack_unpacker_expand_buffer",
+    "msgpack_unpacker_flush_zone",
+    "msgpack_unpacker_free",
+    "msgpack_unpacker_init",
+    "msgpack_unpacker_new",
+    "msgpack_unpacker_next",
+    "msgpack_unpacker_release_zone",
+    "msgpack_unpacker_reset",
+    "msgpack_unpacker_reset_zone",
+    "msgpack_version",
+    "msgpack_version_major",
+    "msgpack_version_minor",
+    "msgpack_vrefbuffer_append_copy",
+    "msgpack_vrefbuffer_append_ref",
+    "msgpack_vrefbuffer_clear",
+    "msgpack_vrefbuffer_destroy",
+    "msgpack_vrefbuffer_init",
+    "msgpack_vrefbuffer_migrate",
+    "msgpack_zone_clear",
+    "msgpack_zone_destroy",
+    "msgpack_zone_free",
+    "msgpack_zone_init",
+    "msgpack_zone_is_empty",
+    "msgpack_zone_malloc_expand",
+    "msgpack_zone_new",
+    "msgpack_zone_push_finalizer_expand"
+  ]
+}

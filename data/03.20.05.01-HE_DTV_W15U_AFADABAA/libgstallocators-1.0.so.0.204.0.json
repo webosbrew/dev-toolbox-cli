@@ -1,0 +1,23 @@
+{
+  "name": "libgstallocators-1.0.so.0",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgthread-2.0.so.0",
+    "libm.so.6",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "dmabuf_mem_allocator_get_type",
+    "gst_dmabuf_allocator_alloc",
+    "gst_dmabuf_allocator_new",
+    "gst_dmabuf_memory_get_fd",
+    "gst_is_dmabuf_memory"
+  ]
+}

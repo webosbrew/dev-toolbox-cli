@@ -1,0 +1,21 @@
+{
+  "name": "libgmodule-2.0.so.0",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libpcre.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "g_module_build_path",
+    "g_module_close",
+    "g_module_error",
+    "g_module_make_resident",
+    "g_module_name",
+    "g_module_open",
+    "g_module_supported",
+    "g_module_symbol"
+  ]
+}

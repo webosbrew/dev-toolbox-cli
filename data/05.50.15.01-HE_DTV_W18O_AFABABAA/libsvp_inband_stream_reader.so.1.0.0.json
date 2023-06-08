@@ -1,0 +1,15 @@
+{
+  "name": "libsvp_inband_stream_reader.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN3svp18InbandStreamReader4ReadEPKhj",
+    "_ZNSt6vectorIN3svp12InbandStream7SegmentESaIS2_EE19_M_emplace_back_auxIJRKS2_EEEvDpOT_",
+    "_ZNSt6vectorIN3svp12InbandStreamESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_",
+    "_ZNSt6vectorIhSaIhEED1Ev",
+    "_ZNSt6vectorIhSaIhEED2Ev"
+  ]
+}

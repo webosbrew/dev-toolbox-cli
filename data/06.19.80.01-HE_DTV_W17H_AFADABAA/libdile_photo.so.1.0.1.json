@@ -1,0 +1,39 @@
+{
+  "name": "libdile_photo.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_photo.so.2"
+  ],
+  "symbols": [
+    "DILE_JPEG_Close",
+    "DILE_JPEG_Decode",
+    "DILE_JPEG_Encode",
+    "DILE_JPEG_Open",
+    "DILE_PHOTO_DEBUG_MSG",
+    "DILE_PNG_Close",
+    "DILE_PNG_Decode",
+    "DILE_PNG_Open",
+    "DILE_VO_Close",
+    "DILE_VO_Config",
+    "DILE_VO_DisplayPicture",
+    "DILE_VO_FB_Finalize",
+    "DILE_VO_FB_GetTargetFrameBuffer",
+    "DILE_VO_FB_Initialize",
+    "DILE_VO_FB_UpdateFrameBuffer",
+    "DILE_VO_FB_UpdateFrameBufferProperty",
+    "DILE_VO_GetDeviceCapability",
+    "DILE_VO_Open",
+    "DILE_VO_RedrawPicture",
+    "_get_hal_jpeg_pixel_format",
+    "_get_hal_jpeg_scaling_option",
+    "_get_hal_png_pixel_format",
+    "_get_hal_png_scaling_option",
+    "_get_hal_vo_config",
+    "_get_hal_vo_pixel_format",
+    "_get_pixel_format_from_hal_jpeg",
+    "_get_pixel_format_from_hal_png",
+    "_get_pixel_format_from_hal_vo",
+    "_get_scaling_shift_integer"
+  ]
+}

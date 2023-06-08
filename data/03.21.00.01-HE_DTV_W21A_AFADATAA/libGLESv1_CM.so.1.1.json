@@ -1,0 +1,12 @@
+{
+  "name": "libGLESv1_CM.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libmali.so.0",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "_mali_scm_version@libGLESv1_CM.so.1"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "libfps_tee.so",
+  "needed": [
+    "ld-linux.so.3",
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libstdc++.so.6",
+    "libsvp_inband_serializer.so.1"
+  ],
+  "symbols": [
+    "_ZN15FPSTeeInterface11SendMessageEPKhjPPhPj",
+    "_ZN15FPSTeeInterface11UnloadXTaskEv",
+    "_ZN15FPSTeeInterface14DisposeMessageEPh",
+    "_ZN15FPSTeeInterface14SendAndDecryptEyyjPhjPK12FPSSliceInfojPKhPv",
+    "_ZN15FPSTeeInterface9LoadXTaskEv",
+    "_ZNKSt9_Any_data9_M_accessIPFbPSt6vectorIhSaIhEEPvEEERKT_v",
+    "_ZNSt14_Function_base13_Base_managerIPFbPSt6vectorIhSaIhEEPvEE10_M_managerERSt9_Any_dataRKS9_St18_Manager_operation",
+    "_ZNSt14_Function_base13_Base_managerIPFbPSt6vectorIhSaIhEEPvEE14_M_get_pointerERKSt9_Any_data",
+    "_ZNSt14_Function_base13_Base_managerIPFbPSt6vectorIhSaIhEEPvEE21_M_not_empty_functionIS6_EEbPT_",
+    "_ZNSt15_Sp_counted_ptrIDnLN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv",
+    "_ZNSt17_Function_handlerIFbPSt6vectorIhSaIhEEPvEPS5_E9_M_invokeERKSt9_Any_dataOS3_OS4_",
+    "_ZNSt6vectorIhSaIhEE15_M_range_insertIPKhEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S9_St20forward_iterator_tag",
+    "_ZNSt6vectorIhSaIhEE17_M_default_appendEj",
+    "_ZNSt8functionIFbPSt6vectorIhSaIhEEPvEEC1IPS5_vvEET_",
+    "_ZNSt8functionIFbPSt6vectorIhSaIhEEPvEEC2IPS5_vvEET_"
+  ]
+}

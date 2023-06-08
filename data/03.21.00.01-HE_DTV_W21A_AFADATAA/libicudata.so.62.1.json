@@ -1,0 +1,10 @@
+{
+  "name": "libicudata.so.62",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "icudt62_dat"
+  ]
+}

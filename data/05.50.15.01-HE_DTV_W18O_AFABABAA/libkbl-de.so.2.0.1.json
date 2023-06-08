@@ -1,0 +1,10 @@
+{
+  "name": "libkbl-de.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "de_get_fw_data"
+  ]
+}

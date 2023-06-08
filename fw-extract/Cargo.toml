@@ -1,0 +1,27 @@
+[package]
+name = "fw-extract"
+version = "0.1.0"
+edition = "2021"
+authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
+license = "Apache-2.0"
+
+[dependencies]
+regex = "1"
+path-slash = "0.2.1"
+serde = "1.0.160"
+serde_json = "1.0.96"
+semver = "1.0.17"
+
+[dependencies.clap]
+version = "4.2.4"
+features = ["derive"]
+
+[dependencies.common]
+path = "../common"
+
+[package.metadata.deb]
+section = "devel"
+assets = [
+    ["target/release/fw-extract", "usr/bin/wcc-fw-extract", "755"],
+    ["../data/**/*", "usr/share/webosbrew/compat-checker/", "644"]
+]

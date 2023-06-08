@@ -1,0 +1,11 @@
+{
+  "name": "libpvrPVR2D_FLIPWSEGL.so.0.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpvr2d.so"
+  ],
+  "symbols": [
+    "WSEGL_GetFunctionTablePointer"
+  ]
+}

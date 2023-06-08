@@ -1,0 +1,27 @@
+{
+  "name": "libacsdkManufactory.so",
+  "needed": [
+    "libAVSCommon.so",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZGVZN14alexaClientSDK9avsCommon5utils6logger20getManufactoryLoggerEvE12moduleLogger",
+    "_ZN14alexaClientSDK16acsdkManufactory8internal8CookBook12getLoggerTagB5cxx11Ev",
+    "_ZN14alexaClientSDK16acsdkManufactory8internal8CookBook26checkForCyclicDependenciesEv",
+    "_ZN14alexaClientSDK16acsdkManufactory8internal9TypeIndex12TypeSpecificINS1_8CookBookEE10m_instanceE",
+    "_ZNK14alexaClientSDK16acsdkManufactory8internal8CookBook15logDependenciesEv",
+    "_ZNSt15_Sp_counted_ptrIDnLN9__gnu_cxx12_Lock_policyE2EE10_M_disposeEv",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_releaseEv",
+    "_ZNSt6vectorIN14alexaClientSDK16acsdkManufactory8internal9TypeIndexESaIS3_EE17_M_realloc_insertIJRKS3_EEEvN9__gnu_cxx17__normal_iteratorIPS3_S5_EEDpOT_",
+    "_ZNSt8_Rb_treeIN14alexaClientSDK16acsdkManufactory8internal9TypeIndexESt4pairIKS3_bESt10_Select1stIS6_ESt4lessIS3_ESaIS6_EE16_M_insert_uniqueIS6_EES4_ISt17_Rb_tree_iteratorIS6_EbEOT_",
+    "_ZNSt8_Rb_treeIN14alexaClientSDK16acsdkManufactory8internal9TypeIndexESt4pairIKS3_bESt10_Select1stIS6_ESt4lessIS3_ESaIS6_EE8_M_eraseEPSt13_Rb_tree_nodeIS6_E",
+    "_ZTIN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTTN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTVN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZZN14alexaClientSDK9avsCommon5utils6logger20getManufactoryLoggerEvE12moduleLogger"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "libhal_usb.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "HAL_USB_Close",
+    "HAL_USB_Open",
+    "HAL_USB_OvpSetting",
+    "HAL_USB_OvpSettingChange",
+    "HAL_USB_RecoveryUSB30",
+    "HAL_USB_SuperSpeedDisable",
+    "HAL_USB_SuperSpeedGetPortStatus",
+    "HAL_USB_SuperSpeedPortOff",
+    "HAL_USB_SuperSpeedPortReset",
+    "HAL_USB_SuperSpeedPortUp",
+    "HAL_USB_SuperSpeedVBusControl"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "libaptX_encoder.so",
+  "needed": [],
+  "symbols": [
+    "AsmQmfConvI",
+    "AsmQmfConvO",
+    "NewAptxEnc",
+    "Qmf_innerCoeffs",
+    "Qmf_outerCoeffs",
+    "SizeofAptxbtenc",
+    "aptXStereoEncoder",
+    "aptxbtenc_build",
+    "aptxbtenc_encodestereo",
+    "aptxbtenc_init",
+    "aptxbtenc_version",
+    "build",
+    "clearmem",
+    "processSubband",
+    "processSubbandHL",
+    "processSubbandLL",
+    "quantiseDifferenceHH",
+    "quantiseDifferenceHL",
+    "quantiseDifferenceLH",
+    "quantiseDifferenceLL",
+    "swversion",
+    "version"
+  ]
+}

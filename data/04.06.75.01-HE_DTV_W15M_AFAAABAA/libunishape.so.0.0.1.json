@@ -1,0 +1,35 @@
+{
+  "name": "libunishape.so.0.0.1",
+  "needed": [
+    "libc.so.6"
+  ],
+  "symbols": [
+    "getType",
+    "ubidi_create",
+    "ubidi_destory",
+    "ubidi_getchartype",
+    "ubidi_getlevels",
+    "ubidi_gettypes",
+    "ulib_getmirroring",
+    "ulib_getscript",
+    "unibidi_get_levels",
+    "unibidi_get_types",
+    "unishape_create",
+    "unishape_destroy",
+    "unishape_disableotf",
+    "unishape_dolayout",
+    "unishape_dolayoutex",
+    "unishape_dprintf",
+    "unishape_getrtltype",
+    "unishape_info",
+    "unishape_itemize",
+    "unishape_sethost",
+    "unishape_setrtltype",
+    "us_CacheSetStringMinMax",
+    "us_create",
+    "us_destory",
+    "us_disableotf",
+    "us_dolayout",
+    "us_wcslen"
+  ]
+}

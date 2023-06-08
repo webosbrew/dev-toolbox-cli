@@ -1,0 +1,9 @@
+{
+  "name": "libiptc.so.0",
+  "needed": [
+    "libc.so.6",
+    "libip4tc.so.0",
+    "libip6tc.so.0"
+  ],
+  "symbols": []
+}

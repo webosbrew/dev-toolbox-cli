@@ -1,0 +1,27 @@
+{
+  "name": "libacsdkExternalMediaPlayerInterfaces.so",
+  "needed": [
+    "libAVSCommon.so",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces12PLAYER_EVENTE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces13CHANGE_REPORTE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces13REQUEST_TOKENE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces17buildSessionStateERKNS0_19AdapterSessionStateERN9rapidjson19MemoryPoolAllocatorINS4_12CrtAllocatorEEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces18PLAYER_ERROR_EVENTE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces18buildPlaybackStateERKNS0_20AdapterPlaybackStateERN9rapidjson19MemoryPoolAllocatorINS4_12CrtAllocatorEEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces19SESSION_RETRY_TABLEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces19SESSION_RETRY_TIMERE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces23buildDefaultPlayerStateEPN9rapidjson12GenericValueINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEEEERS7_",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces24buildSupportedOperationsERKSt3setINS0_26SupportedPlaybackOperationESt4lessIS2_ESaIS2_EERN9rapidjson19MemoryPoolAllocatorINS9_12CrtAllocatorEEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces5LOGINE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces6LOGOUTE",
+    "_ZNSt6vectorIiSaIiEED1Ev",
+    "_ZNSt6vectorIiSaIiEED2Ev",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag"
+  ]
+}

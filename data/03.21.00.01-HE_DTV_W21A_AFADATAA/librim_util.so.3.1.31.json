@@ -1,0 +1,11 @@
+{
+  "name": "librim_util.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "RIM_base_64_decode@librim_util.so",
+    "RIM_base_64_encode@librim_util.so"
+  ]
+}

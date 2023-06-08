@@ -1,0 +1,41 @@
+{
+  "name": "libNDL.so.1",
+  "needed": [
+    "libdl.so.2",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "NDL_DL_Finalize",
+    "NDL_DL_Initialize",
+    "NDL_DL_IsInitialized",
+    "NDL_GetAppID",
+    "NDL_GetParamBool",
+    "NDL_GetParamDouble",
+    "NDL_GetParamInt",
+    "NDL_GetParamJson",
+    "NDL_GetParamString",
+    "NDL_ParamExists",
+    "NDL_ServiceCall",
+    "NDL_ServiceCallWithCallback",
+    "NDL_ServiceGetError",
+    "NDL_ServiceInit",
+    "NDL_ServiceQuit",
+    "NDL_UnregisterServiceCallback",
+    "_dl_HApp_GetCurrentAppID",
+    "_dl_HGetError",
+    "_dl_HLunaServiceCall",
+    "_dl_HLunaServiceMessage",
+    "_dl_HNDLGetParamBool",
+    "_dl_HNDLGetParamDouble",
+    "_dl_HNDLGetParamInt",
+    "_dl_HNDLGetParamJson",
+    "_dl_HNDLGetParamString",
+    "_dl_HNDLParamExists",
+    "_dl_HNDLServiceCall",
+    "_dl_HNDLServiceCallWithCallback",
+    "_dl_HNDLServiceInit",
+    "_dl_HNDLServiceQuit",
+    "_dl_HNDLUnregisterServiceCallback",
+    "_dl_HSetError"
+  ]
+}

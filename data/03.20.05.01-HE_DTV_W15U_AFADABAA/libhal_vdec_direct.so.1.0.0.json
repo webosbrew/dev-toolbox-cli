@@ -1,0 +1,37 @@
+{
+  "name": "libhal_vdec_direct.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "HAL_VDEC_DIRECT_Close",
+    "HAL_VDEC_DIRECT_GetVideoInfo",
+    "HAL_VDEC_DIRECT_Open",
+    "HAL_VDEC_DIRECT_Play",
+    "HAL_VDEC_DIRECT_SetDEId",
+    "HAL_VDEC_DIRECT_Stop",
+    "VDEC_DIRECT_HAL_DBG_MENU",
+    "_HAL_VDEC_DIRECT_GetStreamId",
+    "_HAL_VDIRECT_GetDec",
+    "_HAL_VDIRECT_GetHex",
+    "_VDECMCU_Init",
+    "_VDEC_DIRECT_CheckSHMInit",
+    "_VDEC_DIRECT_SetVopDS",
+    "_VDEC_DIRECT_XCInit",
+    "_VDEC_DS_CheckSizeChange",
+    "_VDEC_RenderFrame",
+    "_VDEC_UpdateDS",
+    "_vdec_direct_fmt_checker",
+    "_vdec_direct_fmt_chk_start",
+    "_vdec_direct_fmt_chk_stop",
+    "gLockCtx_VDEC_DIRECT",
+    "g_Customer_hash",
+    "g_Customer_info",
+    "vdec_direct_deb_menu"
+  ]
+}

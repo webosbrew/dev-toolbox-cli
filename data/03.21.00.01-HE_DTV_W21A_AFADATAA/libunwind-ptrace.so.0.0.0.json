@@ -1,0 +1,21 @@
+{
+  "name": "libunwind-ptrace.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_UPT_access_fpreg",
+    "_UPT_access_mem",
+    "_UPT_access_reg",
+    "_UPT_accessors",
+    "_UPT_create",
+    "_UPT_destroy",
+    "_UPT_find_proc_info",
+    "_UPT_get_dyn_info_list_addr",
+    "_UPT_get_proc_name",
+    "_UPT_put_unwind_info",
+    "_UPT_reg_offset",
+    "_UPT_resume"
+  ]
+}

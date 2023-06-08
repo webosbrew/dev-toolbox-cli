@@ -1,0 +1,30 @@
+{
+  "name": "libpulse-simple.so.0",
+  "needed": [
+    "libFLAC.so.8",
+    "libc.so.6",
+    "libcap.so.2",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libjson-c.so.2",
+    "libm.so.6",
+    "libogg.so.0",
+    "libpthread.so.0",
+    "libpulse.so.0",
+    "libpulsecommon-9.0.so",
+    "librt.so.1",
+    "libsndfile.so.1",
+    "libvorbis.so.0",
+    "libvorbisenc.so.2"
+  ],
+  "symbols": [
+    "PULSE_0@PULSE_0",
+    "pa_simple_drain@PULSE_0",
+    "pa_simple_flush@PULSE_0",
+    "pa_simple_free@PULSE_0",
+    "pa_simple_get_latency@PULSE_0",
+    "pa_simple_new@PULSE_0",
+    "pa_simple_read@PULSE_0",
+    "pa_simple_write@PULSE_0"
+  ]
+}

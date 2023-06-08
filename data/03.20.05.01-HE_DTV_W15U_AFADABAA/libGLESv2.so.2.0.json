@@ -1,0 +1,9 @@
+{
+  "name": "libGLESv2.so.2",
+  "needed": [
+    "libc.so.6",
+    "libmali.so.0",
+    "libpthread.so.0"
+  ],
+  "symbols": []
+}

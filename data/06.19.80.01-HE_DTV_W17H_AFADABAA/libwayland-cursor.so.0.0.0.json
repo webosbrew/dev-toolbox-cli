@@ -1,0 +1,20 @@
+{
+  "name": "libwayland-cursor.so.0",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libwayland-client.so.0"
+  ],
+  "symbols": [
+    "wl_cursor_frame",
+    "wl_cursor_image_get_buffer",
+    "wl_cursor_theme_destroy",
+    "wl_cursor_theme_get_cursor",
+    "wl_cursor_theme_load"
+  ]
+}

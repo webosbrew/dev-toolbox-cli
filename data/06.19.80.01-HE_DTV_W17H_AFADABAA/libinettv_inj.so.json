@@ -1,0 +1,23 @@
+{
+  "name": "libinettv_inj.so",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6",
+    "libv8.so"
+  ],
+  "symbols": [
+    "_ZN9__gnu_cxx12__to_xstringISscEET_PFiPT0_jPKS2_St9__va_listEjS5_z@libinettv_inj.so",
+    "_ZN9__gnu_cxx6__stoaIddcIEEET0_PFT_PKT1_PPS3_DpT2_EPKcS5_PjS9_@libinettv_inj.so",
+    "_ZN9__gnu_cxx6__stoaIddcJEEET0_PFT_PKT1_PPS3_DpT2_EPKcS5_PjS9_@libinettv_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIISsEEEvDpOT_@libinettv_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIJSsEEEvDpOT_@libinettv_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_@libinettv_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIISsEEEvDpOT_@libinettv_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJRKSsEEEvDpOT_@libinettv_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJSsEEEvDpOT_@libinettv_inj.so",
+    "createInjection@libinettv_inj.so"
+  ]
+}

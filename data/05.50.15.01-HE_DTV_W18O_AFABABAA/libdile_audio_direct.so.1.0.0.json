@@ -1,0 +1,20 @@
+{
+  "name": "libdile_audio_direct.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_audio_direct.so.2"
+  ],
+  "symbols": [
+    "DILE_AUDIO_DIRECT_Close",
+    "DILE_AUDIO_DIRECT_Flush",
+    "DILE_AUDIO_DIRECT_GetBufferInfo",
+    "DILE_AUDIO_DIRECT_Open",
+    "DILE_AUDIO_DIRECT_Pause",
+    "DILE_AUDIO_DIRECT_Resume",
+    "DILE_AUDIO_DIRECT_SetNoDelayParam",
+    "DILE_AUDIO_DIRECT_Start",
+    "DILE_AUDIO_DIRECT_Stop",
+    "DILE_AUDIO_DIRECT_Write"
+  ]
+}

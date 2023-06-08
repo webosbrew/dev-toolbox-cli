@@ -1,0 +1,36 @@
+{
+  "name": "libwebpmux.so.3",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "libwebp.so.7"
+  ],
+  "symbols": [
+    "WebPAnimEncoderAdd",
+    "WebPAnimEncoderAssemble",
+    "WebPAnimEncoderDelete",
+    "WebPAnimEncoderGetError",
+    "WebPAnimEncoderNewInternal",
+    "WebPAnimEncoderOptionsInitInternal",
+    "WebPGetMuxVersion",
+    "WebPMuxAssemble",
+    "WebPMuxCreateInternal",
+    "WebPMuxDelete",
+    "WebPMuxDeleteChunk",
+    "WebPMuxDeleteFrame",
+    "WebPMuxGetAnimationParams",
+    "WebPMuxGetCanvasSize",
+    "WebPMuxGetChunk",
+    "WebPMuxGetFeatures",
+    "WebPMuxGetFrame",
+    "WebPMuxNumChunks",
+    "WebPMuxPushFrame",
+    "WebPMuxSetAnimationParams",
+    "WebPMuxSetCanvasSize",
+    "WebPMuxSetChunk",
+    "WebPMuxSetImage",
+    "WebPNewInternal"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "libpalmsystem_inj.so",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libluna-service2.so.3",
+    "libpthread.so.0",
+    "libstdc++.so.6",
+    "libv8.so"
+  ],
+  "symbols": [
+    "_ZN9__gnu_cxx12__to_xstringISscEET_PFiPT0_jPKS2_St9__va_listEjS5_z@libpalmsystem_inj.so",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv@libpalmsystem_inj.so",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED0Ev@libpalmsystem_inj.so",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED1Ev@libpalmsystem_inj.so",
+    "_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EED2Ev@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIISsEEEvDpOT_@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIJSsEEEvDpOT_@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIISsEEEvDpOT_@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJRKSsEEEvDpOT_@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJSsEEEvDpOT_@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEED1Ev@libpalmsystem_inj.so",
+    "_ZNSt6vectorISsSaISsEED2Ev@libpalmsystem_inj.so",
+    "_ZStplIcSt11char_traitsIcESaIcEESbIT_T0_T1_EPKS3_RKS6_@libpalmsystem_inj.so",
+    "_ZTVSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE@libpalmsystem_inj.so",
+    "createInjection@libpalmsystem_inj.so"
+  ]
+}

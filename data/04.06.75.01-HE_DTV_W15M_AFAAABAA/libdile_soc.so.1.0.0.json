@@ -1,0 +1,11 @@
+{
+  "name": "libdile_soc.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_soc.so.2"
+  ],
+  "symbols": [
+    "DILE_SOC_ScreenTest"
+  ]
+}

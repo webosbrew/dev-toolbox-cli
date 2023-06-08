@@ -1,0 +1,20 @@
+{
+  "name": "libdile_extdevctrl.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_EXTDEVCTRL_CheckHP",
+    "DILE_EXTDEVCTRL_CheckSlideCAM",
+    "DILE_EXTDEVCTRL_CheckUSBOCD",
+    "DILE_EXTDEVCTRL_DetectVoice",
+    "DILE_EXTDEVCTRL_Initialize",
+    "DILE_EXTDEVCTRL_ReadCamVoicePin",
+    "DILE_EXTDEVCTRL_ResetBT",
+    "DILE_EXTDEVCTRL_ResetMRCU",
+    "DILE_EXTDEVCTRL_SetDirection_BT",
+    "DILE_EXTDEVCTRL_SetUSBCtrl",
+    "DILE_EXTDEVCTRL_SetUSBHUBCtrl"
+  ]
+}

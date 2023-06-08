@@ -1,0 +1,36 @@
+{
+  "name": "libwca-support.so.0",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libluna-service2.so.3",
+    "libpbnjson_c.so.2",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "config_status_cookie",
+    "gLogContext",
+    "pdm_status_cookie",
+    "powerProcessing",
+    "wca_support_checkWiFiVersion",
+    "wca_support_configdAvailableCb",
+    "wca_support_delayedCheckWiFiVersion",
+    "wca_support_get_power_state",
+    "wca_support_get_power_state_cb",
+    "wca_support_init",
+    "wca_support_pdmAvailableCb",
+    "wca_support_powerOnWifi",
+    "wca_support_registerPdmNonStroageDevList",
+    "wca_support_registerconfigd",
+    "wca_support_release",
+    "wca_support_resetWifiDevice",
+    "wca_support_wifi_configure_country_code",
+    "wca_support_wifi_disable_tethering",
+    "wca_support_wifi_enable_tethering",
+    "wca_support_wifi_set_passthrough_params",
+    "wifi_country_settings"
+  ]
+}

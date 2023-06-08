@@ -1,0 +1,30 @@
+{
+  "name": "libconfigd.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libluna-service2.so.3",
+    "libpbnjson_c.so.2"
+  ],
+  "symbols": [
+    "confdLibContext",
+    "config_addWatch",
+    "config_getAllConfigs",
+    "config_getBoolean",
+    "config_getConfigs",
+    "config_getInteger",
+    "config_getJsonObject",
+    "config_getMissingConfigs",
+    "config_getReqConfigNamesArray",
+    "config_getStringDup",
+    "config_loadConfigs",
+    "config_loadConfigsFromFile",
+    "config_reconfigs",
+    "config_removeWatch",
+    "config_setConfigs",
+    "config_waitConfigs",
+    "config_waitReLoadConfigs"
+  ]
+}

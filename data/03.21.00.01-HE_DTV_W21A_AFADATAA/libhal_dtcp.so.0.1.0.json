@@ -1,0 +1,12 @@
+{
+  "name": "libhal_dtcp.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": []
+}

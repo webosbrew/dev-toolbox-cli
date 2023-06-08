@@ -1,0 +1,23 @@
+{
+  "name": "libnetcast_inj.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6",
+    "libv8.so"
+  ],
+  "symbols": [
+    "_ZNSt6vectorISsSaISsEE12emplace_backIISsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE12emplace_backIJSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIISsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJRKSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJSsEEEvDpOT_@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEED1Ev@libnetcast_inj.so",
+    "_ZNSt6vectorISsSaISsEED2Ev@libnetcast_inj.so",
+    "_ZNSt6vectorIbSaIbEED1Ev@libnetcast_inj.so",
+    "_ZNSt6vectorIbSaIbEED2Ev@libnetcast_inj.so",
+    "createInjection@libnetcast_inj.so"
+  ]
+}

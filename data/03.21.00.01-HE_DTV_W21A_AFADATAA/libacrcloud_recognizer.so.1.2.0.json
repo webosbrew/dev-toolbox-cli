@@ -1,0 +1,18 @@
+{
+  "name": "libacrcloud_recognizer.so.1",
+  "needed": [
+    "libc.so.6",
+    "libcurl.so.4",
+    "libgcc_s.so.1",
+    "libm.so.6"
+  ],
+  "symbols": [
+    "acr_create_audio_fingerprint_from_pcm",
+    "acr_create_humming_fingerprint_from_pcm",
+    "acr_free",
+    "acr_recognize_by_pcm",
+    "acr_recognize_global_cleanup",
+    "acr_recognize_global_init",
+    "acr_set_debug"
+  ]
+}

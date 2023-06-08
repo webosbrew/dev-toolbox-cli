@@ -1,0 +1,35 @@
+{
+  "name": "libsbc_dec.so",
+  "needed": [
+    "libbtstd.so",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "SbcDec_GetBufferSize",
+    "SbcDec_Init",
+    "SbcDec_ParseOneFrame",
+    "SbcDec_Process",
+    "_sbc_proto_fixed4",
+    "_sbc_proto_fixed8",
+    "analysis_consts_fixed4_simd_even",
+    "analysis_consts_fixed4_simd_odd",
+    "analysis_consts_fixed8_simd_even",
+    "analysis_consts_fixed8_simd_odd",
+    "cos_table_fixed_4",
+    "cos_table_fixed_8",
+    "sbc_crc_table",
+    "sbc_get_the_output_size",
+    "sbc_offset4",
+    "sbc_offset8",
+    "sbc_proto_4_40m0",
+    "sbc_proto_4_40m1",
+    "sbc_proto_8_80m0",
+    "sbc_proto_8_80m1",
+    "sbcdec_decode",
+    "sbcdec_init",
+    "sbcdec_unpack_frame",
+    "synmatrix4",
+    "synmatrix8"
+  ]
+}

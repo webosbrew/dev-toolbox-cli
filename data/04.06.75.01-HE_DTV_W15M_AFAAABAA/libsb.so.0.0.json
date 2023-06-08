@@ -1,0 +1,19 @@
+{
+  "name": "libsb.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so"
+  ],
+  "symbols": [
+    "RSA_encrypt",
+    "sb_get_app_sign_size",
+    "sb_get_version",
+    "sb_key_dec",
+    "sb_key_enc",
+    "sb_sign_image",
+    "sb_sign_image_ex",
+    "sb_sign_snapshot_image",
+    "sb_verify_application"
+  ]
+}

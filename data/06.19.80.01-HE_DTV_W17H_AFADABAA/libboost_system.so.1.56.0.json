@@ -1,0 +1,18 @@
+{
+  "name": "libboost_system.so.1.56.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN5boost6system15system_categoryEv",
+    "_ZN5boost6system16generic_categoryEv",
+    "_ZN5boost6system6throwsE",
+    "_ZTIN5boost12noncopyable_11noncopyableE",
+    "_ZTIN5boost6system14error_categoryE",
+    "_ZTSN5boost12noncopyable_11noncopyableE",
+    "_ZTSN5boost6system14error_categoryE",
+    "_ZTVN5boost6system14error_categoryE"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "libSegFault.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libunwind-arm.so.8"
+  ],
+  "symbols": [
+    "digits",
+    "socket_local_client",
+    "socket_local_client_connect",
+    "socket_make_sockaddr_un"
+  ]
+}

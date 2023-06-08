@@ -1,0 +1,33 @@
+{
+  "name": "libdile_gal.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhalgal.so.1"
+  ],
+  "symbols": [
+    "DILE_GAL_Blit",
+    "DILE_GAL_CreateSurface",
+    "DILE_GAL_DecodeImage",
+    "DILE_GAL_DestroySurface",
+    "DILE_GAL_FillRectangle",
+    "DILE_GAL_Finalize",
+    "DILE_GAL_GetDeviceCapability",
+    "DILE_GAL_GetFBHWControllerVisibility",
+    "DILE_GAL_GetFrameBufferList",
+    "DILE_GAL_GetGraphicMemInfo",
+    "DILE_GAL_GetSurfacePalette",
+    "DILE_GAL_Init",
+    "DILE_GAL_MoveCursor",
+    "DILE_GAL_ResetBootLogo",
+    "DILE_GAL_SetFBHWControllerStereoscope",
+    "DILE_GAL_SetFBHWControllerVisibility",
+    "DILE_GAL_SetFBHWControllerVsync",
+    "DILE_GAL_SetFrameBuffer",
+    "DILE_GAL_SetFrameBufferProperty",
+    "DILE_GAL_SetFrameBufferWithProperty",
+    "DILE_GAL_SetScreenMirrorMode",
+    "DILE_GAL_SetSurfacePalette",
+    "DILE_GAL_StretchBlit"
+  ]
+}

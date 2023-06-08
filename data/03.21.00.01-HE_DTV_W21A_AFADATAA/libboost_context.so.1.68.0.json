@@ -1,0 +1,31 @@
+{
+  "name": "libboost_context.so.1.68.0",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN5boost7context12stack_traits12default_sizeEv",
+    "_ZN5boost7context12stack_traits12is_unboundedEv",
+    "_ZN5boost7context12stack_traits12maximum_sizeEv",
+    "_ZN5boost7context12stack_traits12minimum_sizeEv",
+    "_ZN5boost7context12stack_traits9page_sizeEv",
+    "_ZN5boost7context2v117execution_context7currentEv",
+    "_ZN5boost7context6detail22ecv1_activation_record7currentEv",
+    "_ZN5boost7context6detail34ecv1_activation_record_initializerC1Ev",
+    "_ZN5boost7context6detail34ecv1_activation_record_initializerC2Ev",
+    "_ZN5boost7context6detail34ecv1_activation_record_initializerD1Ev",
+    "_ZN5boost7context6detail34ecv1_activation_record_initializerD2Ev",
+    "_ZTIN5boost7context6detail22ecv1_activation_recordE",
+    "_ZTSN5boost7context6detail22ecv1_activation_recordE",
+    "_ZTVN5boost7context6detail22ecv1_activation_recordE",
+    "_ZZSt9call_onceIRFvP6rlimitEJS1_EEvRSt9once_flagOT_DpOT0_ENUlvE0_4_FUNEv",
+    "_ZZSt9call_onceIRFvPjEJS0_EEvRSt9once_flagOT_DpOT0_ENUlvE0_4_FUNEv",
+    "jump_fcontext",
+    "make_fcontext",
+    "ontop_fcontext"
+  ]
+}

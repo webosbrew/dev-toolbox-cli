@@ -1,0 +1,24 @@
+{
+  "name": "libcamshm.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "CloseShmem",
+    "CreateShmem",
+    "CreateShmemEx",
+    "OpenShmem",
+    "ReadLastShmem",
+    "ReadLastShmemEx",
+    "ReadShmem",
+    "ReadShmemEx",
+    "WriteShmem",
+    "WriteShmemEx",
+    "_OpenShmem",
+    "_ReadShmem",
+    "_WriteShmem",
+    "getShmemCount",
+    "increseReadIndex"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "libgstadaptivedemux-1.0.so.0",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstapp-1.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgsturidownloader-1.0.so.0",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "adaptivedemux_debug",
+    "gst_adaptive_demux_find_stream_for_pad",
+    "gst_adaptive_demux_get_client_now_utc",
+    "gst_adaptive_demux_get_monotonic_time",
+    "gst_adaptive_demux_get_type",
+    "gst_adaptive_demux_set_stream_struct_size",
+    "gst_adaptive_demux_stream_advance_fragment",
+    "gst_adaptive_demux_stream_fragment_clear",
+    "gst_adaptive_demux_stream_new",
+    "gst_adaptive_demux_stream_push_buffer",
+    "gst_adaptive_demux_stream_queue_event",
+    "gst_adaptive_demux_stream_set_caps",
+    "gst_adaptive_demux_stream_set_tags"
+  ]
+}

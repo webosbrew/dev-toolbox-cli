@@ -1,0 +1,17 @@
+{
+  "name": "libhal_usb.so",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "HAL_USB_SuperSpeedPortOff",
+    "HAL_USB_SuperSpeedPortUp",
+    "HAL_USB_SuperSpeedVBusControl"
+  ]
+}

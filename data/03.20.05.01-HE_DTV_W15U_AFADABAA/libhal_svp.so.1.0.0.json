@@ -1,0 +1,37 @@
+{
+  "name": "libhal_svp.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "GetCpbBufferBaseAddress",
+    "GetCpbBufferSize",
+    "GetCpbWriteAddress",
+    "GetCurrentCpbWriteAddress",
+    "HAL_SVP_CloseSecureCpb",
+    "HAL_SVP_CopyFromSecureBuffer",
+    "HAL_SVP_CopyToSecureDecryptBuffer",
+    "HAL_SVP_FlushSecureDecryptBuffer",
+    "HAL_SVP_GetAuInformation",
+    "HAL_SVP_GetSecureCpbInformation",
+    "HAL_SVP_GetSecureDecryptBufferHandle",
+    "HAL_SVP_LockSecureCpb",
+    "HAL_SVP_OpenSecureCpb",
+    "HAL_SVP_SetSecureReformatter",
+    "HAL_SVP_UnlockSecureCpb",
+    "HAL_SVP_Widevine_DecryptAudio",
+    "HAL_SVP_Widevine_DecryptVideo",
+    "SetCpbBufferInformation",
+    "SetCpbWriteAddress",
+    "UpdateCpbWriteAddress",
+    "gLockCtx_SVP_SEM_LOCK",
+    "svp_close_output_Debug_2_file",
+    "svp_open_output_Debug_2_file",
+    "svp_out"
+  ]
+}

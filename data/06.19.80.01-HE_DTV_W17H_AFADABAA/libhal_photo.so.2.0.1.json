@@ -1,0 +1,43 @@
+{
+  "name": "libhal_photo.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhma.so.2",
+    "libkadaptor.so.2",
+    "liblxv.so.2"
+  ],
+  "symbols": [
+    "HAL_JPEG_Close",
+    "HAL_JPEG_Config",
+    "HAL_JPEG_Connect",
+    "HAL_JPEG_Decode",
+    "HAL_JPEG_Encode",
+    "HAL_JPEG_Open",
+    "HAL_PNG_Close",
+    "HAL_PNG_Config",
+    "HAL_PNG_Connect",
+    "HAL_PNG_Decode",
+    "HAL_PNG_Decode_HW",
+    "HAL_PNG_Decode_SW",
+    "HAL_PNG_Open",
+    "HAL_PNG_ReadInfo",
+    "HAL_VO_Close",
+    "HAL_VO_Config",
+    "HAL_VO_Connect",
+    "HAL_VO_DisplayPicture",
+    "HAL_VO_FB_Finalize",
+    "HAL_VO_FB_GetTargetFrameBuffer",
+    "HAL_VO_FB_Initialize",
+    "HAL_VO_FB_UpdateFrameBuffer",
+    "HAL_VO_FB_UpdateFrameBufferProperty",
+    "HAL_VO_GetDeviceCapability",
+    "HAL_VO_Open",
+    "HAL_VO_RedrawPicture",
+    "VO_DEBUG_DumpMemory",
+    "VO_DEBUG_Menu",
+    "g_hal_vo_debug_enable",
+    "g_hal_vo_log_level",
+    "g_hal_vo_logm_fd"
+  ]
+}

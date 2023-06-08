@@ -1,0 +1,14 @@
+{
+  "name": "libvdec_api.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "liblxv.so.2"
+  ],
+  "symbols": [
+    "vdec_api_init",
+    "vdec_api_release",
+    "vdec_api_set_deid",
+    "vdec_api_write_buffer"
+  ]
+}

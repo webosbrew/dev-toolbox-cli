@@ -1,0 +1,15 @@
+{
+  "name": "libdmost_inj.so",
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6",
+    "libv8.so"
+  ],
+  "symbols": [
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIIRKSsEEEvDpOT_@libdmost_inj.so",
+    "_ZNSt6vectorISsSaISsEE19_M_emplace_back_auxIJRKSsEEEvDpOT_@libdmost_inj.so",
+    "_ZNSt6vectorISsSaISsEED1Ev@libdmost_inj.so",
+    "_ZNSt6vectorISsSaISsEED2Ev@libdmost_inj.so",
+    "createInjection@libdmost_inj.so"
+  ]
+}

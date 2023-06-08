@@ -1,0 +1,34 @@
+{
+  "name": "libtv_hybridtv_ipc.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "HYBRIDTV_IPC_CMN_ClearRecvBuf",
+    "HYBRIDTV_IPC_CMN_FreePacket",
+    "HYBRIDTV_IPC_CMN_MemFree",
+    "HYBRIDTV_IPC_CMN_MemMalloc",
+    "HYBRIDTV_IPC_CMN_ReceivePacket",
+    "HYBRIDTV_IPC_Call",
+    "HYBRIDTV_IPC_DBG_GetTime",
+    "HYBRIDTV_IPC_DBG_InitLOG",
+    "HYBRIDTV_IPC_DBG_SetDebugLevel",
+    "HYBRIDTV_IPC_Final",
+    "HYBRIDTV_IPC_Init",
+    "HYBRIDTV_IPC_SOCK_Close",
+    "HYBRIDTV_IPC_SOCK_Connect",
+    "HYBRIDTV_IPC_SOCK_Recv",
+    "HYBRIDTV_IPC_SOCK_RunServer",
+    "HYBRIDTV_IPC_SOCK_Send",
+    "HYBRIDTV_IPC_SOCK_StopServer",
+    "HYBRIDTV_IPC_SOCK_WaitServer",
+    "HYBRIDTV_IPC_SetLogLevel",
+    "HYBRIDTV_IPC_SetMemFuncSet",
+    "HYBRIDTV_IPC_SetTimeout",
+    "HYBRIDTV_IPC_WaitServer",
+    "_HYBRIDTV_IPC_SOCK_SSListPrint",
+    "gHtvIpcDebugLevel",
+    "gHtvIpcPid"
+  ]
+}

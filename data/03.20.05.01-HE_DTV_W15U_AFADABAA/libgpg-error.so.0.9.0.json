@@ -1,0 +1,19 @@
+{
+  "name": "libgpg-error.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "gpg_err_code_from_errno",
+    "gpg_err_code_from_syserror",
+    "gpg_err_code_to_errno",
+    "gpg_err_deinit",
+    "gpg_err_init",
+    "gpg_err_set_errno",
+    "gpg_error_check_version",
+    "gpg_strerror",
+    "gpg_strerror_r",
+    "gpg_strsource"
+  ]
+}

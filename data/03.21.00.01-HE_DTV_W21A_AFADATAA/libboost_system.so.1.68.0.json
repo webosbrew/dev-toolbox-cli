@@ -1,0 +1,32 @@
+{
+  "name": "libboost_system.so.1.68.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN5boost6system6detail19system_category_ncxEv",
+    "_ZN5boost6system6detail20generic_category_ncxEv",
+    "_ZN5boost6system6detail24system_category_instanceE",
+    "_ZN5boost6system6detail25generic_category_instanceE",
+    "_ZNK5boost6system6detail21system_error_category23default_error_conditionEi",
+    "_ZNK5boost6system6detail21system_error_category7messageB5cxx11Ei",
+    "_ZNK5boost6system6detail22generic_error_category7messageB5cxx11Ei",
+    "_ZTIN5boost12noncopyable_11noncopyableE",
+    "_ZTIN5boost6system14error_category12std_categoryE",
+    "_ZTIN5boost6system14error_categoryE",
+    "_ZTIN5boost6system6detail21system_error_categoryE",
+    "_ZTIN5boost6system6detail22generic_error_categoryE",
+    "_ZTSN5boost12noncopyable_11noncopyableE",
+    "_ZTSN5boost6system14error_category12std_categoryE",
+    "_ZTSN5boost6system14error_categoryE",
+    "_ZTSN5boost6system6detail21system_error_categoryE",
+    "_ZTSN5boost6system6detail22generic_error_categoryE",
+    "_ZTVN5boost6system14error_category12std_categoryE",
+    "_ZTVN5boost6system14error_categoryE",
+    "_ZTVN5boost6system6detail21system_error_categoryE",
+    "_ZTVN5boost6system6detail22generic_error_categoryE"
+  ]
+}

@@ -62,30 +62,34 @@ fn main() {
 
 fn print_component_results(results: Vec<(&Firmware, &ComponentVerifyResult)>) {
     let (_, result) = *results.first().unwrap();
+    fn result_cell(result: &BinVerifyResult) -> Cell {
+        return if result.is_good() {
+            let mut cell = Cell::new("OK");
+            cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
+            cell
+        } else {
+            let mut cell = Cell::new("NG");
+            cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
+            cell
+        };
+    }
     if let Some(exe) = &result.exe {
         let mut table = Table::new();
         table.set_format(*prettytable::format::consts::FORMAT_BOX_CHARS);
         table.set_titles(Row::from_iter(
-            iter::once("").chain(
+            iter::once(String::new()).chain(
                 results
                     .iter()
-                    .map(|(firmware, _result)| firmware.info.release.as_str()),
+                    .map(|(firmware, _result)| firmware.info.release.to_string()),
             ),
         ));
         table.add_row(Row::new(
             iter::once(Cell::new(&exe.name))
-                .chain(results.iter().map(|(_, result)| {
-                    return if result.exe.as_ref().unwrap().is_good() {
-                        let mut cell = Cell::new("OK");
-                        cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
-                        cell
-                    } else {
-                        println!("{:?}", result.exe);
-                        let mut cell = Cell::new("NG");
-                        cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
-                        cell
-                    };
-                }))
+                .chain(
+                    results
+                        .iter()
+                        .map(|(_, result)| result_cell(result.exe.as_ref().unwrap())),
+                )
                 .collect(),
         ));
         for (idx, (required, lib)) in result.libs.iter().enumerate() {
@@ -96,18 +100,11 @@ fn print_component_results(results: Vec<(&Firmware, &ComponentVerifyResult)>) {
             };
             table.add_row(Row::new(
                 iter::once(name)
-                    .chain(results.iter().map(|(_, result)| {
-                        let result = &result.libs.get(idx).unwrap().1;
-                        return if result.is_good() {
-                            let mut cell = Cell::new("OK");
-                            cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
-                            cell
-                        } else {
-                            let mut cell = Cell::new("NG");
-                            cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
-                            cell
-                        };
-                    }))
+                    .chain(
+                        results
+                            .iter()
+                            .map(|(_, result)| result_cell(&result.libs.get(idx).unwrap().1)),
+                    )
                     .collect(),
             ));
         }

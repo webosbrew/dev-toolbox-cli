@@ -1,0 +1,15 @@
+{
+  "name": "libwayland-egl.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libmali.so.0",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "wl_egl_window_create@libwayland-egl.so.0",
+    "wl_egl_window_destroy@libwayland-egl.so.0",
+    "wl_egl_window_get_attached_size@libwayland-egl.so.0",
+    "wl_egl_window_resize@libwayland-egl.so.0"
+  ]
+}

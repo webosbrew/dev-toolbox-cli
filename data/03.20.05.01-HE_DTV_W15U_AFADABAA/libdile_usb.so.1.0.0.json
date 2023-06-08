@@ -1,0 +1,16 @@
+{
+  "name": "libdile_usb.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_usb.so.1"
+  ],
+  "symbols": [
+    "DILE_USB_Open",
+    "DILE_USB_SetUSBCtl",
+    "DILE_USB_SuperSpeedDisable",
+    "DILE_USB_SuperSpeedPortOff",
+    "DILE_USB_SuperSpeedPortUp",
+    "DILE_USB_SuperSpeedVbusControl"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "libnss_compat.so.2",
+  "needed": [
+    "libc.so.6",
+    "libnsl.so.1"
+  ],
+  "symbols": [
+    "GLIBC_PRIVATE@GLIBC_PRIVATE",
+    "_nss_compat_endgrent@GLIBC_PRIVATE",
+    "_nss_compat_endpwent@GLIBC_PRIVATE",
+    "_nss_compat_endspent@GLIBC_PRIVATE",
+    "_nss_compat_getgrent_r@GLIBC_PRIVATE",
+    "_nss_compat_getgrgid_r@GLIBC_PRIVATE",
+    "_nss_compat_getgrnam_r@GLIBC_PRIVATE",
+    "_nss_compat_getpwent_r@GLIBC_PRIVATE",
+    "_nss_compat_getpwnam_r@GLIBC_PRIVATE",
+    "_nss_compat_getpwuid_r@GLIBC_PRIVATE",
+    "_nss_compat_getspent_r@GLIBC_PRIVATE",
+    "_nss_compat_getspnam_r@GLIBC_PRIVATE",
+    "_nss_compat_initgroups_dyn@GLIBC_PRIVATE",
+    "_nss_compat_setgrent@GLIBC_PRIVATE",
+    "_nss_compat_setpwent@GLIBC_PRIVATE",
+    "_nss_compat_setspent@GLIBC_PRIVATE"
+  ]
+}

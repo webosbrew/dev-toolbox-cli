@@ -1,0 +1,34 @@
+{
+  "name": "libhal_vdec_direct.so",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "HAL_VDEC_DIRECT_Close",
+    "HAL_VDEC_DIRECT_GetVideoInfo",
+    "HAL_VDEC_DIRECT_Open",
+    "HAL_VDEC_DIRECT_Play",
+    "HAL_VDEC_DIRECT_PlayWithCallback",
+    "HAL_VDEC_DIRECT_SetCallback",
+    "HAL_VDEC_DIRECT_SetDEId",
+    "HAL_VDEC_DIRECT_Stop",
+    "SetCallback",
+    "VDEC_DIRECT_HAL_DBG_MENU",
+    "VDEC_DIRECT_Player",
+    "_HAL_VDIRECT_GetDec",
+    "_HAL_VDIRECT_GetHex",
+    "_VDEC_DIRECT_XCInit",
+    "gLockCtx_VDEC_DIRECT",
+    "g_Customer_hash",
+    "g_Customer_info",
+    "vdec_direct_deb_menu",
+    "vdec_direct_player_start",
+    "vdec_direct_player_stop"
+  ]
+}

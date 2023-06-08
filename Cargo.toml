@@ -1,2 +1,7 @@
 [workspace]
-members = ["common", "elf-verify", "ipk-verify", "fw-add"]
+members = [
+    "common",
+    "elf-verify",
+    "ipk-verify",
+    "fw-extract"
+]
