@@ -126,20 +126,36 @@ fn handle_entry<P>(
                 .unwrap();
             mappings.insert(String::from(name), symbols_name);
         } else if metadata.is_symlink() {
-            if let Some(target_name) = ent_path
-                .read_link()
-                .ok()
-                .as_ref()
-                .map(|target| {
-                    target
-                        .file_name()
-                        .map(|target_name| target_name.to_str())
-                        .flatten()
-                })
-                .flatten()
-            {
-                mappings.insert(String::from(name), format!("{}.json", target_name));
+            let mut target = ent_path.clone();
+            loop {
+                match fs::symlink_metadata(&target) {
+                    Ok(metadata) => {
+                        if !metadata.is_symlink() {
+                            break;
+                        }
+                    }
+                    Err(e) => {
+                        eprintln!(
+                            "Failed to resolve link target for {}: {e}",
+                            target.to_string_lossy()
+                        );
+                        return;
+                    }
+                }
+                if let Ok(l) = target.read_link() {
+                    target = target.parent().unwrap().join(l);
+                } else {
+                    eprintln!(
+                        "Failed to resolve link target for {}",
+                        target.to_string_lossy()
+                    );
+                    return;
+                }
             }
+            mappings.insert(
+                String::from(name),
+                format!("{}.json", target.file_name().unwrap().to_string_lossy()),
+            );
         }
     }
 }

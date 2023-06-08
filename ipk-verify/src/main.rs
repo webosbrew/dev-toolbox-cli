@@ -26,11 +26,11 @@ struct Args {
 fn main() {
     let args = Args::parse();
     for package in args.packages {
-        let package = match File::open(&package) {
-            Ok(file) => Package::parse(file).unwrap(),
+        let package = match File::open(&package).and_then(|file| Package::parse(file)) {
+            Ok(package) => package,
             Err(e) => {
                 eprintln!(
-                    "Failed to open {}: {e:?}",
+                    "Failed to open {}: {e}",
                     package.file_name().unwrap().to_string_lossy()
                 );
                 continue;

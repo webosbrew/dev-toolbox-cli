@@ -1,5 +1,6 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
+use std::fmt::format;
 use std::fs;
 use std::fs::File;
 use std::io::{Error, ErrorKind};
@@ -8,7 +9,7 @@ use std::path::Path;
 use path_slash::CowExt;
 use serde::Deserialize;
 
-use common::{BinaryInfo, BinVerifyResult, Firmware, LibraryInfo, VerifyWithFirmware};
+use common::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
 
 use crate::{Component, ComponentVerifyResult, Symlinks};
 
@@ -29,8 +30,16 @@ struct ServiceInfo {
 impl Component {
     pub fn parse_app<P: AsRef<Path>>(dir: P, links: &Symlinks) -> Result<Self, Error> {
         let dir = dir.as_ref();
-        let info: AppInfo = serde_json::from_reader(File::open(dir.join("appinfo.json"))?)
-            .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Bad appinfo.json: {e:?}")))?;
+        let info: AppInfo = serde_json::from_reader(
+            File::open(dir.join("appinfo.json"))
+                .map_err(|e| Error::new(e.kind(), format!("Failed to open appinfo.json: {e}")))?,
+        )
+        .map_err(|e| {
+            Error::new(
+                ErrorKind::InvalidData,
+                format!("Failed to parse appinfo.json: {e}"),
+            )
+        })?;
         if info.r#type != "native" {
             return Ok(Self {
                 id: info.id,
@@ -44,13 +53,18 @@ impl Component {
             id: info.id,
             exe: Some(
                 BinaryInfo::parse(
-                    File::open(&exe_path)?,
+                    File::open(&exe_path).map_err(|e| {
+                        Error::new(
+                            e.kind(),
+                            format!("Failed to open main executable {}: {e}", info.main),
+                        )
+                    })?,
                     exe_path.file_name().unwrap().to_string_lossy(),
                 )
                 .map_err(|e| {
                     Error::new(
                         ErrorKind::InvalidData,
-                        format!("Bad app executable {}: {e:?}", info.main),
+                        format!("Bad app executable {}: {e}", info.main),
                     )
                 })?,
             ),
