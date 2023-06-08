@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use clap::Parser;
 
@@ -7,7 +7,7 @@ use common::{BinaryInfo, Firmware, VerifyWithFirmware};
 
 #[derive(Parser, Debug)]
 struct Args {
-    #[arg(short, long, num_args(1..))]
+    #[arg(short, long, num_args(1..), required = true)]
     executables: Vec<PathBuf>,
     #[arg(short, long, num_args(1..))]
     lib_paths: Vec<String>,
@@ -22,7 +22,7 @@ fn main() {
         let mut info = BinaryInfo::parse(file, executable.file_name().unwrap().to_string_lossy())
             .expect("parse error");
         info.rpath.extend(args.lib_paths.clone());
-        for firmware in Firmware::list(Path::new("data")).unwrap() {
+        for firmware in Firmware::list(Firmware::data_path()).unwrap() {
             println!(
                 "Verify result for firmware {} {:?}",
                 firmware.info,

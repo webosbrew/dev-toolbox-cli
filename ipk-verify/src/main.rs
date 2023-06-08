@@ -1,14 +1,14 @@
 use std::collections::HashMap;
 use std::fs::File;
 use std::iter;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 use clap::Parser;
-use prettytable::{color, Attr, Cell, Row, Table};
+use prettytable::{Attr, Cell, color, Row, Table};
 use serde::Deserialize;
 
 use common::{
-    BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyResult, VerifyWithFirmware,
+    BinaryInfo, BinVerifyResult, Firmware, LibraryInfo, VerifyResult, VerifyWithFirmware,
 };
 
 mod component;
@@ -37,7 +37,7 @@ fn main() {
             }
         };
         println!("# Package {}", package.id);
-        let results: Vec<(Firmware, PackageVerifyResult)> = Firmware::list(Path::new("data"))
+        let results: Vec<(Firmware, PackageVerifyResult)> = Firmware::list(Firmware::data_path())
             .unwrap()
             .into_iter()
             .map(|fw| {

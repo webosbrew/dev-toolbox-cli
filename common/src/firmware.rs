@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fmt::{Display, Formatter};
 use std::fs::File;
 use std::io::{BufReader, Error, ErrorKind};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use crate::ReleaseCodename::{
     Afro, Beehive, Dreadlocks, Dreadlocks2, Goldilocks, Goldilocks2, Jhericurl, Kisscurl, Mullet,
@@ -59,8 +59,8 @@ impl Firmware {
     }
 
     pub fn load<P>(path: P) -> Result<Firmware, Error>
-    where
-        P: AsRef<Path>,
+        where
+            P: AsRef<Path>,
     {
         let path = path.as_ref();
         let index: HashMap<String, String> =
@@ -83,8 +83,8 @@ impl Firmware {
     }
 
     pub fn list<P>(data_path: P) -> Result<Vec<Firmware>, Error>
-    where
-        P: AsRef<Path>,
+        where
+            P: AsRef<Path>,
     {
         let mut firmwares: Vec<Firmware> = data_path
             .as_ref()
@@ -98,5 +98,13 @@ impl Firmware {
             .collect();
         firmwares.sort_by(|a, b| a.info.release.cmp(&b.info.release));
         return Ok(firmwares);
+    }
+
+    pub fn data_path() -> PathBuf {
+        return if cfg!(feature = "linux-install") {
+            PathBuf::from("/usr/share/webosbrew/compat-checker/data")
+        } else {
+            PathBuf::from("data")
+        };
     }
 }

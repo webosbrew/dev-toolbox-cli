@@ -21,4 +21,9 @@ features = ["derive"]
 path = "../common"
 
 [package.metadata.deb]
+name = "webosbrew-compat-checker-ipk-verify"
 section = "devel"
+depends = "$auto, webosbrew-compat-checker-data"
+assets = [
+    ["target/release/ipk-verify", "usr/bin/wcc-ipk-verify", "755"]
+]

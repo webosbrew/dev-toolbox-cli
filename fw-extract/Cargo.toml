@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
 license = "Apache-2.0"
+description = "Firmware symbols data and extractor utility"
 
 [dependencies]
 regex = "1"
@@ -19,9 +20,13 @@ features = ["derive"]
 [dependencies.common]
 path = "../common"
 
+[features]
+linux-install = ["common/linux-install"]
+
 [package.metadata.deb]
+name = "webosbrew-compat-checker-data"
 section = "devel"
 assets = [
     ["target/release/fw-extract", "usr/bin/wcc-fw-extract", "755"],
-    ["../data/**/*", "usr/share/webosbrew/compat-checker/", "644"]
+    ["../data/**/*", "usr/share/webosbrew/compat-checker/data/", "644"]
 ]
