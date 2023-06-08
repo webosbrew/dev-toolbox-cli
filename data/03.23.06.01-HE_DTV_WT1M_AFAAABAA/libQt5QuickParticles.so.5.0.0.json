@@ -1,4 +1,5 @@
 {
+  "name": "libQt5QuickParticles.so.5",
   "needed": [
     "libGLESv2.so",
     "libQt5Core.so.5",

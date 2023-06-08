@@ -1,4 +1,5 @@
 {
+  "name": "libkbl-de.so.2",
   "needed": [
     "libgcc_s.so.1"
   ],

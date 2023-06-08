@@ -1,4 +1,5 @@
 {
+  "name": "libarm_compute_graph.so",
   "needed": [
     "libarm_compute.so",
     "libc.so.6",

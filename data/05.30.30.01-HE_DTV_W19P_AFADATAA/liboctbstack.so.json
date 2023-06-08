@@ -1,4 +1,5 @@
 {
+  "name": "liboctbstack.so",
   "needed": [
     "libc.so.6",
     "libconnectivity_abstraction.so",

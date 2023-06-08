@@ -1,4 +1,5 @@
 {
+  "name": "libboost_timer.so.1.72.0",
   "needed": [
     "libboost_chrono.so.1.72.0",
     "libc.so.6",

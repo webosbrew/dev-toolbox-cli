@@ -1,4 +1,5 @@
 {
+  "name": "libopus.so.0",
   "needed": [
     "libNE10.so.10",
     "libc.so.6",

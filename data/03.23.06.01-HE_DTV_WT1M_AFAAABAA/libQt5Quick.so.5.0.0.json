@@ -1,4 +1,5 @@
 {
+  "name": "libQt5Quick.so.5",
   "needed": [
     "libGLESv2.so",
     "libQt5Core.so.5",

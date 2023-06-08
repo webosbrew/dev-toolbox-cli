@@ -1,4 +1,5 @@
 {
+  "name": "libOpenVX.so",
   "needed": [
     "libGAL.so",
     "libVSC.so",

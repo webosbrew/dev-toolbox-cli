@@ -1,4 +1,5 @@
 {
+  "name": "libAVSGatewayManager.so",
   "needed": [
     "libAVSCommon.so",
     "libRegistrationManager.so",

@@ -1,4 +1,5 @@
 {
+  "name": "libdbus-1.so.3",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

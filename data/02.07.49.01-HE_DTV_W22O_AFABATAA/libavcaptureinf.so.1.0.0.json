@@ -1,4 +1,5 @@
 {
+  "name": "libavcaptureinf.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libasound.so.2",

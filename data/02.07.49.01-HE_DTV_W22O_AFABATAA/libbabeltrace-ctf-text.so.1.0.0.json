@@ -1,4 +1,5 @@
 {
+  "name": "libbabeltrace-ctf-text.so.1",
   "needed": [
     "libbabeltrace-ctf.so.1",
     "libbabeltrace.so.1",

@@ -1,4 +1,5 @@
 {
+  "name": "libavahi-client.so.3",
   "needed": [
     "libavahi-common.so.3",
     "libc.so.6",

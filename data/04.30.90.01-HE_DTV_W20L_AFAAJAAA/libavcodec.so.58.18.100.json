@@ -1,4 +1,5 @@
 {
+  "name": "libavcodec.so.58",
   "needed": [
     "libaom.so.0",
     "libavutil.so.56",

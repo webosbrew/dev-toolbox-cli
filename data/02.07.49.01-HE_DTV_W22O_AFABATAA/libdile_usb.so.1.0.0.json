@@ -1,4 +1,5 @@
 {
+  "name": "libdile_usb.so.1",
   "needed": [
     "libgcc_s.so.1",
     "libhal_usb.so.2"

@@ -1,4 +1,5 @@
 {
+  "name": "libaec-fe.so.1",
   "needed": [
     "libasound.so.2",
     "libavutil.so.56",

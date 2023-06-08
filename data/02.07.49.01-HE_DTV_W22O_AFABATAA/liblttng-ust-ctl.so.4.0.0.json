@@ -1,4 +1,5 @@
 {
+  "name": "liblttng-ust-ctl.so.4",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

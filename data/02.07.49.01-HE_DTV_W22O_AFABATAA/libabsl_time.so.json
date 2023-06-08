@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_time.so",
   "needed": [
     "libabsl_int128.so",
     "libabsl_raw_logging_internal.so",

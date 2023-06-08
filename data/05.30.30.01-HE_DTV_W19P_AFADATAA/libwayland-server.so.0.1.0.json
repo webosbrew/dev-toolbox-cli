@@ -1,4 +1,5 @@
 {
+  "name": "libwayland-server.so.0",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,4 +1,5 @@
 {
+  "name": "libwebos-platform-interface.so.1",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

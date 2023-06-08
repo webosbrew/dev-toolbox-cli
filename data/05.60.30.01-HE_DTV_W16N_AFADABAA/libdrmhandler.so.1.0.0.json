@@ -1,4 +1,5 @@
 {
+  "name": "libdrmhandler.so.1",
   "needed": [
     "libc.so.6",
     "libdrmadaptor.so.1",

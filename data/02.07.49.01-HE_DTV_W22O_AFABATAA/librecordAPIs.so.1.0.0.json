@@ -1,4 +1,5 @@
 {
+  "name": "librecordAPIs.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_filesystem.so.1.72.0",

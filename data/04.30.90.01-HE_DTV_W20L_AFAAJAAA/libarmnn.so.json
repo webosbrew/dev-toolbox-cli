@@ -1,4 +1,5 @@
 {
+  "name": "libarmnn.so",
   "needed": [
     "ld-linux.so.3",
     "libboost_log.so.1.68.0",

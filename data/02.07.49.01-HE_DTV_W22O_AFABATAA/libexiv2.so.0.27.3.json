@@ -1,4 +1,5 @@
 {
+  "name": "libexiv2.so.27",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

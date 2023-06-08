@@ -1,4 +1,5 @@
 {
+  "name": "libQt5WebKit.so.5",
   "needed": [
     "libEGL.so",
     "libGLESv2.so",

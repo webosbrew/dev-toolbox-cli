@@ -1,4 +1,5 @@
 {
+  "name": "libkmod.so.2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

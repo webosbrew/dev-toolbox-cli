@@ -1,4 +1,5 @@
 {
+  "name": "libprpk-2.0+svp.so.1",
   "needed": [
     "libc.so.6",
     "libdile_drm.so.0",

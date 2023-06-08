@@ -1,4 +1,5 @@
 {
+  "name": "libswresample.so.2",
   "needed": [
     "libavutil.so.55",
     "libc.so.6",

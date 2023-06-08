@@ -1,4 +1,5 @@
 {
+  "name": "libibbPlugin.so",
   "needed": [
     "libAcb.so.1",
     "libPmLogLib.so.3",

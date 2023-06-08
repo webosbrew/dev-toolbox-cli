@@ -1,4 +1,5 @@
 {
+  "name": "libnih-dbus.so.1",
   "needed": [
     "libc.so.6",
     "libdbus-1.so.3",

@@ -1,4 +1,5 @@
 {
+  "name": "libgammaray_kitemmodels-qt5_12-arm.so.2.11.0",
   "needed": [
     "libQt5Core.so.5",
     "libc.so.6",

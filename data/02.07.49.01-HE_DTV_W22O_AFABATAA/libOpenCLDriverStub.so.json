@@ -1,4 +1,5 @@
 {
+  "name": "libOpenCLDriverStub.so",
   "needed": [
     "libIcdLog.so",
     "libc.so.6",

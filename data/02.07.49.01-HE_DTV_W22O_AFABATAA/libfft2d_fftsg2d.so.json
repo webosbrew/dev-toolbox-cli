@@ -1,4 +1,5 @@
 {
+  "name": "libfft2d_fftsg2d.so",
   "needed": [
     "libc.so.6",
     "libfft2d_fftsg.so",

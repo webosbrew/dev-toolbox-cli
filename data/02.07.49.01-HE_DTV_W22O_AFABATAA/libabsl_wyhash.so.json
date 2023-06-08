@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_wyhash.so",
   "needed": [
     "libgcc_s.so.1"
   ],

@@ -1,4 +1,5 @@
 {
+  "name": "libhybridtv.so.1",
   "needed": [
     "libasn.so.1",
     "libavcodec.so.55",

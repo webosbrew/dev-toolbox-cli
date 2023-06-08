@@ -1,4 +1,5 @@
 {
+  "name": "libQt5Gui.so.5",
   "needed": [
     "libQt5Core.so.5",
     "libc.so.6",

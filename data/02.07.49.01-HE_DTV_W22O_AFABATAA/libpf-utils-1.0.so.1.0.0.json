@@ -1,4 +1,5 @@
 {
+  "name": "libpf-utils-1.0.so.1",
   "needed": [
     "libboost_regex.so.1.72.0",
     "libc.so.6",

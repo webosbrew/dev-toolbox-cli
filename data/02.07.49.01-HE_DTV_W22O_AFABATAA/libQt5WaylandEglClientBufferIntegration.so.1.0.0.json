@@ -1,4 +1,5 @@
 {
+  "name": "libQt5WaylandEglClientBufferIntegration.so.1",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

@@ -1,4 +1,5 @@
 {
+  "name": "librim_qsp.so",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

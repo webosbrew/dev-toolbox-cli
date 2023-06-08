@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_base.so",
   "needed": [
     "ld-linux.so.3",
     "libabsl_spinlock_wait.so",

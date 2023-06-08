@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_status.so",
   "needed": [
     "libabsl_cord.so",
     "libabsl_raw_logging_internal.so",

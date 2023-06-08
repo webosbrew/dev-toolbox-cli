@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkCBLAuthorizationDelegate.so",
   "needed": [
     "libAVSCommon.so",
     "libCBLAuthDelegate.so",

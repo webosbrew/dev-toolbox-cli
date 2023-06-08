@@ -19,11 +19,8 @@ fn main() {
     let args = Args::parse();
     for executable in args.executables {
         let file = File::open(&executable).unwrap();
-        let mut info = BinaryInfo::parse(
-            file,
-            String::from(executable.file_name().unwrap().to_string_lossy()),
-        )
-        .expect("parse error");
+        let mut info = BinaryInfo::parse(file, executable.file_name().unwrap().to_string_lossy())
+            .expect("parse error");
         info.rpath.extend(args.lib_paths.clone());
         for firmware in Firmware::list(Path::new("data")).unwrap() {
             println!(

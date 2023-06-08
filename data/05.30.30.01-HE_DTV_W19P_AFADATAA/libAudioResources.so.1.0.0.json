@@ -1,4 +1,5 @@
 {
+  "name": "libAudioResources.so",
   "needed": [
     "libAVSCommon.so",
     "libgcc_s.so.1",

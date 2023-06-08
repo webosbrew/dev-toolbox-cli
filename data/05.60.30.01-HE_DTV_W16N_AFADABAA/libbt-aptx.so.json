@@ -1,4 +1,5 @@
 {
+  "name": "libaptX-1.0.0-int-WebOS1-ARMv7A.so",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

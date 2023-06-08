@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_symbolize.so",
   "needed": [
     "libabsl_base.so",
     "libabsl_debugging_internal.so",

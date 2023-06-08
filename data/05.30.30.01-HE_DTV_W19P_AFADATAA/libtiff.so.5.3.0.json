@@ -1,4 +1,5 @@
 {
+  "name": "libtiff.so.5",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

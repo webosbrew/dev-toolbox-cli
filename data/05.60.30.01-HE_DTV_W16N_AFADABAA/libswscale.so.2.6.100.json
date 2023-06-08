@@ -1,4 +1,5 @@
 {
+  "name": "libswscale.so.2",
   "needed": [
     "libavutil.so.52",
     "libc.so.6",

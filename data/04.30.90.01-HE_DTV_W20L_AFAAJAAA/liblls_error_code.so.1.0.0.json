@@ -1,4 +1,5 @@
 {
+  "name": "liblls_error_code.so.1",
   "needed": [
     "libgcc_s.so.1"
   ],

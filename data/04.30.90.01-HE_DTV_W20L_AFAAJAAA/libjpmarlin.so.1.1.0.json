@@ -1,4 +1,5 @@
 {
+  "name": "libjpmarlin.so.1",
   "needed": [],
   "symbols": [
     "KLC_RTTI_ID_BUFF",

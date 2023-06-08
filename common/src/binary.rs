@@ -1,8 +1,8 @@
-use elf::abi::STB_WEAK;
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
 use elf::{abi, ElfStream};
+use std::collections::HashSet;
 use std::fs::File;
 use std::io::{Error, ErrorKind};
 use std::path::Path;
@@ -13,8 +13,8 @@ impl BinaryInfo {
     pub fn find_library(&self, name: &str) -> Option<LibraryInfo> {
         for rpath in &self.rpath {
             let path = Path::new(rpath).join(name);
-            if let Ok(f) = File::open(path) {
-                return LibraryInfo::parse(f, false)
+            if let Ok(f) = File::open(&path) {
+                return LibraryInfo::parse(f, false, path.file_name().unwrap().to_string_lossy())
                     .map_err(|e| {
                         Error::new(ErrorKind::InvalidData, format!("Bad library info: {e:?}"))
                     })
@@ -24,9 +24,10 @@ impl BinaryInfo {
         return None;
     }
 
-    pub fn parse<S>(source: S, name: String) -> Result<Self, elf::ParseError>
+    pub fn parse<S, N>(source: S, name: N) -> Result<Self, elf::ParseError>
     where
         S: std::io::Read + std::io::Seek,
+        N: AsRef<str>,
     {
         let mut rpath = Vec::<String>::new();
         let mut needed = Vec::<String>::new();
@@ -74,7 +75,7 @@ impl BinaryInfo {
             .iter()
             .enumerate()
             .flat_map(|(index, (sym, name))| {
-                if !sym.is_undefined() || sym.st_name == 0 || sym.st_bind() == STB_WEAK {
+                if !sym.is_undefined() || sym.st_name == 0 || sym.st_bind() == abi::STB_WEAK {
                     return vec![];
                 }
                 if let Some(ver_table) = &ver_table {
@@ -87,7 +88,7 @@ impl BinaryInfo {
             .collect();
 
         return Ok(Self {
-            name,
+            name: String::from(name.as_ref()),
             rpath,
             needed,
             undefined,
@@ -99,11 +100,42 @@ impl VerifyWithFirmware<BinVerifyResult> for BinaryInfo {
     fn verify(&self, firmware: &Firmware) -> BinVerifyResult {
         let mut result = BinVerifyResult::new(self.name.clone());
         result.undefined_sym.extend(self.undefined.clone());
+        let mut visited_libs: HashSet<String> = Default::default();
+
+        let find_library = |name: &str| -> Option<LibraryInfo> {
+            return firmware
+                .find_library(name)
+                .or_else(|| self.find_library(name));
+        };
+
+        fn resolve_symbols<F>(
+            lib: &LibraryInfo,
+            undefined: &mut Vec<String>,
+            visited: &mut HashSet<String>,
+            lib_resolver: &F,
+        ) where
+            F: Fn(&str) -> Option<LibraryInfo>,
+        {
+            undefined.retain(|symbol| !lib.has_symbol(symbol));
+            for needed in &lib.needed {
+                if visited.contains(needed) {
+                    continue;
+                }
+                visited.insert(needed.clone());
+                if let Some(needed) = lib_resolver(needed) {
+                    resolve_symbols(&needed, undefined, visited, lib_resolver);
+                }
+            }
+        }
+
         for needed in &self.needed {
-            if let Some(lib) = firmware.find_library(needed) {
-                result.undefined_sym.retain(|sym| !lib.has_symbol(sym));
-            } else if let Some(lib) = self.find_library(needed) {
-                result.undefined_sym.retain(|sym| !lib.has_symbol(sym));
+            if let Some(lib) = find_library(needed) {
+                resolve_symbols(
+                    &lib,
+                    &mut result.undefined_sym,
+                    &mut visited_libs,
+                    &find_library,
+                );
             } else {
                 result.missing_lib.push(needed.clone());
             }
@@ -137,8 +169,8 @@ mod tests {
     #[test]
     fn test_parse() {
         let mut content = Cursor::new(include_bytes!("fixtures/sample.bin"));
-        let info = BinaryInfo::parse(&mut content, String::from("sample.bin"))
-            .expect("should not have any error");
+        let info =
+            BinaryInfo::parse(&mut content, "sample.bin").expect("should not have any error");
         assert_eq!(info.needed[0], "libc.so.6");
     }
 }

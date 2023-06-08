@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_str_format_internal.so",
   "needed": [
     "libabsl_int128.so",
     "libabsl_strings.so",

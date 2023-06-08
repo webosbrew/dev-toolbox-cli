@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_hash.so",
   "needed": [
     "libabsl_city.so",
     "libabsl_wyhash.so",

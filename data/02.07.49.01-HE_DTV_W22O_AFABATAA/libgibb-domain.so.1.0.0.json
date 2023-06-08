@@ -1,4 +1,5 @@
 {
+  "name": "libgibb-domain.so.1",
   "needed": [
     "ld-linux.so.3",
     "libboost_thread.so.1.72.0",

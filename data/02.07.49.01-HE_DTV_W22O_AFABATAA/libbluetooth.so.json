@@ -1,4 +1,5 @@
 {
+  "name": "libbluetooth.so",
   "needed": [
     "ld-linux.so.3",
     "libatomic.so.1",

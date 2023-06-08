@@ -1,4 +1,5 @@
 {
+  "name": "libnspr4.so",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

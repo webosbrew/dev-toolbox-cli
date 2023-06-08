@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkDefaultSampleApplicationOptions.so",
   "needed": [
     "libAVSCommon.so",
     "libCBLAuthDelegate.so",

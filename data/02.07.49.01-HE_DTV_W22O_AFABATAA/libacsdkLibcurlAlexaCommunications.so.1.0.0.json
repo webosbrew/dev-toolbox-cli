@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkLibcurlAlexaCommunications.so",
   "needed": [
     "libACL.so",
     "libAVSCommon.so",

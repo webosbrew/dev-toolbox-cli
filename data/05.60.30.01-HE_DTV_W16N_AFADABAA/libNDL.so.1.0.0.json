@@ -1,4 +1,5 @@
 {
+  "name": "libNDL.so.1",
   "needed": [
     "libgcc_s.so.1"
   ],

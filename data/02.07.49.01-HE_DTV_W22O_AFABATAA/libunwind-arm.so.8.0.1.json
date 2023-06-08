@@ -1,4 +1,5 @@
 {
+  "name": "libunwind-arm.so.8",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

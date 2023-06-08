@@ -1,4 +1,5 @@
 {
+  "name": "libcompositorextension.so.1",
   "needed": [
     "libQt5Core.so.5",
     "libc.so.6",

@@ -1,4 +1,5 @@
 {
+  "name": "libdmrplus_lunabus.so.3",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

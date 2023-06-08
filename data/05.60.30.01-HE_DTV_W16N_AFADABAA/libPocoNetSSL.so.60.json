@@ -1,4 +1,5 @@
 {
+  "name": "libPocoNetSSL.so.60",
   "needed": [
     "libPocoCrypto.so.60",
     "libPocoFoundation.so.60",

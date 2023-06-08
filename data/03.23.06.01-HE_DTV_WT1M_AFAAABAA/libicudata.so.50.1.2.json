@@ -1,4 +1,5 @@
 {
+  "name": "libicudata.so.50",
   "needed": [],
   "symbols": [
     "icudt50_dat"

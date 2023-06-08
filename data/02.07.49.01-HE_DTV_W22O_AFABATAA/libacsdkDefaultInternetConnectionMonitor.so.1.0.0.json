@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkDefaultInternetConnectionMonitor.so",
   "needed": [
     "libAVSCommon.so",
     "libacsdkManufactory.so",

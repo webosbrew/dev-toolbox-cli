@@ -1,4 +1,5 @@
 {
+  "name": "libbrotlidec.so.1",
   "needed": [
     "libbrotlicommon.so.1",
     "libc.so.6",

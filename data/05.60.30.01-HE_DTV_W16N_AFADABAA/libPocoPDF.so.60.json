@@ -1,4 +1,5 @@
 {
+  "name": "libPocoPDF.so.60",
   "needed": [
     "libPocoFoundation.so.60",
     "libPocoUtil.so.60",

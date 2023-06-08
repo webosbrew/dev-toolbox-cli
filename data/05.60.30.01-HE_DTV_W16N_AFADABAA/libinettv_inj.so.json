@@ -1,4 +1,5 @@
 {
+  "name": "libinettv_inj.so",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

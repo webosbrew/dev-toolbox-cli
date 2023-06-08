@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_flags_marshalling.so",
   "needed": [
     "libabsl_str_format_internal.so",
     "libabsl_strings.so",

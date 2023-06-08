@@ -1,4 +1,5 @@
 {
+  "name": "libCapabilitiesDelegate.so",
   "needed": [
     "libAVSCommon.so",
     "libEndpoints.so",

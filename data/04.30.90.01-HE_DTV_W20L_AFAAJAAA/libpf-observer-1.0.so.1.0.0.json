@@ -1,4 +1,5 @@
 {
+  "name": "libpf-observer-1.0.so.1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

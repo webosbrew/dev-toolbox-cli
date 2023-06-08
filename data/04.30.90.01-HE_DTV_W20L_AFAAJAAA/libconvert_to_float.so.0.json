@@ -1,4 +1,5 @@
 {
+  "name": "libconvert_to_float.so",
   "needed": [
     "libCLC.so",
     "libGAL.so",

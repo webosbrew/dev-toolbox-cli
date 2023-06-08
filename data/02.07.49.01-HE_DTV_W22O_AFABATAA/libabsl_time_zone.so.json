@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_time_zone.so",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

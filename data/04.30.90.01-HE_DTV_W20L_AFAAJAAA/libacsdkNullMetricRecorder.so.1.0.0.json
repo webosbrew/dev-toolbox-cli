@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkNullMetricRecorder.so",
   "needed": [
     "libAVSCommon.so",
     "libacsdkManufactory.so",

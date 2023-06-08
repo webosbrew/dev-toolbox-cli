@@ -1,4 +1,5 @@
 {
+  "name": "libwaylandpipeline-1.0.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

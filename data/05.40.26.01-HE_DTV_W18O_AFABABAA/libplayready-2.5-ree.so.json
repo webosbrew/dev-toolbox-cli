@@ -1,4 +1,5 @@
 {
+  "name": "libplayready-2.5-ree.so",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

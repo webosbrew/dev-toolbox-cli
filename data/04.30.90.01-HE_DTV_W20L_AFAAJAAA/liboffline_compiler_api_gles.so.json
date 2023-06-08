@@ -1,4 +1,5 @@
 {
+  "name": "liboffline_compiler_api_gles.so",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

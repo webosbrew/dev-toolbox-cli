@@ -1,4 +1,5 @@
 {
+  "name": "libVSC.so",
   "needed": [
     "libGAL.so",
     "libc.so.6",

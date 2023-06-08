@@ -1,4 +1,5 @@
 {
+  "name": "libgnsdk_lookup_local.so.3.18.10",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

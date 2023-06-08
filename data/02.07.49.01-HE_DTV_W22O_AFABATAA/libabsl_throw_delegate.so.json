@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_throw_delegate.so",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6"

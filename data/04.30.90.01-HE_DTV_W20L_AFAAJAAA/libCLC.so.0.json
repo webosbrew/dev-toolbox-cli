@@ -1,4 +1,5 @@
 {
+  "name": "libCLC.so",
   "needed": [
     "libGAL.so",
     "libLLVM_viv.so",

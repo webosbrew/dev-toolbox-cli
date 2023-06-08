@@ -1,4 +1,5 @@
 {
+  "name": "libgnutls.so.26",
   "needed": [
     "libc.so.6",
     "libcap.so.2",

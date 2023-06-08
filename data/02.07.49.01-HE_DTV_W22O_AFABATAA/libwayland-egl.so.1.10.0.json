@@ -1,4 +1,5 @@
 {
+  "name": "libwayland-egl.so.1",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

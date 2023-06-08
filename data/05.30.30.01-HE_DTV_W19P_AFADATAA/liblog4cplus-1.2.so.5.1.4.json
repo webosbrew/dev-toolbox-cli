@@ -1,4 +1,5 @@
 {
+  "name": "liblog4cplus-1.2.so.5",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

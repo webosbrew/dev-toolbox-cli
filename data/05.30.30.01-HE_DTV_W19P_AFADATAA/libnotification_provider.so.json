@@ -1,4 +1,5 @@
 {
+  "name": "libnotification_provider.so",
   "needed": [
     "libc.so.6",
     "libconnectivity_abstraction.so",

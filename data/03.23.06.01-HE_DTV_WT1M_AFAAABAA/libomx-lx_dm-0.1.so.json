@@ -1,4 +1,5 @@
 {
+  "name": "libomx-lx_dm-0.1.so",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

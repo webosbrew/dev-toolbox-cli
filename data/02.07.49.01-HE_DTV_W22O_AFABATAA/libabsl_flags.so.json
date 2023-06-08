@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_flags.so",
   "needed": [
     "libgcc_s.so.1"
   ],

@@ -1,4 +1,5 @@
 {
+  "name": "libsmartcols.so.1",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

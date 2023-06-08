@@ -1,4 +1,5 @@
 {
+  "name": "libGLESv2.so.2.0",
   "needed": [
     "libIMGegl.so",
     "libc.so.6",

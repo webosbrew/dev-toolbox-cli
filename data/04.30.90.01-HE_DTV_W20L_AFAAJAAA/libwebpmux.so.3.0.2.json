@@ -1,4 +1,5 @@
 {
+  "name": "libwebpmux.so.3",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

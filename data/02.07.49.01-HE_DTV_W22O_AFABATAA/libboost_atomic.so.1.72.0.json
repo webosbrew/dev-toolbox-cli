@@ -1,4 +1,5 @@
 {
+  "name": "libboost_atomic.so.1.72.0",
   "needed": [
     "libgcc_s.so.1",
     "libpthread.so.0"

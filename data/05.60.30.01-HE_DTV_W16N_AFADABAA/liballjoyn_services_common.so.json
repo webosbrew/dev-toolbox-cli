@@ -1,4 +1,5 @@
 {
+  "name": "liballjoyn_services_common.so",
   "needed": [
     "liballjoyn.so",
     "libc.so.6",

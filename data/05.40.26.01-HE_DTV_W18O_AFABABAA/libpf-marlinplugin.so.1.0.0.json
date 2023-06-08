@@ -1,4 +1,5 @@
 {
+  "name": "libpf-marlinplugin.so.1",
   "needed": [
     "libc.so.6",
     "libdrmcontroller.so.1",

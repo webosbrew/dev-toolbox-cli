@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkExternalMediaPlayerInterfaces.so",
   "needed": [
     "libAVSCommon.so",
     "libc.so.6",

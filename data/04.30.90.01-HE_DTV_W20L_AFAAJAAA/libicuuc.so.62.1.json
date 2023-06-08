@@ -1,4 +1,5 @@
 {
+  "name": "libicuuc.so.62",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

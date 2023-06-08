@@ -1,4 +1,5 @@
 {
+  "name": "libTelephonyInterfaceLayer.so",
   "needed": [
     "libPmLogLib.so.3",
     "libPmWirelessSystemFramework.so",

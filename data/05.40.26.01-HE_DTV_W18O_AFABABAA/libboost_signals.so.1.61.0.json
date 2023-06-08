@@ -1,4 +1,5 @@
 {
+  "name": "libboost_signals.so.1.61.0",
   "needed": [
     "libgcc_s.so.1",
     "libpthread.so.0",

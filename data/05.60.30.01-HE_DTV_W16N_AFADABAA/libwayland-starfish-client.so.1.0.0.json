@@ -1,4 +1,5 @@
 {
+  "name": "libwayland-starfish-client.so.1",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6",

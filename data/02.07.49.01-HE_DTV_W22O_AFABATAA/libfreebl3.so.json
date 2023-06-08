@@ -1,4 +1,5 @@
 {
+  "name": "libfreebl3.so",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

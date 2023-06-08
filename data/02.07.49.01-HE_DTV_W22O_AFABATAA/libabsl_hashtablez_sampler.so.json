@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_hashtablez_sampler.so",
   "needed": [
     "libabsl_raw_logging_internal.so",
     "libabsl_stacktrace.so",

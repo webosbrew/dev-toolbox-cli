@@ -1,4 +1,5 @@
 {
+  "name": "libtensorflow-lite.so",
   "needed": [
     "ld-linux.so.3",
     "libXNNPACK.so",

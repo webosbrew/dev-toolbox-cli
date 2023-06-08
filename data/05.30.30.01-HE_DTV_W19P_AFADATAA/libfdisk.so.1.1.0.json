@@ -1,4 +1,5 @@
 {
+  "name": "libfdisk.so.1",
   "needed": [
     "ld-linux.so.3",
     "libblkid.so.1",

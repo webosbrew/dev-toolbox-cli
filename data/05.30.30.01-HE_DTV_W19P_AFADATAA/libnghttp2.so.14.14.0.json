@@ -1,4 +1,5 @@
 {
+  "name": "libnghttp2.so.14",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

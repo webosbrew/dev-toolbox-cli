@@ -1,4 +1,5 @@
 {
+  "name": "libgstbadvideo-1.0.so.0",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

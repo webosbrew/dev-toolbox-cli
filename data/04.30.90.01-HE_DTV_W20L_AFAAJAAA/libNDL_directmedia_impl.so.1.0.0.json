@@ -1,4 +1,5 @@
 {
+  "name": "libNDL_directmedia_impl.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libSDL2-2.0.so.0",

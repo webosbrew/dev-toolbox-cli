@@ -1,4 +1,5 @@
 {
+  "name": "libWebAppMgrBeanBrowser.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libQt5Core.so.5",

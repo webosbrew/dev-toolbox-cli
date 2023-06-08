@@ -1,4 +1,5 @@
 {
+  "name": "libDefaultClient.so",
   "needed": [
     "ld-linux.so.3",
     "libACL.so",

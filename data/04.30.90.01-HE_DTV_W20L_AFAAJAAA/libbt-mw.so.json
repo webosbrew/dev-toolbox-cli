@@ -1,4 +1,5 @@
 {
+  "name": "libbt-mw.so",
   "needed": [
     "libaudio.a2dp.default.so",
     "libbluetooth.default.so",

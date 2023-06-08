@@ -1,4 +1,5 @@
 {
+  "name": "libdrmhandler.so.1",
   "needed": [
     "libViewRightWebClient.so",
     "libWVStreamControlAPI_v612736.so",

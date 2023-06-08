@@ -1,4 +1,5 @@
 {
+  "name": "libgibb-pipeline.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_system.so.1.68.0",

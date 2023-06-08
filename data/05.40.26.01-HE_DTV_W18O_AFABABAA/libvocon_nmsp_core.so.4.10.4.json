@@ -1,4 +1,5 @@
 {
+  "name": "libvocon_nmsp_core.so",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

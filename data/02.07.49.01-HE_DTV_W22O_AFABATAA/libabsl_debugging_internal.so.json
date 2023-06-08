@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_debugging_internal.so",
   "needed": [
     "libabsl_raw_logging_internal.so",
     "libc.so.6",

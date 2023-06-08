@@ -1,4 +1,5 @@
 {
+  "name": "libcrypto.so.1.0.2",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

@@ -1,4 +1,5 @@
 {
+  "name": "libOpenCL.so.1.1",
   "needed": [
     "libc.so.6",
     "libmali.so",

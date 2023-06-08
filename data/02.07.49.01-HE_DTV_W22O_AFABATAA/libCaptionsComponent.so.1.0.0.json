@@ -1,4 +1,5 @@
 {
+  "name": "libCaptionsComponent.so",
   "needed": [
     "libAVSCommon.so",
     "libCaptionsLib.so",

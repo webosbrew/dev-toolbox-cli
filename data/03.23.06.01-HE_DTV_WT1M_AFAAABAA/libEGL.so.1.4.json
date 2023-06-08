@@ -1,4 +1,5 @@
 {
+  "name": "libEGL.so.1.4",
   "needed": [
     "libIMGegl.so",
     "libc.so.6",

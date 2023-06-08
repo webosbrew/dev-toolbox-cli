@@ -1,4 +1,5 @@
 {
+  "name": "libcgl.so.2",
   "needed": [
     "libAcbAPI.so.1",
     "libPmLogLib.so.3",

@@ -1,4 +1,5 @@
 {
+  "name": "libnss3.so",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

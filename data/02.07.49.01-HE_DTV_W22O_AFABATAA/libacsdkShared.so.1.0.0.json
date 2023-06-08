@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkShared.so",
   "needed": [
     "libAVSCommon.so",
     "libacsdkManufactory.so",

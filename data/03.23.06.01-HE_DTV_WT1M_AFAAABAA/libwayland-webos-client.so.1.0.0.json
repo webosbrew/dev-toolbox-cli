@@ -1,4 +1,5 @@
 {
+  "name": "libwayland-webos-client.so.1",
   "needed": [
     "libc.so.6",
     "libwayland-client.so.0"

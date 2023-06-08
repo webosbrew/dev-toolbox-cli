@@ -1,4 +1,5 @@
 {
+  "name": "libtimelineDecoderJson.so.27",
   "needed": [
     "libarmnn.so.27",
     "libc.so.6",

@@ -1,4 +1,5 @@
 {
+  "name": "libicuuc.so.66",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

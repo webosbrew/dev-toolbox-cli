@@ -1,4 +1,5 @@
 {
+  "name": "libboost_prg_exec_monitor.so.1.68.0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

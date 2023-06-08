@@ -19,7 +19,7 @@ pub struct BinaryInfo {
 }
 
 pub trait VerifyResult {
-    fn is_good(&self)->bool;
+    fn is_good(&self) -> bool;
 }
 
 #[derive(Debug)]
@@ -31,6 +31,7 @@ pub struct BinVerifyResult {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LibraryInfo {
+    pub name: String,
     pub needed: Vec<String>,
     pub symbols: Vec<String>,
     #[serde(skip_serializing_if = "Vec::is_empty", default)]

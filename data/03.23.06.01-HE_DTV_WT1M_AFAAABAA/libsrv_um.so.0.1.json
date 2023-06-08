@@ -1,4 +1,5 @@
 {
+  "name": "libsrv_um.so.0.1",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

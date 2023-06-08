@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_bad_optional_access.so",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6"

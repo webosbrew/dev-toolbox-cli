@@ -1,4 +1,5 @@
 {
+  "name": "libboost_context.so.1.72.0",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

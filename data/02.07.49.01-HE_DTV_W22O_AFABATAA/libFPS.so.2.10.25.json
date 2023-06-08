@@ -1,4 +1,5 @@
 {
+  "name": "libFPS.so",
   "needed": [],
   "symbols": [
     "FPSCreateMovieSession",

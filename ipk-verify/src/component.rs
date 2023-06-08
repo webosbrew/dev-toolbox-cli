@@ -1,5 +1,4 @@
 use std::borrow::Cow;
-use std::cmp::Ordering;
 use std::collections::HashMap;
 use std::fs;
 use std::fs::File;
@@ -9,7 +8,7 @@ use std::path::Path;
 use path_slash::CowExt;
 use serde::Deserialize;
 
-use common::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
+use common::{BinaryInfo, BinVerifyResult, Firmware, LibraryInfo, VerifyWithFirmware};
 
 use crate::{Component, ComponentVerifyResult, Symlinks};
 
@@ -46,7 +45,7 @@ impl Component {
             exe: Some(
                 BinaryInfo::parse(
                     File::open(&exe_path)?,
-                    String::from(exe_path.file_name().unwrap().to_string_lossy()),
+                    exe_path.file_name().unwrap().to_string_lossy(),
                 )
                 .map_err(|e| {
                     Error::new(
@@ -86,7 +85,7 @@ impl Component {
             exe: Some(
                 BinaryInfo::parse(
                     File::open(dir.join(&exe_path))?,
-                    String::from(exe_path.file_name().unwrap().to_string_lossy()),
+                    exe_path.file_name().unwrap().to_string_lossy(),
                 )
                 .map_err(|e| {
                     Error::new(
@@ -108,7 +107,11 @@ impl Component {
                     continue;
                 }
                 let path = entry.path();
-                if let Ok(lib) = LibraryInfo::parse(File::open(&path)?, true) {
+                if let Ok(lib) = LibraryInfo::parse(
+                    File::open(&path)?,
+                    true,
+                    path.file_name().unwrap().to_string_lossy(),
+                ) {
                     libs.insert(path, lib);
                 }
             }
@@ -180,7 +183,7 @@ impl VerifyWithFirmware<ComponentVerifyResult> for Component {
                     self.is_required(lib),
                     self.verify_bin(
                         &BinaryInfo {
-                            name: lib.names.first().unwrap().clone(),
+                            name: lib.name.clone(),
                             rpath: Default::default(),
                             needed: lib.needed.clone(),
                             undefined: lib.undefined.clone(),

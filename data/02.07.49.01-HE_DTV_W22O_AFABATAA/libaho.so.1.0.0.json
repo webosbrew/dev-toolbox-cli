@@ -1,4 +1,5 @@
 {
+  "name": "libaho.so.1",
   "needed": [
     "libaa.so.2",
     "libaabase.so.1",

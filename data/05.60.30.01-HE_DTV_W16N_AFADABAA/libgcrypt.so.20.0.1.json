@@ -1,4 +1,5 @@
 {
+  "name": "libgcrypt.so.20",
   "needed": [
     "libc.so.6",
     "libcap.so.2",

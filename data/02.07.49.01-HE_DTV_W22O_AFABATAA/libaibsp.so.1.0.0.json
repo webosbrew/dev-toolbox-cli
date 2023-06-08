@@ -1,4 +1,5 @@
 {
+  "name": "libaibsp.so.1",
   "needed": [
     "libaiadaptor.so.2.0.0",
     "libc.so.6",

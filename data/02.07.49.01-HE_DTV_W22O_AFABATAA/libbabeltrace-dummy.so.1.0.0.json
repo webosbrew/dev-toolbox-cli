@@ -1,4 +1,5 @@
 {
+  "name": "libbabeltrace-dummy.so.1",
   "needed": [
     "libbabeltrace.so.1",
     "libc.so.6",

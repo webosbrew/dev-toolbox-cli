@@ -1,4 +1,5 @@
 {
+  "name": "libADSL.so",
   "needed": [
     "libAVSCommon.so",
     "libc.so.6",

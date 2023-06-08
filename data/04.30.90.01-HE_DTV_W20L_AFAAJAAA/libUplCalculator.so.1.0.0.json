@@ -1,4 +1,5 @@
 {
+  "name": "libUplCalculator.so",
   "needed": [
     "libAVSCommon.so",
     "libc.so.6",

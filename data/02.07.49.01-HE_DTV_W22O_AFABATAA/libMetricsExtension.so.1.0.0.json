@@ -1,4 +1,5 @@
 {
+  "name": "libMetricsExtension.so",
   "needed": [
     "libAVSCommon.so",
     "libDCMSink.so",

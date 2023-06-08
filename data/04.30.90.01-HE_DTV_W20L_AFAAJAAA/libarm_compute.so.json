@@ -1,4 +1,5 @@
 {
+  "name": "libarm_compute.so",
   "needed": [
     "ld-linux.so.3",
     "libarm_compute_core.so",

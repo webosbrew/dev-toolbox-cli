@@ -1,4 +1,5 @@
 {
+  "name": "libhal_hdcp2.so",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.2",

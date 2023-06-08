@@ -1,4 +1,5 @@
 {
+  "name": "libwvcdm_shared.so",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

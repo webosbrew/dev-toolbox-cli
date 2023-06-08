@@ -1,4 +1,5 @@
 {
+  "name": "libbmlbrowser.so.003.013.002",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

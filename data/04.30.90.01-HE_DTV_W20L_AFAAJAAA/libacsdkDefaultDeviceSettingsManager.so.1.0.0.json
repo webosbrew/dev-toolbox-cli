@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkDefaultDeviceSettingsManager.so",
   "needed": [
     "libAIP.so",
     "libAVSCommon.so",

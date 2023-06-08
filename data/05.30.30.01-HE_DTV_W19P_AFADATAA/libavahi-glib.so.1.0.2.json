@@ -1,4 +1,5 @@
 {
+  "name": "libavahi-glib.so.1",
   "needed": [
     "libavahi-common.so.3",
     "libc.so.6",

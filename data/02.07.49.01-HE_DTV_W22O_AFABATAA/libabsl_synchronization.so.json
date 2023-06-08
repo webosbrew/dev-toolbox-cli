@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_synchronization.so",
   "needed": [
     "libabsl_base.so",
     "libabsl_malloc_internal.so",

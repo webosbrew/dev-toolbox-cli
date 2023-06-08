@@ -1,4 +1,5 @@
 {
+  "name": "libsgutils2-1.45.so.2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

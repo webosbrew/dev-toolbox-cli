@@ -1,4 +1,5 @@
 {
+  "name": "libovxlib.so",
   "needed": [
     "libCLC.so",
     "libOpenVX.so",

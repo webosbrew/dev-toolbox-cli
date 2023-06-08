@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkStartupManager.so",
   "needed": [
     "libAVSCommon.so",
     "libgcc_s.so.1",

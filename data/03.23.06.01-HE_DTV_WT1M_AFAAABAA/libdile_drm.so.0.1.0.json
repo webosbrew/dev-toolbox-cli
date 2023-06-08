@@ -1,4 +1,5 @@
 {
+  "name": "libdile_drm.so.0",
   "needed": [
     "libc.so.6",
     "libdrmddi.so.0",

@@ -1,4 +1,5 @@
 {
+  "name": "librdx.so.4",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

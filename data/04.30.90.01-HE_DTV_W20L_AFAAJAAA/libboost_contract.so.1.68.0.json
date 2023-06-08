@@ -1,4 +1,5 @@
 {
+  "name": "libboost_contract.so.1.68.0",
   "needed": [
     "libboost_system.so.1.68.0",
     "libc.so.6",

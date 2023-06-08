@@ -1,4 +1,5 @@
 {
+  "name": "libboost_iostreams.so.1.61.0",
   "needed": [
     "libbz2.so.1",
     "libc.so.6",

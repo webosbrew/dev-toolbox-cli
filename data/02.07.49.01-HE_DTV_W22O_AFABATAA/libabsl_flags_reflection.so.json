@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_flags_reflection.so",
   "needed": [
     "libabsl_city.so",
     "libabsl_flags_commandlineflag.so",

@@ -1,4 +1,5 @@
 {
+  "name": "libboost_log.so.1.61.0",
   "needed": [
     "libboost_filesystem.so.1.61.0",
     "libboost_system.so.1.61.0",

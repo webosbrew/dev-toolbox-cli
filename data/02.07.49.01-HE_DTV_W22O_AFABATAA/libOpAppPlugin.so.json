@@ -1,4 +1,5 @@
 {
+  "name": "libOpAppPlugin.so",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

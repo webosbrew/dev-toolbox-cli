@@ -1,4 +1,5 @@
 {
+  "name": "libstarfish-teletext-dvb.so.1",
   "needed": [
     "libc.so.6",
     "libfreetype.so.6",

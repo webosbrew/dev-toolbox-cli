@@ -1,4 +1,5 @@
 {
+  "name": "libfairplaycdmadapter.so",
   "needed": [
     "ld-linux.so.3",
     "libFPS.so",

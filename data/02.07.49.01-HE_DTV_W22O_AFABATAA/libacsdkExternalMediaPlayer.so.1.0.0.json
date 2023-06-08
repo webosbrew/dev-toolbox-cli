@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkExternalMediaPlayer.so",
   "needed": [
     "ld-linux.so.3",
     "libAVSCommon.so",

@@ -1,4 +1,5 @@
 {
+  "name": "libOpenVXU.so",
   "needed": [
     "libOpenVX.so",
     "libc.so.6",

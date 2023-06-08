@@ -1,4 +1,5 @@
 {
+  "name": "libresolv.so.2",
   "needed": [
     "libc.so.6"
   ],

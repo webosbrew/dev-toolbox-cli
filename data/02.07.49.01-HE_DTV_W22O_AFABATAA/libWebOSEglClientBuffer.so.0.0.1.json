@@ -1,4 +1,5 @@
 {
+  "name": "libWebOSEglClientBuffer.so.0",
   "needed": [
     "libQt5Gui.so.5",
     "libQt5WaylandCompositor.so.5",

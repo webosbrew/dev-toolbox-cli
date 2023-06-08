@@ -1,4 +1,5 @@
 {
+  "name": "libWebOSCoreCompositorExtension.so.0",
   "needed": [
     "libQt5Compositor.so.5",
     "libQt5Core.so.5",

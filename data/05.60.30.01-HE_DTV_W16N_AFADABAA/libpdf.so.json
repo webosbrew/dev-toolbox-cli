@@ -1,4 +1,5 @@
 {
+  "name": "libpdf.so",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

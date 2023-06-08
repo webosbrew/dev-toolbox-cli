@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkNullSystemTimeZone.so",
   "needed": [
     "libAVSCommon.so",
     "libacsdkManufactory.so",

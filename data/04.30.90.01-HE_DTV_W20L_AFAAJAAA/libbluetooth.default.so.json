@@ -1,4 +1,5 @@
 {
+  "name": "libbluetooth.default.so",
   "needed": [
     "libaptX_encoder.so",
     "libaudio.a2dp.default.so",

@@ -1,4 +1,5 @@
 {
+  "name": "libluna-service2.so.3",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

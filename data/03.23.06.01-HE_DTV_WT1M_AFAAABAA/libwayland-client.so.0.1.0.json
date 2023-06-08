@@ -1,4 +1,5 @@
 {
+  "name": "libwayland-client.so.0",
   "needed": [
     "libc.so.6",
     "libffi.so.6",

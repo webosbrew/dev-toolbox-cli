@@ -1,4 +1,5 @@
 {
+  "name": "libWebAppMgr.so.1",
   "needed": [
     "libLunaSysMgrCommon.so.1",
     "libLunaSysMgrIpc.so.2",

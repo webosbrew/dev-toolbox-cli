@@ -1,4 +1,5 @@
 {
+  "name": "liburcu-signal.so.6",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

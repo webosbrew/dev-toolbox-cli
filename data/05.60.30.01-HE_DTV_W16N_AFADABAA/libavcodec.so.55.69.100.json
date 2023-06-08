@@ -1,4 +1,5 @@
 {
+  "name": "libavcodec.so.55",
   "needed": [
     "libavutil.so.52",
     "libc.so.6",

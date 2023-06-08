@@ -1,4 +1,5 @@
 {
+  "name": "libarmnnTfLiteParser.so",
   "needed": [
     "libarmnn.so",
     "libboost_filesystem.so.1.68.0",

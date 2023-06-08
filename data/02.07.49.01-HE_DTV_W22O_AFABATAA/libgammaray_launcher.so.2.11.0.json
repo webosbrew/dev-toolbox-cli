@@ -1,4 +1,5 @@
 {
+  "name": "libgammaray_launcher.so.2.11.0",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Network.so.5",

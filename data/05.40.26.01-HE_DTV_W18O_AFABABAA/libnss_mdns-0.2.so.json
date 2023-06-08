@@ -1,4 +1,5 @@
 {
+  "name": "libnss_mdns-0.2.so",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

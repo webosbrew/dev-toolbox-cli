@@ -1,4 +1,5 @@
 {
+  "name": "libnetcast_inj.so",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,4 +1,5 @@
 {
+  "name": "libaptX_encoder.so",
   "needed": [],
   "symbols": [
     "AsmQmfConvI",

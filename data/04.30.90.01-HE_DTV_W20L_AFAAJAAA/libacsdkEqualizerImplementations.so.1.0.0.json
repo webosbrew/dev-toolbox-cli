@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkEqualizerImplementations.so",
   "needed": [
     "libAVSCommon.so",
     "libacsdkManufactory.so",

@@ -1,4 +1,5 @@
 {
+  "name": "libcom_err.so.2",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

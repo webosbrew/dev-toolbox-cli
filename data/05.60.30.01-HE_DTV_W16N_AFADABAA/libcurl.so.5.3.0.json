@@ -1,4 +1,5 @@
 {
+  "name": "libcurl.so.5",
   "needed": [
     "libc.so.6",
     "libcares.so.2",

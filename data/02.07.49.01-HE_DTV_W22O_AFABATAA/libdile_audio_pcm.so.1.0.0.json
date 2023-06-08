@@ -1,4 +1,5 @@
 {
+  "name": "libdile_audio_pcm.so.1",
   "needed": [
     "libgcc_s.so.1"
   ],

@@ -1,4 +1,5 @@
 {
+  "name": "libPocoDataSQLite.so.60",
   "needed": [
     "libPocoData.so.60",
     "libPocoFoundation.so.60",

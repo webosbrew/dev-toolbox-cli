@@ -92,12 +92,13 @@ fn handle_entry<P>(
         }
         if metadata.is_file() {
             let lib_info = match File::open(&ent_path).and_then(|file| {
-                LibraryInfo::parse(file, false).map_err(|e| {
-                    Error::new(
-                        ErrorKind::InvalidData,
-                        format!("Failed to parse library {name}: {e:?}"),
-                    )
-                })
+                LibraryInfo::parse(file, false, ent_path.file_name().unwrap().to_string_lossy())
+                    .map_err(|e| {
+                        Error::new(
+                            ErrorKind::InvalidData,
+                            format!("Failed to parse library {name}: {e:?}"),
+                        )
+                    })
             }) {
                 Ok(info) => info,
                 Err(e) => {

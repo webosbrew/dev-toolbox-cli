@@ -1,4 +1,5 @@
 {
+  "name": "libas.so.3.0.81",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.1",

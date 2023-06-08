@@ -1,4 +1,5 @@
 {
+  "name": "libCBLAuthDelegate.so",
   "needed": [
     "libAVSCommon.so",
     "libRegistrationManager.so",

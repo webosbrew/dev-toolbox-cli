@@ -1,4 +1,5 @@
 {
+  "name": "liboc_logger_core.so",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

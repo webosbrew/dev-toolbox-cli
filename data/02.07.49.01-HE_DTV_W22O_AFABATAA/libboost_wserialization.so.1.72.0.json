@@ -1,4 +1,5 @@
 {
+  "name": "libboost_wserialization.so.1.72.0",
   "needed": [
     "libboost_serialization.so.1.72.0",
     "libc.so.6",

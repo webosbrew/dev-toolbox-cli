@@ -1,4 +1,5 @@
 {
+  "name": "libwayland-cursor.so.0",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

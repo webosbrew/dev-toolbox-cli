@@ -1,4 +1,5 @@
 {
+  "name": "libjsoncpp.so.19",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

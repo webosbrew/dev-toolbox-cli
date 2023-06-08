@@ -1,4 +1,5 @@
 {
+  "name": "libext2fs.so.2",
   "needed": [
     "libc.so.6",
     "libcom_err.so.2",

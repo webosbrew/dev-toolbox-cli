@@ -1,4 +1,5 @@
 {
+  "name": "libPocoCrypto.so.60",
   "needed": [
     "libPocoFoundation.so.60",
     "libc.so.6",

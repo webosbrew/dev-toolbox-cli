@@ -1,4 +1,5 @@
 {
+  "name": "libwhrz_preload.so.0",
   "needed": [
     "libEGL.so",
     "libPmLogLib.so.3",

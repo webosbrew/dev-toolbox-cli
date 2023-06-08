@@ -1,4 +1,5 @@
 {
+  "name": "libstarfish-subtitle-task.so.1",
   "needed": [
     "libc.so.6",
     "libfribidi.so.0",

@@ -1,4 +1,5 @@
 {
+  "name": "libomx_asink.so",
   "needed": [
     "libasound.so.2",
     "libc.so.6",

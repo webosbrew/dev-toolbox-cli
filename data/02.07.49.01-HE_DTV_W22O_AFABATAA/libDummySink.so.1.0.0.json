@@ -1,4 +1,5 @@
 {
+  "name": "libDummySink.so",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6"

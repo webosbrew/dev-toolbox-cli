@@ -1,10 +1,10 @@
-use elf::abi::STB_WEAK;
+use std::cmp::Ordering;
+use std::ops::Deref;
+
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
 use elf::{abi, ElfStream, ParseError};
-use std::cmp::Ordering;
-use std::ops::Deref;
 
 use crate::LibraryInfo;
 
@@ -22,7 +22,7 @@ const IGNORED_SYMBOLS: &[&str] = &[
 
 impl LibraryInfo {
     pub fn has_name(&self, name: &str) -> bool {
-        return self.names.iter().find(|n| n.deref() == name).is_some();
+        return self.name == name || self.names.iter().find(|n| n.deref() == name).is_some();
     }
 
     pub fn has_symbol(&self, symbol: &str) -> bool {
@@ -41,12 +41,14 @@ impl LibraryInfo {
             .is_ok();
     }
 
-    pub fn parse<S>(source: S, with_undefined: bool) -> Result<Self, ParseError>
+    pub fn parse<S, N>(source: S, with_undefined: bool, name: N) -> Result<Self, ParseError>
     where
         S: std::io::Read + std::io::Seek,
+        N: AsRef<str>,
     {
         let mut needed = Vec::<String>::new();
         let mut elf = ElfStream::<AnyEndian, S>::open_stream(source)?;
+        let mut name = String::from(name.as_ref());
 
         let dynamic_entries: Vec<Dyn> = elf
             .dynamic()?
@@ -61,6 +63,9 @@ impl LibraryInfo {
                     needed.push(String::from(
                         dynstr_table.get(entry.d_val() as usize).unwrap(),
                     ));
+                }
+                abi::DT_SONAME => {
+                    name = String::from(dynstr_table.get(entry.d_val() as usize).unwrap());
                 }
                 _ => {}
             }
@@ -108,7 +113,7 @@ impl LibraryInfo {
                 .flat_map(|(index, (sym, name))| {
                     if !sym.is_undefined()
                         || sym.st_name == 0
-                        || sym.st_bind() == STB_WEAK
+                        || sym.st_bind() == abi::STB_WEAK
                         || IGNORED_SYMBOLS.contains(&&**name)
                     {
                         return vec![];
@@ -132,6 +137,7 @@ impl LibraryInfo {
         symbols.sort_unstable();
 
         return Ok(Self {
+            name,
             needed,
             symbols,
             undefined,

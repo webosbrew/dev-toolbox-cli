@@ -1,4 +1,5 @@
 {
+  "name": "libavahi-gobject.so.0",
   "needed": [
     "libavahi-client.so.3",
     "libavahi-common.so.3",

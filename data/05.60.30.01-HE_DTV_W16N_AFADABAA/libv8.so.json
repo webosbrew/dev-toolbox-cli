@@ -1,4 +1,5 @@
 {
+  "name": "libv8.so",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

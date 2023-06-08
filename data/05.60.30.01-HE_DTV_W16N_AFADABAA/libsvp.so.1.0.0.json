@@ -1,4 +1,5 @@
 {
+  "name": "libsvp.so.1",
   "needed": [
     "libc.so.6",
     "libdile_svp.so.0",

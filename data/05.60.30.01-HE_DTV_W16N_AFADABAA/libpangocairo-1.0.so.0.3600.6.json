@@ -1,4 +1,5 @@
 {
+  "name": "libpangocairo-1.0.so.0",
   "needed": [
     "libc.so.6",
     "libcairo.so.2",

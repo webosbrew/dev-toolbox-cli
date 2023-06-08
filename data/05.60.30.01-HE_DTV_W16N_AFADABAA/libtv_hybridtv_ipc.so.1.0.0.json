@@ -1,4 +1,5 @@
 {
+  "name": "libtv_hybridtv_ipc.so.1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

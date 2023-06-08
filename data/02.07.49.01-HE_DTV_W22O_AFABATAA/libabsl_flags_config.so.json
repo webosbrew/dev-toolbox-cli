@@ -1,4 +1,5 @@
 {
+  "name": "libabsl_flags_config.so",
   "needed": [
     "libabsl_flags_program_name.so",
     "libabsl_strings.so",

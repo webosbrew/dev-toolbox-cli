@@ -1,4 +1,5 @@
 {
+  "name": "libacsdkCore.so",
   "needed": [
     "libAFML.so",
     "libAVSCommon.so",

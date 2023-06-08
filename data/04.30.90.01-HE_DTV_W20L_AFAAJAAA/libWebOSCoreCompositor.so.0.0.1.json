@@ -1,4 +1,5 @@
 {
+  "name": "libWebOSCoreCompositor.so.0",
   "needed": [
     "libPmLogLib.so.3",
     "libQt5Compositor.so.5",

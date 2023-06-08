@@ -1,4 +1,5 @@
 {
+  "name": "libpryon_lite.so.2.9",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

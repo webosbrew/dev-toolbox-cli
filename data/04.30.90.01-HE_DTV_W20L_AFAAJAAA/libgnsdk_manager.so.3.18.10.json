@@ -1,4 +1,5 @@
 {
+  "name": "libgnsdk_manager.so.3.18.10",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

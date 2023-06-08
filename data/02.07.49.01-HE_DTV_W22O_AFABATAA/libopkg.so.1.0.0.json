@@ -1,4 +1,5 @@
 {
+  "name": "libopkg.so.1",
   "needed": [
     "libarchive.so.13",
     "libc.so.6",

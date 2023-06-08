@@ -1,4 +1,5 @@
 {
+  "name": "libplayerAPIs.so.1",
   "needed": [
     "libPmLogLib.so.3",
     "libav-proxy.so.1",

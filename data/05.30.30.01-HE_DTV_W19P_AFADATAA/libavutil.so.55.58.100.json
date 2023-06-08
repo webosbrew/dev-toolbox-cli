@@ -1,4 +1,5 @@
 {
+  "name": "libavutil.so.55",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

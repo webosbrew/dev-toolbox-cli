@@ -1,4 +1,5 @@
 {
+  "name": "libavformat.so.58",
   "needed": [
     "libavcodec.so.58",
     "libavutil.so.56",
