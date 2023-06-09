@@ -1,12 +1,11 @@
 use std::collections::BTreeMap;
 use std::fs;
 use std::fs::File;
-use std::io::{BufRead, BufWriter, Error, ErrorKind, Read};
+use std::io::{BufWriter, Error, ErrorKind};
 use std::path::PathBuf;
 use std::process::exit;
 
 use clap::Parser;
-use path_slash::PathBufExt as _;
 use regex::Regex;
 
 use common::FirmwareInfo;
