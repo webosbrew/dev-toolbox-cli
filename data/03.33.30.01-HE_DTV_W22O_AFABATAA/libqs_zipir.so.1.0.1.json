@@ -1,0 +1,26 @@
+{
+  "name": "libqs_zipir.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "IRB_DeleteDownloadCode",
+    "IRB_GetFWVersion",
+    "IRB_GetIRDBVersion",
+    "IRB_GetKeyMap",
+    "IRB_Init",
+    "IRB_IsCodesetExist",
+    "IRB_ListAllUpgradeCode",
+    "IRB_LoadCodeset",
+    "IRB_LoadCodesetB64",
+    "IRB_SelectAndExtractCodeset",
+    "IRB_SelectCodeset",
+    "IRB_SelectCodesetFromBuffer",
+    "IRB_SendKey",
+    "IRB_Shutdown",
+    "IRB_freeZipIRWaveform",
+    "IRB_getZipIRWaveform",
+    "ueic_transport_SendBlasterCommand"
+  ]
+}

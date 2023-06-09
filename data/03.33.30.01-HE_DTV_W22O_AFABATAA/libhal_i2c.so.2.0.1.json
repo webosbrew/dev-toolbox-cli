@@ -1,0 +1,15 @@
+{
+  "name": "libhal_i2c.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.2"
+  ],
+  "symbols": [
+    "HAL_I2C_GetErrorStatus",
+    "HAL_I2C_Init",
+    "HAL_I2C_Read",
+    "HAL_I2C_Write",
+    "gHalI2cLogmFd"
+  ]
+}

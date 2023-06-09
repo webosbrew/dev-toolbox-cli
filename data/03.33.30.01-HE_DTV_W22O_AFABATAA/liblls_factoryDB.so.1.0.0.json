@@ -1,0 +1,37 @@
+{
+  "name": "liblls_factoryDB.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libllsCache.so.1",
+    "libmodelOpt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z15getPmLogContextv",
+    "_Z6keyMapB5cxx11",
+    "_ZN12LLSFactoryDBC1Ev",
+    "_ZN12LLSFactoryDBC2Ev",
+    "_ZNK12LLSFactoryDB11getInitDataEjPh",
+    "_ZNK12LLSFactoryDB14combineBitItemENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjPhS6_",
+    "_ZNK12LLSFactoryDB15separateBitItemENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjPhS6_",
+    "_ZNK12LLSFactoryDB16getValidMarkInfoEP15LLS_ITEM_INFO_T",
+    "_ZNK12LLSFactoryDB17getValidMarkMagicEjPh",
+    "_ZNK12LLSFactoryDB19convertBinaryToJsonENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjPhP20LLS_ITEM_JSON_DATA_T",
+    "_ZNK12LLSFactoryDB19convertJsonToBinaryENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERK20LLS_ITEM_JSON_DATA_TjPh",
+    "_ZNK12LLSFactoryDB9getDBSizeEPj",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_15LLS_ITEM_INFO_TESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_iESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS7_EESJ_IJEEEEESt17_Rb_tree_iteratorIS8_ESt23_Rb_tree_const_iteratorIS8_EDpOT_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_iESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_iESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E",
+    "_ZTI11LLSCommonDB",
+    "_ZTI12LLSFactoryDB",
+    "_ZTS11LLSCommonDB",
+    "_ZTS12LLSFactoryDB",
+    "_ZTV11LLSCommonDB",
+    "_ZTV12LLSFactoryDB"
+  ]
+}

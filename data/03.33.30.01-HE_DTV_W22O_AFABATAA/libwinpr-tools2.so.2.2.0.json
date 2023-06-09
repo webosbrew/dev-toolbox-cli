@@ -1,0 +1,17 @@
+{
+  "name": "libwinpr-tools2.so.2",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.1",
+    "libgcc_s.so.1",
+    "libwinpr2.so.2"
+  ],
+  "symbols": [
+    "makecert_context_free",
+    "makecert_context_new",
+    "makecert_context_output_certificate_file",
+    "makecert_context_output_private_key_file",
+    "makecert_context_process",
+    "makecert_context_set_output_file_name"
+  ]
+}

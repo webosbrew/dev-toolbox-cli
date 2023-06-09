@@ -1,0 +1,14 @@
+{
+  "name": "libmicom_cmnio.so.1",
+  "needed": [
+    "libgcc_s.so.1",
+    "libhal_ucom.so.2"
+  ],
+  "symbols": [
+    "_Z10micom_readhtPh",
+    "_Z11micom_writetPh",
+    "_Z16MICOM_CallbackIRhh",
+    "_Z19MICOM_CallbackLOCALhh",
+    "_Z20micom_WholeChipResetv"
+  ]
+}

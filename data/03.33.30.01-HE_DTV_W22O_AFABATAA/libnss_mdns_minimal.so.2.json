@@ -1,0 +1,16 @@
+{
+  "name": "libnss_mdns_minimal.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libresolv.so.2"
+  ],
+  "symbols": [
+    "NSSMDNS_0@NSSMDNS_0",
+    "_nss_mdns_minimal_gethostbyaddr_r@NSSMDNS_0",
+    "_nss_mdns_minimal_gethostbyname2_r@NSSMDNS_0",
+    "_nss_mdns_minimal_gethostbyname3_r@NSSMDNS_0",
+    "_nss_mdns_minimal_gethostbyname4_r@NSSMDNS_0",
+    "_nss_mdns_minimal_gethostbyname_r@NSSMDNS_0"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "libgnsdk_lookup_localstream.so.3.18.10",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libgnsdk_manager.so.3.18.10",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "gnsdk_lookup_localstream_get_build_date",
+    "gnsdk_lookup_localstream_get_version",
+    "gnsdk_lookup_localstream_ingest_create",
+    "gnsdk_lookup_localstream_ingest_flush",
+    "gnsdk_lookup_localstream_ingest_release",
+    "gnsdk_lookup_localstream_ingest_write",
+    "gnsdk_lookup_localstream_initialize",
+    "gnsdk_lookup_localstream_option_get",
+    "gnsdk_lookup_localstream_option_set",
+    "gnsdk_lookup_localstream_shutdown",
+    "gnsdk_lookup_localstream_storage_clear",
+    "gnsdk_lookup_localstream_storage_location_set",
+    "gnsdk_lookup_localstream_storage_remove"
+  ]
+}

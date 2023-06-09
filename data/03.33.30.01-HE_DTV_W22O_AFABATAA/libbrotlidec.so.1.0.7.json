@@ -1,0 +1,22 @@
+{
+  "name": "libbrotlidec.so.1",
+  "needed": [
+    "libbrotlicommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "BrotliDecoderCreateInstance",
+    "BrotliDecoderDecompress",
+    "BrotliDecoderDecompressStream",
+    "BrotliDecoderDestroyInstance",
+    "BrotliDecoderErrorString",
+    "BrotliDecoderGetErrorCode",
+    "BrotliDecoderHasMoreOutput",
+    "BrotliDecoderIsFinished",
+    "BrotliDecoderIsUsed",
+    "BrotliDecoderSetParameter",
+    "BrotliDecoderTakeOutput",
+    "BrotliDecoderVersion"
+  ]
+}

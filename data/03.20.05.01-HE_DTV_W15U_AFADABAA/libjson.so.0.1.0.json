@@ -1,8 +1,0 @@
-{
-  "name": "libjson.so.0",
-  "needed": [
-    "libc.so.6",
-    "libjson-c.so.2"
-  ],
-  "symbols": []
-}

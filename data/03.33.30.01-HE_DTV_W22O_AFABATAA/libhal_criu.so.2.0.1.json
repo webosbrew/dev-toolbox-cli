@@ -1,0 +1,11 @@
+{
+  "name": "libhal_criu.so.2",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "HAL_CRIU_PostDumpNotify",
+    "HAL_CRIU_PostRestoreNotify",
+    "HAL_CRIU_PreCheckpointNotify"
+  ]
+}

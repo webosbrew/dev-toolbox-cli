@@ -1,0 +1,30 @@
+{
+  "name": "libv4l2.so.0",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libv4lconvert.so.0"
+  ],
+  "symbols": [
+    "v4l2_close",
+    "v4l2_dup",
+    "v4l2_fd_open",
+    "v4l2_get_control",
+    "v4l2_ioctl",
+    "v4l2_ioctls",
+    "v4l2_log_file",
+    "v4l2_log_ioctl",
+    "v4l2_mmap",
+    "v4l2_munmap",
+    "v4l2_open",
+    "v4l2_plugin_cleanup",
+    "v4l2_plugin_init",
+    "v4l2_read",
+    "v4l2_set_control",
+    "v4l2_write"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "libaabase.so.1",
+  "needed": [
+    "libaa.so.2",
+    "libaudcommon.so.1",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "liblogs.so.2"
+  ],
+  "symbols": [
+    "dlload_dir",
+    "dlload_dirs",
+    "logmm_module_aud_appsink",
+    "logmm_module_aud_appsrc",
+    "module_appsink_set_callback",
+    "module_appsrc_push_data",
+    "module_appsrc_push_event"
+  ]
+}

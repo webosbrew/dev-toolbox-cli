@@ -1,0 +1,38 @@
+{
+  "name": "libboost_math_c99.so.1.72.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN5boost4math3tr110fpclassifyIdEEiT_",
+    "_ZN5boost4math3tr15isinfIdEEbT_",
+    "_ZN5boost4math3tr15isnanIdEEbT_",
+    "_ZN5boost4math3tr17signbitIdEEbT_",
+    "_ZN5boost4math3tr18isfiniteIdEEbT_",
+    "_ZN5boost4math3tr18isnormalIdEEbT_",
+    "boost_acosh",
+    "boost_asinh",
+    "boost_atanh",
+    "boost_cbrt",
+    "boost_copysign",
+    "boost_erf",
+    "boost_erfc",
+    "boost_expm1",
+    "boost_fmax",
+    "boost_fmin",
+    "boost_hypot",
+    "boost_lgamma",
+    "boost_llround",
+    "boost_log1p",
+    "boost_lround",
+    "boost_nextafter",
+    "boost_nexttoward",
+    "boost_round",
+    "boost_tgamma",
+    "boost_trunc"
+  ]
+}

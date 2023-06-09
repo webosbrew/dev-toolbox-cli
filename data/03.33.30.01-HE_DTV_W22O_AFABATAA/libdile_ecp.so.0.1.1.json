@@ -1,0 +1,10 @@
+{
+  "name": "libdile_ecp.so.0",
+  "needed": [
+    "libgcc_s.so.1",
+    "libhal_lg115x.so.2"
+  ],
+  "symbols": [
+    "DILE_ECP_CI_PLUS_WriteCertKey"
+  ]
+}
