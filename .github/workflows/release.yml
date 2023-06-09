@@ -1,0 +1,49 @@
+name: Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  release-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - uses: olegtarasov/get-tag@v2.1.2
+        id: tagName
+
+      - name: Update Packages
+        shell: bash
+        run: sudo apt-get -yq update
+
+      - name: Use Rust Stable
+        run: rustup toolchain install stable --profile minimal
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ runner.os }}
+
+      - name: Install cargo-deb
+        run: cargo install cargo-deb
+
+      - name: Build Packages
+        run: |
+          for f in fw-extract elf-verify ipk-verify; do
+            cargo deb -p "$f" || exit 1
+          done
+
+      - name: Create Release (Ubuntu)
+        id: create_release_ubuntu
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Release ${{ steps.tagName.outputs.tag }}
+          allowUpdates: true
+          omitNameDuringUpdate: true
+          omitBodyDuringUpdate: true
+          omitPrereleaseDuringUpdate: true
+          artifacts: target/debian/*.deb

@@ -1,0 +1,34 @@
+name: Build Test
+
+on:
+  push:
+    # Don't run for tags
+    tags-ignore:
+      - 'v**'
+    branches:
+      - '**'
+
+jobs:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Use Rust Stable
+        run: rustup toolchain install stable --profile minimal
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ runner.os }}
+
+      - name: Install cargo-deb
+        run: cargo install cargo-deb
+
+      - name: Build Packages
+        run: |
+          for f in fw-extract elf-verify ipk-verify; do
+            cargo deb -p "$f" || exit 1
+          done
