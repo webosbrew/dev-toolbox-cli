@@ -440,6 +440,7 @@ dependencies = [
  "debpkg",
  "path-slash",
  "prettytable-rs",
+ "semver",
  "serde",
  "serde_json",
  "tempfile",

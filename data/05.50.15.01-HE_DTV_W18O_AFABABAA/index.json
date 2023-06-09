@@ -347,6 +347,7 @@
   "libdtcpip_dlna.so.1": "libdtcpip_dlna.so.1.0.0.json",
   "libdtcpip_dlna.so.1.0.0": "libdtcpip_dlna.so.1.0.0.json",
   "libdv_ves_dmx_m.so": "libdv_ves_dmx_m.so.json",
+  "libdvbfrontend.so": "libdvbfrontend.so.1.0.0.json",
   "libdvbfrontend.so.1.0.0": "libdvbfrontend.so.1.0.0.json",
   "libdvr.so": "libdvr.so.1.0.1.json",
   "libdvr.so.1": "libdvr.so.1.0.1.json",

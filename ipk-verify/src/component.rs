@@ -1,6 +1,5 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
-use std::fmt::format;
 use std::fs;
 use std::fs::File;
 use std::io::{Error, ErrorKind};
@@ -9,7 +8,7 @@ use std::path::Path;
 use path_slash::CowExt;
 use serde::Deserialize;
 
-use common::{BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware};
+use common::{BinaryInfo, BinVerifyResult, Firmware, LibraryInfo, VerifyWithFirmware};
 
 use crate::{Component, ComponentVerifyResult, Symlinks};
 

@@ -803,6 +803,7 @@
   "libdv_ves_dmx_m.so": "libdv_ves_dmx_m.so.json",
   "libdvbfrontend-plugins.so.1": "libdvbfrontend-plugins.so.1.0.0.json",
   "libdvbfrontend-plugins.so.1.0.0": "libdvbfrontend-plugins.so.1.0.0.json",
+  "libdvbfrontend.so": "libdvbfrontend.so.1.0.0.json",
   "libdvbfrontend.so.1.0.0": "libdvbfrontend.so.1.0.0.json",
   "libdvbv5.so.0": "libdvbv5.so.0.0.0.json",
   "libdvbv5.so.0.0.0": "libdvbv5.so.0.0.0.json",
