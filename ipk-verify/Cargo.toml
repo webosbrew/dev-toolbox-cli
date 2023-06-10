@@ -13,6 +13,8 @@ tempfile = "3.5.0"
 path-slash = "0.2.1"
 prettytable-rs = "^0.10"
 semver = "1.0.17"
+is-terminal = "0.4.7"
+term = "0.7.0"
 
 [dependencies.clap]
 version = "4.2.4"

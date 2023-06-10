@@ -5,8 +5,8 @@ use std::iter;
 use std::path::PathBuf;
 
 use clap::Parser;
-use prettytable::format::{FormatBuilder, LinePosition, LineSeparator};
-use prettytable::{color, Attr, Cell, Row, Table};
+use is_terminal::IsTerminal;
+use prettytable::{Cell, Row, Table};
 use semver::VersionReq;
 use serde::Deserialize;
 
@@ -14,8 +14,11 @@ use common::{
     BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyResult, VerifyWithFirmware,
 };
 
+use crate::output::ReportOutput;
+
 mod component;
 mod links;
+mod output;
 mod package;
 
 #[derive(Parser, Debug)]
@@ -24,8 +27,8 @@ struct Args {
     packages: Vec<PathBuf>,
     #[arg(short, long)]
     output: Option<PathBuf>,
-    #[arg(short, long, value_enum, default_value = "plain")]
-    format: OutputFormat,
+    #[arg(short, long, value_enum)]
+    format: Option<OutputFormat>,
     #[arg(long)]
     fw_releases: Option<VersionReq>,
     #[arg(short, long, action = clap::ArgAction::Count)]
@@ -39,13 +42,26 @@ enum OutputFormat {
     Plain,
 }
 
+impl Args {
+    fn report_output(&self) -> Box<dyn ReportOutput> {
+        return if let Some(path) = &self.output {
+            Box::new(File::create(path).unwrap())
+        } else {
+            Box::new(std::io::stdout())
+        };
+    }
+}
+
 fn main() {
     let args = Args::parse();
     let to_file: bool = args.output.is_some();
-    let mut output: Box<dyn Write> = if let Some(path) = args.output {
-        Box::new(File::create(path).unwrap())
+    let mut output = args.report_output();
+    let format = if let Some(format) = args.format {
+        format
+    } else if std::io::stdout().is_terminal() {
+        OutputFormat::Terminal
     } else {
-        Box::new(std::io::stdout())
+        OutputFormat::Plain
     };
     let firmwares: Vec<Firmware> = Firmware::list(Firmware::data_path())
         .unwrap()
@@ -94,7 +110,7 @@ fn main() {
         print_component_results(
             results.iter().map(|(fw, res)| (*fw, &res.app)).collect(),
             &mut output,
-            &args.format,
+            &format,
         )
         .unwrap();
         for idx in 0..result.services.len() {
@@ -113,53 +129,22 @@ fn main() {
                     .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
                     .collect(),
                 &mut output,
-                &args.format,
+                &format,
             )
             .unwrap();
         }
     }
 }
 
-fn print_component_results<Output>(
+fn print_component_results(
     results: Vec<(&Firmware, &ComponentVerifyResult)>,
-    out: &mut Output,
+    out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
-) -> Result<(), Error>
-where
-    Output: Write + ?Sized,
-{
+) -> Result<(), Error> {
     let (_, result) = *results.first().unwrap();
-    fn result_cell(result: &BinVerifyResult) -> Cell {
-        return if result.is_good() {
-            let mut cell = Cell::new("OK");
-            cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
-            cell
-        } else {
-            let mut cell = Cell::new("NG");
-            cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
-            cell
-        };
-    }
     if let Some(exe) = &result.exe {
         let mut table = Table::new();
-        match out_fmt {
-            OutputFormat::Markdown => {
-                table.set_format(
-                    FormatBuilder::new()
-                        .column_separator('|')
-                        .borders('|')
-                        .padding(1, 1)
-                        .separator(LinePosition::Title, LineSeparator::new('-', '|', '|', '|'))
-                        .build(),
-                );
-            }
-            OutputFormat::Terminal => {
-                table.set_format(*prettytable::format::consts::FORMAT_BOX_CHARS);
-            }
-            OutputFormat::Plain => {
-                table.set_format(*prettytable::format::consts::FORMAT_DEFAULT);
-            }
-        }
+        table.set_format(out.table_format(out_fmt));
         table.set_titles(Row::from_iter(
             iter::once(String::new()).chain(
                 results
@@ -172,7 +157,7 @@ where
                 .chain(
                     results
                         .iter()
-                        .map(|(_, result)| result_cell(result.exe.as_ref().unwrap())),
+                        .map(|(_, result)| out.result_cell(result.exe.as_ref().unwrap(), out_fmt)),
                 )
                 .collect(),
         ));
@@ -184,22 +169,15 @@ where
             };
             table.add_row(Row::new(
                 iter::once(name)
-                    .chain(
-                        results
-                            .iter()
-                            .map(|(_, result)| result_cell(&result.libs.get(idx).unwrap().1)),
-                    )
+                    .chain(results.iter().map(|(_, result)| {
+                        out.result_cell(&result.libs.get(idx).unwrap().1, out_fmt)
+                    }))
                     .collect(),
             ));
         }
-        if *out_fmt == OutputFormat::Terminal {
-            table.print_tty(true)?;
-        } else {
-            table.print(out)?;
-        }
-        out.write_all(b"\n")?;
+        out.print_table(&table)?;
     } else {
-        println!("Skip because this component is not native");
+        out.write_fmt(format_args!("Skip because this component is not native\n"))?;
     }
     return Ok(());
 }
