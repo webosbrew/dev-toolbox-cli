@@ -16,12 +16,8 @@ prettytable-rs = "^0.10"
 semver = "1.0.17"
 is-terminal = "0.4.7"
 term = "0.7.0"
+clap = { version = "4.2.4", features = ["derive"] }
 verify-lib = { path = "../../common/verify", features = ["ipk"] }
-
-
-[dependencies.clap]
-version = "4.2.4"
-features = ["derive"]
 
 [dependencies.fw-lib]
 path = "../../common/fw"

@@ -31,9 +31,13 @@ pub struct PackageInfo {
 }
 
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct AppInfo {
     pub id: String,
+    pub version: String,
     pub r#type: String,
+    pub title: String,
+    pub app_description: Option<String>,
     pub main: String,
 }
 

@@ -2,6 +2,7 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{Error, ErrorKind, Read};
+use std::path::Path;
 
 use debpkg::{Control, DebPkg};
 use path_slash::CowExt;
@@ -9,6 +10,10 @@ use path_slash::CowExt;
 use crate::{AppInfo, Component, Package, PackageInfo, ServiceInfo, Symlinks};
 
 impl Package {
+    pub fn open<P: AsRef<Path>>(path: P) -> Result<Self, Error> {
+        return File::open(path.as_ref()).and_then(|file| Package::parse(file));
+    }
+
     pub fn parse<R>(read: R) -> Result<Self, Error>
     where
         R: Read,

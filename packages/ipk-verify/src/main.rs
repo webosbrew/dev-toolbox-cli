@@ -3,7 +3,7 @@ use std::io::{Error, Write};
 use std::iter;
 use std::path::PathBuf;
 
-use clap::Parser;
+use clap::{Parser, ValueEnum};
 use is_terminal::IsTerminal;
 use prettytable::{Cell, Row, Table};
 use semver::VersionReq;
@@ -31,7 +31,7 @@ struct Args {
     debug: u8,
 }
 
-#[derive(Debug, Clone, PartialEq, clap::ValueEnum)]
+#[derive(Debug, Clone, PartialEq, ValueEnum)]
 pub enum OutputFormat {
     Markdown,
     Terminal,
@@ -73,7 +73,7 @@ fn main() {
         eprintln!("No firmware found");
     }
     for package in args.packages {
-        let package = match File::open(&package).and_then(|file| Package::parse(file)) {
+        let package = match Package::open(&package) {
             Ok(package) => package,
             Err(e) => {
                 eprintln!(
