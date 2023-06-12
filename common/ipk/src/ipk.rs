@@ -6,12 +6,10 @@ use std::io::{Error, ErrorKind, Read};
 use debpkg::{Control, DebPkg};
 use path_slash::CowExt;
 
-use common::{Firmware, VerifyWithFirmware};
-
-use crate::{Component, Package, PackageInfo, PackageVerifyResult, Symlinks};
+use crate::{AppInfo, Component, Package, PackageInfo, ServiceInfo, Symlinks};
 
 impl Package {
-    pub fn parse<R>(read: R) -> Result<Package, Error>
+    pub fn parse<R>(read: R) -> Result<Self, Error>
     where
         R: Read,
     {
@@ -48,7 +46,7 @@ impl Package {
                 format!("Bad packageinfo.json: {e:?}"),
             )
         })?;
-        let app = Component::parse_app(
+        let app = Component::<AppInfo>::parse(
             tmp.as_ref().join(Cow::from_slash(&format!(
                 "usr/palm/applications/{}",
                 package_info.app
@@ -57,30 +55,17 @@ impl Package {
         )?;
         let mut services = Vec::new();
         for id in &package_info.services {
-            let service = Component::parse_service(
+            let service = Component::<ServiceInfo>::parse(
                 tmp.as_ref()
                     .join(Cow::from_slash(&format!("usr/palm/services/{id}"))),
                 &links,
             )?;
             services.push(service);
         }
-        return Ok(Package { id, app, services });
+        return Ok(Self { id, app, services });
     }
 
     fn deb_err(e: debpkg::Error) -> Error {
         return Error::new(ErrorKind::InvalidData, format!("Bad package: {e:?}"));
-    }
-}
-
-impl VerifyWithFirmware<PackageVerifyResult> for Package {
-    fn verify(&self, firmware: &Firmware) -> PackageVerifyResult {
-        return PackageVerifyResult {
-            app: self.app.verify(firmware),
-            services: self
-                .services
-                .iter()
-                .map(|svc| svc.verify(firmware))
-                .collect(),
-        };
     }
 }

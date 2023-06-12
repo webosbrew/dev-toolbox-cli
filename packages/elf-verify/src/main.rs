@@ -1,9 +1,10 @@
 use std::fs::File;
 use std::path::PathBuf;
 
+use bin_lib::BinaryInfo;
 use clap::Parser;
-
-use common::{BinaryInfo, Firmware, VerifyWithFirmware};
+use fw_lib::Firmware;
+use verify_lib::VerifyWithFirmware;
 
 #[derive(Parser, Debug)]
 struct Args {

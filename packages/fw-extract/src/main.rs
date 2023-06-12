@@ -7,8 +7,7 @@ use std::process::exit;
 
 use clap::Parser;
 use regex::Regex;
-
-use common::FirmwareInfo;
+use fw_lib::FirmwareInfo;
 
 mod extractor;
 

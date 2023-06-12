@@ -4,31 +4,29 @@ use std::fs::File;
 use std::io::{BufReader, Error, ErrorKind};
 use std::path::{Path, PathBuf};
 
-use crate::ReleaseCodename::{
-    Afro, Beehive, Dreadlocks, Dreadlocks2, Goldilocks, Goldilocks2, Jhericurl, Kisscurl, Mullet,
-    Number1,
-};
-use crate::{Firmware, FirmwareInfo, LibraryInfo, ReleaseCodename};
+use bin_lib::LibraryInfo;
+
+use crate::{Firmware, FirmwareInfo, ReleaseCodename};
 
 impl FirmwareInfo {
     pub fn codename(&self) -> Option<ReleaseCodename> {
         return match self.release.major {
-            1 => Some(Afro),
-            2 => Some(Beehive),
+            1 => Some(ReleaseCodename::Afro),
+            2 => Some(ReleaseCodename::Beehive),
             3 => Some(if self.release.minor >= 5 {
-                Dreadlocks
+                ReleaseCodename::Dreadlocks
             } else {
-                Dreadlocks2
+                ReleaseCodename::Dreadlocks2
             }),
             4 => Some(if self.release.minor >= 5 {
-                Goldilocks
+                ReleaseCodename::Goldilocks
             } else {
-                Goldilocks2
+                ReleaseCodename::Goldilocks2
             }),
-            5 => Some(Jhericurl),
-            6 => Some(Kisscurl),
-            7 => Some(Mullet),
-            8 => Some(Number1),
+            5 => Some(ReleaseCodename::Jhericurl),
+            6 => Some(ReleaseCodename::Kisscurl),
+            7 => Some(ReleaseCodename::Mullet),
+            8 => Some(ReleaseCodename::Number1),
             _ => None,
         };
     }
@@ -59,8 +57,8 @@ impl Firmware {
     }
 
     pub fn load<P>(path: P) -> Result<Firmware, Error>
-        where
-            P: AsRef<Path>,
+    where
+        P: AsRef<Path>,
     {
         let path = path.as_ref();
         let index: HashMap<String, String> =
@@ -83,12 +81,21 @@ impl Firmware {
     }
 
     pub fn list<P>(data_path: P) -> Result<Vec<Firmware>, Error>
-        where
-            P: AsRef<Path>,
+    where
+        P: AsRef<Path>,
     {
         let mut firmwares: Vec<Firmware> = data_path
             .as_ref()
-            .read_dir()?
+            .read_dir()
+            .map_err(|e| {
+                Error::new(
+                    e.kind(),
+                    format!(
+                        "Failed to open data directory {}: {e}",
+                        data_path.as_ref().to_string_lossy()
+                    ),
+                )
+            })?
             .filter_map(|ent| {
                 if let Ok(ent) = ent {
                     return Firmware::load(ent.path()).ok();
@@ -104,7 +111,7 @@ impl Firmware {
         return if cfg!(feature = "linux-install") {
             PathBuf::from("/usr/share/webosbrew/compat-checker/data")
         } else {
-            PathBuf::from("data")
+            PathBuf::from("common/data")
         };
     }
 }

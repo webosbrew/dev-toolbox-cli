@@ -1,0 +1,45 @@
+[package]
+name = "ipk-verify"
+version = "0.1.0"
+edition = "2021"
+description = "Command line tool for checking symbols in an exectuable and libraries in an IPK file"
+authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
+license = "Apache-2.0"
+
+[dependencies]
+serde = "1.0.160"
+serde_json = "1.0.96"
+debpkg = "0.6.0"
+tempfile = "3.5.0"
+path-slash = "0.2.1"
+prettytable-rs = "^0.10"
+semver = "1.0.17"
+is-terminal = "0.4.7"
+term = "0.7.0"
+verify-lib = { path = "../../common/verify", features = ["ipk"] }
+
+
+[dependencies.clap]
+version = "4.2.4"
+features = ["derive"]
+
+[dependencies.fw-lib]
+path = "../../common/fw"
+
+[dependencies.bin-lib]
+path = "../../common/bin"
+
+[dependencies.ipk-lib]
+path = "../../common/ipk"
+
+[features]
+linux-install = ["fw-lib/linux-install"]
+
+[package.metadata.deb]
+name = "webosbrew-toolbox-ipk-verify"
+section = "devel"
+depends = "$auto, webosbrew-toolbox-fw-symbols"
+assets = [
+    ["target/release/ipk-verify", "usr/bin/webosbrew-ipk-verify", "755"]
+]
+features = ["linux-install"]

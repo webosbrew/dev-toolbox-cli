@@ -1,0 +1,21 @@
+[package]
+name = "gen-manifest"
+version = "0.1.0"
+edition = "2021"
+description = "Command line tool for generating manifest for publish from an IPK file"
+authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[dependencies.ipk-lib]
+path = "../../common/ipk"
+
+[package.metadata.deb]
+name = "webosbrew-toolbox-gen-manifest"
+section = "devel"
+assets = [
+    ["target/release/gen-manifest", "usr/bin/webosbrew-gen-manifest", "755"]
+]

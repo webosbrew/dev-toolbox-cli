@@ -1,11 +1,13 @@
 use std::fs::File;
 use std::io::{Error, Stdout, Write};
 
-use crate::OutputFormat;
-use common::{BinVerifyResult, VerifyResult};
 use prettytable::format::{FormatBuilder, LinePosition, LineSeparator, TableFormat};
 use prettytable::{Cell, Table};
 use term::{color, Attr};
+
+use verify_lib::{bin::BinVerifyResult, VerifyResult};
+
+use crate::OutputFormat;
 
 pub trait PrintTable {
     fn result_cell(&self, result: &BinVerifyResult, out_fmt: &OutputFormat) -> Cell {

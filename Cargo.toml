@@ -1,7 +1,11 @@
 [workspace]
 members = [
-    "common",
-    "elf-verify",
-    "ipk-verify",
-    "fw-extract"
+    "common/fw",
+    "common/bin",
+    "common/ipk",
+    "common/verify",
+    "packages/elf-verify",
+    "packages/ipk-verify",
+    "packages/fw-extract",
+    "packages/gen-manifest",
 ]

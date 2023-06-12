@@ -29,6 +29,6 @@ jobs:
 
       - name: Build Packages
         run: |
-          for f in fw-extract elf-verify ipk-verify; do
-            cargo deb -p "$f" || exit 1
+          for f in packages/*; do
+            cargo deb -p $(basename "$f") || exit 1
           done

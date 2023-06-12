@@ -1,13 +1,17 @@
-use crate::FirmwareExtractor;
-use common::{FirmwareInfo, LibraryInfo};
-use path_slash::PathBufExt;
-use regex::Regex;
-use semver::Version;
 use std::collections::BTreeMap;
 use std::fs;
 use std::fs::{DirEntry, File};
 use std::io::{BufRead, BufReader, BufWriter, Error, ErrorKind, Read};
 use std::path::{Path, PathBuf};
+
+use path_slash::PathBufExt;
+use regex::Regex;
+use semver::Version;
+
+use bin_lib::LibraryInfo;
+use fw_lib::FirmwareInfo;
+
+use crate::FirmwareExtractor;
 
 impl FirmwareExtractor {
     pub fn extract_libs<P: AsRef<Path>>(&self, mappings: &mut BTreeMap<String, String>, output: P) {

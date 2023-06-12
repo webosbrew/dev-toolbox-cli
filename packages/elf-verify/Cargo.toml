@@ -1,0 +1,36 @@
+[package]
+name = "elf-verify"
+version = "0.1.0"
+edition = "2021"
+description = "Command line tool for checking symbols in an exectuable"
+authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
+license = "Apache-2.0"
+
+[dependencies]
+serde = "1.0.160"
+serde_json = "1.0.96"
+
+[dependencies.clap]
+version = "4.2.4"
+features = ["derive"]
+
+[dependencies.bin-lib]
+path = "../../common/bin"
+
+[dependencies.fw-lib]
+path = "../../common/fw"
+
+[dependencies.verify-lib]
+path = "../../common/verify"
+
+[features]
+linux-install = ["fw-lib/linux-install"]
+
+[package.metadata.deb]
+name = "webosbrew-toolbox-elf-verify"
+section = "devel"
+depends = "$auto, webosbrew-toolbox-fw-symbols"
+assets = [
+    ["target/release/elf-verify", "usr/bin/webosbrew-elf-verify", "755"]
+]
+features = ["linux-install"]

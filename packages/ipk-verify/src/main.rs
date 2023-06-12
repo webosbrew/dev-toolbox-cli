@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use std::fs::File;
 use std::io::{Error, Write};
 use std::iter;
@@ -8,18 +7,15 @@ use clap::Parser;
 use is_terminal::IsTerminal;
 use prettytable::{Cell, Row, Table};
 use semver::VersionReq;
-use serde::Deserialize;
 
-use common::{
-    BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware,
-};
+use fw_lib::Firmware;
+use ipk_lib::Package;
+use verify_lib::ipk::{ComponentVerifyResult, PackageVerifyResult};
+use verify_lib::VerifyWithFirmware;
 
 use crate::output::ReportOutput;
 
-mod component;
-mod links;
 mod output;
-mod package;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -180,43 +176,4 @@ fn print_component_results(
         out.write_fmt(format_args!("Skip because this component is not native\n"))?;
     }
     return Ok(());
-}
-
-#[derive(Debug)]
-struct Package {
-    id: String,
-    app: Component,
-    services: Vec<Component>,
-}
-
-#[derive(Debug)]
-struct Component {
-    id: String,
-    exe: Option<BinaryInfo>,
-    libs: Vec<LibraryInfo>,
-}
-
-#[derive(Debug)]
-struct Symlinks {
-    mapping: HashMap<PathBuf, PathBuf>,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct PackageInfo {
-    app: String,
-    #[serde(default)]
-    services: Vec<String>,
-}
-
-#[derive(Debug)]
-struct PackageVerifyResult {
-    app: ComponentVerifyResult,
-    services: Vec<ComponentVerifyResult>,
-}
-
-#[derive(Debug)]
-struct ComponentVerifyResult {
-    id: String,
-    exe: Option<BinVerifyResult>,
-    libs: Vec<(bool, BinVerifyResult)>,
 }
