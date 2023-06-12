@@ -42,8 +42,6 @@ pub trait PrintTable {
     }
 
     fn print_table(&mut self, table: &Table) -> Result<(), Error>;
-
-    fn print_details(&mut self, );
 }
 
 pub trait ReportOutput: PrintTable + Write {}

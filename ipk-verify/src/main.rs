@@ -11,7 +11,7 @@ use semver::VersionReq;
 use serde::Deserialize;
 
 use common::{
-    BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyResult, VerifyWithFirmware,
+    BinVerifyResult, BinaryInfo, Firmware, LibraryInfo, VerifyWithFirmware,
 };
 
 use crate::output::ReportOutput;
@@ -36,7 +36,7 @@ struct Args {
 }
 
 #[derive(Debug, Clone, PartialEq, clap::ValueEnum)]
-enum OutputFormat {
+pub enum OutputFormat {
     Markdown,
     Terminal,
     Plain,
