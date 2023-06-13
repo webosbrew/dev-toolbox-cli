@@ -1,7 +1,7 @@
 use fw_lib::Firmware;
 use ipk_lib::Package;
 
-use crate::{bin::BinVerifyResult, VerifyWithFirmware};
+use crate::{bin::BinVerifyResult, VerifyResult, VerifyWithFirmware};
 
 pub mod component;
 
@@ -35,5 +35,11 @@ impl VerifyWithFirmware<PackageVerifyResult> for Package {
                 .map(|svc| svc.verify(firmware))
                 .collect(),
         };
+    }
+}
+
+impl VerifyResult for PackageVerifyResult {
+    fn is_good(&self) -> bool {
+        return self.app.is_good() && self.services.iter().all(|s| s.is_good());
     }
 }

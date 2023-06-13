@@ -20,7 +20,7 @@ struct Args {
     #[arg(short = 'w', long)]
     rewrite: bool,
     #[arg(short, long, action = clap::ArgAction::Count)]
-    debug: u8,
+    verbose: u8,
 }
 
 struct FirmwareExtractor {

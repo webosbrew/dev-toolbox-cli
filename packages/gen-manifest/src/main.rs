@@ -21,6 +21,8 @@ struct Args {
     link: String,
     #[arg(short, long, value_enum)]
     root: Option<RootRequired>,
+    #[arg(short, long, action = clap::ArgAction::Count)]
+    verbose: u8,
 }
 
 #[derive(Debug, Clone, PartialEq, ValueEnum)]
