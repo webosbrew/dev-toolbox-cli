@@ -18,29 +18,9 @@ impl VerifyWithFirmware<BinVerifyResult> for BinaryInfo {
                 .or_else(|| self.find_library(name));
         };
 
-        fn resolve_symbols<F>(
-            lib: &LibraryInfo,
-            undefined: &mut Vec<String>,
-            visited: &mut HashSet<String>,
-            lib_resolver: &F,
-        ) where
-            F: Fn(&str) -> Option<LibraryInfo>,
-        {
-            undefined.retain(|symbol| !lib.has_symbol(symbol));
-            for needed in &lib.needed {
-                if visited.contains(needed) {
-                    continue;
-                }
-                visited.insert(needed.clone());
-                if let Some(needed) = lib_resolver(needed) {
-                    resolve_symbols(&needed, undefined, visited, lib_resolver);
-                }
-            }
-        }
-
         for needed in &self.needed {
             if let Some(lib) = find_library(needed) {
-                resolve_symbols(
+                recursive_resolve_symbols(
                     &lib,
                     &mut result.undefined_sym,
                     &mut visited_libs,
@@ -51,6 +31,26 @@ impl VerifyWithFirmware<BinVerifyResult> for BinaryInfo {
             }
         }
         return result;
+    }
+}
+
+pub(crate) fn recursive_resolve_symbols<F>(
+    lib: &LibraryInfo,
+    undefined: &mut Vec<String>,
+    visited: &mut HashSet<String>,
+    lib_resolver: &F,
+) where
+    F: Fn(&str) -> Option<LibraryInfo>,
+{
+    undefined.retain(|symbol| !lib.has_symbol(symbol));
+    for needed in &lib.needed {
+        if visited.contains(needed) {
+            continue;
+        }
+        visited.insert(needed.clone());
+        if let Some(needed) = lib_resolver(needed) {
+            recursive_resolve_symbols(&needed, undefined, visited, lib_resolver);
+        }
     }
 }
 

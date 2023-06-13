@@ -11,7 +11,7 @@ pub struct BinaryInfo {
     pub undefined: Vec<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LibraryInfo {
     pub name: String,
     pub needed: Vec<String>,

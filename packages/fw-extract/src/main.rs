@@ -6,8 +6,8 @@ use std::path::PathBuf;
 use std::process::exit;
 
 use clap::Parser;
-use regex::Regex;
 use fw_lib::FirmwareInfo;
+use regex::Regex;
 
 mod extractor;
 

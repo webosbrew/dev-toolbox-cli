@@ -5,28 +5,38 @@ use prettytable::format::{FormatBuilder, LinePosition, LineSeparator, TableForma
 use prettytable::{Cell, Table};
 use term::{color, Attr};
 
-use verify_lib::{bin::BinVerifyResult, VerifyResult};
+use verify_lib::ipk::ComponentBinVerifyResult;
 
 use crate::OutputFormat;
 
 pub trait PrintTable {
-    fn result_cell(&self, result: &BinVerifyResult, out_fmt: &OutputFormat) -> Cell {
-        return if result.is_good() {
-            let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
-                ":ok:"
-            } else {
-                "OK"
-            });
-            cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
-            cell
-        } else {
-            let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
-                ":x:"
-            } else {
-                "FAIL"
-            });
-            cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
-            cell
+    fn result_cell(&self, result: &ComponentBinVerifyResult, out_fmt: &OutputFormat) -> Cell {
+        return match result {
+            ComponentBinVerifyResult::Ok { .. } => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":ok:"
+                } else {
+                    "OK"
+                });
+                cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
+                cell
+            }
+            ComponentBinVerifyResult::Skipped { .. } => {
+                Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":zero:"
+                } else {
+                    "SKIP"
+                })
+            }
+            ComponentBinVerifyResult::Failed(_) => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":x:"
+                } else {
+                    "FAIL"
+                });
+                cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
+                cell
+            }
         };
     }
 
@@ -46,7 +56,23 @@ pub trait PrintTable {
     fn print_table(&mut self, table: &Table) -> Result<(), Error>;
 }
 
-pub trait ReportOutput: PrintTable + Write {}
+pub trait ReportOutput: PrintTable + Write {
+    fn h2(&mut self, heading: &str) -> Result<(), Error> {
+        return self.write_fmt(format_args!("## {heading}\n\n"));
+    }
+
+    fn h3(&mut self, heading: &str) -> Result<(), Error> {
+        return self.write_fmt(format_args!("### {heading}\n\n"));
+    }
+
+    fn h4(&mut self, heading: &str) -> Result<(), Error> {
+        return self.write_fmt(format_args!("#### {heading}\n\n"));
+    }
+
+    fn h5(&mut self, heading: &str) -> Result<(), Error> {
+        return self.write_fmt(format_args!("##### {heading}\n\n"));
+    }
+}
 
 impl PrintTable for Stdout {
     fn print_table(&mut self, table: &Table) -> Result<(), Error> {

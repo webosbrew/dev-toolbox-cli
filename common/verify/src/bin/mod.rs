@@ -1,6 +1,6 @@
-mod binary;
+pub(crate) mod binary;
 
-#[derive(Debug)]
+#[derive(Debug, Eq, PartialEq)]
 pub struct BinVerifyResult {
     pub name: String,
     pub missing_lib: Vec<String>,

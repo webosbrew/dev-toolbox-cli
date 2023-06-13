@@ -3,7 +3,7 @@ use ipk_lib::Package;
 
 use crate::{bin::BinVerifyResult, VerifyWithFirmware};
 
-mod component;
+pub mod component;
 
 #[derive(Debug)]
 pub struct PackageVerifyResult {
@@ -14,8 +14,15 @@ pub struct PackageVerifyResult {
 #[derive(Debug)]
 pub struct ComponentVerifyResult {
     pub id: String,
-    pub exe: Option<BinVerifyResult>,
-    pub libs: Vec<(bool, BinVerifyResult)>,
+    pub exe: ComponentBinVerifyResult,
+    pub libs: Vec<(bool, ComponentBinVerifyResult)>,
+}
+
+#[derive(Debug, Eq, PartialEq)]
+pub enum ComponentBinVerifyResult {
+    Skipped { name: String },
+    Ok { name: String },
+    Failed(BinVerifyResult),
 }
 
 impl VerifyWithFirmware<PackageVerifyResult> for Package {
