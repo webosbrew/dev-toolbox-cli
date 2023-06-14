@@ -21,13 +21,7 @@ pub trait PrintTable {
                 cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
                 cell
             }
-            ComponentBinVerifyResult::Skipped { .. } => {
-                Cell::new(if *out_fmt == OutputFormat::Markdown {
-                    ":zero:"
-                } else {
-                    "SKIP"
-                })
-            }
+            ComponentBinVerifyResult::Skipped { .. } => Cell::new("SKIP"),
             ComponentBinVerifyResult::Failed(_) => {
                 let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
                     ":x:"
