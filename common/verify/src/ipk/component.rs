@@ -85,6 +85,7 @@ impl<T> VerifyWithFirmware<ComponentVerifyResult> for Component<T> {
                 let verify_result = self.verify_bin(
                     &BinaryInfo {
                         name: lib.name.clone(),
+                        dir: Default::default(),
                         rpath: Default::default(),
                         needed: lib.needed.clone(),
                         undefined: lib.undefined.clone(),

@@ -12,7 +12,9 @@ use crate::{BinaryInfo, LibraryInfo};
 impl BinaryInfo {
     pub fn find_library(&self, name: &str) -> Option<LibraryInfo> {
         for rpath in &self.rpath {
-            let path = Path::new(rpath).join(name);
+            let path =
+                Path::new(&rpath.replace("$ORIGIN", &self.dir.as_ref().unwrap().to_string_lossy()))
+                    .join(name);
             if let Ok(f) = File::open(&path) {
                 return LibraryInfo::parse(f, false, path.file_name().unwrap().to_string_lossy())
                     .map_err(|e| {
@@ -24,10 +26,11 @@ impl BinaryInfo {
         return None;
     }
 
-    pub fn parse<S, N>(source: S, name: N) -> Result<Self, elf::ParseError>
+    pub fn parse<S, N, D>(source: S, name: N, dir: Option<D>) -> Result<Self, elf::ParseError>
     where
         S: std::io::Read + std::io::Seek,
         N: AsRef<str>,
+        D: AsRef<Path>,
     {
         let mut rpath = Vec::<String>::new();
         let mut needed = Vec::<String>::new();
@@ -89,6 +92,7 @@ impl BinaryInfo {
 
         return Ok(Self {
             name: String::from(name.as_ref()),
+            dir: dir.map(|d| d.as_ref().to_path_buf()),
             rpath,
             needed,
             undefined,
@@ -106,7 +110,7 @@ mod tests {
     fn test_parse() {
         let mut content = Cursor::new(include_bytes!("fixtures/sample.bin"));
         let info =
-            BinaryInfo::parse(&mut content, "sample.bin").expect("should not have any error");
+            BinaryInfo::parse(&mut content, "sample.bin", None).expect("should not have any error");
         assert_eq!(info.needed[0], "libc.so.6");
     }
 }

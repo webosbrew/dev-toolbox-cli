@@ -61,6 +61,7 @@ impl Component<AppInfo> {
                         )
                     })?,
                     exe_path.file_name().unwrap().to_string_lossy(),
+                    exe_path.parent()
                 )
                 .map_err(|e| {
                     Error::new(
@@ -96,6 +97,7 @@ impl Component<ServiceInfo> {
                 BinaryInfo::parse(
                     File::open(dir.join(&exe_path))?,
                     exe_path.file_name().unwrap().to_string_lossy(),
+                    exe_path.parent()
                 )
                 .map_err(|e| {
                     Error::new(
