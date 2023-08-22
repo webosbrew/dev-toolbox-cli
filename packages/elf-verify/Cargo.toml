@@ -1,17 +1,17 @@
 [package]
 name = "elf-verify"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Command line tool for checking symbols in an exectuable"
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
 license = "Apache-2.0"
 
 [dependencies]
-serde = "1.0.160"
+serde = "1.0.183"
 serde_json = "1.0.96"
 
 [dependencies.clap]
-version = "4.2.4"
+version = "4.3.23"
 features = ["derive"]
 
 [dependencies.bin-lib]
