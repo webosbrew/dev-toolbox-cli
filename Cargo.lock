@@ -905,7 +905,6 @@ name = "verify-lib"
 version = "0.1.0"
 dependencies = [
  "bin-lib",
- "fw-lib",
  "ipk-lib",
 ]
 

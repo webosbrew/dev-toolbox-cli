@@ -111,7 +111,7 @@ impl Firmware {
         return if cfg!(feature = "linux-install") {
             PathBuf::from("/usr/share/webosbrew/compat-checker/data")
         } else {
-            PathBuf::from("common/data")
+            PathBuf::from("common").join("data")
         };
     }
 }

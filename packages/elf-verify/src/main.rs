@@ -4,7 +4,7 @@ use std::path::PathBuf;
 use bin_lib::BinaryInfo;
 use clap::Parser;
 use fw_lib::Firmware;
-use verify_lib::VerifyWithFirmware;
+use verify_lib::Verify;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -19,7 +19,10 @@ struct Args {
 fn main() {
     let args = Args::parse();
     for executable in args.executables {
-        let file = File::open(&executable).unwrap();
+        let Ok(file) = File::open(&executable) else {
+            eprintln!("Failed to open file {}", executable.to_string_lossy());
+            continue;
+        };
         let mut info = BinaryInfo::parse(file, executable.file_name().unwrap().to_string_lossy())
             .expect("parse error");
         info.rpath.extend(args.lib_paths.clone());
@@ -27,7 +30,7 @@ fn main() {
             println!(
                 "Verify result for firmware {} {:?}",
                 firmware.info,
-                info.verify(&firmware)
+                info.verify(&|name| firmware.find_library(name))
             );
         }
     }

@@ -1,34 +1,30 @@
 use std::collections::HashSet;
 
 use bin_lib::{BinaryInfo, LibraryInfo};
-use fw_lib::Firmware;
 
 use crate::bin::BinVerifyResult;
-use crate::{VerifyResult, VerifyWithFirmware};
+use crate::{Verify, VerifyResult};
 
-impl VerifyWithFirmware<BinVerifyResult> for BinaryInfo {
-    fn verify(&self, firmware: &Firmware) -> BinVerifyResult {
+impl Verify<BinVerifyResult> for BinaryInfo {
+    fn verify<F>(&self, find_library: &F) -> BinVerifyResult
+    where
+        F: Fn(&str) -> Option<LibraryInfo>,
+    {
         let mut result = BinVerifyResult::new(self.name.clone());
         result.undefined_sym.extend(self.undefined.clone());
         let mut visited_libs: HashSet<String> = Default::default();
 
-        let find_library = |name: &str| -> Option<LibraryInfo> {
-            return firmware
-                .find_library(name)
-                .or_else(|| self.find_library(name));
-        };
-
         for needed in &self.needed {
-            if let Some(lib) = find_library(needed) {
-                recursive_resolve_symbols(
-                    &lib,
-                    &mut result.undefined_sym,
-                    &mut visited_libs,
-                    &find_library,
-                );
-            } else {
+            let Some(lib) = find_library(needed) else {
                 result.missing_lib.push(needed.clone());
-            }
+                continue;
+            };
+            recursive_resolve_symbols(
+                &lib,
+                &mut result.undefined_sym,
+                &mut visited_libs,
+                &find_library,
+            );
         }
         return result;
     }
@@ -48,9 +44,10 @@ pub(crate) fn recursive_resolve_symbols<F>(
             continue;
         }
         visited.insert(needed.clone());
-        if let Some(needed) = lib_resolver(needed) {
-            recursive_resolve_symbols(&needed, undefined, visited, lib_resolver);
-        }
+        let Some(needed) = lib_resolver(needed)  else {
+            continue;
+        };
+        recursive_resolve_symbols(&needed, undefined, visited, lib_resolver);
     }
 }
 

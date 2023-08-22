@@ -13,7 +13,7 @@ use fw_lib::Firmware;
 use ipk_lib::Package;
 use verify_lib::bin::BinVerifyResult;
 use verify_lib::ipk::{ComponentBinVerifyResult, ComponentVerifyResult, PackageVerifyResult};
-use verify_lib::{VerifyResult, VerifyWithFirmware};
+use verify_lib::{VerifyResult, Verify};
 
 use crate::output::ReportOutput;
 
@@ -96,7 +96,7 @@ fn main() {
         let results: Vec<(&Firmware, PackageVerifyResult)> = firmwares
             .iter()
             .map(|fw| {
-                let verify = package.verify(&fw);
+                let verify = package.verify(&|name| fw.find_library(name));
                 return (fw, verify);
             })
             .collect();

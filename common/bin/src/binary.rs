@@ -1,36 +1,15 @@
-use std::fs::File;
-use std::io::{Error, ErrorKind};
-use std::path::Path;
-
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
 use elf::{abi, ElfStream};
 
-use crate::{BinaryInfo, LibraryInfo};
+use crate::BinaryInfo;
 
 impl BinaryInfo {
-    pub fn find_library(&self, name: &str) -> Option<LibraryInfo> {
-        for rpath in &self.rpath {
-            let path =
-                Path::new(&rpath.replace("$ORIGIN", &self.dir.as_ref().unwrap().to_string_lossy()))
-                    .join(name);
-            if let Ok(f) = File::open(&path) {
-                return LibraryInfo::parse(f, false, path.file_name().unwrap().to_string_lossy())
-                    .map_err(|e| {
-                        Error::new(ErrorKind::InvalidData, format!("Bad library info: {e:?}"))
-                    })
-                    .ok();
-            }
-        }
-        return None;
-    }
-
-    pub fn parse<S, N, D>(source: S, name: N, dir: Option<D>) -> Result<Self, elf::ParseError>
+    pub fn parse<S, N>(source: S, name: N) -> Result<Self, elf::ParseError>
     where
         S: std::io::Read + std::io::Seek,
         N: AsRef<str>,
-        D: AsRef<Path>,
     {
         let mut rpath = Vec::<String>::new();
         let mut needed = Vec::<String>::new();
@@ -50,13 +29,12 @@ impl BinaryInfo {
                         dynstr_table.get(entry.d_val() as usize).unwrap(),
                     ));
                 }
-                abi::DT_RPATH | abi::DT_RUNPATH => rpath.push(
+                abi::DT_RPATH | abi::DT_RUNPATH => rpath.extend(
                     dynstr_table
                         .get(entry.d_val() as usize)
                         .unwrap()
                         .split(":")
-                        .map(|s| String::from(s))
-                        .collect(),
+                        .map(|s| String::from(s)),
                 ),
                 _ => {}
             }
@@ -81,10 +59,12 @@ impl BinaryInfo {
                 if !sym.is_undefined() || sym.st_name == 0 || sym.st_bind() == abi::STB_WEAK {
                     return vec![];
                 }
-                if let Some(ver_table) = &ver_table {
-                    if let Some(ver) = ver_table.get_requirement(index).ok().flatten() {
-                        return vec![format!("{name}@{}", ver.name)];
-                    }
+                if let Some(ver) = ver_table
+                    .as_ref()
+                    .map(|t| t.get_requirement(index).ok().flatten())
+                    .flatten()
+                {
+                    return vec![format!("{name}@{}", ver.name)];
                 }
                 return vec![name.clone()];
             })
@@ -92,7 +72,6 @@ impl BinaryInfo {
 
         return Ok(Self {
             name: String::from(name.as_ref()),
-            dir: dir.map(|d| d.as_ref().to_path_buf()),
             rpath,
             needed,
             undefined,
@@ -110,7 +89,7 @@ mod tests {
     fn test_parse() {
         let mut content = Cursor::new(include_bytes!("fixtures/sample.bin"));
         let info =
-            BinaryInfo::parse(&mut content, "sample.bin", None).expect("should not have any error");
+            BinaryInfo::parse(&mut content, "sample.bin").expect("should not have any error");
         assert_eq!(info.needed[0], "libc.so.6");
     }
 }

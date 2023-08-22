@@ -1,7 +1,7 @@
-use fw_lib::Firmware;
+use bin_lib::LibraryInfo;
 use ipk_lib::Package;
 
-use crate::{bin::BinVerifyResult, VerifyResult, VerifyWithFirmware};
+use crate::{bin::BinVerifyResult, VerifyResult, Verify};
 
 pub mod component;
 
@@ -25,14 +25,17 @@ pub enum ComponentBinVerifyResult {
     Failed(BinVerifyResult),
 }
 
-impl VerifyWithFirmware<PackageVerifyResult> for Package {
-    fn verify(&self, firmware: &Firmware) -> PackageVerifyResult {
+impl Verify<PackageVerifyResult> for Package {
+    fn verify<F>(&self, find_library: &F) -> PackageVerifyResult
+    where
+        F: Fn(&str) -> Option<LibraryInfo>,
+    {
         return PackageVerifyResult {
-            app: self.app.verify(firmware),
+            app: self.app.verify(find_library),
             services: self
                 .services
                 .iter()
-                .map(|svc| svc.verify(firmware))
+                .map(|svc| svc.verify(find_library))
                 .collect(),
         };
     }
