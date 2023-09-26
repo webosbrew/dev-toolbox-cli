@@ -367,6 +367,7 @@ dependencies = [
  "bin-lib",
  "clap",
  "fw-lib",
+ "semver",
  "serde",
  "serde_json",
  "verify-lib",

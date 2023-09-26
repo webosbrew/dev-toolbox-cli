@@ -56,6 +56,7 @@ impl Component<AppInfo> {
                 )
             })?,
             exe_path.file_name().unwrap().to_string_lossy(),
+            true,
         )
         .map_err(|e| {
             Error::new(
@@ -94,6 +95,7 @@ impl Component<ServiceInfo> {
         let bin_info = BinaryInfo::parse(
             File::open(dir.join(&exe_path))?,
             exe_path.file_name().unwrap().to_string_lossy(),
+            true,
         )
         .map_err(|e| {
             Error::new(

@@ -6,7 +6,7 @@ use elf::{abi, ElfStream};
 use crate::BinaryInfo;
 
 impl BinaryInfo {
-    pub fn parse<S, N>(source: S, name: N) -> Result<Self, elf::ParseError>
+    pub fn parse<S, N>(source: S, name: N, with_rpath: bool) -> Result<Self, elf::ParseError>
     where
         S: std::io::Read + std::io::Seek,
         N: AsRef<str>,
@@ -29,13 +29,17 @@ impl BinaryInfo {
                         dynstr_table.get(entry.d_val() as usize).unwrap(),
                     ));
                 }
-                abi::DT_RPATH | abi::DT_RUNPATH => rpath.extend(
-                    dynstr_table
-                        .get(entry.d_val() as usize)
-                        .unwrap()
-                        .split(":")
-                        .map(|s| String::from(s)),
-                ),
+                abi::DT_RPATH | abi::DT_RUNPATH => {
+                    if with_rpath {
+                        rpath.extend(
+                            dynstr_table
+                                .get(entry.d_val() as usize)
+                                .unwrap()
+                                .split(":")
+                                .map(|s| String::from(s)),
+                        )
+                    }
+                }
                 _ => {}
             }
         }
@@ -89,7 +93,7 @@ mod tests {
     fn test_parse() {
         let mut content = Cursor::new(include_bytes!("fixtures/sample.bin"));
         let info =
-            BinaryInfo::parse(&mut content, "sample.bin").expect("should not have any error");
+            BinaryInfo::parse(&mut content, "sample.bin", true).expect("should not have any error");
         assert_eq!(info.needed[0], "libc.so.6");
     }
 }
