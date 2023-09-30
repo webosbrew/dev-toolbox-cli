@@ -4,6 +4,7 @@ use std::fs;
 use std::fs::File;
 use std::io::{Error, ErrorKind};
 use std::path::{Path, PathBuf};
+use common_path::common_path;
 
 use path_slash::CowExt;
 
@@ -137,15 +138,19 @@ impl<T> Component<T> {
     where
         P: AsRef<Path>,
     {
+        let origin = bin_path.as_ref().parent().unwrap();
         return rpath
             .iter()
             .filter_map(|p| {
-                PathBuf::from(p.replace(
-                    "$ORIGIN",
-                    bin_path.as_ref().parent().unwrap().to_str().unwrap(),
-                ))
-                .canonicalize()
-                .ok()
+                PathBuf::from(p.replace("$ORIGIN", origin.to_string_lossy().as_ref()))
+                    .canonicalize()
+                    .ok()
+            })
+            .filter(|p| {
+                let Some(common) = common_path(&p, &origin) else {
+                    return false;
+                };
+                return common.components().count() > 1;
             })
             .collect();
     }
