@@ -1,10 +1,9 @@
 use std::cmp::Ordering;
-use std::ops::Deref;
 
+use elf::{abi, ElfStream, ParseError};
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
-use elf::{abi, ElfStream, ParseError};
 
 use crate::LibraryInfo;
 
@@ -22,7 +21,7 @@ const IGNORED_SYMBOLS: &[&str] = &[
 
 impl LibraryInfo {
     pub fn has_name(&self, name: &str) -> bool {
-        return self.name == name || self.names.iter().find(|n| n.deref() == name).is_some();
+        return self.name == name || self.names.iter().find(|n| *n == name).is_some();
     }
 
     pub fn has_symbol(&self, symbol: &str) -> bool {
@@ -42,9 +41,9 @@ impl LibraryInfo {
     }
 
     pub fn parse<S, N>(source: S, with_undefined: bool, name: N) -> Result<Self, ParseError>
-    where
-        S: std::io::Read + std::io::Seek,
-        N: AsRef<str>,
+        where
+            S: std::io::Read + std::io::Seek,
+            N: AsRef<str>,
     {
         let mut needed = Vec::<String>::new();
         let mut elf = ElfStream::<AnyEndian, S>::open_stream(source)?;

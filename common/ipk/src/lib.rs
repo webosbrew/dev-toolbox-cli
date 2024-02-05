@@ -11,6 +11,7 @@ mod links;
 #[derive(Debug)]
 pub struct Package {
     pub id: String,
+    pub installed_size: Option<u64>,
     pub app: Component<AppInfo>,
     pub services: Vec<Component<ServiceInfo>>,
 }

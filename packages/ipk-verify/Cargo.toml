@@ -9,14 +9,14 @@ license = "Apache-2.0"
 [dependencies]
 serde = { workspace = true }
 serde_json = { workspace = true }
-debpkg = "0.6.0"
-tempfile = "3.8.0"
+debpkg = { workspace = true }
+tempfile = { workspace = true }
 path-slash = { workspace = true }
 prettytable-rs = "^0.10"
 semver = { workspace = true }
-is-terminal = "0.4.9"
+is-terminal = "0.4.10"
 term = "0.7.0"
-clap = { version = "4.4.6", features = ["derive"] }
+clap = { workspace = true, features = ["derive"] }
 verify-lib = { path = "../../common/verify", features = ["ipk"] }
 
 [dependencies.fw-lib]

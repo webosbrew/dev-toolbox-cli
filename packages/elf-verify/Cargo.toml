@@ -12,7 +12,7 @@ serde_json = { workspace = true }
 semver = { workspace = true }
 
 [dependencies.clap]
-version = "4.3.23"
+workspace = true
 features = ["derive"]
 
 [dependencies.bin-lib]

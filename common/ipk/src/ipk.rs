@@ -15,13 +15,16 @@ impl Package {
     }
 
     pub fn parse<R>(read: R) -> Result<Self, Error>
-    where
-        R: Read,
+        where R: Read,
     {
         let mut deb = DebPkg::parse(read).map_err(Self::deb_err)?;
         let control = Control::extract(deb.control().unwrap()).map_err(Self::deb_err)?;
         let mut data = deb.data().map_err(Self::deb_err)?;
+
         let id = String::from(control.name());
+        let installed_size = control.get("Installed-Size").filter(|s| *s != "1234")
+            .map(|s| u64::from_str_radix(s, 10).ok()).flatten();
+
         let tmp = tempfile::TempDir::new()?;
         let mut links = HashMap::new();
         for entry in data.entries()? {
@@ -67,7 +70,7 @@ impl Package {
             )?;
             services.push(service);
         }
-        return Ok(Self { id, app, services });
+        return Ok(Self { id, installed_size, app, services });
     }
 
     fn deb_err(e: debpkg::Error) -> Error {

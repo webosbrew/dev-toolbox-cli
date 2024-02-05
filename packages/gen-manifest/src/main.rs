@@ -66,6 +66,8 @@ struct HomebrewManifest {
     root_required: Option<RootRequired>,
     ipk_url: String,
     ipk_hash: IpkHash,
+    ipk_size: u64,
+    installed_size: Option<u64>
 }
 
 fn main() {
@@ -86,6 +88,8 @@ fn main() {
         root_required: args.root,
         ipk_url: String::from(args.pkgfile.file_name().unwrap().to_string_lossy()),
         ipk_hash: IpkHash::from(&args.pkgfile).unwrap(),
+        ipk_size: args.pkgfile.metadata().unwrap().len(),
+        installed_size: package.installed_size,
     };
     if let Some(output) = args.output {
         serde_json::to_writer_pretty(&mut File::create(&output).unwrap(), &manifest).unwrap();

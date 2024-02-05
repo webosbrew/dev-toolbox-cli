@@ -16,7 +16,7 @@ fw-lib = { path = "../../common/fw" }
 bin-lib = { path = "../../common/bin" }
 
 [dependencies.clap]
-version = "4.3.23"
+workspace = true
 features = ["derive"]
 
 [features]

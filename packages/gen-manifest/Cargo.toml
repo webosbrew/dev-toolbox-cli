@@ -1,6 +1,6 @@
 [package]
 name = "gen-manifest"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Command line tool for generating manifest for publish from an IPK file"
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
@@ -13,7 +13,7 @@ serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 clap = { workspace = true, features = ["derive"] }
 ipk-lib = { path = "../../common/ipk" }
-sha256 = "1.4.0"
+sha256 = { version = "1.5.0", default-features = false }
 
 [package.metadata.deb]
 name = "webosbrew-toolbox-gen-manifest"
