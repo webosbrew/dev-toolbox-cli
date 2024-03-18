@@ -60,7 +60,7 @@ struct HomebrewManifest {
     title: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     app_description: Option<String>,
-    icon_url: String,
+    icon_uri: String,
     source_url: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     root_required: Option<RootRequired>,
@@ -83,7 +83,7 @@ fn main() {
         r#type: app_info.r#type,
         title: app_info.title,
         app_description: app_info.app_description,
-        icon_url: args.icon,
+        icon_uri: args.icon,
         source_url: args.link,
         root_required: args.root,
         ipk_url: String::from(args.pkgfile.file_name().unwrap().to_string_lossy()),
