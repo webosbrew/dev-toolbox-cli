@@ -6,6 +6,10 @@ authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
 license = "Apache-2.0"
 description = "Firmware symbols data and extractor utility"
 
+[[bin]]
+name = "webosbrew-fw-symbols-extract"
+path = "src/main.rs"
+
 [dependencies]
 regex = { workspace = true }
 path-slash = { workspace = true }
@@ -26,7 +30,6 @@ linux-install = ["fw-lib/linux-install"]
 name = "webosbrew-toolbox-fw-symbols"
 section = "devel"
 assets = [
-    ["target/release/fw-extract", "usr/bin/webosbrew-fw-symbols-extract", "755"],
     ["../../common/data/**/*", "usr/share/webosbrew/compat-checker/data/", "644"]
 ]
 features = ["linux-install"]

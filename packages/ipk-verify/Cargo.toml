@@ -6,6 +6,10 @@ description = "Command line tool for checking symbols in an exectuable and libra
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
 license = "Apache-2.0"
 
+[[bin]]
+name = "webosbrew-ipk-verify"
+path = "src/main.rs"
+
 [dependencies]
 serde = { workspace = true }
 serde_json = { workspace = true }
@@ -14,7 +18,7 @@ tempfile = { workspace = true }
 path-slash = { workspace = true }
 prettytable-rs = "^0.10"
 semver = { workspace = true }
-is-terminal = "0.4.10"
+is-terminal = "0.4.12"
 term = "0.7.0"
 clap = { workspace = true, features = ["derive"] }
 verify-lib = { path = "../../common/verify", features = ["ipk"] }
@@ -35,7 +39,4 @@ linux-install = ["fw-lib/linux-install"]
 name = "webosbrew-toolbox-ipk-verify"
 section = "devel"
 depends = "$auto, webosbrew-toolbox-fw-symbols"
-assets = [
-    ["target/release/ipk-verify", "usr/bin/webosbrew-ipk-verify", "755"]
-]
 features = ["linux-install"]

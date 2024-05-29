@@ -6,6 +6,10 @@ description = "Command line tool for checking symbols in an exectuable"
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
 license = "Apache-2.0"
 
+[[bin]]
+name = "webosbrew-elf-verify"
+path = "src/main.rs"
+
 [dependencies]
 serde = { workspace = true }
 serde_json = { workspace = true }
@@ -31,7 +35,4 @@ linux-install = ["fw-lib/linux-install"]
 name = "webosbrew-toolbox-elf-verify"
 section = "devel"
 depends = "$auto, webosbrew-toolbox-fw-symbols"
-assets = [
-    ["target/release/elf-verify", "usr/bin/webosbrew-elf-verify", "755"]
-]
 features = ["linux-install"]

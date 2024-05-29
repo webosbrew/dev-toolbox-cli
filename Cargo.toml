@@ -12,7 +12,7 @@ members = [
 ]
 
 [workspace.dependencies]
-clap = "4.4.18"
+clap = "4.5.4"
 debpkg = "0.6.0"
 path-slash = "0.2.1"
 regex = "1.10.3"
