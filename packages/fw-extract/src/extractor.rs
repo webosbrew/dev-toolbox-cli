@@ -67,7 +67,7 @@ impl FirmwareExtractor {
                         version_str
                             .as_str()
                             .into_version()
-                            .unwrap_or_else(|e| DebVersion {
+                            .unwrap_or_else(|_| DebVersion {
                                 epoch: None,
                                 upstream_version: version_str.clone(),
                                 debian_revision: None,

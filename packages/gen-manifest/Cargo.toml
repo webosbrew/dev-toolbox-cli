@@ -20,6 +20,3 @@ sha256 = { version = "1.5.0", default-features = false }
 [package.metadata.deb]
 name = "webosbrew-toolbox-gen-manifest"
 section = "devel"
-assets = [
-    ["target/release/gen-manifest", "usr/bin/webosbrew-gen-manifest", "755"]
-]
