@@ -41,14 +41,25 @@ fn main() {
 
 fn run(args: Args) -> Result<(), Error> {
     for input in args.inputs {
-        let extractor = FirmwareExtractor::create(&input)?;
+        let Ok(extractor) = FirmwareExtractor::create(&input).map_err(|e| {
+            let msg = format!("Failed to read input {}: {:?}", input.to_string_lossy(), e);
+            eprintln!("{msg}");
+            Error::new(e.kind(), msg)
+        }) else {
+            continue;
+        };
 
         let output = args.output.join(format!(
             "{}-{}",
             extractor.fw_info.version, extractor.fw_info.ota_id
         ));
         if !output.exists() {
-            fs::create_dir_all(output.clone())?;
+            fs::create_dir_all(output.clone()).map_err(|e| {
+                Error::new(
+                    e.kind(),
+                    format!("Failed to create directory for output: {:?}", e),
+                )
+            })?;
         } else if !args.rewrite {
             println!("Skipping existing {}", extractor.fw_info);
             continue;
@@ -59,14 +70,20 @@ fn run(args: Args) -> Result<(), Error> {
         let mut files_pkg_index: BTreeMap<PathBuf, String> = BTreeMap::new();
         extractor.extract_pkgs(&mut files_pkg_index, &output);
         extractor.extract_libs(&files_pkg_index, &mut lib_index, &output);
-        let writer = BufWriter::new(File::create(output.join("index.json"))?);
+        let writer =
+            BufWriter::new(File::create(output.join("index.json")).map_err(|e| {
+                Error::new(e.kind(), format!("Failed to open index.json: {:?}", e))
+            })?);
         serde_json::to_writer_pretty(writer, &lib_index).map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,
                 format!("Failed to write index {:?}", e),
             )
         })?;
-        let writer = BufWriter::new(File::create(output.join("info.json"))?);
+        let writer = BufWriter::new(
+            File::create(output.join("info.json"))
+                .map_err(|e| Error::new(e.kind(), format!("Failed to open info.json: {:?}", e)))?,
+        );
         serde_json::to_writer_pretty(writer, &extractor.fw_info).map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,

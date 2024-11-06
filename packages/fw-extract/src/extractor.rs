@@ -94,7 +94,10 @@ impl FirmwareExtractor {
                         );
                     }
                     Err(e) => {
-                        eprintln!("{e:?}");
+                        eprintln!(
+                            "Failed to read entry in directory: {}: {e:?}",
+                            lib_path.to_string_lossy()
+                        );
                     }
                 }
             }
