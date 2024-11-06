@@ -1,0 +1,38 @@
+{
+  "name": "libresource_mgr_client_c.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libresource_mgr_client.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "ResourceManagerClientAcquire",
+    "ResourceManagerClientCreate",
+    "ResourceManagerClientCreateWithBusType",
+    "ResourceManagerClientDestroy",
+    "ResourceManagerClientDownSubLevel",
+    "ResourceManagerClientGetConnectionID",
+    "ResourceManagerClientNotifyActivity",
+    "ResourceManagerClientNotifyBackground",
+    "ResourceManagerClientNotifyFocus",
+    "ResourceManagerClientNotifyForeground",
+    "ResourceManagerClientNotifyPipelineStatus",
+    "ResourceManagerClientRegisterPipeline",
+    "ResourceManagerClientRegisterPipelineWithApp",
+    "ResourceManagerClientRelease",
+    "ResourceManagerClientResetSubLevel",
+    "ResourceManagerClientSetAppId",
+    "ResourceManagerClientSetPriorityLevel",
+    "ResourceManagerClientSetPurpose",
+    "ResourceManagerClientTryAcquire",
+    "ResourceManagerClientUnregisterPipeline",
+    "ResourceManagerClientUpSubLevel",
+    "_Z44ResourceManagerClientNotifyForecedForegroundP27ResourceManagerClientHandle",
+    "_ZTIFbPKcS0_S0_S0_S0_E",
+    "_ZTIPFbPKcS0_S0_S0_S0_E",
+    "_ZTSFbPKcS0_S0_S0_S0_E",
+    "_ZTSPFbPKcS0_S0_S0_S0_E"
+  ]
+}

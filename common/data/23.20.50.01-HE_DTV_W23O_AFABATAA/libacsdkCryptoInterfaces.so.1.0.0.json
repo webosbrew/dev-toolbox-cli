@@ -1,0 +1,11 @@
+{
+  "name": "libacsdkCryptoInterfaces.so.1",
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK21acsdkCryptoInterfaceslsERSoNS0_10DigestTypeE",
+    "_ZN14alexaClientSDK21acsdkCryptoInterfaceslsERSoNS0_13AlgorithmTypeE"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "libSoftwareComponentReporter.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgent16addConfigurationESt10shared_ptrINS_9avsCommon3avs22ComponentConfigurationEE",
+    "_ZN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgent27getCapabilityConfigurationsEv",
+    "_ZN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgent28buildCapabilityConfigurationEv",
+    "_ZN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgent6createEv",
+    "_ZTIN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgentE",
+    "_ZTIN14alexaClientSDK9avsCommon13sdkInterfaces26ComponentReporterInterfaceE",
+    "_ZTIN14alexaClientSDK9avsCommon13sdkInterfaces32CapabilityConfigurationInterfaceE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt19_Sp_make_shared_tag",
+    "_ZTSN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgentE",
+    "_ZTSN14alexaClientSDK9avsCommon13sdkInterfaces26ComponentReporterInterfaceE",
+    "_ZTSN14alexaClientSDK9avsCommon13sdkInterfaces32CapabilityConfigurationInterfaceE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt15_Sp_counted_ptrIPN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgentELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt19_Sp_make_shared_tag",
+    "_ZTSSt23_Sp_counted_ptr_inplaceIN14alexaClientSDK9avsCommon3avs23CapabilityConfigurationESaIS3_ELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTVN14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgentE",
+    "_ZThn4_N14alexaClientSDK16capabilityAgents25softwareComponentReporter40SoftwareComponentReporterCapabilityAgent27getCapabilityConfigurationsEv",
+    "_ZZNSt19_Sp_make_shared_tag5_S_tiEvE5__tag"
+  ]
+}

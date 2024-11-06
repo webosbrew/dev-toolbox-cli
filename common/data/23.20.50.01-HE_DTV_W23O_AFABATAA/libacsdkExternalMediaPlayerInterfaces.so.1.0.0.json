@@ -1,0 +1,29 @@
+{
+  "name": "libacsdkExternalMediaPlayerInterfaces.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces12PLAYER_EVENTE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces13CHANGE_REPORTE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces13REQUEST_TOKENE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces15buildMediaStateEPN9rapidjson12GenericValueINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEEEERKNS0_20AdapterPlaybackStateERS7_",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces17buildSessionStateERKNS0_19AdapterSessionStateERN9rapidjson19MemoryPoolAllocatorINS4_12CrtAllocatorEEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces18PLAYER_ERROR_EVENTE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces18buildPlaybackStateERKNS0_20AdapterPlaybackStateERN9rapidjson19MemoryPoolAllocatorINS4_12CrtAllocatorEEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces19SESSION_RETRY_TABLEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces19SESSION_RETRY_TIMERE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces19getEmpContextStringB5cxx11ENS0_12AdapterStateE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces21eventNameSpaceNameMapB5cxx11E",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces23buildDefaultPlayerStateEPN9rapidjson12GenericValueINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEEEERS7_",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces24buildSupportedOperationsERKSt3setINS0_26SupportedPlaybackOperationESt4lessIS2_ESaIS2_EERN9rapidjson19MemoryPoolAllocatorINS9_12CrtAllocatorEEE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces5LOGINE",
+    "_ZN14alexaClientSDK34acsdkExternalMediaPlayerInterfaces6LOGOUTE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZZN9rapidjson8internal12GetDigitsLutEvE10cDigitsLut"
+  ]
+}

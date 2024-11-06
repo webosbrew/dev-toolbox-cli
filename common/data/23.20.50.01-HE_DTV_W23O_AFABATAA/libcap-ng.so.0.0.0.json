@@ -1,0 +1,32 @@
+{
+  "name": "libcap-ng.so.0",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "capng_apply",
+    "capng_apply_caps_fd",
+    "capng_capability_to_name",
+    "capng_change_id",
+    "capng_clear",
+    "capng_fill",
+    "capng_get_caps_fd",
+    "capng_get_caps_process",
+    "capng_get_rootid",
+    "capng_have_capabilities",
+    "capng_have_capability",
+    "capng_have_permitted_capabilities",
+    "capng_lock",
+    "capng_name_to_capability",
+    "capng_print_caps_numeric",
+    "capng_print_caps_text",
+    "capng_restore_state",
+    "capng_save_state",
+    "capng_set_rootid",
+    "capng_setpid",
+    "capng_update",
+    "capng_updatev"
+  ]
+}

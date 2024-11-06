@@ -1,0 +1,34 @@
+{
+  "name": "libpthread.so.0",
+  "needed": [
+    "libc.so.6"
+  ],
+  "symbols": [
+    "GLIBC_2.11@GLIBC_2.11",
+    "GLIBC_2.11@GLIBC_2.4",
+    "GLIBC_2.12@GLIBC_2.11",
+    "GLIBC_2.12@GLIBC_2.12",
+    "GLIBC_2.18@GLIBC_2.12",
+    "GLIBC_2.18@GLIBC_2.18",
+    "GLIBC_2.28@GLIBC_2.18",
+    "GLIBC_2.28@GLIBC_2.28",
+    "GLIBC_2.30@GLIBC_2.28",
+    "GLIBC_2.30@GLIBC_2.30",
+    "GLIBC_2.31@GLIBC_2.30",
+    "GLIBC_2.31@GLIBC_2.31",
+    "GLIBC_2.4@GLIBC_2.4",
+    "__libpthread_version_placeholder@GLIBC_2.11",
+    "__libpthread_version_placeholder@GLIBC_2.11",
+    "__libpthread_version_placeholder@GLIBC_2.12",
+    "__libpthread_version_placeholder@GLIBC_2.12",
+    "__libpthread_version_placeholder@GLIBC_2.18",
+    "__libpthread_version_placeholder@GLIBC_2.18",
+    "__libpthread_version_placeholder@GLIBC_2.28",
+    "__libpthread_version_placeholder@GLIBC_2.28",
+    "__libpthread_version_placeholder@GLIBC_2.30",
+    "__libpthread_version_placeholder@GLIBC_2.30",
+    "__libpthread_version_placeholder@GLIBC_2.31",
+    "__libpthread_version_placeholder@GLIBC_2.4",
+    "__libpthread_version_placeholder@GLIBC_2.4"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "libabsl_flags_reflection.so.2308.0.0",
+  "needed": [
+    "libabsl_city.so.2308.0.0",
+    "libabsl_flags_commandlineflag.so.2308.0.0",
+    "libabsl_flags_config.so.2308.0.0",
+    "libabsl_flags_private_handle_accessor.so.2308.0.0",
+    "libabsl_hash.so.2308.0.0",
+    "libabsl_raw_hash_set.so.2308.0.0",
+    "libabsl_raw_logging_internal.so.2308.0.0",
+    "libabsl_strings.so.2308.0.0",
+    "libabsl_synchronization.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080211GetAllFlagsEv",
+    "_ZN4absl12lts_2023080214flags_internal11ForEachFlagESt8functionIFvRNS0_15CommandLineFlagEEE",
+    "_ZN4absl12lts_2023080214flags_internal12FlagRegistry12RegisterFlagERNS0_15CommandLineFlagEPKc",
+    "_ZN4absl12lts_2023080214flags_internal12FlagRegistry14GlobalRegistryEv",
+    "_ZN4absl12lts_2023080214flags_internal12FlagRegistry8FindFlagESt17basic_string_viewIcSt11char_traitsIcEE",
+    "_ZN4absl12lts_2023080214flags_internal16FinalizeRegistryEv",
+    "_ZN4absl12lts_2023080214flags_internal23RegisterCommandLineFlagERNS0_15CommandLineFlagEPKc",
+    "_ZN4absl12lts_2023080214flags_internal6RetireEPKcPKvPc",
+    "_ZN4absl12lts_2023080218container_internal15memory_internal17DecomposePairImplINS1_12raw_hash_setINS1_17FlatHashMapPolicyISt17basic_string_viewIcSt11char_traitsIcEEPNS0_15CommandLineFlagEEENS1_10StringHashENS1_8StringEqESaISt4pairIKS9_SB_EEE19EmplaceDecomposableEOS9_St5tupleIJOSB_EEEEDTclcl7declvalIT_EEcl7declvalIRKT0_EEL_ZSt19piecewise_constructEcl7declvalISM_IJSQ_EEEEcl7declvalIT1_EEEEOSP_SF_IST_SU_E",
+    "_ZN4absl12lts_2023080218container_internal15memory_internal17DecomposePairImplINS1_12raw_hash_setINS1_17FlatHashMapPolicyISt17basic_string_viewIcSt11char_traitsIcEEPNS0_15CommandLineFlagEEENS1_10StringHashENS1_8StringEqESaISt4pairIKS9_SB_EEE19EmplaceDecomposableEOSG_St5tupleIJOSB_EEEEDTclcl7declvalIT_EEcl7declvalIRKT0_EEL_ZSt19piecewise_constructEcl7declvalISM_IJSQ_EEEEcl7declvalIT1_EEEEOSP_SF_IST_SU_E",
+    "_ZN4absl12lts_2023080218container_internal18DeallocateStandardILj4EEEvRNS1_12CommonFieldsERKNS1_15PolicyFunctionsE",
+    "_ZN4absl12lts_2023080219FindCommandLineFlagESt17basic_string_viewIcSt11char_traitsIcEE",
+    "_ZN4absl12lts_202308029FlagSaverC1Ev",
+    "_ZN4absl12lts_202308029FlagSaverC2Ev",
+    "_ZN4absl12lts_202308029FlagSaverD1Ev",
+    "_ZN4absl12lts_202308029FlagSaverD2Ev",
+    "_ZNSt6vectorIPN4absl12lts_2023080215CommandLineFlagESaIS3_EE17_M_realloc_insertIJRKS3_EEEvN9__gnu_cxx17__normal_iteratorIPS3_S5_EEDpOT_",
+    "_ZNSt6vectorISt10unique_ptrIN4absl12lts_2023080214flags_internal18FlagStateInterfaceESt14default_deleteIS4_EESaIS7_EE17_M_realloc_insertIJS7_EEEvN9__gnu_cxx17__normal_iteratorIPS7_S9_EEDpOT_",
+    "_ZTIZN4absl12lts_2023080214flags_internal13FlagSaverImpl16SaveFromRegistryEvEUlRNS0_15CommandLineFlagEE_",
+    "_ZTSZN4absl12lts_2023080214flags_internal13FlagSaverImpl16SaveFromRegistryEvEUlRNS0_15CommandLineFlagEE_",
+    "_ZZN4absl12lts_2023080218container_internal12raw_hash_setINS1_17FlatHashMapPolicyISt17basic_string_viewIcSt11char_traitsIcEEPNS0_15CommandLineFlagEEENS1_10StringHashENS1_8StringEqESaISt4pairIKS7_S9_EEE18GetPolicyFunctionsEvE5value"
+  ]
+}

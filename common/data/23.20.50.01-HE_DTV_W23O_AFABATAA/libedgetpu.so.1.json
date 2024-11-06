@@ -1,0 +1,36 @@
+{
+  "name": "libedgetpu.so.1",
+  "needed": [
+    "libabsl_bad_optional_access.so.2308.0.0",
+    "libabsl_flags.so.2308.0.0",
+    "libabsl_flags_internal.so.2308.0.0",
+    "libabsl_flags_marshalling.so.2308.0.0",
+    "libabsl_flags_reflection.so.2308.0.0",
+    "libabsl_hash.so.2308.0.0",
+    "libabsl_hashtablez_sampler.so.2308.0.0",
+    "libabsl_raw_hash_set.so.2308.0.0",
+    "libabsl_str_format_internal.so.2308.0.0",
+    "libc.so.6",
+    "libflatbuffers.so.2",
+    "libgcc_s.so.1",
+    "libstdc++.so.6",
+    "libusb-1.0.so.0"
+  ],
+  "symbols": [
+    "VER_1.0@VER_1.0",
+    "_ZN7edgetpu14EdgeTpuContextD0Ev@VER_1.0",
+    "_ZN7edgetpu14EdgeTpuContextD1Ev@VER_1.0",
+    "_ZN7edgetpu14EdgeTpuContextD2Ev@VER_1.0",
+    "_ZN7edgetpu14EdgeTpuManager12GetSingletonEv@VER_1.0",
+    "_ZN7edgetpu16RegisterCustomOpEv@VER_1.0",
+    "_ZN7edgetpulsERSoNS_10DeviceTypeE@VER_1.0",
+    "edgetpu_create_delegate@VER_1.0",
+    "edgetpu_free_delegate@VER_1.0",
+    "edgetpu_free_devices@VER_1.0",
+    "edgetpu_list_devices@VER_1.0",
+    "edgetpu_verbosity@VER_1.0",
+    "edgetpu_version@VER_1.0",
+    "tflite_plugin_create_delegate@VER_1.0",
+    "tflite_plugin_destroy_delegate@VER_1.0"
+  ]
+}

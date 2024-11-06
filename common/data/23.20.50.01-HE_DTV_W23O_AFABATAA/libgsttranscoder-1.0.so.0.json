@@ -1,0 +1,34 @@
+{
+  "name": "libgsttranscoder-1.0.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstpbutils-1.0.so.0",
+    "libgstreamer-1.0.so.0"
+  ],
+  "symbols": [
+    "gst_transcoder_error_get_name",
+    "gst_transcoder_error_get_type",
+    "gst_transcoder_error_quark",
+    "gst_transcoder_g_main_context_signal_dispatcher_get_type",
+    "gst_transcoder_g_main_context_signal_dispatcher_new",
+    "gst_transcoder_get_avoid_reencoding",
+    "gst_transcoder_get_dest_uri",
+    "gst_transcoder_get_duration",
+    "gst_transcoder_get_pipeline",
+    "gst_transcoder_get_position",
+    "gst_transcoder_get_position_update_interval",
+    "gst_transcoder_get_source_uri",
+    "gst_transcoder_get_type",
+    "gst_transcoder_new",
+    "gst_transcoder_new_full",
+    "gst_transcoder_run",
+    "gst_transcoder_run_async",
+    "gst_transcoder_set_avoid_reencoding",
+    "gst_transcoder_set_cpu_usage",
+    "gst_transcoder_set_position_update_interval",
+    "gst_transcoder_signal_dispatcher_get_type"
+  ]
+}

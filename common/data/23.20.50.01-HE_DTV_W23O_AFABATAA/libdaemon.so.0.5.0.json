@@ -1,0 +1,42 @@
+{
+  "name": "libdaemon.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "daemon_close_all",
+    "daemon_close_allv",
+    "daemon_exec",
+    "daemon_execv",
+    "daemon_fork",
+    "daemon_ident_from_argv0",
+    "daemon_log",
+    "daemon_log_ident",
+    "daemon_log_use",
+    "daemon_logv",
+    "daemon_nonblock",
+    "daemon_pid_file_create",
+    "daemon_pid_file_ident",
+    "daemon_pid_file_is_running",
+    "daemon_pid_file_kill",
+    "daemon_pid_file_kill_wait",
+    "daemon_pid_file_proc",
+    "daemon_pid_file_proc_default",
+    "daemon_pid_file_remove",
+    "daemon_reset_sigs",
+    "daemon_reset_sigsv",
+    "daemon_retval_done",
+    "daemon_retval_init",
+    "daemon_retval_send",
+    "daemon_retval_wait",
+    "daemon_set_verbosity",
+    "daemon_signal_done",
+    "daemon_signal_fd",
+    "daemon_signal_init",
+    "daemon_signal_install",
+    "daemon_signal_next",
+    "daemon_unblock_sigs",
+    "daemon_unblock_sigsv"
+  ]
+}

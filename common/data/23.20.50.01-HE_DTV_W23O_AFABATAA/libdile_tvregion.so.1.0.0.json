@@ -1,0 +1,42 @@
+{
+  "name": "libdile_tvregion.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpbnjson_cpp.so.2",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "DILE_TVREGION_getHWOptCountry",
+    "DILE_TVREGION_getTVRegion",
+    "_Z11cmdlinePathB5cxx11",
+    "_Z11modelIdPathB5cxx11",
+    "_Z23setCmdLinePath4UnitTestRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_Z23setModelIdPath4UnitTestRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN21TVRegionModelIdParser11getTVRegionEv",
+    "_ZN21TVRegionModelIdParser19getTVRegionByStringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN21TVRegionModelIdParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN21TVRegionModelIdParserC1Ev",
+    "_ZN21TVRegionModelIdParserC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN21TVRegionModelIdParserC2Ev",
+    "_ZN21TVRegionModelIdParserD1Ev",
+    "_ZN21TVRegionModelIdParserD2Ev",
+    "_ZN22TVRegionHWOptionParser11getTVRegionEv",
+    "_ZN22TVRegionHWOptionParser15getHWOptCountryEv",
+    "_ZN22TVRegionHWOptionParser19getTVRegionByStringERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN22TVRegionHWOptionParser20getTVRegionByCmdLineB5cxx11Ev",
+    "_ZN22TVRegionHWOptionParser25getAreaOptionNumByCmdLineEv",
+    "_ZN22TVRegionHWOptionParser26getGlobalOneBoardByCmdLineEv",
+    "_ZN22TVRegionHWOptionParser27getTVRegionByAreaOptioinNumEi",
+    "_ZN22TVRegionHWOptionParser30getHWOptCountryByAreaOptionNumEi",
+    "_ZN22TVRegionHWOptionParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN22TVRegionHWOptionParserC1Ev",
+    "_ZN22TVRegionHWOptionParserC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN22TVRegionHWOptionParserC2Ev",
+    "_ZN22TVRegionHWOptionParserD1Ev",
+    "_ZN22TVRegionHWOptionParserD2Ev",
+    "_ZTIN7pbnjson18JValueArrayElementE",
+    "_ZTSN7pbnjson18JValueArrayElementE",
+    "_ZTVN7pbnjson18JValueArrayElementE"
+  ]
+}

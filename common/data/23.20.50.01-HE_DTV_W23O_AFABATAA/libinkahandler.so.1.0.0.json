@@ -1,0 +1,11 @@
+{
+  "name": "libinkahandler.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libncg_agent.so.2"
+  ],
+  "symbols": [
+    "API_DRM_INKA_IsDrm"
+  ]
+}

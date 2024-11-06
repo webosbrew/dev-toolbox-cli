@@ -1,0 +1,43 @@
+{
+  "name": "libVSKSkillHandler.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libLogger.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZGVZN10xAppLogger3Log8instanceEvE6logger",
+    "_ZN15VSKSkillHandler15VSKSkillHandler17onAuthStateChangeEN14alexaClientSDK9avsCommon13sdkInterfaces21AuthObserverInterface5StateENS4_5ErrorE",
+    "_ZN15VSKSkillHandler15VSKSkillHandler19handleLogoutMessageERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN15VSKSkillHandler15VSKSkillHandler24handleVSKSkillEnablementEv",
+    "_ZN15VSKSkillHandler15VSKSkillHandler25onPreviewModeStateChangedEb",
+    "_ZN15VSKSkillHandler15VSKSkillHandler6createESt10shared_ptrIN22DeviceAbstractionLayer27VSKSkillControllerInterfaceEES1_IN7Metrics24MetricsDelegateInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEE",
+    "_ZN15VSKSkillHandler15VSKSkillHandlerC1ESt10shared_ptrIN22DeviceAbstractionLayer27VSKSkillControllerInterfaceEES1_IN7Metrics24MetricsDelegateInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEE",
+    "_ZN15VSKSkillHandler15VSKSkillHandlerC2ESt10shared_ptrIN22DeviceAbstractionLayer27VSKSkillControllerInterfaceEES1_IN7Metrics24MetricsDelegateInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEE",
+    "_ZTIN10SDKWrapper33PreviewModeStateObserverInterfaceE",
+    "_ZTIN14alexaClientSDK9avsCommon13sdkInterfaces21AuthObserverInterfaceE",
+    "_ZTIN15VSKSkillHandler15VSKSkillHandlerE",
+    "_ZTIN15VSKSkillHandler24VSKSkillHandlerInterfaceE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSN10SDKWrapper33PreviewModeStateObserverInterfaceE",
+    "_ZTSN14alexaClientSDK9avsCommon13sdkInterfaces21AuthObserverInterfaceE",
+    "_ZTSN15VSKSkillHandler15VSKSkillHandlerE",
+    "_ZTSN15VSKSkillHandler24VSKSkillHandlerInterfaceE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt15_Sp_counted_ptrIPN15VSKSkillHandler15VSKSkillHandlerELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTVN15VSKSkillHandler15VSKSkillHandlerE",
+    "_ZThn4_N15VSKSkillHandler15VSKSkillHandler17onAuthStateChangeEN14alexaClientSDK9avsCommon13sdkInterfaces21AuthObserverInterface5StateENS4_5ErrorE",
+    "_ZZN10xAppLogger3Log8instanceEvE6logger",
+    "__gcov_error_file",
+    "__gcov_kvp_dynamic_pool",
+    "__gcov_kvp_dynamic_pool_index",
+    "__gcov_kvp_dynamic_pool_size",
+    "__gcov_master",
+    "__gcov_var",
+    "mangle_path"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "libpkcs11.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "bind_engine",
+    "v_check"
+  ]
+}

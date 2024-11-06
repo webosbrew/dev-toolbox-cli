@@ -1,0 +1,31 @@
+{
+  "name": "libabsl_log_flags.so.2308.0.0",
+  "needed": [
+    "libabsl_flags_internal.so.2308.0.0",
+    "libabsl_flags_marshalling.so.2308.0.0",
+    "libabsl_flags_reflection.so.2308.0.0",
+    "libabsl_log_globals.so.2308.0.0",
+    "libabsl_strings.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "FLAGS_log_prefix",
+    "FLAGS_minloglevel",
+    "FLAGS_nolog_backtrace_at",
+    "FLAGS_nolog_prefix",
+    "FLAGS_nominloglevel",
+    "FLAGS_nostderrthreshold",
+    "FLAGS_stderrthreshold",
+    "_Z22FLAGS_log_backtrace_atB5cxx11",
+    "_ZN4absl12lts_2023080213base_internal11FastTypeTagINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9dummy_varE",
+    "_ZN4absl12lts_2023080213base_internal11FastTypeTagIbE9dummy_varE",
+    "_ZN4absl12lts_2023080213base_internal11FastTypeTagIiE9dummy_varE",
+    "_ZN4absl12lts_2023080214flags_internal7FlagOpsINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEEPvNS1_6FlagOpEPKvS9_S9_",
+    "_ZN4absl12lts_2023080214flags_internal7FlagOpsIbEEPvNS1_6FlagOpEPKvS3_S3_",
+    "_ZN4absl12lts_2023080214flags_internal7FlagOpsIiEEPvNS1_6FlagOpEPKvS3_S3_",
+    "_ZTINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZTSNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"
+  ]
+}

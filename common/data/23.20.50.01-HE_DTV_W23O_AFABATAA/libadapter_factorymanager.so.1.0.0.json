@@ -1,0 +1,33 @@
+{
+  "name": "libadapter_factorymanager.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libjson-c.so.5",
+    "libluna-service2.so.3"
+  ],
+  "symbols": [
+    "_callSyncFactoryManagerInfo",
+    "_gFactoryMode",
+    "_gPowerOnlyMode",
+    "_gPowerOnlyStatus",
+    "_gSubstrateMode",
+    "_gUpdateDone",
+    "_updateFactoryInfoFromCmdline",
+    "factorymanager_freeSerialNumber",
+    "factorymanager_getPowerOnlyStatus",
+    "factorymanager_getSerialNumber",
+    "factorymanager_getServiceName",
+    "factorymanager_initialize",
+    "factorymanager_isFactoryMode",
+    "factorymanager_isPowerOnlyMode",
+    "factorymanager_isSubstrateMode",
+    "factorymanager_registerFactoryMode",
+    "factorymanager_registerPowerOnlyMode",
+    "factorymanager_registerPowerOnlyStatus",
+    "factorymanager_registerSubstrateMode",
+    "factorymanager_requestSubscription"
+  ]
+}

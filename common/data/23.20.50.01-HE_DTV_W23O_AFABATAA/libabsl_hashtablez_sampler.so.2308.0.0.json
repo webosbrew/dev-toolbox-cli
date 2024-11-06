@@ -1,0 +1,39 @@
+{
+  "name": "libabsl_hashtablez_sampler.so.2308.0.0",
+  "needed": [
+    "libabsl_raw_logging_internal.so.2308.0.0",
+    "libabsl_stacktrace.so.2308.0.0",
+    "libabsl_synchronization.so.2308.0.0",
+    "libabsl_time.so.2308.0.0",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "AbslContainerInternalSampleEverything_lts_20230802",
+    "_ZN4absl12lts_2023080218container_internal10SampleSlowERNS1_13SamplingStateEj",
+    "_ZN4absl12lts_2023080218container_internal12UnsampleSlowEPNS1_14HashtablezInfoE",
+    "_ZN4absl12lts_2023080218container_internal14HashtablezInfo18PrepareForSamplingExj",
+    "_ZN4absl12lts_2023080218container_internal14HashtablezInfoC1Ev",
+    "_ZN4absl12lts_2023080218container_internal14HashtablezInfoC2Ev",
+    "_ZN4absl12lts_2023080218container_internal14HashtablezInfoD1Ev",
+    "_ZN4absl12lts_2023080218container_internal14HashtablezInfoD2Ev",
+    "_ZN4absl12lts_2023080218container_internal15RecordEraseSlowEPNS1_14HashtablezInfoE",
+    "_ZN4absl12lts_2023080218container_internal16RecordInsertSlowEPNS1_14HashtablezInfoEjj",
+    "_ZN4absl12lts_2023080218container_internal16RecordRehashSlowEPNS1_14HashtablezInfoEj",
+    "_ZN4absl12lts_2023080218container_internal19IsHashtablezEnabledEv",
+    "_ZN4absl12lts_2023080218container_internal20SetHashtablezEnabledEb",
+    "_ZN4absl12lts_2023080218container_internal21RecordReservationSlowEPNS1_14HashtablezInfoEj",
+    "_ZN4absl12lts_2023080218container_internal23GetHashtablezMaxSamplesEv",
+    "_ZN4absl12lts_2023080218container_internal23GlobalHashtablezSamplerEv",
+    "_ZN4absl12lts_2023080218container_internal23SetHashtablezMaxSamplesEj",
+    "_ZN4absl12lts_2023080218container_internal24RecordStorageChangedSlowEPNS1_14HashtablezInfoEjj",
+    "_ZN4absl12lts_2023080218container_internal27SetHashtablezConfigListenerEPFvvE",
+    "_ZN4absl12lts_2023080218container_internal28GetHashtablezSampleParameterEv",
+    "_ZN4absl12lts_2023080218container_internal28RecordClearedReservationSlowEPNS1_14HashtablezInfoE",
+    "_ZN4absl12lts_2023080218container_internal28SetHashtablezEnabledInternalEb",
+    "_ZN4absl12lts_2023080218container_internal28SetHashtablezSampleParameterEi",
+    "_ZN4absl12lts_2023080218container_internal31SetHashtablezMaxSamplesInternalEj",
+    "_ZN4absl12lts_2023080218container_internal36SetHashtablezSampleParameterInternalEi",
+    "_ZN4absl12lts_2023080218profiling_internal14SampleRecorderINS0_18container_internal14HashtablezInfoEE8RegisterIJRKxRjEEEPS4_DpOT_"
+  ]
+}

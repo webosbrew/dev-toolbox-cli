@@ -1,0 +1,43 @@
+{
+  "name": "libdile_hdcp2.so.0",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libhal_hdcp2.so.2"
+  ],
+  "symbols": [
+    "DILE_HDCP2_AES_CTR",
+    "DILE_HDCP2_Compute_H_Prime",
+    "DILE_HDCP2_Compute_Kh",
+    "DILE_HDCP2_Compute_L_Prime",
+    "DILE_HDCP2_Compute_M_Prime",
+    "DILE_HDCP2_Compute_V_Prime",
+    "DILE_HDCP2_Data_Decrypt",
+    "DILE_HDCP2_Data_Encrypt",
+    "DILE_HDCP2_Decrypt_EKs",
+    "DILE_HDCP2_Decrypt_Km_using_Kh",
+    "DILE_HDCP2_Decrypt_RSAES_OAEP",
+    "DILE_HDCP2_Encrypt_Km_using_Kh",
+    "DILE_HDCP2_Encrypt_RSAES_OAEP",
+    "DILE_HDCP2_Generate_Km",
+    "DILE_HDCP2_Generate_Ks",
+    "DILE_HDCP2_GetCertInfo",
+    "DILE_HDCP2_GetCertInfo2",
+    "DILE_HDCP2_GetEncHdcp2Key",
+    "DILE_HDCP2_GetProtectedDecryptionKey",
+    "DILE_HDCP2_GetRootPublicKey",
+    "DILE_HDCP2_HMAC_SHA256_with_kd",
+    "DILE_HDCP2_Kd_Key_Derivation",
+    "DILE_HDCP2_SHA1",
+    "DILE_HDCP2_SHA256",
+    "DILE_HDCP2_Select_StoredKm",
+    "DILE_HDCP2_SetEncHdcp2Key",
+    "DILE_HDCP2_SetProtectedDecryptionKey",
+    "DILE_HDCP2_UseTestVector",
+    "DILE_HDCP2_Verify_Rx_Key",
+    "DILE_HDCP2_WriteKeySet",
+    "DILE_HDCP2_Write_StoredKm",
+    "DILE_HDCP2_XOR_Ks_with_LC128"
+  ]
+}

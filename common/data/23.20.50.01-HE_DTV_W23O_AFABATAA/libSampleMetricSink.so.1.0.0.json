@@ -1,0 +1,25 @@
+{
+  "name": "libSampleMetricSink.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSink13consumeMetricESt10shared_ptrINS_9avsCommon5utils7metrics11MetricEventEE",
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSink25createMetricSinkInterfaceEv",
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSinkC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSinkC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSinkD0Ev",
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSinkD1Ev",
+    "_ZN14alexaClientSDK7metrics15implementations16SampleMetricSinkD2Ev",
+    "_ZTIN14alexaClientSDK7metrics15implementations16SampleMetricSinkE",
+    "_ZTIN14alexaClientSDK9avsCommon5utils7metrics19MetricSinkInterfaceE",
+    "_ZTSN14alexaClientSDK7metrics15implementations16SampleMetricSinkE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils7metrics19MetricSinkInterfaceE",
+    "_ZTVN14alexaClientSDK7metrics15implementations16SampleMetricSinkE"
+  ]
+}

@@ -5,7 +5,7 @@ pub(crate) fn version_serialize<S>(value: &Version, serializer: S) -> Result<S::
 where
     S: Serializer,
 {
-    return serializer.serialize_str(&value.to_string());
+    serializer.serialize_str(&value.to_string())
 }
 
 pub(crate) fn version_deserialize<'de, D>(deserializer: D) -> Result<Version, D::Error>
@@ -13,5 +13,5 @@ where
     D: Deserializer<'de>,
 {
     let str = String::deserialize(deserializer)?;
-    return Version::parse(&str).map_err(de::Error::custom);
+    Version::parse(&str).map_err(de::Error::custom)
 }

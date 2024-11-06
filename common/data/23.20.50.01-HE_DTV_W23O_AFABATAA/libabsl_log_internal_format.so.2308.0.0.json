@@ -1,0 +1,15 @@
+{
+  "name": "libabsl_log_internal_format.so.2308.0.0",
+  "needed": [
+    "libabsl_log_internal_globals.so.2308.0.0",
+    "libabsl_str_format_internal.so.2308.0.0",
+    "libabsl_strings.so.2308.0.0",
+    "libabsl_time.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080212log_internal15FormatLogPrefixENS0_11LogSeverityENS0_4TimeEiSt17basic_string_viewIcSt11char_traitsIcEEiNS1_12PrefixFormatERNS0_4SpanIcEE",
+    "_ZN4absl12lts_2023080212log_internal16FormatLogMessageB5cxx11ENS0_11LogSeverityENS0_13time_internal4cctz6detail10civil_timeINS3_10second_tagEEENS0_8DurationEiSt17basic_string_viewIcSt11char_traitsIcEEiNS1_12PrefixFormatESD_"
+  ]
+}

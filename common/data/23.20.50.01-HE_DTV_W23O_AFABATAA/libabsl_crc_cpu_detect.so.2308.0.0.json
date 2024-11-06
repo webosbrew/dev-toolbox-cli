@@ -1,0 +1,10 @@
+{
+  "name": "libabsl_crc_cpu_detect.so.2308.0.0",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080212crc_internal10GetCpuTypeEv",
+    "_ZN4absl12lts_2023080212crc_internal21SupportsArmCRC32PMULLEv"
+  ]
+}

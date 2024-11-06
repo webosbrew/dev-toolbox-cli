@@ -1,0 +1,37 @@
+{
+  "name": "libabsl_crc32c.so.2308.0.0",
+  "needed": [
+    "libabsl_crc_internal.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZGVZN4absl12lts_2023080212crc_internal9CrcMemcpy10CrcAndCopyEPvPKvjNS0_8crc32c_tEbE7engines",
+    "_ZN4absl12lts_2023080212ConcatCrc32cENS0_8crc32c_tES1_j",
+    "_ZN4absl12lts_2023080212MemcpyCrc32cEPvPKvjNS0_8crc32c_tE",
+    "_ZN4absl12lts_2023080212crc_internal20ExtendCrc32cInternalENS0_8crc32c_tESt17basic_string_viewIcSt11char_traitsIcEE",
+    "_ZN4absl12lts_2023080212crc_internal22UnextendCrc32cByZeroesENS0_8crc32c_tEj",
+    "_ZN4absl12lts_2023080212crc_internal9CrcMemcpy13GetTestEngineEii",
+    "_ZN4absl12lts_2023080212crc_internal9CrcMemcpy22GetArchSpecificEnginesEv",
+    "_ZN4absl12lts_2023080213ComputeCrc32cESt17basic_string_viewIcSt11char_traitsIcEE",
+    "_ZN4absl12lts_2023080218RemoveCrc32cPrefixENS0_8crc32c_tES1_j",
+    "_ZN4absl12lts_2023080218RemoveCrc32cSuffixENS0_8crc32c_tES1_j",
+    "_ZN4absl12lts_2023080220ExtendCrc32cByZeroesENS0_8crc32c_tEj",
+    "_ZNK4absl12lts_2023080212crc_internal23FallbackCrcMemcpyEngine7ComputeEPvPKvjNS0_8crc32c_tE",
+    "_ZNK4absl12lts_2023080212crc_internal26CrcNonTemporalMemcpyEngine7ComputeEPvPKvjNS0_8crc32c_tE",
+    "_ZNK4absl12lts_2023080212crc_internal29CrcNonTemporalMemcpyAVXEngine7ComputeEPvPKvjNS0_8crc32c_tE",
+    "_ZTIN4absl12lts_2023080212crc_internal15CrcMemcpyEngineE",
+    "_ZTIN4absl12lts_2023080212crc_internal23FallbackCrcMemcpyEngineE",
+    "_ZTIN4absl12lts_2023080212crc_internal26CrcNonTemporalMemcpyEngineE",
+    "_ZTIN4absl12lts_2023080212crc_internal29CrcNonTemporalMemcpyAVXEngineE",
+    "_ZTSN4absl12lts_2023080212crc_internal15CrcMemcpyEngineE",
+    "_ZTSN4absl12lts_2023080212crc_internal23FallbackCrcMemcpyEngineE",
+    "_ZTSN4absl12lts_2023080212crc_internal26CrcNonTemporalMemcpyEngineE",
+    "_ZTSN4absl12lts_2023080212crc_internal29CrcNonTemporalMemcpyAVXEngineE",
+    "_ZTVN4absl12lts_2023080212crc_internal23FallbackCrcMemcpyEngineE",
+    "_ZTVN4absl12lts_2023080212crc_internal26CrcNonTemporalMemcpyEngineE",
+    "_ZTVN4absl12lts_2023080212crc_internal29CrcNonTemporalMemcpyAVXEngineE",
+    "_ZZN4absl12lts_2023080212crc_internal9CrcMemcpy10CrcAndCopyEPvPKvjNS0_8crc32c_tEbE7engines"
+  ]
+}

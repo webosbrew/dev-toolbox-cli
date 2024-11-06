@@ -1,0 +1,20 @@
+{
+  "name": "libfreebl3.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "FREEBL_GetVector@NSSprivate_3.11",
+    "NSSLOWHASH_Begin@NSSRAWHASH_3.12.3",
+    "NSSLOWHASH_Destroy@NSSRAWHASH_3.12.3",
+    "NSSLOWHASH_End@NSSRAWHASH_3.12.3",
+    "NSSLOWHASH_Length@NSSRAWHASH_3.12.3",
+    "NSSLOWHASH_NewContext@NSSRAWHASH_3.12.3",
+    "NSSLOWHASH_Update@NSSRAWHASH_3.12.3",
+    "NSSLOW_Init@NSSRAWHASH_3.12.3",
+    "NSSLOW_Shutdown@NSSRAWHASH_3.12.3",
+    "NSSRAWHASH_3.12.3@NSSRAWHASH_3.12.3",
+    "NSSprivate_3.11@NSSprivate_3.11"
+  ]
+}

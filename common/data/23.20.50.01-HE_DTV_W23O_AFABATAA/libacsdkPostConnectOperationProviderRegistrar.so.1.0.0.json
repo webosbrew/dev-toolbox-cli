@@ -1,0 +1,33 @@
+{
+  "name": "libacsdkPostConnectOperationProviderRegistrar.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrar12getProvidersEv",
+    "_ZN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrar16registerProviderERKSt10shared_ptrINS_9avsCommon13sdkInterfaces37PostConnectOperationProviderInterfaceEE",
+    "_ZN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrar52createPostConnectOperationProviderRegistrarInterfaceERKSt10shared_ptrINS_23acsdkNotifierInterfaces17NotifierInterfaceINS_29acsdkStartupManagerInterfaces24RequiresStartupInterfaceEEEE",
+    "_ZN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrar7startupEv",
+    "_ZN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrarC1Ev",
+    "_ZN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrarC2Ev",
+    "_ZTIN14alexaClientSDK29acsdkStartupManagerInterfaces24RequiresStartupInterfaceE",
+    "_ZTIN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrarE",
+    "_ZTIN14alexaClientSDK52acsdkPostConnectOperationProviderRegistrarInterfaces46PostConnectOperationProviderRegistrarInterfaceE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSN14alexaClientSDK29acsdkStartupManagerInterfaces24RequiresStartupInterfaceE",
+    "_ZTSN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrarE",
+    "_ZTSN14alexaClientSDK52acsdkPostConnectOperationProviderRegistrarInterfaces46PostConnectOperationProviderRegistrarInterfaceE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt15_Sp_counted_ptrIPN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrarELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTVN14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrarE",
+    "_ZThn4_N14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrar12getProvidersEv",
+    "_ZThn4_N14alexaClientSDK42acsdkPostConnectOperationProviderRegistrar37PostConnectOperationProviderRegistrar16registerProviderERKSt10shared_ptrINS_9avsCommon13sdkInterfaces37PostConnectOperationProviderInterfaceEE"
+  ]
+}

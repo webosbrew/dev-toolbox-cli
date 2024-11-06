@@ -1,0 +1,7 @@
+{
+  "name": "libabsl_string_view.so.2308.0.0",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": []
+}

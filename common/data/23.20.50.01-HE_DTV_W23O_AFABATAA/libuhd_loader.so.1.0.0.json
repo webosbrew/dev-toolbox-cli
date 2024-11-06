@@ -1,0 +1,17 @@
+{
+  "name": "libuhd_loader.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "DpmsgProc",
+    "InitializeAllHandle",
+    "UHD_LD_DestroyAPI",
+    "UHD_LD_InitAPI",
+    "UHD_LD_InitAPI_With_TeePath"
+  ]
+}

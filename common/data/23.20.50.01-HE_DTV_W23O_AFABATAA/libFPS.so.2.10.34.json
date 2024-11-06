@@ -1,0 +1,20 @@
+{
+  "name": "libFPS.so.2",
+  "needed": [],
+  "symbols": [
+    "FPSCreateMovieSession",
+    "FPSDestroyCryptor",
+    "FPSDestroyMovieSession",
+    "FPSDestroyServerExchange",
+    "FPSDisposeStorage",
+    "FPSGenerateChallengeWithVersionList",
+    "FPSGenerateSecureStopWithVersionList",
+    "FPSGetLibraryVersion",
+    "FPSHandleCommand",
+    "FPSInitLibrary",
+    "FPSProcessLicence",
+    "FPSProcessSample",
+    "FPSUninitializeLibrary",
+    "sJ41Ma2Xdsfjl"
+  ]
+}

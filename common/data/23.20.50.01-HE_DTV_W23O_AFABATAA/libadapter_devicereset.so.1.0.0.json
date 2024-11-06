@@ -1,0 +1,17 @@
+{
+  "name": "libadapter_devicereset.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libjson-c.so.5",
+    "libluna-service2.so.3"
+  ],
+  "symbols": [
+    "devicereset_getFirstBootAfterInstop",
+    "devicereset_initialize",
+    "devicereset_registerGetInstopEventResetReady",
+    "devicereset_registerInstopEvent"
+  ]
+}

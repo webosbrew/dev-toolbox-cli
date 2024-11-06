@@ -1,0 +1,15 @@
+{
+  "name": "libabsl_random_distributions.so.2308.0.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080215random_internal24InitDiscreteDistributionEPSt6vectorIdSaIdEE",
+    "_ZN4absl12lts_2023080215random_internal26gaussian_distribution_base3zg_E",
+    "_ZNSt6vectorISt4pairIdjESaIS1_EE17_M_realloc_insertIJRKdiEEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_",
+    "_ZNSt6vectorIjSaIjEE17_M_realloc_insertIJRKjEEEvN9__gnu_cxx17__normal_iteratorIPjS1_EEDpOT_",
+    "_ZNSt6vectorIjSaIjEE17_M_realloc_insertIJjEEEvN9__gnu_cxx17__normal_iteratorIPjS1_EEDpOT_"
+  ]
+}

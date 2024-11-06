@@ -1,0 +1,29 @@
+{
+  "name": "libhal_sys.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.2"
+  ],
+  "symbols": [
+    "HAL_SYS_CheckModelIdStatus",
+    "HAL_SYS_CheckRPMBPartition",
+    "HAL_SYS_Debug",
+    "HAL_SYS_GetDFTMemTestResult",
+    "HAL_SYS_GetPWMCapability",
+    "HAL_SYS_GetPWMData",
+    "HAL_SYS_GetWolStatus",
+    "HAL_SYS_LockDebugPort",
+    "HAL_SYS_ReadBootData",
+    "HAL_SYS_ReadPMData",
+    "HAL_SYS_Resume",
+    "HAL_SYS_SetPWM",
+    "HAL_SYS_SetWolOnOff",
+    "HAL_SYS_StartDFTMemTest",
+    "HAL_SYS_Suspend",
+    "HAL_SYS_WakeUpInternalMicom",
+    "HAL_SYS_WriteBootData",
+    "HAL_SYS_WritePMData",
+    "_HAL_SYS_ReadPWMProcValue"
+  ]
+}

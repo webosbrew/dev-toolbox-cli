@@ -1,0 +1,25 @@
+{
+  "name": "libabsl_symbolize.so.2308.0.0",
+  "needed": [
+    "libabsl_base.so.2308.0.0",
+    "libabsl_debugging_internal.so.2308.0.0",
+    "libabsl_demangle_internal.so.2308.0.0",
+    "libabsl_malloc_internal.so.2308.0.0",
+    "libabsl_raw_logging_internal.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "AbslInternalGetFileMappingHint",
+    "_ZN4absl12lts_2023080218debugging_internal14ForEachSectionEiRKSt8functionIFbSt17basic_string_viewIcSt11char_traitsIcEERK10Elf32_ShdrEE",
+    "_ZN4absl12lts_2023080218debugging_internal18GetFileMappingHintEPPKvS4_PyPPKc",
+    "_ZN4absl12lts_2023080218debugging_internal21RemoveSymbolDecoratorEi",
+    "_ZN4absl12lts_2023080218debugging_internal22GetSectionHeaderByNameEiPKcjP10Elf32_Shdr",
+    "_ZN4absl12lts_2023080218debugging_internal22InstallSymbolDecoratorEPFvPKNS1_19SymbolDecoratorArgsEEPv",
+    "_ZN4absl12lts_2023080218debugging_internal23RegisterFileMappingHintEPKvS3_yPKc",
+    "_ZN4absl12lts_2023080218debugging_internal25RemoveAllSymbolDecoratorsEv",
+    "_ZN4absl12lts_2023080220InitializeSymbolizerEPKc",
+    "_ZN4absl12lts_202308029SymbolizeEPKvPci"
+  ]
+}

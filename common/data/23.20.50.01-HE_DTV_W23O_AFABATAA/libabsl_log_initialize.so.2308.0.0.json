@@ -1,0 +1,11 @@
+{
+  "name": "libabsl_log_initialize.so.2308.0.0",
+  "needed": [
+    "libabsl_log_internal_globals.so.2308.0.0",
+    "libabsl_time_zone.so.2308.0.0",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080213InitializeLogEv"
+  ]
+}

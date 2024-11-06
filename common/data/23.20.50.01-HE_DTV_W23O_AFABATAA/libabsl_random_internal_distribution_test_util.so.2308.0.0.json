@@ -1,0 +1,27 @@
+{
+  "name": "libabsl_random_internal_distribution_test_util.so.2308.0.0",
+  "needed": [
+    "libabsl_raw_logging_internal.so.2308.0.0",
+    "libabsl_str_format_internal.so.2308.0.0",
+    "libabsl_strings.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080215random_internal14BetaIncompleteEddd",
+    "_ZN4absl12lts_2023080215random_internal14ChiSquareValueEid",
+    "_ZN4absl12lts_2023080215random_internal15ChiSquarePValueEdi",
+    "_ZN4absl12lts_2023080215random_internal17BetaIncompleteInvEddd",
+    "_ZN4absl12lts_2023080215random_internal17MaxErrorToleranceEd",
+    "_ZN4absl12lts_2023080215random_internal21InverseNormalSurvivalEd",
+    "_ZN4absl12lts_2023080215random_internal26ComputeDistributionMomentsENS0_4SpanIKdEE",
+    "_ZN4absl12lts_2023080215random_internal26RequiredSuccessProbabilityEdi",
+    "_ZN4absl12lts_2023080215random_internal4NearESt17basic_string_viewIcSt11char_traitsIcEEddd",
+    "_ZN4absl12lts_2023080215random_internal4betaEdd",
+    "_ZN4absl12lts_2023080215random_internal6ZScoreEdRKNS1_19DistributionMomentsE",
+    "_ZN4absl12lts_2023080215random_internal6erfinvEd",
+    "_ZN4absl12lts_2023080215random_internallsERSoRKNS1_19DistributionMomentsE"
+  ]
+}

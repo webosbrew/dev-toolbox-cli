@@ -1,0 +1,37 @@
+{
+  "name": "libacsdkSystemClockMonitor.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitor25onSystemClockSynchronizedEv",
+    "_ZN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitor33createSystemClockMonitorInterfaceERKSt10shared_ptrINS_23acsdkNotifierInterfaces17NotifierInterfaceINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEEE",
+    "_ZN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitorC1ERKSt10shared_ptrINS_23acsdkNotifierInterfaces17NotifierInterfaceINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEEE",
+    "_ZN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitorC2ERKSt10shared_ptrINS_23acsdkNotifierInterfaces17NotifierInterfaceINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEEE",
+    "_ZN14alexaClientSDK23acsdkSystemClockMonitor19SystemClockNotifier34createSystemClockNotifierInterfaceEv",
+    "_ZTIN14alexaClientSDK13acsdkNotifier8NotifierINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEE",
+    "_ZTIN14alexaClientSDK23acsdkNotifierInterfaces17NotifierInterfaceINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEE",
+    "_ZTIN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitorE",
+    "_ZTIN14alexaClientSDK33acsdkSystemClockMonitorInterfaces27SystemClockMonitorInterfaceE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt19_Sp_make_shared_tag",
+    "_ZTSN14alexaClientSDK13acsdkNotifier8NotifierINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEE",
+    "_ZTSN14alexaClientSDK23acsdkNotifierInterfaces17NotifierInterfaceINS_33acsdkSystemClockMonitorInterfaces35SystemClockMonitorObserverInterfaceEEE",
+    "_ZTSN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitorE",
+    "_ZTSN14alexaClientSDK23acsdkSystemClockMonitor19SystemClockNotifierE",
+    "_ZTSN14alexaClientSDK33acsdkSystemClockMonitorInterfaces27SystemClockMonitorInterfaceE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt15_Sp_counted_ptrIPN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitorELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt19_Sp_make_shared_tag",
+    "_ZTSSt23_Sp_counted_ptr_inplaceIN14alexaClientSDK23acsdkSystemClockMonitor19SystemClockNotifierESaIS2_ELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTVN14alexaClientSDK23acsdkSystemClockMonitor18SystemClockMonitorE",
+    "_ZZNSt19_Sp_make_shared_tag5_S_tiEvE5__tag"
+  ]
+}

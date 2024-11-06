@@ -1,0 +1,19 @@
+{
+  "name": "libv4l2rds.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "v4l2_rds_add",
+    "v4l2_rds_create",
+    "v4l2_rds_destroy",
+    "v4l2_rds_get_country_str",
+    "v4l2_rds_get_coverage_str",
+    "v4l2_rds_get_group",
+    "v4l2_rds_get_language_str",
+    "v4l2_rds_get_pty_str",
+    "v4l2_rds_reset"
+  ]
+}

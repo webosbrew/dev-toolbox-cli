@@ -1,0 +1,37 @@
+{
+  "name": "libabsl_log_internal_check_op.so.2308.0.0",
+  "needed": [
+    "libabsl_log_internal_nullguard.so.2308.0.0",
+    "libabsl_strings.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIPKaS4_EEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIPKcS4_EEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_S4_",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIPKhS4_EEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIPKvS4_EEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESA_EEPS8_T_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIRKSt17basic_string_viewIcSt11char_traitsIcEES8_EEPNSt7__cxx1112basic_stringIcS5_SaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIbbEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIccEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIddEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIffEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIhhEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIxxEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal17MakeCheckOpStringIyyEEPNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEET_T0_PKc",
+    "_ZN4absl12lts_2023080212log_internal19CheckstrcmptrueImplB5cxx11EPKcS3_S3_",
+    "_ZN4absl12lts_2023080212log_internal20CheckstrcmpfalseImplB5cxx11EPKcS3_S3_",
+    "_ZN4absl12lts_2023080212log_internal21CheckOpMessageBuilder7ForVar2Ev",
+    "_ZN4absl12lts_2023080212log_internal21CheckOpMessageBuilder9NewStringB5cxx11Ev",
+    "_ZN4absl12lts_2023080212log_internal21CheckOpMessageBuilderC1EPKc",
+    "_ZN4absl12lts_2023080212log_internal21CheckOpMessageBuilderC2EPKc",
+    "_ZN4absl12lts_2023080212log_internal22MakeCheckOpValueStringERSoPKv",
+    "_ZN4absl12lts_2023080212log_internal22MakeCheckOpValueStringERSoa",
+    "_ZN4absl12lts_2023080212log_internal22MakeCheckOpValueStringERSoc",
+    "_ZN4absl12lts_2023080212log_internal22MakeCheckOpValueStringERSoh",
+    "_ZN4absl12lts_2023080212log_internal23CheckstrcasecmptrueImplB5cxx11EPKcS3_S3_",
+    "_ZN4absl12lts_2023080212log_internal24CheckstrcasecmpfalseImplB5cxx11EPKcS3_S3_"
+  ]
+}

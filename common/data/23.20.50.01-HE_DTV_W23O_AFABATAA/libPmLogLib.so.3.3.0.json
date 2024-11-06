@@ -1,0 +1,38 @@
+{
+  "name": "libPmLogLib.so.3",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libpbnjson_c.so.2"
+  ],
+  "symbols": [
+    "PmLogDumpData_",
+    "PmLogFacilityToString",
+    "PmLogFindContext",
+    "PmLogGetContext",
+    "PmLogGetContextInline",
+    "PmLogGetContextLevel",
+    "PmLogGetContextName",
+    "PmLogGetErrDbgString",
+    "PmLogGetIndContext",
+    "PmLogGetLibContext",
+    "PmLogGetNumContexts",
+    "PmLogLevelToString",
+    "PmLogPrint_",
+    "PmLogPrvGlobals",
+    "PmLogPrvLock",
+    "PmLogPrvReadConfigs",
+    "PmLogPrvTest",
+    "PmLogPrvUnlock",
+    "PmLogSetAllowDevLog",
+    "PmLogSetContextLevel",
+    "PmLogSetDevMode",
+    "PmLogSetLibContext",
+    "PmLogStringToFacility",
+    "PmLogStringToLevel",
+    "PmLogString_",
+    "PmLogVPrint_",
+    "_PmLogMsgKV"
+  ]
+}

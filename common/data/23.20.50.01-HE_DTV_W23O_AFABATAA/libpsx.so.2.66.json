@@ -1,0 +1,18 @@
+{
+  "name": "libpsx.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "__execable_dl_loader",
+    "__psx_syscall",
+    "__so_start",
+    "__wrap_pthread_create",
+    "psx_action_key",
+    "psx_load_syscalls",
+    "psx_set_sensitivity",
+    "psx_syscall3",
+    "psx_syscall6"
+  ]
+}

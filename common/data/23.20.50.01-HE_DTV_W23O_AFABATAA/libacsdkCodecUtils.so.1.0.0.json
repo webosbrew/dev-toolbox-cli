@@ -1,0 +1,18 @@
+{
+  "name": "libacsdkCodecUtils.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK15acsdkCodecUtils12decodeBase64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIhSaIhEE",
+    "_ZN14alexaClientSDK15acsdkCodecUtils12encodeBase64ERKSt6vectorIhSaIhEERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14alexaClientSDK15acsdkCodecUtils16preprocessBase64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIhSaIhEE",
+    "_ZN14alexaClientSDK15acsdkCodecUtils21isIgnorableWhitespaceEc",
+    "_ZN14alexaClientSDK15acsdkCodecUtils9decodeHexERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIhSaIhEE",
+    "_ZN14alexaClientSDK15acsdkCodecUtils9encodeHexERKSt6vectorIhSaIhEERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "libplds4.so",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libnspr4.so"
+  ],
+  "symbols": [
+    "PL_ArenaAllocate",
+    "PL_ArenaFinish",
+    "PL_ArenaGrow",
+    "PL_ArenaRelease",
+    "PL_ClearArenaPool",
+    "PL_CompactArenaPool",
+    "PL_CompareStrings",
+    "PL_CompareValues",
+    "PL_FinishArenaPool",
+    "PL_FreeArenaPool",
+    "PL_HashString",
+    "PL_HashTableAdd",
+    "PL_HashTableDestroy",
+    "PL_HashTableDump",
+    "PL_HashTableEnumerateEntries",
+    "PL_HashTableLookup",
+    "PL_HashTableLookupConst",
+    "PL_HashTableRawAdd",
+    "PL_HashTableRawLookup",
+    "PL_HashTableRawLookupConst",
+    "PL_HashTableRawRemove",
+    "PL_HashTableRemove",
+    "PL_InitArenaPool",
+    "PL_NewHashTable",
+    "PL_SizeOfArenaPoolExcludingPool",
+    "libVersionPoint"
+  ]
+}

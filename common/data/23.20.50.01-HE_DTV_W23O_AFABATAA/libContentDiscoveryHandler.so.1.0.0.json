@@ -1,0 +1,42 @@
+{
+  "name": "libContentDiscoveryHandler.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libCommunicationHandler.so.1",
+    "libDeviceAbstractionLayer.so.1",
+    "libLogger.so.1",
+    "libUtils.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZGVZN10xAppLogger3Log8instanceEvE6logger",
+    "_ZN23ContentDiscoveryHandler31ContentDiscoveryObserverFactory11getObserverESt10shared_ptrIN27ApplicationLifecycleManager36ApplicationLifecycleManagerInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEES1_IN22DeviceAbstractionLayer22DeviceAbstractionLayerEE",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserver13renderContentERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserver14launchDeeplinkERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserver16sendMessageToWebB5cxx11ERKN20CommunicationHandler14WebMessageNameERN9rapidjson12GenericValueINS5_4UTF8IcEENS5_19MemoryPoolAllocatorINS5_12CrtAllocatorEEEEE",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserver17handlePlayRequestERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserver6createESt10shared_ptrIN27ApplicationLifecycleManager36ApplicationLifecycleManagerInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEES1_IN22DeviceAbstractionLayer23AlexaAppLaunchInterfaceEE",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserverC1ESt10shared_ptrIN27ApplicationLifecycleManager36ApplicationLifecycleManagerInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEES1_IN22DeviceAbstractionLayer23AlexaAppLaunchInterfaceEE",
+    "_ZN23ContentDiscoveryHandler32InternalContentDiscoveryObserverC2ESt10shared_ptrIN27ApplicationLifecycleManager36ApplicationLifecycleManagerInterfaceEES1_IN20CommunicationHandler29CommunicationHandlerInterfaceEES1_IN22DeviceAbstractionLayer23AlexaAppLaunchInterfaceEE",
+    "_ZTIN10SDKWrapper16CapabilityAgents16ContentDiscovery33ContentDiscoveryObserverInterfaceE",
+    "_ZTIN23ContentDiscoveryHandler32InternalContentDiscoveryObserverE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSN10SDKWrapper16CapabilityAgents16ContentDiscovery33ContentDiscoveryObserverInterfaceE",
+    "_ZTSN23ContentDiscoveryHandler32InternalContentDiscoveryObserverE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt15_Sp_counted_ptrIPN23ContentDiscoveryHandler32InternalContentDiscoveryObserverELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTVN23ContentDiscoveryHandler32InternalContentDiscoveryObserverE",
+    "_ZZN10xAppLogger3Log8instanceEvE6logger",
+    "__gcov_error_file",
+    "__gcov_kvp_dynamic_pool",
+    "__gcov_kvp_dynamic_pool_index",
+    "__gcov_kvp_dynamic_pool_size",
+    "__gcov_master",
+    "__gcov_var",
+    "mangle_path"
+  ]
+}

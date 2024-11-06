@@ -1,0 +1,37 @@
+{
+  "name": "libAuthentication.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libNetworking.so.1",
+    "libUtils.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14Authentication10TokenUtils14isLwaTokenTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14Authentication10TokenUtils14isMapTokenTypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14Authentication10TokenUtils17exchangeMapForLwaERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_S8_St10shared_ptrIN4Http19HttpClientInterfaceEE",
+    "_ZN14Authentication25CognitoCredentialsManager14getCredentialsEv",
+    "_ZN14Authentication25CognitoCredentialsManager6createERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_RKSt3mapIS6_S6_St4lessIS6_ESaISt4pairIS7_S6_EEE",
+    "_ZN14Authentication25CognitoCredentialsManager6createERKSt10shared_ptrIN7Cognito22CognitoClientInterfaceEERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESE_RKSt3mapISC_SC_St4lessISC_ESaISt4pairISD_SC_EEE",
+    "_ZN14Authentication25CognitoCredentialsManager9setLoginsESt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_St4lessIS7_ESaISt4pairIKS7_S7_EEE",
+    "_ZN14Authentication25CognitoCredentialsManagerC1ERKSt10shared_ptrIN7Cognito22CognitoClientInterfaceEERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESE_RKSt3mapISC_SC_St4lessISC_ESaISt4pairISD_SC_EEE",
+    "_ZN14Authentication25CognitoCredentialsManagerC2ERKSt10shared_ptrIN7Cognito22CognitoClientInterfaceEERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESE_RKSt3mapISC_SC_St4lessISC_ESaISt4pairISD_SC_EEE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt14default_deleteIN4Http10HttpClientEE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt14default_deleteIN4Http10HttpClientEE",
+    "_ZTSSt15_Sp_counted_ptrIPN14Authentication25CognitoCredentialsManagerELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt19_Sp_counted_deleterIPN4Http10HttpClientESt14default_deleteIS1_ESaIvELN9__gnu_cxx12_Lock_policyE2EE",
+    "__gcov_error_file",
+    "__gcov_kvp_dynamic_pool",
+    "__gcov_kvp_dynamic_pool_index",
+    "__gcov_kvp_dynamic_pool_size",
+    "__gcov_master",
+    "__gcov_var",
+    "mangle_path"
+  ]
+}

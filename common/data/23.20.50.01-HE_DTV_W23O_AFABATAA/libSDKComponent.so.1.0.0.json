@@ -1,0 +1,14 @@
+{
+  "name": "libSDKComponent.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK20applicationUtilities12SDKComponent12SDKComponent17registerComponentESt10shared_ptrINS_9avsCommon13sdkInterfaces26ComponentReporterInterfaceEE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE"
+  ]
+}

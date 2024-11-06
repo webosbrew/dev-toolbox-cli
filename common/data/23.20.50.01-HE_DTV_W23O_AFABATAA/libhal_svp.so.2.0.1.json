@@ -1,0 +1,18 @@
+{
+  "name": "libhal_svp.so.2",
+  "needed": [
+    "libgcc_s.so.1",
+    "libkadaptor.so.2",
+    "liblxv.so.2"
+  ],
+  "symbols": [
+    "HAL_SVP_Close",
+    "HAL_SVP_Copy",
+    "HAL_SVP_Flush",
+    "HAL_SVP_Open",
+    "HAL_SVP_Stat",
+    "HAL_SVP_WidevineDecryptCENC_V16",
+    "HAL_SVP_WidevineSelectKey_OverV14",
+    "HAL_SVP_Write"
+  ]
+}

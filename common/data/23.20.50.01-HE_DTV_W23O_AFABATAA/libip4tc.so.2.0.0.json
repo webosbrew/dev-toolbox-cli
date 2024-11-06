@@ -1,0 +1,39 @@
+{
+  "name": "libip4tc.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "dump_entries",
+    "iptc_append_entry",
+    "iptc_builtin",
+    "iptc_check_entry",
+    "iptc_commit",
+    "iptc_create_chain",
+    "iptc_delete_chain",
+    "iptc_delete_entry",
+    "iptc_delete_num_entry",
+    "iptc_first_chain",
+    "iptc_first_rule",
+    "iptc_flush_entries",
+    "iptc_free",
+    "iptc_get_policy",
+    "iptc_get_references",
+    "iptc_get_target",
+    "iptc_init",
+    "iptc_insert_entry",
+    "iptc_is_chain",
+    "iptc_next_chain",
+    "iptc_next_rule",
+    "iptc_ops",
+    "iptc_read_counter",
+    "iptc_rename_chain",
+    "iptc_replace_entry",
+    "iptc_set_counter",
+    "iptc_set_policy",
+    "iptc_strerror",
+    "iptc_zero_counter",
+    "iptc_zero_entries"
+  ]
+}

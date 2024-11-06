@@ -1,0 +1,35 @@
+{
+  "name": "liblls_pqcontrollerDB.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z6keyMapB5cxx11",
+    "_ZN17LLSPqcontrollerDBC1Ev",
+    "_ZN17LLSPqcontrollerDBC2Ev",
+    "_ZNK17LLSPqcontrollerDB11getInitDataEjPh",
+    "_ZNK17LLSPqcontrollerDB14combineBitItemENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjPhS6_",
+    "_ZNK17LLSPqcontrollerDB15separateBitItemENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjPhS6_",
+    "_ZNK17LLSPqcontrollerDB16getValidMarkInfoEP15LLS_ITEM_INFO_T",
+    "_ZNK17LLSPqcontrollerDB17getValidMarkMagicEjPh",
+    "_ZNK17LLSPqcontrollerDB19convertBinaryToJsonENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjPhP20LLS_ITEM_JSON_DATA_T",
+    "_ZNK17LLSPqcontrollerDB19convertJsonToBinaryENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERK20LLS_ITEM_JSON_DATA_TjPh",
+    "_ZNK17LLSPqcontrollerDB9getDBSizeEPj",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_15LLS_ITEM_INFO_TESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE17_M_emplace_uniqueIJRS5_S8_EEES6_ISt17_Rb_tree_iteratorIS9_EbEDpOT_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_15LLS_ITEM_INFO_TESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE8_M_eraseEPSt13_Rb_tree_nodeIS9_E",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_iESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_iESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS8_ERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_jESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_jESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E",
+    "_ZTI11LLSCommonDB",
+    "_ZTI17LLSPqcontrollerDB",
+    "_ZTINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZTS11LLSCommonDB",
+    "_ZTS17LLSPqcontrollerDB",
+    "_ZTSNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZTV11LLSCommonDB",
+    "_ZTV17LLSPqcontrollerDB"
+  ]
+}

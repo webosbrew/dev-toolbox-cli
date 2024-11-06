@@ -1,0 +1,17 @@
+{
+  "name": "libdile_spi.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_SPI_Close",
+    "DILE_SPI_Init",
+    "DILE_SPI_MessageEx",
+    "DILE_SPI_ReadEx",
+    "DILE_SPI_SetConfig",
+    "DILE_SPI_WriteEx",
+    "_gSpiDevices",
+    "gsSpiAllConf"
+  ]
+}

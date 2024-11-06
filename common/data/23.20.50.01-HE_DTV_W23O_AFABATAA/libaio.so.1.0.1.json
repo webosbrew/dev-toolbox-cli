@@ -1,0 +1,33 @@
+{
+  "name": "libaio.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "LIBAIO_0.1@LIBAIO_0.1",
+    "LIBAIO_0.4@LIBAIO_0.1",
+    "LIBAIO_0.4@LIBAIO_0.4",
+    "LIBAIO_0.5@LIBAIO_0.4",
+    "LIBAIO_0.5@LIBAIO_0.5",
+    "io_cancel@LIBAIO_0.1",
+    "io_cancel@LIBAIO_0.1",
+    "io_cancel@LIBAIO_0.4",
+    "io_destroy@LIBAIO_0.1",
+    "io_destroy@LIBAIO_0.4",
+    "io_getevents@LIBAIO_0.1",
+    "io_getevents@LIBAIO_0.1",
+    "io_getevents@LIBAIO_0.4",
+    "io_pgetevents@LIBAIO_0.4",
+    "io_pgetevents@LIBAIO_0.5",
+    "io_queue_init@LIBAIO_0.1",
+    "io_queue_release@LIBAIO_0.1",
+    "io_queue_run@LIBAIO_0.1",
+    "io_queue_wait@LIBAIO_0.1",
+    "io_queue_wait@LIBAIO_0.1",
+    "io_queue_wait@LIBAIO_0.4",
+    "io_setup@LIBAIO_0.1",
+    "io_setup@LIBAIO_0.4",
+    "io_submit@LIBAIO_0.1"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "libdile_svp.so.0",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_svp.so.2"
+  ],
+  "symbols": [
+    "DILE_SVP_Close",
+    "DILE_SVP_Copy",
+    "DILE_SVP_Flush",
+    "DILE_SVP_Open",
+    "DILE_SVP_Stat",
+    "DILE_SVP_WidevineDecryptCENC_V16",
+    "DILE_SVP_WidevineSelectKey_OverV14",
+    "DILE_SVP_Write"
+  ]
+}

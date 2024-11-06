@@ -1,0 +1,21 @@
+{
+  "name": "libsystrim.so.3",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0"
+  ],
+  "symbols": [
+    "_read_comm",
+    "begin_watch",
+    "check_zygote_process",
+    "end_watch",
+    "get_malloc_trim_interval_time",
+    "prev_array",
+    "read_func",
+    "safeOpen",
+    "set_malloc_trim_interval_time",
+    "sleep_func",
+    "sleep_func_with_endfile"
+  ]
+}

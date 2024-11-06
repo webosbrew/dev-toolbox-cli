@@ -1,0 +1,22 @@
+{
+  "name": "libaws-c-compression.so.1.0.0",
+  "needed": [
+    "libaws-c-common.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "aws_compression_library_clean_up",
+    "aws_compression_library_init",
+    "aws_huffman_decode",
+    "aws_huffman_decoder_allow_growth",
+    "aws_huffman_decoder_init",
+    "aws_huffman_decoder_reset",
+    "aws_huffman_encode",
+    "aws_huffman_encoder_init",
+    "aws_huffman_encoder_reset",
+    "aws_huffman_get_encoded_length",
+    "huffman_test_transitive",
+    "huffman_test_transitive_chunked"
+  ]
+}

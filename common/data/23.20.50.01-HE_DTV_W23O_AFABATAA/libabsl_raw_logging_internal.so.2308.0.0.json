@@ -1,0 +1,16 @@
+{
+  "name": "libabsl_raw_logging_internal.so.2308.0.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080216raw_log_internal17RegisterAbortHookEPFvPKciS3_S3_S3_E",
+    "_ZN4absl12lts_2023080216raw_log_internal21internal_log_functionB5cxx11E",
+    "_ZN4absl12lts_2023080216raw_log_internal24RawLoggingFullySupportedEv",
+    "_ZN4absl12lts_2023080216raw_log_internal25AsyncSignalSafeWriteErrorEPKcj",
+    "_ZN4absl12lts_2023080216raw_log_internal27RegisterInternalLogFunctionEPFvNS0_11LogSeverityEPKciRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE",
+    "_ZN4absl12lts_2023080216raw_log_internal30RegisterLogFilterAndPrefixHookEPFbNS0_11LogSeverityEPKciPPcPiE",
+    "_ZN4absl12lts_2023080216raw_log_internal6RawLogENS0_11LogSeverityEPKciS4_z"
+  ]
+}

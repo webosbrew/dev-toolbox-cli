@@ -1,0 +1,16 @@
+{
+  "name": "libnss_myhostname.so.2",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_nss_myhostname_gethostbyaddr2_r",
+    "_nss_myhostname_gethostbyaddr_r",
+    "_nss_myhostname_gethostbyname2_r",
+    "_nss_myhostname_gethostbyname3_r",
+    "_nss_myhostname_gethostbyname4_r",
+    "_nss_myhostname_gethostbyname_r"
+  ]
+}

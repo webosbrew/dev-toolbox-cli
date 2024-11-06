@@ -1,0 +1,27 @@
+{
+  "name": "libdile_wav22.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdile_gpio.so.1",
+    "libdile_i2c.so.1",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_WAV22_GPIO_readData",
+    "DILE_WAV22_GPIO_writeData",
+    "DILE_WAV22_I2C_getConfig",
+    "DILE_WAV22_I2C_readData",
+    "DILE_WAV22_I2C_writeData",
+    "DILE_WAV22_I2C_writeData_bulk",
+    "DILE_WAV22_acquireSequenceNo",
+    "DILE_WAV22_increaseSequenceNo",
+    "DILE_WAV22_lockFile",
+    "DILE_WAV22_removeWAV22Config",
+    "DILE_WAV22_setWAV22Config",
+    "DILE_WAV22_unlockFile",
+    "GetPmLogContext",
+    "gpio_input_bit_map",
+    "gpio_output_bit_map"
+  ]
+}

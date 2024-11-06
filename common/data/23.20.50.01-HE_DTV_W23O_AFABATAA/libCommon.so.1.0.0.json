@@ -1,0 +1,34 @@
+{
+  "name": "libCommon.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libLogger.so.1",
+    "libUtils.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZGVZN10xAppLogger3Log8instanceEvE6logger",
+    "_ZN6Common11ParseConfig11getAppStageB5cxx11ERN9rapidjson15GenericDocumentINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEES6_EE",
+    "_ZN6Common11ParseConfig14getFeatureNameB5cxx11ERN9rapidjson15GenericDocumentINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEES6_EE",
+    "_ZN6Common11ParseConfig21getCloseOverlayOnHideERN9rapidjson15GenericDocumentINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEES6_EE",
+    "_ZN6Common11ParseConfig25getSendToForegroundActionB5cxx11ERN9rapidjson15GenericDocumentINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEES6_EE",
+    "_ZN6Common11ParseConfig26getFeatureNameMajorVersionB5cxx11ERN9rapidjson15GenericDocumentINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEES6_EE",
+    "_ZN6Common11ParseConfig30getConsolidateCDNOverlayParamsERN9rapidjson15GenericDocumentINS1_4UTF8IcEENS1_19MemoryPoolAllocatorINS1_12CrtAllocatorEEES6_EE",
+    "_ZN6Common11ParseConfig9getConfigEPKcSt10shared_ptrIN22DeviceAbstractionLayer10DeviceInfoEE",
+    "_ZN6Common11ParseParams17parseParamsForWebERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN6Common11ParseParams20addOrUpdateCdnParamsENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS6_S8_",
+    "_ZN6Common11ParseParams20consolidateCdnParamsENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN6Common11ParseParams21addPreloadLaunchParamENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN6Common11ParseParams24addForegroundLaunchParamENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZZN10xAppLogger3Log8instanceEvE6logger",
+    "__gcov_error_file",
+    "__gcov_kvp_dynamic_pool",
+    "__gcov_kvp_dynamic_pool_index",
+    "__gcov_kvp_dynamic_pool_size",
+    "__gcov_master",
+    "__gcov_var",
+    "mangle_path"
+  ]
+}

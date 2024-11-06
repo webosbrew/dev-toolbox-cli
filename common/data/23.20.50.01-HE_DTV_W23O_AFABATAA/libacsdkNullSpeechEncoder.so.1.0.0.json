@@ -1,0 +1,25 @@
+{
+  "name": "libacsdkNullSpeechEncoder.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libAVSCommon.so.1",
+    "libacsdkManufactory.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK16acsdkManufactory8internal9TypeIndex12TypeSpecificISt10shared_ptrINS_13speechencoder13SpeechEncoderEEE10m_instanceE",
+    "_ZN14alexaClientSDK18acsdkSpeechEncoder12getComponentEv",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt19_Sp_make_shared_tag",
+    "_ZTSN14alexaClientSDK9avsCommon5utils6logger14LogEntryStreamE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt19_Sp_make_shared_tag",
+    "_ZTSSt23_Sp_counted_ptr_inplaceIN14alexaClientSDK16acsdkManufactory8internal8CookBook14InstanceRecipeESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt23_Sp_counted_ptr_inplaceIN14alexaClientSDK16acsdkManufactory8internal8CookBook20GetWrapperCollectionESaIS4_ELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZZNSt19_Sp_make_shared_tag5_S_tiEvE5__tag"
+  ]
+}

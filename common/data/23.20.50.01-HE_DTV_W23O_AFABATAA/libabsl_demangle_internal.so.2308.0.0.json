@@ -1,0 +1,10 @@
+{
+  "name": "libabsl_demangle_internal.so.2308.0.0",
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080218debugging_internal8DemangleEPKcPcj"
+  ]
+}

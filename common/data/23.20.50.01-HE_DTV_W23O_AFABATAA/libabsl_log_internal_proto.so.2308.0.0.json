@@ -1,0 +1,17 @@
+{
+  "name": "libabsl_log_internal_proto.so.2308.0.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080212log_internal10ProtoField10DecodeFromEPNS0_4SpanIKcEE",
+    "_ZN4absl12lts_2023080212log_internal11Encode32BitEyjPNS0_4SpanIcEE",
+    "_ZN4absl12lts_2023080212log_internal11Encode64BitEyyPNS0_4SpanIcEE",
+    "_ZN4absl12lts_2023080212log_internal11EncodeBytesEyNS0_4SpanIKcEEPNS2_IcEE",
+    "_ZN4absl12lts_2023080212log_internal12EncodeVarintEyyPNS0_4SpanIcEE",
+    "_ZN4absl12lts_2023080212log_internal18EncodeMessageStartEyyPNS0_4SpanIcEE",
+    "_ZN4absl12lts_2023080212log_internal19EncodeBytesTruncateEyNS0_4SpanIKcEEPNS2_IcEE",
+    "_ZN4absl12lts_2023080212log_internal19EncodeMessageLengthENS0_4SpanIcEEPKS3_"
+  ]
+}

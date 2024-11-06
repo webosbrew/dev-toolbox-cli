@@ -1,0 +1,41 @@
+{
+  "name": "libabsl_flags_usage_internal.so.2308.0.0",
+  "needed": [
+    "libabsl_flags_config.so.2308.0.0",
+    "libabsl_flags_internal.so.2308.0.0",
+    "libabsl_flags_program_name.so.2308.0.0",
+    "libabsl_flags_reflection.so.2308.0.0",
+    "libabsl_strings.so.2308.0.0",
+    "libabsl_synchronization.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "FLAGS_help",
+    "FLAGS_helpfull",
+    "FLAGS_helpmatch",
+    "FLAGS_helpon",
+    "FLAGS_helppackage",
+    "FLAGS_helpshort",
+    "FLAGS_only_check_args",
+    "FLAGS_version",
+    "_ZN4absl12lts_2023080213base_internal11FastTypeTagINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE9dummy_varE",
+    "_ZN4absl12lts_2023080214flags_internal16DeduceUsageFlagsESt17basic_string_viewIcSt11char_traitsIcEES5_",
+    "_ZN4absl12lts_2023080214flags_internal16GetFlagsHelpModeEv",
+    "_ZN4absl12lts_2023080214flags_internal16HandleUsageFlagsERSoSt17basic_string_viewIcSt11char_traitsIcEE",
+    "_ZN4absl12lts_2023080214flags_internal16SetFlagsHelpModeENS1_8HelpModeE",
+    "_ZN4absl12lts_2023080214flags_internal18GetFlagsHelpFormatEv",
+    "_ZN4absl12lts_2023080214flags_internal18SetFlagsHelpFormatENS1_10HelpFormatE",
+    "_ZN4absl12lts_2023080214flags_internal23GetFlagsHelpMatchSubstrB5cxx11Ev",
+    "_ZN4absl12lts_2023080214flags_internal23SetFlagsHelpMatchSubstrESt17basic_string_viewIcSt11char_traitsIcEE",
+    "_ZN4absl12lts_2023080214flags_internal8FlagHelpERSoRKNS0_15CommandLineFlagENS1_10HelpFormatE",
+    "_ZN4absl12lts_2023080214flags_internal9FlagsHelpERSoSt17basic_string_viewIcSt11char_traitsIcEENS1_10HelpFormatES6_",
+    "_ZN4absl12lts_2023080214flags_internal9MaybeExitENS1_8HelpModeE",
+    "_ZNSt6vectorIPKN4absl12lts_2023080215CommandLineFlagESaIS4_EE17_M_realloc_insertIJS4_EEEvN9__gnu_cxx17__normal_iteratorIPS4_S6_EEDpOT_",
+    "_ZNSt6vectorISt17basic_string_viewIcSt11char_traitsIcEESaIS3_EE17_M_realloc_insertIJRA2_KcEEEvN9__gnu_cxx17__normal_iteratorIPS3_S5_EEDpOT_",
+    "_ZNSt6vectorISt17basic_string_viewIcSt11char_traitsIcEESaIS3_EE17_M_realloc_insertIJRKS3_EEEvN9__gnu_cxx17__normal_iteratorIPS3_S5_EEDpOT_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St3mapIS5_St6vectorIPKN4absl12lts_2023080215CommandLineFlagESaISE_EESt4lessIS5_ESaIS6_IS7_SG_EEEESt10_Select1stISM_ESI_SaISM_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St6vectorIPKN4absl12lts_2023080215CommandLineFlagESaISD_EEESt10_Select1stISG_ESt4lessIS5_ESaISG_EE24_M_get_insert_unique_posERS7_"
+  ]
+}

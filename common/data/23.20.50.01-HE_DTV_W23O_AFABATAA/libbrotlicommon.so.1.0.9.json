@@ -1,0 +1,17 @@
+{
+  "name": "libbrotlicommon.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "BrotliDefaultAllocFunc",
+    "BrotliDefaultFreeFunc",
+    "BrotliGetDictionary",
+    "BrotliGetTransforms",
+    "BrotliSetDictionaryData",
+    "BrotliTransformDictionaryWord",
+    "_kBrotliContextLookupTable",
+    "_kBrotliPrefixCodeRanges"
+  ]
+}

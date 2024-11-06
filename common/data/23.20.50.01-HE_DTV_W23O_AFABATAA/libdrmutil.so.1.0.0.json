@@ -1,0 +1,22 @@
+{
+  "name": "libdrmutil.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdrmadaptor.so.1",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN11DrmUtilUuid11geneateUUIDEP8DRM_UUID",
+    "_ZN11DrmUtilUuid18convertBytestoUUIDEPhP8DRM_UUID",
+    "_ZN11DrmUtilUuid19convertStringtoUUIDEPcP8DRM_UUID",
+    "_ZN11DrmUtilUuid19convertUUIDtoStringEP8DRM_UUIDPc17DRM_UUID_STR_FORM",
+    "_ZN11DrmUtilUuid20compareUUIDsAreEqualEPK8DRM_UUIDS2_",
+    "_ZN14DrmUtilLogging10initializeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN14DrmUtilLogging11getInstanceEv",
+    "_ZN14DrmUtilLogging15releaseInstanceEv",
+    "_ZN14DrmUtilLogging5printEPKcz",
+    "_ZN14DrmUtilLogging9pInstanceE"
+  ]
+}

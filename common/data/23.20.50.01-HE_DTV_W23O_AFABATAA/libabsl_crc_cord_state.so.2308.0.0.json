@@ -1,0 +1,37 @@
+{
+  "name": "libabsl_crc_cord_state.so.2308.0.0",
+  "needed": [
+    "libabsl_crc32c.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordState17RefSharedEmptyRepEv",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordState6PoisonEv",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordState9NormalizeEv",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateC1EOS2_",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateC1ERKS2_",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateC1Ev",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateC2EOS2_",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateC2ERKS2_",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateC2Ev",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateD1Ev",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateD2Ev",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateaSEOS2_",
+    "_ZN4absl12lts_2023080212crc_internal12CrcCordStateaSERKS2_",
+    "_ZNK4absl12lts_2023080212crc_internal12CrcCordState29NormalizedPrefixCrcAtNthChunkEj",
+    "_ZNK4absl12lts_2023080212crc_internal12CrcCordState8ChecksumEv",
+    "_ZNSt11_Deque_baseIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EE17_M_initialize_mapEj",
+    "_ZNSt11_Deque_baseIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EED1Ev",
+    "_ZNSt11_Deque_baseIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EED2Ev",
+    "_ZNSt5dequeIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EE13_M_insert_auxISt15_Deque_iteratorIS4_RKS4_PS9_EEEvS8_IS4_RS4_PS4_ET_SG_j",
+    "_ZNSt5dequeIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EE17_M_reallocate_mapEjb",
+    "_ZNSt5dequeIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EE23_M_new_elements_at_backEj",
+    "_ZNSt5dequeIN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcESaIS4_EE24_M_new_elements_at_frontEj",
+    "_ZSt14__copy_move_a1ILb0EPN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcES4_EN9__gnu_cxx11__enable_ifIXsrSt23__is_random_access_iterIT0_NSt15iterator_traitsIS9_E17iterator_categoryEE7__valueESt15_Deque_iteratorIT1_RSF_PSF_EE6__typeES9_S9_SI_",
+    "_ZSt14__copy_move_a1ILb1EPN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcES4_EN9__gnu_cxx11__enable_ifIXsrSt23__is_random_access_iterIT0_NSt15iterator_traitsIS9_E17iterator_categoryEE7__valueESt15_Deque_iteratorIT1_RSF_PSF_EE6__typeES9_S9_SI_",
+    "_ZSt15__copy_move_ditILb0EN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcERKS4_PS5_St15_Deque_iteratorIS4_RS4_PS4_EET3_S8_IT0_T1_T2_ESG_SC_",
+    "_ZSt23__copy_move_backward_a1ILb1EPN4absl12lts_2023080212crc_internal12CrcCordState9PrefixCrcES4_EN9__gnu_cxx11__enable_ifIXsrSt23__is_random_access_iterIT0_NSt15iterator_traitsIS9_E17iterator_categoryEE7__valueESt15_Deque_iteratorIT1_RSF_PSF_EE6__typeES9_S9_SI_"
+  ]
+}

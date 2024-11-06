@@ -1,0 +1,23 @@
+{
+  "name": "libabsl_log_internal_log_sink_set.so.2308.0.0",
+  "needed": [
+    "ld-linux.so.3",
+    "libabsl_log_globals.so.2308.0.0",
+    "libabsl_log_internal_globals.so.2308.0.0",
+    "libabsl_log_sink.so.2308.0.0",
+    "libabsl_raw_logging_internal.so.2308.0.0",
+    "libabsl_spinlock_wait.so.2308.0.0",
+    "libabsl_synchronization.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080212log_internal10AddLogSinkEPNS0_7LogSinkE",
+    "_ZN4absl12lts_2023080212log_internal10LogToSinksERKNS0_8LogEntryENS0_4SpanIPNS0_7LogSinkEEEb",
+    "_ZN4absl12lts_2023080212log_internal13FlushLogSinksEv",
+    "_ZN4absl12lts_2023080212log_internal13RemoveLogSinkEPNS0_7LogSinkE",
+    "_ZN4absl12lts_2023080212log_internal24ThreadIsLoggingToLogSinkEv",
+    "_ZNSt6vectorIPN4absl12lts_202308027LogSinkESaIS3_EE17_M_realloc_insertIJRKS3_EEEvN9__gnu_cxx17__normal_iteratorIPS3_S5_EEDpOT_"
+  ]
+}

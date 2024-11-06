@@ -1,0 +1,33 @@
+{
+  "name": "libpqeca.so.2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "GetHistogramThread",
+    "HAL_GetHistogram",
+    "HAL_SetPresetHistogram",
+    "HAL_StartHistogram",
+    "HAL_StopHistogram",
+    "Set_histogram_thread_create",
+    "ca_close_session",
+    "ca_get_taid_from_uuid",
+    "ca_get_uuid_from_taid",
+    "ca_invoke_command",
+    "ca_misc_close_rwsm_info",
+    "ca_misc_copy_from_rwsm",
+    "ca_misc_copy_to_rwsm",
+    "ca_misc_open_rwsm_info",
+    "ca_misc_sem_post_for_rwsm",
+    "ca_misc_sem_wait_for_rwsm",
+    "ca_open_session",
+    "g_pos_preset",
+    "global_check_count",
+    "global_stop_flag",
+    "romeo_msg",
+    "romeo_thread",
+    "start_vt",
+    "tar"
+  ]
+}

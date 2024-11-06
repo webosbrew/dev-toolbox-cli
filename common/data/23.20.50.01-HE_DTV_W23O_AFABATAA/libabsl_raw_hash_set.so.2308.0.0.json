@@ -1,0 +1,21 @@
+{
+  "name": "libabsl_raw_hash_set.so.2308.0.0",
+  "needed": [
+    "ld-linux.so.3",
+    "libabsl_hash.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2023080218container_internal11kEmptyGroupE",
+    "_ZN4absl12lts_2023080218container_internal13EraseMetaOnlyERNS1_12CommonFieldsEPNS1_6ctrl_tEj",
+    "_ZN4absl12lts_2023080218container_internal15EmptyGenerationEv",
+    "_ZN4absl12lts_2023080218container_internal17ClearBackingArrayERNS1_12CommonFieldsERKNS1_15PolicyFunctionsEb",
+    "_ZN4absl12lts_2023080218container_internal19find_first_non_fullIvEENS1_8FindInfoERKNS1_12CommonFieldsEj",
+    "_ZN4absl12lts_2023080218container_internal21ShouldInsertBackwardsEjPKNS1_6ctrl_tE",
+    "_ZN4absl12lts_2023080218container_internal24DropDeletesWithoutResizeERNS1_12CommonFieldsERKNS1_15PolicyFunctionsEPv",
+    "_ZN4absl12lts_2023080218container_internal29find_first_non_full_outoflineERKNS1_12CommonFieldsEj",
+    "_ZN4absl12lts_2023080218container_internal37ConvertDeletedToEmptyAndFullToDeletedEPNS1_6ctrl_tEj",
+    "_ZNK4absl12lts_2023080218container_internal33CommonFieldsGenerationInfoEnabled41should_rehash_for_bug_detection_on_insertEPKNS1_6ctrl_tEj"
+  ]
+}

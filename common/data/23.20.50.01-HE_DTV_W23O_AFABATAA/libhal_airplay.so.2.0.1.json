@@ -1,0 +1,18 @@
+{
+  "name": "libhal_airplay.so.2",
+  "needed": [
+    "libgcc_s.so.1",
+    "libkadaptor.so.2"
+  ],
+  "symbols": [
+    "HAL_AIRPLAY_FairPlay_VerifyObject",
+    "HAL_AIRPLAY_MFi_DeleteKeySet",
+    "HAL_AIRPLAY_MFi_GetCertificate",
+    "HAL_AIRPLAY_MFi_GetKeyInfo",
+    "HAL_AIRPLAY_MFi_GetKeyInfo2",
+    "HAL_AIRPLAY_MFi_GetSignature",
+    "HAL_AIRPLAY_MFi_VerifyKeySet",
+    "HAL_AIRPLAY_MFi_VerifyProvisioningObject",
+    "HAL_AIRPLAY_MFi_WriteKeySet"
+  ]
+}

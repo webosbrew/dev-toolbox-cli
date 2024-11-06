@@ -1,0 +1,27 @@
+{
+  "name": "libmicom_led.so.1",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libmicom_cmnio.so.1"
+  ],
+  "symbols": [
+    "micom_led_Get_LEDBarVersion",
+    "micom_led_Get_LogoLightBright",
+    "micom_led_Set_APlusLEDBarControl",
+    "micom_led_Set_CenterLEDControl",
+    "micom_led_Set_DisplayMode",
+    "micom_led_Set_LEDBarControl",
+    "micom_led_Set_LEDBlinkingStatus",
+    "micom_led_Set_LEDColorSelect",
+    "micom_led_Set_LEDControl",
+    "micom_led_Set_LogoLightBright",
+    "micom_led_Set_LogoLightComplete",
+    "micom_led_Set_PWMLEDControl",
+    "micom_led_Set_PowerIndicator",
+    "micom_led_Set_RGBLEDControl",
+    "micom_led_Set_RGBLEDTest",
+    "micom_led_Set_WOVLEDControl"
+  ]
+}

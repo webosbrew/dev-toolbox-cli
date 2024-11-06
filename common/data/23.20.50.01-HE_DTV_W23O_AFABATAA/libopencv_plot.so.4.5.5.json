@@ -1,0 +1,27 @@
+{
+  "name": "libopencv_plot.so.405",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libopencv_core.so.405",
+    "libopencv_imgproc.so.405",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN2cv4plot6Plot2d6createERKNS_11_InputArrayE",
+    "_ZN2cv4plot6Plot2d6createERKNS_11_InputArrayES4_",
+    "_ZTIN2cv4plot10Plot2dImplE",
+    "_ZTIN2cv4plot6Plot2dE",
+    "_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt15_Sp_counted_ptrIPN2cv4plot10Plot2dImplELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSN2cv4plot10Plot2dImplE",
+    "_ZTSN2cv4plot6Plot2dE",
+    "_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt15_Sp_counted_ptrIPN2cv4plot10Plot2dImplELN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE",
+    "_ZTVN2cv4plot10Plot2dImplE",
+    "_ZTVN2cv4plot6Plot2dE",
+    "_ZTVSt15_Sp_counted_ptrIPN2cv4plot10Plot2dImplELN9__gnu_cxx12_Lock_policyE2EE"
+  ]
+}

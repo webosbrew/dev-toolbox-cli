@@ -1,0 +1,29 @@
+{
+  "name": "libums_connector_wrapper.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6",
+    "libums_connector.so.1"
+  ],
+  "symbols": [
+    "UMSConnectorAddEventHandlers",
+    "UMSConnectorAddSubscriber",
+    "UMSConnectorCreate",
+    "UMSConnectorCreatePrivate",
+    "UMSConnectorDestroy",
+    "UMSConnectorGetMainLoop",
+    "UMSConnectorGetMessageSender",
+    "UMSConnectorGetMessageText",
+    "UMSConnectorGetSenderServiceName",
+    "UMSConnectorSendChangeNotificationJsonString",
+    "UMSConnectorSendChangeNotificationLongLong",
+    "UMSConnectorSendChangeNotificationString",
+    "UMSConnectorSendMessage",
+    "UMSConnectorSendResponse",
+    "UMSConnectorSendSimpleResponse",
+    "UMSConnectorSubscribe",
+    "UMSConnectorWait",
+    "_Z27UMSConnectorAddEventHandlerP18UMSConnectorHandleNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPFbS0_P19UMSConnectorMessagePvE"
+  ]
+}

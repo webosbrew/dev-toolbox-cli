@@ -1,0 +1,38 @@
+{
+  "name": "libmediactl.so.0",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libudev.so.1"
+  ],
+  "symbols": [
+    "media_debug_set_handler",
+    "media_device_add_entity",
+    "media_device_enumerate",
+    "media_device_new",
+    "media_device_new_emulated",
+    "media_device_ref",
+    "media_device_unref",
+    "media_entity_get_devname",
+    "media_entity_get_info",
+    "media_entity_get_link",
+    "media_entity_get_links_count",
+    "media_entity_get_pad",
+    "media_entity_remote_source",
+    "media_get_default_entity",
+    "media_get_devnode",
+    "media_get_entities_count",
+    "media_get_entity",
+    "media_get_entity_by_id",
+    "media_get_entity_by_name",
+    "media_get_info",
+    "media_parse_entity",
+    "media_parse_link",
+    "media_parse_pad",
+    "media_parse_setup_link",
+    "media_parse_setup_links",
+    "media_print_streampos",
+    "media_reset_links",
+    "media_setup_link"
+  ]
+}

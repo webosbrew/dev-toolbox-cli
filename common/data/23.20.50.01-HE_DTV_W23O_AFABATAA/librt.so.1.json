@@ -1,0 +1,15 @@
+{
+  "name": "librt.so.1",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6"
+  ],
+  "symbols": [
+    "GLIBC_2.4@GLIBC_2.4",
+    "GLIBC_2.7@GLIBC_2.4",
+    "GLIBC_2.7@GLIBC_2.7",
+    "__librt_version_placeholder@GLIBC_2.4",
+    "__librt_version_placeholder@GLIBC_2.4",
+    "__librt_version_placeholder@GLIBC_2.7"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "libaws-checksums.so.1.0.0",
+  "needed": [
+    "libaws-c-common.so.1",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "aws_checksums_crc32",
+    "aws_checksums_crc32_hw",
+    "aws_checksums_crc32_sw",
+    "aws_checksums_crc32c",
+    "aws_checksums_crc32c_hw",
+    "aws_checksums_crc32c_sw"
+  ]
+}

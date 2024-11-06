@@ -1,0 +1,31 @@
+{
+  "name": "libsolvext.so.1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libsolv.so.1",
+    "libz.so.1"
+  ],
+  "symbols": [
+    "SOLV_1.0@SOLV_1.0",
+    "solv_fmemopen@SOLV_1.0",
+    "solv_xfopen@SOLV_1.0",
+    "solv_xfopen_buf@SOLV_1.0",
+    "solv_xfopen_fd@SOLV_1.0",
+    "solv_xfopen_iscompressed@SOLV_1.0",
+    "testcase_add_testtags@SOLV_1.0",
+    "testcase_dep2str@SOLV_1.0",
+    "testcase_job2str@SOLV_1.0",
+    "testcase_mangle_repo_names@SOLV_1.0",
+    "testcase_read@SOLV_1.0",
+    "testcase_resultdiff@SOLV_1.0",
+    "testcase_solverresult@SOLV_1.0",
+    "testcase_solvid2str@SOLV_1.0",
+    "testcase_str2dep@SOLV_1.0",
+    "testcase_str2job@SOLV_1.0",
+    "testcase_str2repo@SOLV_1.0",
+    "testcase_str2solvid@SOLV_1.0",
+    "testcase_write@SOLV_1.0",
+    "testcase_write_testtags@SOLV_1.0"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "libabsl_log_sink.so.2308.0.0",
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZNK4absl12lts_202308027LogSink11KeyFunctionEv",
+    "_ZTIN4absl12lts_202308027LogSinkE",
+    "_ZTSN4absl12lts_202308027LogSinkE",
+    "_ZTVN4absl12lts_202308027LogSinkE"
+  ]
+}

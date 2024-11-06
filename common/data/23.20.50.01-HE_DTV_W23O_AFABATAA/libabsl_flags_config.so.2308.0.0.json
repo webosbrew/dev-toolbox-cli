@@ -1,0 +1,28 @@
+{
+  "name": "libabsl_flags_config.so.2308.0.0",
+  "needed": [
+    "libabsl_flags_program_name.so.2308.0.0",
+    "libabsl_synchronization.so.2308.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "AbslInternalReportFatalUsageError_lts_20230802",
+    "_ZN4absl12lts_2023080214flags_internal14GetUsageConfigEv",
+    "_ZN4absl12lts_2023080214flags_internal16ReportUsageErrorESt17basic_string_viewIcSt11char_traitsIcEEb",
+    "_ZN4absl12lts_2023080219SetFlagsUsageConfigENS0_16FlagsUsageConfigE",
+    "_ZTIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt17basic_string_viewIcS2_EE",
+    "_ZTIFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTIFbSt17basic_string_viewIcSt11char_traitsIcEEE",
+    "_ZTIPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt17basic_string_viewIcS2_EE",
+    "_ZTIPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTIPFbSt17basic_string_viewIcSt11char_traitsIcEEE",
+    "_ZTSFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt17basic_string_viewIcS2_EE",
+    "_ZTSFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTSFbSt17basic_string_viewIcSt11char_traitsIcEEE",
+    "_ZTSPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt17basic_string_viewIcS2_EE",
+    "_ZTSPFNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEvE",
+    "_ZTSPFbSt17basic_string_viewIcSt11char_traitsIcEEE"
+  ]
+}

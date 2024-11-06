@@ -1,0 +1,15 @@
+{
+  "name": "libttfautohint.so.1",
+  "needed": [
+    "libc.so.6",
+    "libfreetype.so.6",
+    "libgcc_s.so.1",
+    "libharfbuzz.so.0",
+    "libm.so.6"
+  ],
+  "symbols": [
+    "TTF_autohint",
+    "TTF_autohint_version",
+    "TTF_autohint_version_string"
+  ]
+}

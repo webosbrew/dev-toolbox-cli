@@ -1,0 +1,33 @@
+{
+  "name": "libopencv_alphamat.so.405",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libopencv_core.so.405",
+    "libopencv_imgproc.so.405",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN2cv8alphamat10local_infoERNS_3MatES2_RN5Eigen12SparseMatrixIdLi0EiEES6_",
+    "_ZN2cv8alphamat15findColMajorIndEiii",
+    "_ZN2cv8alphamat2UUERNS_3MatES2_RN5Eigen12SparseMatrixIdLi0EiEES6_",
+    "_ZN2cv8alphamat2cmERNS_3MatES2_RN5Eigen12SparseMatrixIdLi0EiEES6_",
+    "_ZN2cv8alphamat8infoFlowERKNS_11_InputArrayES3_RKNS_12_OutputArrayE",
+    "_ZN5Eigen8internal18conjugate_gradientINS_9TransposeIKNS_3RefIKNS_12SparseMatrixIdLi0EiEELi0ENS_11OuterStrideILin1EEEEEEENS_5BlockIKNS_6MatrixIdLin1ELi1ELi0ELin1ELi1EEELin1ELi1ELb1EEENSC_ISE_Lin1ELi1ELb1EEENS_22DiagonalPreconditionerIdEEEEvRKT_RKT0_RT1_RKT2_RiRNSQ_10RealScalarE",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi0EiEENS_13CwiseBinaryOpINS0_13scalar_sum_opIddEEKNS4_IS6_KNS_7ProductINS_9TransposeIKNS4_INS0_20scalar_difference_opIddEEKS3_SB_EEEESC_Li2EEEKNS4_INS0_17scalar_product_opIddEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKNS_6MatrixIdLin1ELin1ELi0ELin1ELin1EEEEESD_EEEESS_EEEEvRT_RKT0_",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi0EiEENS_13CwiseBinaryOpINS0_13scalar_sum_opIddEEKS3_KNS4_INS0_17scalar_product_opIddEEKNS_14CwiseNullaryOpINS0_18scalar_constant_opIdEEKNS_6MatrixIdLin1ELin1ELi0ELin1ELin1EEEEES7_EEEEEEvRT_RKT0_",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi0EiEENS_13CwiseBinaryOpINS0_13scalar_sum_opIddEEKS3_S7_EEEEvRT_RKT0_",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi0EiEENS_13CwiseBinaryOpINS0_20scalar_difference_opIddEEKS3_S7_EEEEvRT_RKT0_",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi0EiEENS_7ProductIS3_S3_Li2EEEEEvRT_RKT0_",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi0EiEES3_EEvRT_RKT0_",
+    "_ZN5Eigen8internal23assign_sparse_to_sparseINS_12SparseMatrixIdLi1EiEENS_9TransposeIKNS_13CwiseBinaryOpINS0_20scalar_difference_opIddEEKNS2_IdLi0EiEES9_EEEEEEvRT_RKT0_",
+    "_ZNSt6vectorIN5Eigen7TripletIdiEESaIS2_EE17_M_realloc_insertIJS2_EEEvN9__gnu_cxx17__normal_iteratorIPS2_S4_EEDpOT_",
+    "_ZNSt6vectorIN9nanoflann15KDTreeBaseClassINS0_24KDTreeSingleIndexAdaptorINS0_10L2_AdaptorId28KDTreeVectorOfVectorsAdaptorIS_IS_IdSaIdEESaIS6_EEdLin1ENS0_9metric_L2EjEdEESA_Lin1EjEESB_SA_Lin1EjE8IntervalESaISE_EE17_M_default_appendEj",
+    "_ZNSt6vectorIS_IdSaIdEESaIS1_EE17_M_default_appendEj",
+    "_ZNSt6vectorIdSaIdEE17_M_default_appendEj",
+    "_ZNSt6vectorIiSaIiEE17_M_default_appendEj",
+    "_ZNSt6vectorIjSaIjEE17_M_default_appendEj",
+    "_ZZN5Eigen6numext4log2EiE5table"
+  ]
+}

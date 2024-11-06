@@ -1,0 +1,20 @@
+{
+  "name": "libsubid.so.4",
+  "needed": [
+    "libattr.so.1",
+    "libc.so.6",
+    "libcrypt.so.2",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "subid_get_gid_owners",
+    "subid_get_gid_ranges",
+    "subid_get_uid_owners",
+    "subid_get_uid_ranges",
+    "subid_grant_gid_range",
+    "subid_grant_uid_range",
+    "subid_init",
+    "subid_ungrant_gid_range",
+    "subid_ungrant_uid_range"
+  ]
+}
