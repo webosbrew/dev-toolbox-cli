@@ -44,7 +44,7 @@ pub(crate) fn recursive_resolve_symbols<F>(
             continue;
         }
         visited.insert(needed.clone());
-        let Some(needed) = lib_resolver(needed)  else {
+        let Some(needed) = lib_resolver(needed) else {
             continue;
         };
         recursive_resolve_symbols(&needed, undefined, visited, lib_resolver);

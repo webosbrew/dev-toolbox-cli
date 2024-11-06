@@ -18,6 +18,8 @@ serde_json = { workspace = true }
 semver = { workspace = true }
 fw-lib = { path = "../../common/fw" }
 bin-lib = { path = "../../common/bin" }
+debian-control = "0.1.38"
+debversion = "0.4.4"
 
 [dependencies.clap]
 workspace = true

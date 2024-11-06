@@ -14,6 +14,8 @@ pub struct BinaryInfo {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LibraryInfo {
     pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none", default)]
+    pub package: Option<String>,
     pub needed: Vec<String>,
     pub symbols: Vec<String>,
     #[serde(skip_serializing_if = "Vec::is_empty", default)]

@@ -1,9 +1,9 @@
 use std::cmp::Ordering;
 
-use elf::{abi, ElfStream, ParseError};
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
+use elf::{abi, ElfStream, ParseError};
 
 use crate::LibraryInfo;
 
@@ -21,12 +21,11 @@ const IGNORED_SYMBOLS: &[&str] = &[
 
 impl LibraryInfo {
     pub fn has_name(&self, name: &str) -> bool {
-        return self.name == name || self.names.iter().find(|n| *n == name).is_some();
+        self.name == name || self.names.iter().find(|n| *n == name).is_some()
     }
 
     pub fn has_symbol(&self, symbol: &str) -> bool {
-        return self
-            .symbols
+        self.symbols
             .binary_search_by(|def| {
                 let ordering = symbol.cmp(def);
                 if ordering != Ordering::Equal && def.contains("@") && !symbol.contains("@") {
@@ -37,13 +36,13 @@ impl LibraryInfo {
                 }
                 return ordering.reverse();
             })
-            .is_ok();
+            .is_ok()
     }
 
     pub fn parse<S, N>(source: S, with_undefined: bool, name: N) -> Result<Self, ParseError>
-        where
-            S: std::io::Read + std::io::Seek,
-            N: AsRef<str>,
+    where
+        S: std::io::Read + std::io::Seek,
+        N: AsRef<str>,
     {
         let mut needed = Vec::<String>::new();
         let mut elf = ElfStream::<AnyEndian, S>::open_stream(source)?;
@@ -135,13 +134,14 @@ impl LibraryInfo {
         needed.sort_unstable();
         symbols.sort_unstable();
 
-        return Ok(Self {
+        Ok(Self {
             name,
+            package: Default::default(),
             needed,
             symbols,
             undefined,
             names: Default::default(),
             priority: Default::default(),
-        });
+        })
     }
 }

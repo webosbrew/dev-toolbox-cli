@@ -1,10 +1,10 @@
+use common_path::common_path;
 use std::borrow::Cow;
 use std::collections::HashMap;
 use std::fs;
 use std::fs::File;
 use std::io::{Error, ErrorKind};
 use std::path::{Path, PathBuf};
-use common_path::common_path;
 
 use path_slash::CowExt;
 
@@ -169,7 +169,9 @@ impl<T> Component<T> {
             }
         }
         for (lib_dir, is_rpath) in lib_dirs {
-            let Ok(entries) = fs::read_dir(lib_dir) else{continue;};
+            let Ok(entries) = fs::read_dir(lib_dir) else {
+                continue;
+            };
             for entry in entries {
                 let entry = entry?;
                 if !entry.file_type()?.is_file() {

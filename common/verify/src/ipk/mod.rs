@@ -1,7 +1,7 @@
 use bin_lib::LibraryInfo;
 use ipk_lib::Package;
 
-use crate::{bin::BinVerifyResult, VerifyResult, Verify};
+use crate::{bin::BinVerifyResult, Verify, VerifyResult};
 
 pub mod component;
 

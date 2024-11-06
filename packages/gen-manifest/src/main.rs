@@ -67,7 +67,7 @@ struct HomebrewManifest {
     ipk_url: String,
     ipk_hash: IpkHash,
     ipk_size: u64,
-    installed_size: Option<u64>
+    installed_size: Option<u64>,
 }
 
 fn main() {

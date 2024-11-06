@@ -13,7 +13,7 @@ use fw_lib::Firmware;
 use ipk_lib::Package;
 use verify_lib::bin::BinVerifyResult;
 use verify_lib::ipk::{ComponentBinVerifyResult, ComponentVerifyResult, PackageVerifyResult};
-use verify_lib::{VerifyResult, Verify};
+use verify_lib::{Verify, VerifyResult};
 
 use crate::output::ReportOutput;
 

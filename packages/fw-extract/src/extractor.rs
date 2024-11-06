@@ -1,30 +1,100 @@
+use crate::FirmwareExtractor;
+use bin_lib::LibraryInfo;
+use debian_control::Control;
+use fw_lib::FirmwareInfo;
+use path_slash::PathBufExt;
+use regex::Regex;
+use semver::Version as SemVer;
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::fs;
 use std::fs::{DirEntry, File};
 use std::io::{BufRead, BufReader, BufWriter, Error, ErrorKind, Read};
 use std::path::{Path, PathBuf};
 
-use path_slash::PathBufExt;
-use regex::Regex;
-use semver::Version;
-
-use bin_lib::LibraryInfo;
-use fw_lib::FirmwareInfo;
-
-use crate::FirmwareExtractor;
+#[derive(Serialize, Deserialize, Debug)]
+struct SystemPackage {
+    version: String,
+}
 
 impl FirmwareExtractor {
-    pub fn extract_libs<P: AsRef<Path>>(&self, mappings: &mut BTreeMap<String, String>, output: P) {
+    pub fn extract_pkgs<P: AsRef<Path>>(
+        &self,
+        files_pkg_index: &mut BTreeMap<PathBuf, String>,
+        output: P,
+    ) {
+        let mut packages = BTreeMap::<String, SystemPackage>::new();
+        for path in &self.opkg_info_paths {
+            for ent in path.read_dir().unwrap() {
+                let Ok(ent) = ent else {
+                    continue;
+                };
+                let path = ent.path();
+                let Some(ext) = path.extension() else {
+                    continue;
+                };
+                let root = path.ancestors().nth(5).unwrap();
+                if ext == "list" {
+                    for line in BufReader::new(File::open(&path).unwrap()).lines() {
+                        let Ok(line) = line else {
+                            continue;
+                        };
+                        let Some(line) = line.split("\t").next() else {
+                            continue;
+                        };
+                        files_pkg_index.insert(
+                            root.join(PathBuf::from_slash(line.trim_start_matches("/"))),
+                            String::from(path.file_stem().unwrap().to_string_lossy()),
+                        );
+                    }
+                } else if ext == "control" {
+                    let ctrl = Control::from_file(&path).unwrap();
+                    let Some(bin) = ctrl.binaries().next() else {
+                        continue;
+                    };
+                    let version_str = bin.as_deb822().get("Version").unwrap();
+
+                    let pkg_name = bin.name().unwrap();
+                    packages.insert(
+                        pkg_name.clone(),
+                        SystemPackage {
+                            version: version_str.clone(),
+                        },
+                    );
+                }
+            }
+        }
+        let Ok(file) = File::create(output.as_ref().join("packages.json")) else {
+            return;
+        };
+        let writer = BufWriter::new(file);
+        serde_json::to_writer_pretty(writer, &packages).expect("Failed to save packages.json");
+    }
+
+    pub fn extract_libs<P: AsRef<Path>>(
+        &self,
+        files_pkg_index: &BTreeMap<PathBuf, String>,
+        lib_index: &mut BTreeMap<String, String>,
+        output: P,
+    ) {
         for lib_path in &self.lib_paths {
-            if let Ok(dir) = lib_path.read_dir() {
-                for ent in dir {
-                    match ent {
-                        Ok(ent) => {
-                            self.handle_entry(ent, &self.so_regex, mappings, output.as_ref(), 0);
-                        }
-                        Err(e) => {
-                            eprintln!("{e:?}");
-                        }
+            let Ok(dir) = lib_path.read_dir() else {
+                continue;
+            };
+            for ent in dir {
+                match ent {
+                    Ok(ent) => {
+                        self.handle_entry(
+                            ent,
+                            &self.so_regex,
+                            files_pkg_index,
+                            lib_index,
+                            output.as_ref(),
+                            0,
+                        );
+                    }
+                    Err(e) => {
+                        eprintln!("{e:?}");
                     }
                 }
             }
@@ -35,7 +105,8 @@ impl FirmwareExtractor {
         &self,
         ent: DirEntry,
         so_regex: &Regex,
-        mappings: &mut BTreeMap<String, String>,
+        files_pkg_index: &BTreeMap<PathBuf, String>,
+        lib_index: &mut BTreeMap<String, String>,
         output: P,
         debug: u8,
     ) where
@@ -49,7 +120,7 @@ impl FirmwareExtractor {
                 return;
             }
             if metadata.is_file() {
-                let lib_info = match File::open(&ent_path).and_then(|file| {
+                let mut lib_info = match File::open(&ent_path).and_then(|file| {
                     LibraryInfo::parse(file, false, ent_path.file_name().unwrap().to_string_lossy())
                         .map_err(|e| {
                             Error::new(
@@ -64,6 +135,7 @@ impl FirmwareExtractor {
                         return;
                     }
                 };
+                lib_info.package = files_pkg_index.get(&ent_path).cloned();
                 if debug > 0 {
                     println!("Saving symbols list for {name}");
                 }
@@ -76,11 +148,11 @@ impl FirmwareExtractor {
                         });
                     })
                     .unwrap();
-                mappings.insert(String::from(name), symbols_name);
+                lib_index.insert(String::from(name), symbols_name);
             } else if metadata.is_symlink() {
                 match self.final_link_target(&ent_path) {
                     Ok(Some(target)) => {
-                        mappings.insert(
+                        lib_index.insert(
                             String::from(name),
                             format!("{}.json", target.file_name().unwrap().to_string_lossy()),
                         );
@@ -113,10 +185,18 @@ impl FirmwareExtractor {
                     ));
                 }
             }
-            if let Ok(l) = target.read_link() {
-                target = self.join_link_target(l)?;
-            } else {
-                return Ok(None);
+            match target.read_link() {
+                Ok(l) => {
+                    target = self.join_link_target(l)?;
+                }
+                Err(e) => {
+                    eprintln!(
+                        "Failed to find link target for {}: {:?}",
+                        link.as_ref().to_string_lossy(),
+                        e
+                    );
+                    return Ok(None);
+                }
             };
         }
         Ok(Some(target))
@@ -154,11 +234,13 @@ impl FirmwareExtractor {
         let fw_info = Self::extract_fw_info(input)?;
         let rootfs_path = input.join("rootfs.pak.unsquashfs");
         let lib_paths = Self::extract_lib_paths(input, &rootfs_path)?;
+        let opkg_info_paths = Self::extract_opkg_info_paths(input)?;
         let so_regex = Regex::new("^.+.so(\\.\\w+)*$").unwrap();
         Ok(Self {
             fw_info,
             rootfs_path,
             lib_paths,
+            opkg_info_paths,
             so_regex,
         })
     }
@@ -184,7 +266,7 @@ impl FirmwareExtractor {
                 .join("etc")
                 .join("starfish-release"),
         )?
-            .read_to_string(&mut starfish_release)?;
+        .read_to_string(&mut starfish_release)?;
         let release_regex = Regex::new("release (\\d+\\.\\d+\\.\\d+)").unwrap();
         let release = release_regex
             .captures(&starfish_release)
@@ -199,7 +281,7 @@ impl FirmwareExtractor {
         Ok(FirmwareInfo {
             version: String::from(version),
             ota_id: String::from(ota_id),
-            release: Version::parse(release.as_str()).map_err(|e| {
+            release: SemVer::parse(release.as_str()).map_err(|e| {
                 Error::new(
                     ErrorKind::InvalidData,
                     format!("Invalid version {}: {e:?}", release.as_str()),
@@ -249,6 +331,30 @@ impl FirmwareExtractor {
                 }
                 return Some(root.join(PathBuf::from_slash(trimmed)));
             }))
+            .collect())
+    }
+
+    fn extract_opkg_info_paths<Input>(input: Input) -> Result<Vec<PathBuf>, Error>
+    where
+        Input: AsRef<Path>,
+    {
+        Ok(input
+            .as_ref()
+            .read_dir()?
+            .flat_map(|ent| {
+                let Ok(ent) = ent else {
+                    return vec![];
+                };
+                let path = ent.path();
+                return vec![
+                    "usr/lib/opkg/info",
+                    "bsp/var/lib/opkg/info", /*, "var/lib/opkg/info"*/
+                ]
+                .iter()
+                .map(|x| path.join(PathBuf::from_slash(x)))
+                .filter(|p| p.is_dir())
+                .collect();
+            })
             .collect())
     }
 }

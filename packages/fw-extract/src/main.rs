@@ -27,6 +27,7 @@ struct FirmwareExtractor {
     fw_info: FirmwareInfo,
     rootfs_path: PathBuf,
     lib_paths: Vec<PathBuf>,
+    opkg_info_paths: Vec<PathBuf>,
     so_regex: Regex,
 }
 
@@ -54,10 +55,12 @@ fn run(args: Args) -> Result<(), Error> {
         }
         println!("Extracting information from {}", extractor.fw_info);
 
-        let mut mappings: BTreeMap<String, String> = BTreeMap::new();
-        extractor.extract_libs(&mut mappings, &output);
+        let mut lib_index: BTreeMap<String, String> = BTreeMap::new();
+        let mut files_pkg_index: BTreeMap<PathBuf, String> = BTreeMap::new();
+        extractor.extract_pkgs(&mut files_pkg_index, &output);
+        extractor.extract_libs(&files_pkg_index, &mut lib_index, &output);
         let writer = BufWriter::new(File::create(output.join("index.json"))?);
-        serde_json::to_writer_pretty(writer, &mappings).map_err(|e| {
+        serde_json::to_writer_pretty(writer, &lib_index).map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,
                 format!("Failed to write index {:?}", e),
