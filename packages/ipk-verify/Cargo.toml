@@ -1,6 +1,6 @@
 [package]
 name = "ipk-verify"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "Command line tool for checking symbols in an exectuable and libraries in an IPK file"
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]

@@ -1,6 +1,6 @@
 [package]
 name = "gen-manifest"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "Command line tool for generating manifest for publish from an IPK file"
 authors = ["Mariotaku Lee <mariotaku.lee@gmail.com>"]
