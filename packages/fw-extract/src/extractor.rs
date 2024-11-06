@@ -1,6 +1,7 @@
 use crate::FirmwareExtractor;
 use bin_lib::LibraryInfo;
 use debian_control::Control;
+use debversion::{AsVersion, Version as DebVersion};
 use fw_lib::FirmwareInfo;
 use path_slash::PathBufExt;
 use regex::Regex;
@@ -13,8 +14,17 @@ use std::io::{BufRead, BufReader, BufWriter, Error, ErrorKind, Read};
 use std::path::{Path, PathBuf};
 
 #[derive(Serialize, Deserialize, Debug)]
+struct PackageVersion {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    epoch: Option<u32>,
+    upstream: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    debian_revision: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
 struct SystemPackage {
-    version: String,
+    version: PackageVersion,
 }
 
 impl FirmwareExtractor {
@@ -53,12 +63,25 @@ impl FirmwareExtractor {
                         continue;
                     };
                     let version_str = bin.as_deb822().get("Version").unwrap();
+                    let version =
+                        version_str
+                            .as_str()
+                            .into_version()
+                            .unwrap_or_else(|e| DebVersion {
+                                epoch: None,
+                                upstream_version: version_str.clone(),
+                                debian_revision: None,
+                            });
 
                     let pkg_name = bin.name().unwrap();
                     packages.insert(
                         pkg_name.clone(),
                         SystemPackage {
-                            version: version_str.clone(),
+                            version: PackageVersion {
+                                epoch: version.epoch,
+                                upstream: version.upstream_version,
+                                debian_revision: version.debian_revision,
+                            },
                         },
                     );
                 }
@@ -269,7 +292,7 @@ impl FirmwareExtractor {
                 .join("etc")
                 .join("starfish-release"),
         )?
-        .read_to_string(&mut starfish_release)?;
+            .read_to_string(&mut starfish_release)?;
         let release_regex = Regex::new("release (\\d+\\.\\d+\\.\\d+)").unwrap();
         let release = release_regex
             .captures(&starfish_release)
@@ -353,10 +376,10 @@ impl FirmwareExtractor {
                     "usr/lib/opkg/info",
                     "bsp/var/lib/opkg/info", /*, "var/lib/opkg/info"*/
                 ]
-                .iter()
-                .map(|x| path.join(PathBuf::from_slash(x)))
-                .filter(|p| p.is_dir())
-                .collect();
+                    .iter()
+                    .map(|x| path.join(PathBuf::from_slash(x)))
+                    .filter(|p| p.is_dir())
+                    .collect();
             })
             .collect())
     }
