@@ -1,5 +1,6 @@
 {
   "name": "libresolv.so.2",
+  "package": "libc6",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6"

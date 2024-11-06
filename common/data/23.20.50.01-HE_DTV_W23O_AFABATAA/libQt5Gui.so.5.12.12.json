@@ -1,5 +1,6 @@
 {
   "name": "libQt5Gui.so.5",
+  "package": "lib32-qtbase",
   "needed": [
     "libQt5Core.so.5",
     "libc.so.6",

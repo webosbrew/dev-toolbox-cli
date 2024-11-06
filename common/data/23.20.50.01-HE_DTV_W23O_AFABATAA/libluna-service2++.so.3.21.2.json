@@ -1,5 +1,6 @@
 {
   "name": "libluna-service2++.so.3",
+  "package": "lib32-luna-service2",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

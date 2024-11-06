@@ -1,0 +1,29 @@
+{
+  "name": "libnv12y_dfp_int16.so",
+  "package": "aipqfw",
+  "needed": [
+    "libCLC.so",
+    "libGAL.so",
+    "libOpenVX.so",
+    "libOpenVXU.so",
+    "libVSC.so",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libovxlib.so",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z21vxLoadVxcBinarySourcePc@libnv12y_dfp_int16.so",
+    "_Z26vxnv12y_dfp_int16ValidatorP8_vx_nodePKP13_vx_referencejPP15_vx_meta_format@libnv12y_dfp_int16.so",
+    "_Z28vxnv12y_dfp_int16InitializerP8_vx_nodePKP13_vx_referencej@libnv12y_dfp_int16.so",
+    "_Z30vxnv12y_dfp_int16DeinitializerP8_vx_nodePKP13_vx_referencej@libnv12y_dfp_int16.so",
+    "binaryBuf@libnv12y_dfp_int16.so",
+    "programSource@libnv12y_dfp_int16.so",
+    "vxPublishKernels@libnv12y_dfp_int16.so",
+    "vxnv12y_dfp_int16KernelInfo@libnv12y_dfp_int16.so"
+  ]
+}

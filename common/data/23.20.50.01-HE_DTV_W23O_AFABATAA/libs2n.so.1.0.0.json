@@ -1,5 +1,6 @@
 {
   "name": "libs2n.so.1",
+  "package": "lib32-libs2n1",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

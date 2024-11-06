@@ -1,5 +1,6 @@
 {
   "name": "libopencv_ts.so.405",
+  "package": "lib32-libopencv-ts405",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

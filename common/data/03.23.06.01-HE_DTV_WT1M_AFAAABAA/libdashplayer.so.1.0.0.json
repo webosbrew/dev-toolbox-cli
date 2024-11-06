@@ -1,5 +1,6 @@
 {
   "name": "libdashplayer.so.1.0.0",
+  "package": "libdashplayer1.0.0",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

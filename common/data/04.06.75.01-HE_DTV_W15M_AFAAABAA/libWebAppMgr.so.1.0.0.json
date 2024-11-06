@@ -1,5 +1,6 @@
 {
   "name": "libWebAppMgr.so.1",
+  "package": "webappmanager2",
   "needed": [
     "libLunaSysMgrCommon.so.1",
     "libPmLogLib.so.3",

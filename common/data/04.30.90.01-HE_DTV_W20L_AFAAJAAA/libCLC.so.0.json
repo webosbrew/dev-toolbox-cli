@@ -1,5 +1,6 @@
 {
   "name": "libCLC.so",
+  "package": "aipqfw",
   "needed": [
     "libGAL.so",
     "libLLVM_viv.so",

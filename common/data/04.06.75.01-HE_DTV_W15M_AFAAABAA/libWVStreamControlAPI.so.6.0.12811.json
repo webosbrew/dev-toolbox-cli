@@ -1,5 +1,6 @@
 {
   "name": "libWVStreamControlAPI.so.6.0.12811",
+  "package": "mediadrm-core",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

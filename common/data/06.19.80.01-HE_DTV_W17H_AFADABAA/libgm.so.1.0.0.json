@@ -1,5 +1,6 @@
 {
   "name": "libgm.so.1",
+  "package": "gm",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

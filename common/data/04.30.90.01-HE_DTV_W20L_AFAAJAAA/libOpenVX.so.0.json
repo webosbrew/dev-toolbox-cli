@@ -1,5 +1,6 @@
 {
   "name": "libOpenVX.so",
+  "package": "aipqfw",
   "needed": [
     "libGAL.so",
     "libVSC.so",

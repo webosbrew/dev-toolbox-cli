@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-subtitle-renderer.so.1",
+  "package": "starfish-subtitle-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

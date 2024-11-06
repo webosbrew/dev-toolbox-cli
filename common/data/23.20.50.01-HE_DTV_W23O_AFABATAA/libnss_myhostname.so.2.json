@@ -1,5 +1,6 @@
 {
   "name": "libnss_myhostname.so.2",
+  "package": "lib32-libnss-myhostname2",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

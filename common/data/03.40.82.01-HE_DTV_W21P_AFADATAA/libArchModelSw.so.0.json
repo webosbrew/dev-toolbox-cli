@@ -1,0 +1,30 @@
+{
+  "name": "libArchModelSw.so",
+  "package": "aipqfw",
+  "needed": [
+    "libNNArchPerf.so",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "archCalculateArchPerf@libArchModelSw.so",
+    "archFillOpInfo@libArchModelSw.so",
+    "archGetPerfResult@libArchModelSw.so",
+    "archIsFeatureAvailable@libArchModelSw.so",
+    "archPredictPerf@libArchModelSw.so",
+    "archPredictPerfAnalysing@libArchModelSw.so",
+    "archPredictPerfFillLayer@libArchModelSw.so",
+    "archSetManualFeatures@libArchModelSw.so",
+    "archSwLibDeInit@libArchModelSw.so",
+    "archSwLibInit@libArchModelSw.so",
+    "deInitArchGraphInfo@libArchModelSw.so",
+    "deInitArchOpInfo@libArchModelSw.so",
+    "initArchGraphInfo@libArchModelSw.so",
+    "initArchOpInfo@libArchModelSw.so"
+  ]
+}

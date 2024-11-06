@@ -1,5 +1,6 @@
 {
   "name": "libhybridtv.so.1",
+  "package": "hybridtv-dvb",
   "needed": [
     "libasn.so",
     "libavcodec.so.55",

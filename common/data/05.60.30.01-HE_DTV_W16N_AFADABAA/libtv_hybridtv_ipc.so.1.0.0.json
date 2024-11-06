@@ -1,5 +1,6 @@
 {
   "name": "libtv_hybridtv_ipc.so.1",
+  "package": "hybridtv-dvb",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

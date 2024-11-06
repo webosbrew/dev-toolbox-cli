@@ -1,5 +1,6 @@
 {
   "name": "libaabase.so.1",
+  "package": "lib32-audpera",
   "needed": [
     "libaa.so.2",
     "libaudcommon.so.1",

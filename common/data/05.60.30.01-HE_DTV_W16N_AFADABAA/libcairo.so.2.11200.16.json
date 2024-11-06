@@ -1,5 +1,6 @@
 {
   "name": "libcairo.so.2",
+  "package": "libcairo2",
   "needed": [
     "libc.so.6",
     "libexpat.so.1",

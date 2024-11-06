@@ -1,5 +1,6 @@
 {
   "name": "libums_pipeline.so.1",
+  "package": "umediaserver",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

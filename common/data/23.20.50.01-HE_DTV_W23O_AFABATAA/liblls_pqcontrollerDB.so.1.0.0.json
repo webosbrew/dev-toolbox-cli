@@ -1,5 +1,6 @@
 {
   "name": "liblls_pqcontrollerDB.so.1",
+  "package": "lib32-pqcontroller",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libaligeniesdk.so",
+  "package": "alibaba-adapter",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.2",

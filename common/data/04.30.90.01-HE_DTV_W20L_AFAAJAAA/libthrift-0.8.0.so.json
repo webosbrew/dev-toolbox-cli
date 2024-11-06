@@ -1,5 +1,6 @@
 {
   "name": "libthrift-0.8.0.so",
+  "package": "thrift",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.2",

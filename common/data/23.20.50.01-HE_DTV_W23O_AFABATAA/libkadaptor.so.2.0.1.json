@@ -1,5 +1,6 @@
 {
   "name": "libkadaptor.so.2",
+  "package": "lib32-libkadaptor",
   "needed": [
     "ld-linux.so.3",
     "libaudcommon.so.1",

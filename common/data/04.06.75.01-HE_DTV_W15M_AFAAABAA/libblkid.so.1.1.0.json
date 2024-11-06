@@ -1,5 +1,6 @@
 {
   "name": "libblkid.so.1",
+  "package": "libblkid1",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

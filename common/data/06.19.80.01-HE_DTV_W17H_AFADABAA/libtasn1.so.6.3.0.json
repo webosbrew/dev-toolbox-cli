@@ -1,5 +1,6 @@
 {
   "name": "libtasn1.so.6",
+  "package": "libtasn1-6",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

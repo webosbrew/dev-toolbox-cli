@@ -1,5 +1,6 @@
 {
   "name": "libbluetooth.blueangel.so.1",
+  "package": "blueangel",
   "needed": [
     "libbtcust.so.1",
     "libbtstd.so.1",

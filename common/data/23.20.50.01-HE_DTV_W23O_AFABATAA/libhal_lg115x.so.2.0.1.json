@@ -1,5 +1,6 @@
 {
   "name": "libhal_lg115x.so.2",
+  "package": "lib32-hal-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

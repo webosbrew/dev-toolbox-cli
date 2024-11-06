@@ -1,5 +1,6 @@
 {
   "name": "libadapter_avmutemanager.so.2",
+  "package": "lib32-tvco-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

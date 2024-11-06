@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-subtitle.so.1",
+  "package": "starfish-subtitle-libs",
   "needed": [
     "libc.so.6",
     "libdrmddi.so.2",

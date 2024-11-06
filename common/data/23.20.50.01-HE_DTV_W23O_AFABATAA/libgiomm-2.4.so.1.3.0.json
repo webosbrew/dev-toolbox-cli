@@ -1,5 +1,6 @@
 {
   "name": "libgiomm-2.4.so.1",
+  "package": "lib32-glibmm",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

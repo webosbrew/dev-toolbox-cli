@@ -1,0 +1,18 @@
+{
+  "name": "libNDL_log.so.1",
+  "package": "lib32-libndl",
+  "needed": [
+    "libNDL.so.1",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "NDL_FinalizeLog",
+    "NDL_InitLog",
+    "NDL_WriteLog",
+    "dPmLogGetContext",
+    "dPmLogIsEnabled",
+    "dPmLogMsg"
+  ]
+}

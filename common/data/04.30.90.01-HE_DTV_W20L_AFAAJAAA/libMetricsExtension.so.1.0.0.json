@@ -1,5 +1,6 @@
 {
   "name": "libMetricsExtension.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libDCMSink.so",

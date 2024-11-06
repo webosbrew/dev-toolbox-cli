@@ -1,5 +1,6 @@
 {
   "name": "libdrmutil.so.1",
+  "package": "mediadrm",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

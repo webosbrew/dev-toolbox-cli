@@ -1,5 +1,6 @@
 {
   "name": "libicutu.so.50",
+  "package": "libicutu50",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

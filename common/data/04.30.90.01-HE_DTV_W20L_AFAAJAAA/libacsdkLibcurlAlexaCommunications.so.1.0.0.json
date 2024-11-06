@@ -1,5 +1,6 @@
 {
   "name": "libacsdkLibcurlAlexaCommunications.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libACL.so",
     "libAVSCommon.so",

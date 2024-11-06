@@ -1,0 +1,15 @@
+{
+  "name": "libpvrWAYLAND_WSEGL.so.0.1",
+  "package": "gpu-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libsrv_um.so",
+    "libwayland-client.so.0"
+  ],
+  "symbols": [
+    "WSEGL_GetFunctionTablePointer",
+    "wl_rgx_interface",
+    "wl_rgx_reallocate_listener_interface"
+  ]
+}

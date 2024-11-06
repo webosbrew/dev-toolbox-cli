@@ -1,5 +1,6 @@
 {
   "name": "libsrv_um.so.0.1",
+  "package": "gpu-libs",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

@@ -1,5 +1,6 @@
 {
   "name": "libtpl_cpc.so",
+  "package": "mediadrm-core",
   "needed": [
     "libc.so.6"
   ],

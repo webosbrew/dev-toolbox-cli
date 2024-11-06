@@ -1,5 +1,6 @@
 {
   "name": "libovxlib.so",
+  "package": "aipqfw",
   "needed": [
     "libCLC.so",
     "libOpenVX.so",

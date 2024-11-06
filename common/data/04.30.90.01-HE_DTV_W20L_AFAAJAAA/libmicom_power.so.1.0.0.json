@@ -1,5 +1,6 @@
 {
   "name": "libmicom_power.so.1",
+  "package": "micom-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

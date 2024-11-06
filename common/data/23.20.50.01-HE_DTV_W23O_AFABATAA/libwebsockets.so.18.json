@@ -1,5 +1,6 @@
 {
   "name": "libwebsockets.so.18",
+  "package": "lib32-libwebsockets18",
   "needed": [
     "libc.so.6",
     "libcap.so.2",

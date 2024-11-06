@@ -1,5 +1,6 @@
 {
   "name": "librcs_client.so",
+  "package": "iotivity-service",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libhelpers.so.2",
+  "package": "lib32-libhelpers2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

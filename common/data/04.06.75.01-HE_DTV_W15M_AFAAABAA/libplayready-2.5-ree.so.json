@@ -1,5 +1,6 @@
 {
   "name": "libplayready-2.5-ree.so",
+  "package": "playready",
   "needed": [
     "libc.so.6",
     "libdile_drm.so.0",

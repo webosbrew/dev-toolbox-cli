@@ -1,5 +1,6 @@
 {
   "name": "libpf-miracastplugin.so.1",
+  "package": "libpf-miracastplugin1",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_filesystem.so.1.53.0",

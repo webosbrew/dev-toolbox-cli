@@ -1,5 +1,6 @@
 {
   "name": "libgstrtkclock-1.0.so.0",
+  "package": "gstreamer1.0-plugins-rtk",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

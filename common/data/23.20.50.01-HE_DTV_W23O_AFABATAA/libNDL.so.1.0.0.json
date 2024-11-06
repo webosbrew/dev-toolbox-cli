@@ -1,5 +1,6 @@
 {
   "name": "libNDL.so.1",
+  "package": "lib32-libndl",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

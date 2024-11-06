@@ -1,0 +1,12 @@
+{
+  "name": "libinkahandler.so.1",
+  "package": "lib32-mediadrm",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libncg_agent.so.1"
+  ],
+  "symbols": [
+    "API_DRM_INKA_IsDrm"
+  ]
+}

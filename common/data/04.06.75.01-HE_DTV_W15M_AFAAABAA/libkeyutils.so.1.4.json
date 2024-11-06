@@ -1,5 +1,6 @@
 {
   "name": "libkeyutils.so.1",
+  "package": "keyutils",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

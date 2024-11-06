@@ -1,5 +1,6 @@
 {
   "name": "libdile_vdec_direct.so.1",
+  "package": "dile-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

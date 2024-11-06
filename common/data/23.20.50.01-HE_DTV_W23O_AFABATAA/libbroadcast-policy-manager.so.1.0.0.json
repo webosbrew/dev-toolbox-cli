@@ -1,5 +1,6 @@
 {
   "name": "libbroadcast-policy-manager.so.1",
+  "package": "lib32-libbroadcast-policy-manager1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

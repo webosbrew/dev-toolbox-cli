@@ -1,5 +1,6 @@
 {
   "name": "libshopping.so.1.0.0",
+  "package": "lib32-adoverlay-service",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

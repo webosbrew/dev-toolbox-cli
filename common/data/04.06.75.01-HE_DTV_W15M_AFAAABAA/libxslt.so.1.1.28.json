@@ -1,5 +1,6 @@
 {
   "name": "libxslt.so.1",
+  "package": "libxslt",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

@@ -1,5 +1,6 @@
 {
   "name": "libssh.so.4",
+  "package": "lib32-libssh4",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

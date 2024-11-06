@@ -1,5 +1,6 @@
 {
   "name": "libalphonsosolution.so.1.0.0",
+  "package": "acr2",
   "needed": [
     "libPmLogLib.so.3",
     "libanl.so.1",

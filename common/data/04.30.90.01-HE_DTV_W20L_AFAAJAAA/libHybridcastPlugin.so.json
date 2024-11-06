@@ -1,5 +1,6 @@
 {
   "name": "libHybridcastPlugin.so",
+  "package": "hybridcast-plugin",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

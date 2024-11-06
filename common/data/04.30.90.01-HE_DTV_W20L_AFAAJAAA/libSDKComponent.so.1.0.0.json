@@ -1,5 +1,6 @@
 {
   "name": "libSDKComponent.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libc.so.6",

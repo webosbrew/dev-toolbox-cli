@@ -1,5 +1,6 @@
 {
   "name": "libmount.so.1",
+  "package": "lib32-libmount1",
   "needed": [
     "ld-linux.so.3",
     "libblkid.so.1",

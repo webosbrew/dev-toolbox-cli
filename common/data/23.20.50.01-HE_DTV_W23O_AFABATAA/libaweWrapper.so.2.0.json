@@ -1,5 +1,6 @@
 {
   "name": "libaweWrapper.so.2.0",
+  "package": "lib32-libawe",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libumi.so.1",
+  "package": "libumi1",
   "needed": [
     "libPmLogLib.so.3",
     "libasound.so.2",

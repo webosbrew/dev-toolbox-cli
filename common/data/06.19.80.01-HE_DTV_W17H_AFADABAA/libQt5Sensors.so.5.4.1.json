@@ -1,5 +1,6 @@
 {
   "name": "libQt5Sensors.so.5",
+  "package": "libqt5sensors5",
   "needed": [
     "libQt5Core.so.5",
     "libc.so.6",

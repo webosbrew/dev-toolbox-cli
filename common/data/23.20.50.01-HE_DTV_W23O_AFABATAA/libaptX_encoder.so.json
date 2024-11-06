@@ -1,5 +1,6 @@
 {
   "name": "libbtaptxenc.so",
+  "package": "lib32-bluetooth-external-codec",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

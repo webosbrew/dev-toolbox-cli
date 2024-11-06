@@ -1,5 +1,6 @@
 {
   "name": "libharfbuzz.so.0",
+  "package": "harfbuzz",
   "needed": [
     "libc.so.6",
     "libffi.so.6",

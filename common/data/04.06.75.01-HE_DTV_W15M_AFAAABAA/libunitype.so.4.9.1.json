@@ -1,5 +1,6 @@
 {
   "name": "libunitype.so.4.9.1",
+  "package": "libmicro-toolkit",
   "needed": [
     "libc.so.6"
   ],

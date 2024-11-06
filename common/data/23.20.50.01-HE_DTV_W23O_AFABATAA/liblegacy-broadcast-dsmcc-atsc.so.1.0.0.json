@@ -1,5 +1,6 @@
 {
   "name": "liblegacy-broadcast-dsmcc-atsc.so.1",
+  "package": "lib32-liblegacy-broadcast-dsmcc-atsc1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

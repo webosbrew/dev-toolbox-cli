@@ -1,0 +1,11 @@
+{
+  "name": "libboost_system.so.1.72.0",
+  "package": "lib32-libboost-system1.72.0",
+  "needed": [
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "_ZN5boost6system23dummy_exported_functionEv"
+  ]
+}

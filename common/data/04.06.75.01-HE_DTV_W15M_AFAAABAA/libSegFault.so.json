@@ -1,5 +1,6 @@
 {
   "name": "libSegFault.so.1",
+  "package": "libsegfault-webos",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

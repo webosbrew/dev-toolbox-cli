@@ -1,5 +1,6 @@
 {
   "name": "libmiracastencoding.so.1",
+  "package": "lib32-libmiracastencoding",
   "needed": [
     "libPmLogLib.so.3",
     "libasound.so.2",

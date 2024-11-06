@@ -1,5 +1,6 @@
 {
   "name": "libdav1d.so.5",
+  "package": "lib32-dav1d",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

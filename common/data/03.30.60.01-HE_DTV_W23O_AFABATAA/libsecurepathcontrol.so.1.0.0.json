@@ -1,0 +1,35 @@
+{
+  "name": "libsecurepathcontrol.so.1",
+  "package": "lib32-secure-video-bridge",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdile_svp.so.0",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z23CreateSecurePathControl15SecureMediaType",
+    "_Z24DestroySecurePathControlP17SecurePathControl",
+    "_ZN10SvpControl13adjust_offsetERj",
+    "_ZN10SvpControl15update_resourceEv",
+    "_ZN10SvpControl4CopyEPKhjj",
+    "_ZN10SvpControl4LockEv",
+    "_ZN10SvpControl4OpenEyRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN10SvpControl5CloseEv",
+    "_ZN10SvpControl5FlushEv",
+    "_ZN10SvpControl5WriteEjPN17SecurePathControl7WrittenE",
+    "_ZN10SvpControl6UnlockEv",
+    "_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjSt4lessIS5_ESaISt4pairIKS5_jEEEC1ESt16initializer_listISA_ERKS7_RKSB_",
+    "_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEjSt4lessIS5_ESaISt4pairIKS5_jEEEC2ESt16initializer_listISA_ERKS7_RKSB_",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_jESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_jESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE8_M_eraseEPSt13_Rb_tree_nodeIS8_E",
+    "_ZTI10SvpControl",
+    "_ZTI17SecurePathControl",
+    "_ZTS10SvpControl",
+    "_ZTS17SecurePathControl",
+    "_ZTV10SvpControl",
+    "_ZZ13GetLogContextvE7context"
+  ]
+}

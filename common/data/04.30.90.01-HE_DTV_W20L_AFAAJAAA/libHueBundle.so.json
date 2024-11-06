@@ -1,5 +1,6 @@
 {
   "name": "libHueBundle.so",
+  "package": "iotivity-service",
   "needed": [
     "libc.so.6",
     "libcurl.so.4",

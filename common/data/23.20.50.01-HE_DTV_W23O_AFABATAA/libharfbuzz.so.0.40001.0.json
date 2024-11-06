@@ -1,5 +1,6 @@
 {
   "name": "libharfbuzz.so.0",
+  "package": "lib32-libharfbuzz0",
   "needed": [
     "libc.so.6",
     "libfreetype.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libboost_system.so.1.56.0",
+  "package": "libboost-system1.56.0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

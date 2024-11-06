@@ -1,5 +1,6 @@
 {
   "name": "libwebos_aescrypto.so.1",
+  "package": "dtcpip",
   "needed": [
     "libc.so.6",
     "libdile_dtcp.so.0",

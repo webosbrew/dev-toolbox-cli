@@ -1,5 +1,6 @@
 {
   "name": "libgnsdk.so",
+  "package": "libgnsdk",
   "needed": [
     "ld-linux.so.3",
     "libanl.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libdil_tu_plugin_vtu.so.1",
+  "package": "lib32-legacy-broadcast-atsc",
   "needed": [
     "libPmLogLibCpp.so.3",
     "libc.so.6",

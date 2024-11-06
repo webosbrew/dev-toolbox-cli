@@ -1,5 +1,6 @@
 {
   "name": "libsmpeg2-2.0.so.0",
+  "package": "libsmpeg2-2.0-0",
   "needed": [
     "libSDL2-2.0.so.0",
     "libc.so.6",

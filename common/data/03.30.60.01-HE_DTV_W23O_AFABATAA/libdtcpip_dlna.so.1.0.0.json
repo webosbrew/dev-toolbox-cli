@@ -1,0 +1,23 @@
+{
+  "name": "libdtcpip_dlna.so.1",
+  "package": "lib32-dtcpip",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0"
+  ],
+  "symbols": [
+    "DTCPIP_DLNA_FreeInfo",
+    "DTCPIP_DLNA_GetContentFormat",
+    "DTCPIP_DLNA_GetDTCP1Host",
+    "DTCPIP_DLNA_GetDTCP1Port",
+    "DTCPIP_DLNA_GetFlags",
+    "DTCPIP_DLNA_GetMimeType",
+    "DTCPIP_DLNA_GetOP",
+    "DTCPIP_DLNA_GetPN",
+    "DTCPIP_DLNA_IsByteSeekable",
+    "DTCPIP_DLNA_IsDTCPContent",
+    "DTCPIP_DLNA_IsTimeSeekable",
+    "DTCPIP_DLNA_NewInfo"
+  ]
+}

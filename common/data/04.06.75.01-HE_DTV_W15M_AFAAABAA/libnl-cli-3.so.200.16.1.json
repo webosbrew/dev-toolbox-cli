@@ -1,5 +1,6 @@
 {
   "name": "libnl-cli-3.so.200",
+  "package": "libnl-3-cli",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

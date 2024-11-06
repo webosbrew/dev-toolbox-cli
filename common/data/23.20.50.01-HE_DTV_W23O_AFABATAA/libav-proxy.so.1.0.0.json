@@ -1,5 +1,6 @@
 {
   "name": "libav-proxy.so.1",
+  "package": "lib32-libav-proxy",
   "needed": [
     "libPmLogLib.so.3",
     "libav-connector.so.1",

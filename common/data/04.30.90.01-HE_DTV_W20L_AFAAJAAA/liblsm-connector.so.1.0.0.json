@@ -1,5 +1,6 @@
 {
   "name": "liblsm-connector.so.1",
+  "package": "starfish-media-pipeline",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

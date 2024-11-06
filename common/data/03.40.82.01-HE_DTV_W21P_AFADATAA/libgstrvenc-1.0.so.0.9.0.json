@@ -1,0 +1,37 @@
+{
+  "name": "libgstrvenc-1.0.so.0",
+  "package": "gstreamer1.0-plugins-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgstrtkutils-1.0.so.0",
+    "libgstvideo-1.0.so.0",
+    "libomx_vdec.so",
+    "libpthread.so.0",
+    "libracodec.so",
+    "librpccore.so",
+    "librtk_codec_video.so",
+    "librtk_vclient_driver.so",
+    "librtk_vclient_scale.so"
+  ],
+  "symbols": [
+    "gst_rv_enc_context_configure_encoder",
+    "gst_rv_enc_context_debug_category",
+    "gst_rv_enc_context_encode_finish_cb",
+    "gst_rv_enc_context_enqueue",
+    "gst_rv_enc_context_get_from_queue",
+    "gst_rv_enc_context_get_type",
+    "gst_rv_enc_context_open_encoder",
+    "gst_rv_enc_context_run_encoder",
+    "gst_rv_enc_context_set_base_encoder",
+    "gst_rv_enc_context_shutdown_encoder",
+    "gst_rv_enc_context_start",
+    "gst_rv_enc_context_stop",
+    "gst_rv_enc_context_stop_encoder"
+  ]
+}

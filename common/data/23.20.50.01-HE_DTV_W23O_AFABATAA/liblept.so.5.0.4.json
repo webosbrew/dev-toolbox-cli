@@ -1,5 +1,6 @@
 {
   "name": "liblept.so.5",
+  "package": "lib32-leptonica",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

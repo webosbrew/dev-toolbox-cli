@@ -1,0 +1,17 @@
+{
+  "name": "libdile_audio_pcm.so.1",
+  "package": "dile-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libhal_audio_direct.so",
+    "libhal_msd94bcg.so",
+    "libhal_vt.so"
+  ],
+  "symbols": [
+    "DILE_AUDIO_PCM_RegSendPCMCallback",
+    "DILE_AUDIO_PCM_SetVolume",
+    "DILE_AUDIO_PCM_StartUpload",
+    "DILE_AUDIO_PCM_StopUpload"
+  ]
+}

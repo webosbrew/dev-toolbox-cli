@@ -1,5 +1,6 @@
 {
   "name": "libaudio.leaudio.default.so",
+  "package": "lib32-fluoride-rtk-all",
   "needed": [
     "ld-linux.so.3",
     "libbluetooth.so",

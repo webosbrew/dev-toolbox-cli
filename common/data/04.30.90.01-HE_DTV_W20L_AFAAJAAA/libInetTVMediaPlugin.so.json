@@ -1,5 +1,6 @@
 {
   "name": "libInetTVMediaPlugin.so",
+  "package": "inettv-plugins",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

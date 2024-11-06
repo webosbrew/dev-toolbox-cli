@@ -1,5 +1,6 @@
 {
   "name": "libLLVM_viv.so",
+  "package": "aipqfw",
   "needed": [
     "libGAL.so",
     "libVSC.so",

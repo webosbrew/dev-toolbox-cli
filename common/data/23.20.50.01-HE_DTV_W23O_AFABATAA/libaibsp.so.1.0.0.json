@@ -1,5 +1,6 @@
 {
   "name": "libaibsp.so.1",
+  "package": "lib32-nn-proxy",
   "needed": [
     "libaiadaptor.so.2.0.0",
     "libc.so.6",

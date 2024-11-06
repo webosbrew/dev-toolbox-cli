@@ -1,5 +1,6 @@
 {
   "name": "libresource_mgr.so.1",
+  "package": "umediaserver",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_regex.so.1.53.0",

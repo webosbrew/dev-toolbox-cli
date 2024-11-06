@@ -1,5 +1,6 @@
 {
   "name": "mod_access.so",
+  "package": "lighttpd-module-access",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

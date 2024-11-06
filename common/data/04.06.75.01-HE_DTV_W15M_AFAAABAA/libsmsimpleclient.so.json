@@ -1,5 +1,6 @@
 {
   "name": "libsmsimpleclient.so",
+  "package": "mediadrm-core",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

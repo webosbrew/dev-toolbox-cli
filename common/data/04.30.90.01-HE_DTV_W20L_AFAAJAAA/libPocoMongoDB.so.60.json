@@ -1,5 +1,6 @@
 {
   "name": "libPocoMongoDB.so.60",
+  "package": "libpocomongodb60",
   "needed": [
     "libPocoFoundation.so.60",
     "libPocoNet.so.60",

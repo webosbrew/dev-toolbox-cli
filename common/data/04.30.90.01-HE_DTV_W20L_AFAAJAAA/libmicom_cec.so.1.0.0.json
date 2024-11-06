@@ -1,5 +1,6 @@
 {
   "name": "libmicom_cec.so.1",
+  "package": "micom-libs",
   "needed": [
     "libgcc_s.so.1",
     "libmicom_cmnio.so.1"

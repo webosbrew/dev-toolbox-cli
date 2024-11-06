@@ -1,5 +1,6 @@
 {
   "name": "libpf-1.0.so.1",
+  "package": "libpf-1.0-1",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_filesystem.so.1.53.0",

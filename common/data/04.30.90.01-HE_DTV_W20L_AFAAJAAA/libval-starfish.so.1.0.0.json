@@ -1,5 +1,6 @@
 {
   "name": "libval-starfish.so.1",
+  "package": "libval-starfish1",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_system.so.1.68.0",

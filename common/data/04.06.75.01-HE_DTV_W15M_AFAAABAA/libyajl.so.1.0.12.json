@@ -1,5 +1,6 @@
 {
   "name": "libyajl.so.1",
+  "package": "yajl",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

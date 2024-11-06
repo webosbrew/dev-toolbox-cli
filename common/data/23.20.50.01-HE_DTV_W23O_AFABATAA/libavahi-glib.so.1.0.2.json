@@ -1,5 +1,6 @@
 {
   "name": "libavahi-glib.so.1",
+  "package": "lib32-libavahi-glib1",
   "needed": [
     "libavahi-common.so.3",
     "libc.so.6",

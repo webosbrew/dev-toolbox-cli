@@ -1,5 +1,6 @@
 {
   "name": "libaudio-adaptation-layer-amplifier.so.1",
+  "package": "lib32-libaudio-adaptation-layer-amplifier1",
   "needed": [
     "libPmLogLib.so.3",
     "libasound.so.2",

@@ -1,5 +1,6 @@
 {
   "name": "libQt5WebKitWidgets.so.5",
+  "package": "webkit-starfish",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

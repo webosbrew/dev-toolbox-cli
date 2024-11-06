@@ -1,5 +1,6 @@
 {
   "name": "libgnutls.so.28",
+  "package": "libgnutls28",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

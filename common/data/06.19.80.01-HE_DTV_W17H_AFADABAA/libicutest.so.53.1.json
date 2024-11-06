@@ -1,5 +1,6 @@
 {
   "name": "libicutest.so.53",
+  "package": "icu",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

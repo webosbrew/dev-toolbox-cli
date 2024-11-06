@@ -1,5 +1,6 @@
 {
   "name": "libcamera_solution.so.1",
+  "package": "lib32-com.webos.service.camera",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

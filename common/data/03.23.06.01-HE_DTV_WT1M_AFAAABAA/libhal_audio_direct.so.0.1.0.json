@@ -1,5 +1,6 @@
 {
   "name": "libhal_audio_direct.so.0",
+  "package": "hal-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

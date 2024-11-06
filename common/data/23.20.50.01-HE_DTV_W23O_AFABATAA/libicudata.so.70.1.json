@@ -1,5 +1,6 @@
 {
   "name": "libicudata.so.70",
+  "package": "lib32-libicudata70",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

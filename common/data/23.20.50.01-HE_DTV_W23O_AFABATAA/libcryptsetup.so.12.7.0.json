@@ -1,5 +1,6 @@
 {
   "name": "libcryptsetup.so.12",
+  "package": "lib32-cryptsetup",
   "needed": [
     "libblkid.so.1",
     "libc.so.6",

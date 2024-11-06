@@ -1,5 +1,6 @@
 {
   "name": "libopenmaxil.so.2",
+  "package": "libopenmaxil2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

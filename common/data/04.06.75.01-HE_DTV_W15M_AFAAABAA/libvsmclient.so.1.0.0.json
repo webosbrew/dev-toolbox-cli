@@ -1,5 +1,6 @@
 {
   "name": "libvsmclient.so.1",
+  "package": "umediaserver",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

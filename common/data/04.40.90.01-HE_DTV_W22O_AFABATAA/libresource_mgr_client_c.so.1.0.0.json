@@ -1,0 +1,41 @@
+{
+  "name": "libresource_mgr_client_c.so.1",
+  "package": "lib32-umediaserver",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libresource_mgr_client.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "ResourceManagerClientAcquire",
+    "ResourceManagerClientCreate",
+    "ResourceManagerClientCreateWithBusType",
+    "ResourceManagerClientDestroy",
+    "ResourceManagerClientDownSubLevel",
+    "ResourceManagerClientGetConnectionID",
+    "ResourceManagerClientNotifyActivity",
+    "ResourceManagerClientNotifyBackground",
+    "ResourceManagerClientNotifyFocus",
+    "ResourceManagerClientNotifyForeground",
+    "ResourceManagerClientNotifyPipelineStatus",
+    "ResourceManagerClientRegisterPipeline",
+    "ResourceManagerClientRegisterPipelineWithApp",
+    "ResourceManagerClientRelease",
+    "ResourceManagerClientResetSubLevel",
+    "ResourceManagerClientSetAppId",
+    "ResourceManagerClientSetPriorityLevel",
+    "ResourceManagerClientSetPurpose",
+    "ResourceManagerClientTryAcquire",
+    "ResourceManagerClientUnregisterPipeline",
+    "ResourceManagerClientUpSubLevel",
+    "_Z44ResourceManagerClientNotifyForecedForegroundP27ResourceManagerClientHandle",
+    "_ZNSt14_Function_base13_Base_managerIPFbPKcS2_S2_S2_S2_EE10_M_managerERSt9_Any_dataRKS6_St18_Manager_operation",
+    "_ZNSt17_Function_handlerIFbPKcS1_S1_S1_S1_EPS2_E9_M_invokeERKSt9_Any_dataOS1_S8_S8_S8_S8_",
+    "_ZTIFbPKcS0_S0_S0_S0_E",
+    "_ZTIPFbPKcS0_S0_S0_S0_E",
+    "_ZTSFbPKcS0_S0_S0_S0_E",
+    "_ZTSPFbPKcS0_S0_S0_S0_E"
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-subtitle-task.so.1",
+  "package": "starfish-subtitle-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_regex.so.1.68.0",

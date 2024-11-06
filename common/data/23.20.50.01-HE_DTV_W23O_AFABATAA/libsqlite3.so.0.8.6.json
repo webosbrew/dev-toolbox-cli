@@ -1,5 +1,6 @@
 {
   "name": "libsqlite3.so.0",
+  "package": "lib32-libsqlite3-0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

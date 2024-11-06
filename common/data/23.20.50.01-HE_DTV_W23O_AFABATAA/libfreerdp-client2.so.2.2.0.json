@@ -1,5 +1,6 @@
 {
   "name": "libfreerdp-client2.so.2",
+  "package": "lib32-com.webos.app.rdp",
   "needed": [
     "libasound.so.2",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libicutest.so.70",
+  "package": "lib32-icu",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libpulse.so.0",
+  "package": "libpulse0",
   "needed": [
     "libc.so.6",
     "libcap.so.2",

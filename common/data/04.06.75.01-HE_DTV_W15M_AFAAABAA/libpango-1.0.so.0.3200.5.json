@@ -1,5 +1,6 @@
 {
   "name": "libpango-1.0.so.0",
+  "package": "pango",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

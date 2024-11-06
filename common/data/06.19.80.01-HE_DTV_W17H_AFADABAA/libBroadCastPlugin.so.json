@@ -1,5 +1,6 @@
 {
   "name": "libBroadCastPlugin.so",
+  "package": "npapi-plugins",
   "needed": [
     "libAcb.so.1",
     "libPmLogLib.so.3",

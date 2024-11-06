@@ -1,5 +1,6 @@
 {
   "name": "libwayland-egl.so.0.1",
+  "package": "gpu-libs",
   "needed": [
     "libEGL.so",
     "libc.so.6",

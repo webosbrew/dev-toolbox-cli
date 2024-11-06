@@ -1,5 +1,6 @@
 {
   "name": "libasn.so.1.0.0",
+  "package": "hybridtv-dvb",
   "needed": [
     "libc.so.6"
   ],

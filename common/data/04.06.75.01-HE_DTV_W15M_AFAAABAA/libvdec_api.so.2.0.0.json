@@ -1,5 +1,6 @@
 {
   "name": "libvdec_api.so.2",
+  "package": "hal-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

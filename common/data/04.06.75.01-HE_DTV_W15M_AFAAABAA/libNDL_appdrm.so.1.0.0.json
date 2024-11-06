@@ -1,5 +1,6 @@
 {
   "name": "libNDL_appdrm.so.1",
+  "package": "libndl-appdrm1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

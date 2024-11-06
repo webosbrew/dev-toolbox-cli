@@ -1,5 +1,6 @@
 {
   "name": "liblegacy-broadcast-dsmcc-arib.so.1",
+  "package": "liblegacy-broadcast-dsmcc-arib1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libdvbfrontend-plugins.so.1",
+  "package": "lib32-libdvbfrontend-plugins1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libomx-1.0.so.0",
+  "package": "gst-plugins-bsp",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

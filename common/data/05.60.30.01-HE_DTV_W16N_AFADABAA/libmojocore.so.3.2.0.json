@@ -1,5 +1,6 @@
 {
   "name": "libmojocore.so.3",
+  "package": "db8",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_regex.so.1.56.0",

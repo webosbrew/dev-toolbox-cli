@@ -1,5 +1,6 @@
 {
   "name": "libaws-c-io.so.1.0.0",
+  "package": "lib32-libaws-c-io1.0.0",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

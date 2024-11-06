@@ -1,5 +1,6 @@
 {
   "name": "libexiv2.so.27",
+  "package": "lib32-exiv2",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

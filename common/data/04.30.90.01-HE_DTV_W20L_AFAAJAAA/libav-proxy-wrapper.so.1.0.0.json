@@ -1,5 +1,6 @@
 {
   "name": "libav-proxy-wrapper.so.1",
+  "package": "starfish-media-pipeline",
   "needed": [
     "libPmLogLib.so.3",
     "libav-proxy.so.1",

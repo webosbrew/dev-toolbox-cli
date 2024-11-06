@@ -1,5 +1,6 @@
 {
   "name": "libpulsecore-2.1.so",
+  "package": "libpulsecore",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

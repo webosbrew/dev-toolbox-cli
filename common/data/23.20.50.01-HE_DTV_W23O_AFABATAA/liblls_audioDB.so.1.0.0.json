@@ -1,5 +1,6 @@
 {
   "name": "liblls_audioDB.so.1",
+  "package": "lib32-element-audio-decoder",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

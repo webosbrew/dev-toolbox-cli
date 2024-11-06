@@ -1,5 +1,6 @@
 {
   "name": "libcpuinfo.so",
+  "package": "lib32-xnnpack",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

@@ -1,5 +1,6 @@
 {
   "name": "libpipeline_mgr.so.1",
+  "package": "umediaserver",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

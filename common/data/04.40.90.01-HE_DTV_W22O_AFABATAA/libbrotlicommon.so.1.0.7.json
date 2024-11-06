@@ -1,0 +1,13 @@
+{
+  "name": "libbrotlicommon.so.1",
+  "package": "lib32-brotli",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "BrotliGetDictionary",
+    "BrotliGetTransforms",
+    "BrotliSetDictionaryData",
+    "BrotliTransformDictionaryWord"
+  ]
+}

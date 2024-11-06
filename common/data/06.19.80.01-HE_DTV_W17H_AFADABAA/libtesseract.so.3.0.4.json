@@ -1,5 +1,6 @@
 {
   "name": "libtesseract.so.3",
+  "package": "tesseract",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

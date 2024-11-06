@@ -1,5 +1,6 @@
 {
   "name": "libacsdkCryptoInterfaces.so.1",
+  "package": "lib32-amazon-alexa-adapter",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6"

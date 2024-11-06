@@ -1,5 +1,6 @@
 {
   "name": "libprotobuf.so.23.4.0",
+  "package": "lib32-libprotobuf23.4.0",
   "needed": [
     "ld-linux.so.3",
     "libabsl_city.so.2308.0.0",

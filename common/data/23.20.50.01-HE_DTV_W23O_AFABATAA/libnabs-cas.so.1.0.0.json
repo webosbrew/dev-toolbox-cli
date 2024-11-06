@@ -1,5 +1,6 @@
 {
   "name": "libnabs-cas.so.1",
+  "package": "lib32-libnabs-cas1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

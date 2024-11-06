@@ -1,5 +1,6 @@
 {
   "name": "libnetcast_inj.so",
+  "package": "chromium38",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

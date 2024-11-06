@@ -1,5 +1,6 @@
 {
   "name": "libpython2.7.so.1.0",
+  "package": "libpython2.7-1.0",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

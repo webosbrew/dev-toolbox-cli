@@ -1,5 +1,6 @@
 {
   "name": "libwinpr2.so.2",
+  "package": "lib32-com.webos.app.rdp",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

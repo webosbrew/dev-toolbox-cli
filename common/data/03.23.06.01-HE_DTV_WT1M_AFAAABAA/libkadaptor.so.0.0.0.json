@@ -1,5 +1,6 @@
 {
   "name": "libkadaptor.so.0",
+  "package": "libkadaptor0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

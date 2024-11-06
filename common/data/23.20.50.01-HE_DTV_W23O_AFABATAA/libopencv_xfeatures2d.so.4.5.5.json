@@ -1,5 +1,6 @@
 {
   "name": "libopencv_xfeatures2d.so.405",
+  "package": "lib32-libopencv-xfeatures2d405",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

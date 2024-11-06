@@ -1,5 +1,6 @@
 {
   "name": "libsqlcipher.so.0",
+  "package": "sqlcipher",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.0",

@@ -1,5 +1,6 @@
 {
   "name": "librim_telemetry.so.2",
+  "package": "lib32-iconnectivity",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libPmLogLibCpp.so.3",
+  "package": "lib32-libpmloglib3",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

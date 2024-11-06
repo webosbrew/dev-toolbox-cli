@@ -1,5 +1,6 @@
 {
   "name": "liblls_micomDB.so.1",
+  "package": "lib32-micom-service",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

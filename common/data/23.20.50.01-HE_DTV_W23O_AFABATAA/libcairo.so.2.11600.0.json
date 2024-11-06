@@ -1,5 +1,6 @@
 {
   "name": "libcairo.so.2",
+  "package": "lib32-libcairo2",
   "needed": [
     "libEGL.so.1",
     "libGLESv2.so.2",

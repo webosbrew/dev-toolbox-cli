@@ -1,5 +1,6 @@
 {
   "name": "libopencv_phase_unwrapping.so.405",
+  "package": "lib32-libopencv-phase-unwrapping405",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libWebAppMgrCore.so.1",
+  "package": "wam",
   "needed": [
     "libPmLogLib.so.3",
     "libQt5Core.so.5",

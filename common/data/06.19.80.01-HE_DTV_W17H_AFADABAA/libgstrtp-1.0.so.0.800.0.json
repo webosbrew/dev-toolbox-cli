@@ -1,5 +1,6 @@
 {
   "name": "libgstrtp-1.0.so.0",
+  "package": "libgstrtp-1.0-0",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

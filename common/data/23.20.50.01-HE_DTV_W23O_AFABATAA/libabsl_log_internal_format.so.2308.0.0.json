@@ -1,5 +1,6 @@
 {
   "name": "libabsl_log_internal_format.so.2308.0.0",
+  "package": "lib32-abseil-cpp",
   "needed": [
     "libabsl_log_internal_globals.so.2308.0.0",
     "libabsl_str_format_internal.so.2308.0.0",

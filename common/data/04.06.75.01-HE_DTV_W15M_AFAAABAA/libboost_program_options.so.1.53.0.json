@@ -1,5 +1,6 @@
 {
   "name": "libboost_program_options.so.1.53.0",
+  "package": "libboost-program-options1.53.0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

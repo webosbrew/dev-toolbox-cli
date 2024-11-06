@@ -1,5 +1,6 @@
 {
   "name": "libreadline.so.5",
+  "package": "libreadline5",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

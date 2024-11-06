@@ -1,5 +1,6 @@
 {
   "name": "libgibb-util.so.1",
+  "package": "libgibb-util1",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_filesystem.so.1.68.0",

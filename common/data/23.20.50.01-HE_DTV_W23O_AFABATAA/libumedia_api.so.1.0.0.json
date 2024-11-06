@@ -1,5 +1,6 @@
 {
   "name": "libumedia_api.so.1",
+  "package": "lib32-umediaserver",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

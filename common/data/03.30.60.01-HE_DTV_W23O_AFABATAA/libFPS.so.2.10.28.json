@@ -1,0 +1,21 @@
+{
+  "name": "libFPS.so",
+  "package": "lib32-fairplay-streaming-cdm",
+  "needed": [],
+  "symbols": [
+    "FPSCreateMovieSession",
+    "FPSDestroyCryptor",
+    "FPSDestroyMovieSession",
+    "FPSDestroyServerExchange",
+    "FPSDisposeStorage",
+    "FPSGenerateChallengeWithVersionList",
+    "FPSGenerateSecureStopWithVersionList",
+    "FPSGetLibraryVersion",
+    "FPSHandleCommand",
+    "FPSInitLibrary",
+    "FPSProcessLicence",
+    "FPSProcessSample",
+    "FPSUninitializeLibrary",
+    "sJ41Ma2Xdsfjl"
+  ]
+}

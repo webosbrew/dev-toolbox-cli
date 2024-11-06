@@ -1,5 +1,6 @@
 {
   "name": "libsspk.so.1",
+  "package": "libsspk1",
   "needed": [
     "libPmLogLib.so.3",
     "libavacontroller.so.1",

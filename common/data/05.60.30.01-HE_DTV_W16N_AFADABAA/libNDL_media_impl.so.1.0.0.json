@@ -1,5 +1,6 @@
 {
   "name": "libNDL_media_impl.so.1",
+  "package": "libndl-media",
   "needed": [
     "libAcb.so.1",
     "libPmLogLib.so.3",

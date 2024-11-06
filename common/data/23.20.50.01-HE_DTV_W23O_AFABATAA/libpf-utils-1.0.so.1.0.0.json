@@ -1,5 +1,6 @@
 {
   "name": "libpf-utils-1.0.so.1",
+  "package": "lib32-player-factory-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

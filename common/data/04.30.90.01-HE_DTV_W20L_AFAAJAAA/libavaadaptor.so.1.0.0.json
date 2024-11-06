@@ -1,5 +1,6 @@
 {
   "name": "libavaadaptor.so.1.0",
+  "package": "mpegdash",
   "needed": [
     "libPmLogLib.so.3",
     "libavacontroller.so.1",

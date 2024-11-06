@@ -1,5 +1,6 @@
 {
   "name": "libnabsplayerra.so.1.0",
+  "package": "lib32-nabs-player",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

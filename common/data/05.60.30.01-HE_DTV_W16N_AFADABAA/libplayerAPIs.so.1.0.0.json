@@ -1,5 +1,6 @@
 {
   "name": "libplayerAPIs.so.1",
+  "package": "starfish-media-pipeline",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_regex.so.1.56.0",

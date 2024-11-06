@@ -1,5 +1,6 @@
 {
   "name": "libdrmplayer.so.1",
+  "package": "mediadrm-player",
   "needed": [
     "libc.so.6",
     "libdrmcontroller.so.1",

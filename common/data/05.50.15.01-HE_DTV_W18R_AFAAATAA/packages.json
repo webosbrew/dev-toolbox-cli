@@ -1,0 +1,5233 @@
+{
+  "activitymanager": {
+    "version": {
+      "upstream": "3.0.0-152.gld4tv.10",
+      "debian_revision": "r9"
+    }
+  },
+  "admanager": {
+    "version": {
+      "upstream": "2.1.1-101.glacier.8",
+      "debian_revision": "r7"
+    }
+  },
+  "admanager-localization": {
+    "version": {
+      "upstream": "2.1.1-101.glacier.8",
+      "debian_revision": "r7"
+    }
+  },
+  "alsa-conf": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "alsa-conf-base": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "alsa-plugins-pulseaudio-conf": {
+    "version": {
+      "upstream": "1.1.1",
+      "debian_revision": "r0"
+    }
+  },
+  "alsa-states": {
+    "version": {
+      "upstream": "0.2.0",
+      "debian_revision": "r5"
+    }
+  },
+  "alsa-utils": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-aconnect": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-alsactl": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-alsaloop": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-alsamixer": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-alsaucm": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-amixer": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-aplay": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-aseqdump": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-aseqnet": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-iecset": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-midi": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "alsa-utils-speakertest": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1pro1"
+    }
+  },
+  "appinstalld": {
+    "version": {
+      "upstream": "1.0.0-118.12.glacier.3",
+      "debian_revision": "r14"
+    }
+  },
+  "appinstalld-localization": {
+    "version": {
+      "upstream": "1.0.0-118.12.glacier.3",
+      "debian_revision": "r14"
+    }
+  },
+  "applicationinstallerutility": {
+    "version": {
+      "upstream": "3.0.0-17.gld4tv.4",
+      "debian_revision": "r1"
+    }
+  },
+  "appswitching-control-block": {
+    "version": {
+      "upstream": "1.0.0-139.glacier.1",
+      "debian_revision": "r2"
+    }
+  },
+  "asm": {
+    "version": {
+      "upstream": "1.1.1-101.glacier.1",
+      "debian_revision": "r3"
+    }
+  },
+  "asm-localization": {
+    "version": {
+      "upstream": "1.1.1-101.glacier.1",
+      "debian_revision": "r3"
+    }
+  },
+  "assetmanager": {
+    "version": {
+      "upstream": "1.0.0-15",
+      "debian_revision": "r1"
+    }
+  },
+  "audiod": {
+    "version": {
+      "upstream": "1.0.0-160.19.glacier.2",
+      "debian_revision": "r21starfish1"
+    }
+  },
+  "avahi-adaptor": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r1"
+    }
+  },
+  "avahi-daemon": {
+    "version": {
+      "upstream": "0.6.32",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "avf": {
+    "version": {
+      "upstream": "0.1.0-125",
+      "debian_revision": "r2"
+    }
+  },
+  "base-files": {
+    "version": {
+      "upstream": "3.0.14",
+      "debian_revision": "r89webos9starfish25"
+    }
+  },
+  "bluedroid-mtk": {
+    "version": {
+      "upstream": "1.0.0-64.gld4tv.8",
+      "debian_revision": "r3"
+    }
+  },
+  "bluetooth-asc-service": {
+    "version": {
+      "upstream": "1.0.0-28.7.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "bluetooth-asc-service-localization": {
+    "version": {
+      "upstream": "1.0.0-28.7.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "bluetooth-audio-sink": {
+    "version": {
+      "upstream": "1.0.0-28.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "bluetooth-audio-source": {
+    "version": {
+      "upstream": "1.0.0-54.glacier.2",
+      "debian_revision": "r2"
+    }
+  },
+  "bluetooth-audio-source-localization": {
+    "version": {
+      "upstream": "1.0.0-54.glacier.2",
+      "debian_revision": "r2"
+    }
+  },
+  "bluetooth-external-codec": {
+    "version": {
+      "upstream": "1.1.0-2",
+      "debian_revision": "r1.0"
+    }
+  },
+  "bluetooth-sil-mtk": {
+    "version": {
+      "upstream": "1.0.0-7.54.glacier.8",
+      "debian_revision": "r3starfish1"
+    }
+  },
+  "bluetoothdrv-mtk": {
+    "version": {
+      "upstream": "1.0.0-62.01.glacier.1",
+      "debian_revision": "r3"
+    }
+  },
+  "bootd": {
+    "version": {
+      "upstream": "2.0.0-115.12.glacier.1",
+      "debian_revision": "r10"
+    }
+  },
+  "busybox": {
+    "version": {
+      "upstream": "1.24.1-0webos3pro4",
+      "debian_revision": "r0webos10pro10starfish3"
+    }
+  },
+  "busybox-hwclock": {
+    "version": {
+      "upstream": "1.24.1-0webos3pro4",
+      "debian_revision": "r0webos10pro10starfish3"
+    }
+  },
+  "busybox-syslog": {
+    "version": {
+      "upstream": "1.24.1-0webos3pro4",
+      "debian_revision": "r0webos10pro10starfish3"
+    }
+  },
+  "busybox-udhcpc": {
+    "version": {
+      "upstream": "1.24.1-0webos3pro4",
+      "debian_revision": "r0webos10pro10starfish3"
+    }
+  },
+  "bzip2": {
+    "version": {
+      "upstream": "1.0.6",
+      "debian_revision": "r5starfish1"
+    }
+  },
+  "ca-certificates": {
+    "version": {
+      "upstream": "20160104",
+      "debian_revision": "r0webos5starfish4"
+    }
+  },
+  "capstone": {
+    "version": {
+      "upstream": "3.0.4",
+      "debian_revision": "r0"
+    }
+  },
+  "cbox": {
+    "version": {
+      "upstream": "1.17.7-165.glacier.1",
+      "debian_revision": "r17"
+    }
+  },
+  "cdmi": {
+    "version": {
+      "upstream": "1.0.0-19",
+      "debian_revision": "r4"
+    }
+  },
+  "certificate-update-manager": {
+    "version": {
+      "upstream": "1.0.0-6.gld4tv.4",
+      "debian_revision": "r1"
+    }
+  },
+  "chromium53": {
+    "version": {
+      "upstream": "53.0.2785.34-92.323.glacier.45",
+      "debian_revision": "r3.7socmstar2starfish17"
+    }
+  },
+  "clouduploadd": {
+    "version": {
+      "upstream": "1.2.0-5",
+      "debian_revision": "r1"
+    }
+  },
+  "com.palm.service.bugreport": {
+    "version": {
+      "upstream": "1.1.1-57.gld4tv.1",
+      "debian_revision": "r0"
+    }
+  },
+  "com.palm.service.devmode": {
+    "version": {
+      "upstream": "1.0.0-23",
+      "debian_revision": "r5starfish1"
+    }
+  },
+  "com.webos.app.accessibility": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.accessibility-localization": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.amazon-echo": {
+    "version": {
+      "upstream": "1.0.0-18",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.amazon-echo-localization": {
+    "version": {
+      "upstream": "1.0.0-18",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.btspeakerapp": {
+    "version": {
+      "upstream": "1.0.0-52",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.btspeakerapp-localization": {
+    "version": {
+      "upstream": "1.0.0-52",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.channeledit": {
+    "version": {
+      "upstream": "1.5.0-487.glacier.5",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.channeledit-localization": {
+    "version": {
+      "upstream": "1.5.0-487.glacier.5",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.channelsetting": {
+    "version": {
+      "upstream": "1.0.0-476.glacier.4-r4_e12"
+    }
+  },
+  "com.webos.app.channelsetting-localization": {
+    "version": {
+      "upstream": "1.0.0-476.glacier.4-r4_e12"
+    }
+  },
+  "com.webos.app.cheeringtv": {
+    "version": {
+      "upstream": "1.0.13-27",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.cheeringtv-localization": {
+    "version": {
+      "upstream": "1.0.13-27",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.connectionwizard": {
+    "version": {
+      "upstream": "1.0.0-329-r5_e12"
+    }
+  },
+  "com.webos.app.connectionwizard-localization": {
+    "version": {
+      "upstream": "1.0.0-329-r5_e12"
+    }
+  },
+  "com.webos.app.container": {
+    "version": {
+      "upstream": "1.15.4-35",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.cpcover": {
+    "version": {
+      "upstream": "1.0.0-27",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.cpcover-localization": {
+    "version": {
+      "upstream": "1.0.0-27",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.customersupport": {
+    "version": {
+      "upstream": "1.0.0-84.glacier.2-r1_e12"
+    }
+  },
+  "com.webos.app.customersupport-localization": {
+    "version": {
+      "upstream": "1.0.0-84.glacier.2-r1_e12"
+    }
+  },
+  "com.webos.app.dangbei-card": {
+    "version": {
+      "upstream": "1.3.0-glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.dangbei-overlay": {
+    "version": {
+      "upstream": "1.3.0-glacier.4",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.dvrpopup": {
+    "version": {
+      "upstream": "1.0.0-189.glacier.2",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.dvrpopup-localization": {
+    "version": {
+      "upstream": "1.0.0-189.glacier.2",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.eula": {
+    "version": {
+      "upstream": "1.0.0-50.glacier.8-r1_e12"
+    }
+  },
+  "com.webos.app.eula-localization": {
+    "version": {
+      "upstream": "1.0.0-50.glacier.8-r1_e12"
+    }
+  },
+  "com.webos.app.externalinput.av1": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.externalinput.av1-localization": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.externalinput.av2": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.externalinput.av2-localization": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.externalinput.component": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.externalinput.component-localization": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.externalinput.scart": {
+    "version": {
+      "upstream": "1.0.0-5",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.externalinput.scart-localization": {
+    "version": {
+      "upstream": "1.0.0-5",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.factorywin": {
+    "version": {
+      "upstream": "1.0.0-126.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.factorywin-localization": {
+    "version": {
+      "upstream": "1.0.0-126.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.favoritechannels": {
+    "version": {
+      "upstream": "1.0.0-194",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.favoritechannels-localization": {
+    "version": {
+      "upstream": "1.0.0-194",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.favshows": {
+    "version": {
+      "upstream": "1.0.0-68.gld4tv.14",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.favshows-localization": {
+    "version": {
+      "upstream": "1.0.0-68.gld4tv.14",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.firstuse": {
+    "version": {
+      "upstream": "4.0.0-435.glacier.1-r3_e12"
+    }
+  },
+  "com.webos.app.firstuse-localization": {
+    "version": {
+      "upstream": "4.0.0-435.glacier.1-r3_e12"
+    }
+  },
+  "com.webos.app.google-home": {
+    "version": {
+      "upstream": "1.0.0-20",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.google-home-localization": {
+    "version": {
+      "upstream": "1.0.0-20",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.googleassistant": {
+    "version": {
+      "upstream": "1.1.0-6.glacier.12",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.hdmi1": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi1-localization": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi2": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi2-localization": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi3": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi3-localization": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi4": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.hdmi4-localization": {
+    "version": {
+      "upstream": "1.0.0-7.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.igallery": {
+    "version": {
+      "upstream": "1.0.0-96.glacier.12-r0_e12"
+    }
+  },
+  "com.webos.app.igallery-localization": {
+    "version": {
+      "upstream": "1.0.0-96.glacier.12-r0_e12"
+    }
+  },
+  "com.webos.app.inputcommon": {
+    "version": {
+      "upstream": "1.0.0-884.glacier.54",
+      "debian_revision": "r19"
+    }
+  },
+  "com.webos.app.inputcommon-localization": {
+    "version": {
+      "upstream": "1.0.0-884.glacier.54",
+      "debian_revision": "r19"
+    }
+  },
+  "com.webos.app.inputmgr": {
+    "version": {
+      "upstream": "1.0.0-285-r11_e12"
+    }
+  },
+  "com.webos.app.inputmgr-localization": {
+    "version": {
+      "upstream": "1.0.0-285-r11_e12"
+    }
+  },
+  "com.webos.app.installation": {
+    "version": {
+      "upstream": "1.0.0-glacier.2-r1_e12"
+    }
+  },
+  "com.webos.app.installation-localization": {
+    "version": {
+      "upstream": "1.0.0-glacier.2-r1_e12"
+    }
+  },
+  "com.webos.app.iot-thirdparty-login": {
+    "version": {
+      "upstream": "1.0.0-15.glacier.2",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.iot-thirdparty-login-localization": {
+    "version": {
+      "upstream": "1.0.0-15.glacier.2",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.livedmost": {
+    "version": {
+      "upstream": "1.0.0-28",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.livedmost-localization": {
+    "version": {
+      "upstream": "1.0.0-28",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.livemenu-atsc": {
+    "version": {
+      "upstream": "1.0.0-91.glacier.11",
+      "debian_revision": "r4.0"
+    }
+  },
+  "com.webos.app.livemenu-atsc-localization": {
+    "version": {
+      "upstream": "1.0.0-91.glacier.11",
+      "debian_revision": "r4.0"
+    }
+  },
+  "com.webos.app.livemenuplayer": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inav1": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inav2": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-incomponent": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inhdmi1": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inhdmi2": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inhdmi3": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inhdmi4": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-inscart": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-intv": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livemenuplayer-localization": {
+    "version": {
+      "upstream": "1.0.0-77",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.livetv": {
+    "version": {
+      "upstream": "1.0.0-366.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.livetv-localization": {
+    "version": {
+      "upstream": "1.0.0-366.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "com.webos.app.livezoom": {
+    "version": {
+      "upstream": "1.0.0-180",
+      "debian_revision": "r8"
+    }
+  },
+  "com.webos.app.livezoom-localization": {
+    "version": {
+      "upstream": "1.0.0-180",
+      "debian_revision": "r8"
+    }
+  },
+  "com.webos.app.magicnum": {
+    "version": {
+      "upstream": "1.0.0-104",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.magicnum-localization": {
+    "version": {
+      "upstream": "1.0.0-104",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.multiview": {
+    "version": {
+      "upstream": "1.0.0-148.glacier.3",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.multiview-localization": {
+    "version": {
+      "upstream": "1.0.0-148.glacier.3",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.music": {
+    "version": {
+      "upstream": "1.0.0-201.glacier.7",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.music-enact": {
+    "version": {
+      "upstream": "1.0.0-67.9",
+      "debian_revision": "r4"
+    }
+  },
+  "com.webos.app.music-enact-localization": {
+    "version": {
+      "upstream": "1.0.0-67.9",
+      "debian_revision": "r4"
+    }
+  },
+  "com.webos.app.music-localization": {
+    "version": {
+      "upstream": "1.0.0-201.glacier.7",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.mystarter": {
+    "version": {
+      "upstream": "1.0.0-88",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.mystarter-localization": {
+    "version": {
+      "upstream": "1.0.0-88",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.app.naver-clova": {
+    "version": {
+      "upstream": "1.0.0-5",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.naver-clova-localization": {
+    "version": {
+      "upstream": "1.0.0-5",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.notificationcenter": {
+    "version": {
+      "upstream": "1.0.0-149",
+      "debian_revision": "r9"
+    }
+  },
+  "com.webos.app.notificationcenter-localization": {
+    "version": {
+      "upstream": "1.0.0-149",
+      "debian_revision": "r9"
+    }
+  },
+  "com.webos.app.photovideo": {
+    "version": {
+      "upstream": "1.0.0-424.glacier.11",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.photovideo-localization": {
+    "version": {
+      "upstream": "1.0.0-424.glacier.11",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.premium": {
+    "version": {
+      "upstream": "1.0.23-26",
+      "debian_revision": "r4"
+    }
+  },
+  "com.webos.app.premium-localization": {
+    "version": {
+      "upstream": "1.0.23-26",
+      "debian_revision": "r4"
+    }
+  },
+  "com.webos.app.quickinputpicker": {
+    "version": {
+      "upstream": "1.0.0-39.gld4tv.8.1",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.quickinputpicker-localization": {
+    "version": {
+      "upstream": "1.0.0-39.gld4tv.8.1",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.quicksettings": {
+    "version": {
+      "upstream": "1.0.1-125.glacier.3",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.quicksettings-localization": {
+    "version": {
+      "upstream": "1.0.1-125.glacier.3",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.app.recordings": {
+    "version": {
+      "upstream": "1.0.0-259.glacier.3-r0_e12"
+    }
+  },
+  "com.webos.app.recordings-localization": {
+    "version": {
+      "upstream": "1.0.0-259.glacier.3-r0_e12"
+    }
+  },
+  "com.webos.app.remoteservice": {
+    "version": {
+      "upstream": "1.0.0-2",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.remoteservice-localization": {
+    "version": {
+      "upstream": "1.0.0-2",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.remotesetting": {
+    "version": {
+      "upstream": "1.0.0-25-r1_e12"
+    }
+  },
+  "com.webos.app.remotesetting-localization": {
+    "version": {
+      "upstream": "1.0.0-25-r1_e12"
+    }
+  },
+  "com.webos.app.scheduler": {
+    "version": {
+      "upstream": "2.0.0-218.glacier.5",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.scheduler-localization": {
+    "version": {
+      "upstream": "2.0.0-218.glacier.5",
+      "debian_revision": "r5"
+    }
+  },
+  "com.webos.app.screensaver": {
+    "version": {
+      "upstream": "1.0.0-43.glacier.1",
+      "debian_revision": "r9"
+    }
+  },
+  "com.webos.app.self-diagnosis": {
+    "version": {
+      "upstream": "1.0.0-13.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.self-diagnosis-localization": {
+    "version": {
+      "upstream": "1.0.0-13.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.settings": {
+    "version": {
+      "upstream": "5.0.0-712.glacier.22",
+      "debian_revision": "r12"
+    }
+  },
+  "com.webos.app.softwareupdate": {
+    "version": {
+      "upstream": "1.2.0-65.glacier.1-r3_e12"
+    }
+  },
+  "com.webos.app.softwareupdate-localization": {
+    "version": {
+      "upstream": "1.2.0-65.glacier.1-r3_e12"
+    }
+  },
+  "com.webos.app.store-demo": {
+    "version": {
+      "upstream": "1.0.0-449.gld4tv.2-r13_e12"
+    }
+  },
+  "com.webos.app.store-demo-localization": {
+    "version": {
+      "upstream": "1.0.0-449.gld4tv.2-r13_e12"
+    }
+  },
+  "com.webos.app.systemmusic": {
+    "version": {
+      "upstream": "1.0.0-252.glacier.4-r5_e12"
+    }
+  },
+  "com.webos.app.systemmusic-localization": {
+    "version": {
+      "upstream": "1.0.0-252.glacier.4-r5_e12"
+    }
+  },
+  "com.webos.app.tips": {
+    "version": {
+      "upstream": "1.0.0-68.glacier.2",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.tips-localization": {
+    "version": {
+      "upstream": "1.0.0-68.glacier.2",
+      "debian_revision": "r3"
+    }
+  },
+  "com.webos.app.tvguide": {
+    "version": {
+      "upstream": "1.0.0-449-r2_e12"
+    }
+  },
+  "com.webos.app.tvguide-localization": {
+    "version": {
+      "upstream": "1.0.0-449-r2_e12"
+    }
+  },
+  "com.webos.app.tvhotkey": {
+    "version": {
+      "upstream": "1.0.0-366.glacier.5",
+      "debian_revision": "r8"
+    }
+  },
+  "com.webos.app.tvhotkey-localization": {
+    "version": {
+      "upstream": "1.0.0-366.glacier.5",
+      "debian_revision": "r8"
+    }
+  },
+  "com.webos.app.tvsimpleviewer": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r2"
+    }
+  },
+  "com.webos.app.tvuserguide-atsc": {
+    "version": {
+      "upstream": "1.0.1-610.glacier.23",
+      "debian_revision": "r5.0"
+    }
+  },
+  "com.webos.app.tvuserguide-atsc-localization": {
+    "version": {
+      "upstream": "1.0.1-610.glacier.23",
+      "debian_revision": "r5.0"
+    }
+  },
+  "com.webos.app.voice": {
+    "version": {
+      "upstream": "1.0.0-422.glacier.6",
+      "debian_revision": "r18"
+    }
+  },
+  "com.webos.app.voice-localization": {
+    "version": {
+      "upstream": "1.0.0-422.glacier.6",
+      "debian_revision": "r18"
+    }
+  },
+  "com.webos.app.voiceagent": {
+    "version": {
+      "upstream": "1.0.1-52.glacier.26",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.voiceagent-localization": {
+    "version": {
+      "upstream": "1.0.1-52.glacier.26",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.app.webapphost": {
+    "version": {
+      "upstream": "1.1.0-10.gld4tv.1",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.service.dial": {
+    "version": {
+      "upstream": "1.0.0-87.gomolsha.1",
+      "debian_revision": "r10"
+    }
+  },
+  "com.webos.service.discovery": {
+    "version": {
+      "upstream": "1.0.0-48.gld4tv.1",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.service.favorites": {
+    "version": {
+      "upstream": "1.0.0-35.gld4tv.1",
+      "debian_revision": "r7"
+    }
+  },
+  "com.webos.service.magicnum": {
+    "version": {
+      "upstream": "1.0.0-4",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.service.membership": {
+    "version": {
+      "upstream": "2.0.4-137",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.systemui.mobileconnection": {
+    "version": {
+      "upstream": "1.0.0-25.glacier.1",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.systemui.mobileconnection-localization": {
+    "version": {
+      "upstream": "1.0.0-25.glacier.1",
+      "debian_revision": "r1"
+    }
+  },
+  "com.webos.systemui.notification": {
+    "version": {
+      "upstream": "1.0.0-27.18.glacier.4",
+      "debian_revision": "r0"
+    }
+  },
+  "com.webos.systemui.notification-localization": {
+    "version": {
+      "upstream": "1.0.0-27.18.glacier.4",
+      "debian_revision": "r0"
+    }
+  },
+  "configd": {
+    "version": {
+      "upstream": "1.2.0-46.gld4tv.18",
+      "debian_revision": "r16"
+    }
+  },
+  "configd-data": {
+    "version": {
+      "upstream": "1.1.0-66.33.glacier.11",
+      "debian_revision": "r1starfish5"
+    }
+  },
+  "configurator": {
+    "version": {
+      "upstream": "3.0.0-64.gld4tv.1",
+      "debian_revision": "r5"
+    }
+  },
+  "connman": {
+    "version": {
+      "upstream": "1.12-158.34.glacier.19",
+      "debian_revision": "r0pro22starfish30sfp1"
+    }
+  },
+  "connman-client": {
+    "version": {
+      "upstream": "1.12-158.34.glacier.19",
+      "debian_revision": "r0pro22starfish30sfp1"
+    }
+  },
+  "connman-conf": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r2socmstar1pro8"
+    }
+  },
+  "cpushareholder-stub": {
+    "version": {
+      "upstream": "2.0.1-2",
+      "debian_revision": "r2"
+    }
+  },
+  "crashd": {
+    "version": {
+      "upstream": "1.2.5-32.gld4tv.2",
+      "debian_revision": "r10"
+    }
+  },
+  "crashreportd": {
+    "version": {
+      "upstream": "1.2.1-18.gld4tv.3",
+      "debian_revision": "r2starfish1"
+    }
+  },
+  "credentialsmanager": {
+    "version": {
+      "upstream": "1.0.0-1",
+      "debian_revision": "r0"
+    }
+  },
+  "criu-webos": {
+    "version": {
+      "upstream": "1.7.2-0webos1-18.glacier.2",
+      "debian_revision": "r1socmstar1"
+    }
+  },
+  "curl": {
+    "version": {
+      "upstream": "7.53.1",
+      "debian_revision": "r0webos9starfish1"
+    }
+  },
+  "dangbei-adapter": {
+    "version": {
+      "upstream": "1.3.0-glacier.11",
+      "debian_revision": "r0"
+    }
+  },
+  "db8": {
+    "version": {
+      "upstream": "3.2.0-223.7.glacier.1",
+      "debian_revision": "r31starfish6"
+    }
+  },
+  "dbus-1": {
+    "version": {
+      "upstream": "1.10.10",
+      "debian_revision": "r0webos5starfish4"
+    }
+  },
+  "dbus-gpl": {
+    "version": {
+      "upstream": "1.10.10",
+      "debian_revision": "r0webos5starfish4"
+    }
+  },
+  "debug-utils": {
+    "version": {
+      "upstream": "1.0.0-3",
+      "debian_revision": "r0"
+    }
+  },
+  "dile-libs": {
+    "version": {
+      "upstream": "1.0.4-202.glacier.14",
+      "debian_revision": "r25"
+    }
+  },
+  "dmost": {
+    "version": {
+      "upstream": "1.0.0-149.gld4tv.25",
+      "debian_revision": "r6"
+    }
+  },
+  "dmost-localization": {
+    "version": {
+      "upstream": "1.0.0-149.gld4tv.25",
+      "debian_revision": "r6"
+    }
+  },
+  "dmost-pluggable": {
+    "version": {
+      "upstream": "1.0.0-113.gld4tv.4",
+      "debian_revision": "r5"
+    }
+  },
+  "dmr": {
+    "version": {
+      "upstream": "1.2.0-91",
+      "debian_revision": "r9"
+    }
+  },
+  "dmr-localization": {
+    "version": {
+      "upstream": "1.2.0-91",
+      "debian_revision": "r9"
+    }
+  },
+  "drm-service": {
+    "version": {
+      "upstream": "1.0.0-16",
+      "debian_revision": "r0"
+    }
+  },
+  "dtcpip": {
+    "version": {
+      "upstream": "1.0.0-20",
+      "debian_revision": "r7.1"
+    }
+  },
+  "dvbfrontend": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "dvbfrontend-atsc": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "e2fsprogs": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "e2fsprogs-badblocks": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "e2fsprogs-e2fsck": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "e2fsprogs-mke2fs": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "e2fsprogs-resize2fs": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "e2fsprogs-tune2fs": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "ecryptfs-utils": {
+    "version": {
+      "upstream": "100",
+      "debian_revision": "r7"
+    }
+  },
+  "eim": {
+    "version": {
+      "upstream": "1.0.5-147.glacier.4",
+      "debian_revision": "r11"
+    }
+  },
+  "eim-localization": {
+    "version": {
+      "upstream": "1.0.5-147.glacier.4",
+      "debian_revision": "r11"
+    }
+  },
+  "emmcd": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r0"
+    }
+  },
+  "enhanced-flash-swap": {
+    "version": {
+      "upstream": "2.0.0-14.gld4tv.10",
+      "debian_revision": "r5"
+    }
+  },
+  "enyojs-framework-2.6+": {
+    "version": {
+      "upstream": "0.1.4",
+      "debian_revision": "r12"
+    }
+  },
+  "eudev": {
+    "version": {
+      "upstream": "3.2",
+      "debian_revision": "r0"
+    }
+  },
+  "event-monitor": {
+    "version": {
+      "upstream": "1.1.0-23.gld4tv.2",
+      "debian_revision": "r1"
+    }
+  },
+  "event-monitor-network-starfish": {
+    "version": {
+      "upstream": "1.0.0-7.gld4tv.18",
+      "debian_revision": "r0"
+    }
+  },
+  "event-monitor-network-starfish-localization": {
+    "version": {
+      "upstream": "1.0.0-7.gld4tv.18",
+      "debian_revision": "r0"
+    }
+  },
+  "exg": {
+    "version": {
+      "upstream": "1.0.0-19",
+      "debian_revision": "r1"
+    }
+  },
+  "exiv2": {
+    "version": {
+      "upstream": "0.25",
+      "debian_revision": "r0"
+    }
+  },
+  "faultmanager": {
+    "version": {
+      "upstream": "1.0.0-20",
+      "debian_revision": "r1"
+    }
+  },
+  "filecache": {
+    "version": {
+      "upstream": "2.0.1-70.gld4tv.1",
+      "debian_revision": "r4"
+    }
+  },
+  "flac": {
+    "version": {
+      "upstream": "1.3.1",
+      "debian_revision": "r0"
+    }
+  },
+  "fontconfig-utils": {
+    "version": {
+      "upstream": "2.12.1",
+      "debian_revision": "r0pro6"
+    }
+  },
+  "fsko-tuxera": {
+    "version": {
+      "upstream": "1.0.0-26",
+      "debian_revision": "r2.0"
+    }
+  },
+  "fuse-utils": {
+    "version": {
+      "upstream": "2.9.4",
+      "debian_revision": "r0"
+    }
+  },
+  "fuser": {
+    "version": {
+      "upstream": "22.21",
+      "debian_revision": "r0webos3starfish1"
+    }
+  },
+  "gconf": {
+    "version": {
+      "upstream": "3.2.6",
+      "debian_revision": "r0"
+    }
+  },
+  "ginga": {
+    "version": {
+      "upstream": "1.0.0-14",
+      "debian_revision": "r7.0"
+    }
+  },
+  "ginga-localization": {
+    "version": {
+      "upstream": "1.0.0-14",
+      "debian_revision": "r7.0"
+    }
+  },
+  "ginga-ncl": {
+    "version": {
+      "upstream": "1.0.4-40",
+      "debian_revision": "r15.0"
+    }
+  },
+  "glib-networking": {
+    "version": {
+      "upstream": "2.48.2",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-big5": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1250": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1251": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1252": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1253": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1254": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1255": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1256": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-cp1258": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-euc-cn": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-euc-kr": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-gb18030": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-ibm874": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso-6937": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-1": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-11": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-15": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-2": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-3": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-4": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-5": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-6": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-7": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-8": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-iso8859-9": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-libgb": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-libksc": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-sjis": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-uhc": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-unicode": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-utf-16": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibc-gconv-utf-32": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0"
+    }
+  },
+  "glibmm": {
+    "version": {
+      "upstream": "2.44.0",
+      "debian_revision": "r0"
+    }
+  },
+  "gm": {
+    "version": {
+      "upstream": "1.0.0-88",
+      "debian_revision": "r14"
+    }
+  },
+  "gphoto2": {
+    "version": {
+      "upstream": "2.5.14",
+      "debian_revision": "r0"
+    }
+  },
+  "gphotofs": {
+    "version": {
+      "upstream": "0.5",
+      "debian_revision": "r2"
+    }
+  },
+  "gptfdisk-sgdisk": {
+    "version": {
+      "upstream": "0.8.10",
+      "debian_revision": "r1"
+    }
+  },
+  "gpu-libs": {
+    "version": {
+      "upstream": "1.0.1-14.glacier.m3.2",
+      "debian_revision": "r20.1.0"
+    }
+  },
+  "gst-plugins-starfish": {
+    "version": {
+      "upstream": "1.0.0-52",
+      "debian_revision": "r6"
+    }
+  },
+  "gstreamer1.0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.23",
+      "debian_revision": "r14"
+    }
+  },
+  "gstreamer1.0-libav": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.1",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "gstreamer1.0-omx": {
+    "version": {
+      "upstream": "1.0.0-187.glacier.3",
+      "debian_revision": "r6socmstar2"
+    }
+  },
+  "gstreamer1.0-plugins-bad": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "gstreamer1.0-plugins-bad-meta": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "gstreamer1.0-plugins-base": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "gstreamer1.0-plugins-base-meta": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "gstreamer1.0-plugins-cool": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.49",
+      "debian_revision": "r11socmstar1"
+    }
+  },
+  "gstreamer1.0-plugins-cool-meta": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.49",
+      "debian_revision": "r11socmstar1"
+    }
+  },
+  "gstreamer1.0-plugins-good": {
+    "version": {
+      "upstream": "1.12.0-1120.29.glacier.2",
+      "debian_revision": "r18socmstar2"
+    }
+  },
+  "gstreamer1.0-plugins-mstar": {
+    "version": {
+      "upstream": "1.0.0-127.glacier.4",
+      "debian_revision": "r1"
+    }
+  },
+  "gstreamer1.0-plugins-ugly": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.5",
+      "debian_revision": "r13"
+    }
+  },
+  "gzip": {
+    "version": {
+      "upstream": "1.3.12-0webos1",
+      "debian_revision": "r2webos1"
+    }
+  },
+  "hal-libs": {
+    "version": {
+      "upstream": "1.0.0-419.glacier.20",
+      "debian_revision": "r3"
+    }
+  },
+  "hdcp2": {
+    "version": {
+      "upstream": "2.3.0-41.glacier.2",
+      "debian_revision": "r12.1"
+    }
+  },
+  "hdparm": {
+    "version": {
+      "upstream": "9.48",
+      "debian_revision": "r0webos2"
+    }
+  },
+  "hybridtv-atsc": {
+    "version": {
+      "upstream": "1.0.0-271.glacier.5",
+      "debian_revision": "r2.2socmstar1"
+    }
+  },
+  "icu": {
+    "version": {
+      "upstream": "57.1",
+      "debian_revision": "r0"
+    }
+  },
+  "iepg": {
+    "version": {
+      "upstream": "1.0.0-237.glacier.8",
+      "debian_revision": "r8"
+    }
+  },
+  "iftop": {
+    "version": {
+      "upstream": "1.0pre4",
+      "debian_revision": "r0"
+    }
+  },
+  "ilib-qml-plugin": {
+    "version": {
+      "upstream": "11.0.0-source.2",
+      "debian_revision": "r1"
+    }
+  },
+  "ilib-webapp": {
+    "version": {
+      "upstream": "12.0.0-30.gld4tv.7",
+      "debian_revision": "r4"
+    }
+  },
+  "imemanager": {
+    "version": {
+      "upstream": "4.1.0-232.18.glacier.1",
+      "debian_revision": "r30"
+    }
+  },
+  "imemanager-localization": {
+    "version": {
+      "upstream": "4.1.0-232.18.glacier.1",
+      "debian_revision": "r30"
+    }
+  },
+  "init-ifupdown": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r7"
+    }
+  },
+  "iot-client-webos": {
+    "version": {
+      "upstream": "1.0.0-22.glacier.7",
+      "debian_revision": "r1"
+    }
+  },
+  "iotop": {
+    "version": {
+      "upstream": "0.6",
+      "debian_revision": "r3"
+    }
+  },
+  "iproute2": {
+    "version": {
+      "upstream": "4.7.0",
+      "debian_revision": "r0pro2"
+    }
+  },
+  "iptables": {
+    "version": {
+      "upstream": "1.6.0",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils-arping": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils-clockdiff": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils-ping": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils-tracepath": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils-tracepath6": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "iputils-traceroute6": {
+    "version": {
+      "upstream": "s20151218",
+      "debian_revision": "r0"
+    }
+  },
+  "irdbmanager": {
+    "version": {
+      "upstream": "1.0.0-131.gld4tv.2",
+      "debian_revision": "r7"
+    }
+  },
+  "irdbmanager-localization": {
+    "version": {
+      "upstream": "1.0.0-131.gld4tv.2",
+      "debian_revision": "r7"
+    }
+  },
+  "iw": {
+    "version": {
+      "upstream": "4.7",
+      "debian_revision": "r0"
+    }
+  },
+  "jemalloc": {
+    "version": {
+      "upstream": "0.20080828a-0webos9-12.gld4tv.1",
+      "debian_revision": "r1"
+    }
+  },
+  "kdriver": {
+    "version": {
+      "upstream": "1.0.0-430.glacier.25",
+      "debian_revision": "r17socmstar3"
+    }
+  },
+  "kernel-4.4.84-404.glacier.10": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-image-4.4.84-404.glacier.10": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-image-uimage-4.4.84-404.glacier.10": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-8812bu": {
+    "version": {
+      "upstream": "1.0.0-33.glacier.5",
+      "debian_revision": "r2"
+    }
+  },
+  "kernel-module-atsc-dtv-soc": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-atsc-dtv-soc-chip": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-atsc-lgdt3307-chip": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-btmtk-usb": {
+    "version": {
+      "upstream": "1.0.0-62.01.glacier.1",
+      "debian_revision": "r3"
+    }
+  },
+  "kernel-module-demod-khal": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-dvb-common-adapter": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-dvb-lgdt3307-adapter": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-dvb-mxl683-adapter": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-dvb-si2178b-adapter": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-enhanced-flash-swap": {
+    "version": {
+      "upstream": "2.0.0-14.gld4tv.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-ipt-masquerade": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-iptable-nat": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-isdb-dtv-soc": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-isdb-dtv-soc-chip": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-isdb-mxl683-chip": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-kdrv-msd93xbg": {
+    "version": {
+      "upstream": "1.0.0-430.glacier.25",
+      "debian_revision": "r17socmstar3"
+    }
+  },
+  "kernel-module-lgdt3307": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-mdrv-alsa-audio": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-mhal-alsa-audio": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-mt7662u-sta": {
+    "version": {
+      "upstream": "1.0.0-100.glacier.7",
+      "debian_revision": "r8"
+    }
+  },
+  "kernel-module-mxl683": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-nf-nat-masquerade-ipv4": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-ntsc-si2178b-chip": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-pal-si2178b-chip": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-si2178b": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "kernel-module-snd-hwdep": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-mixer-oss": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-pcm": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-pcm-oss": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-rawmidi": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-timer": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-usb-audio": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-snd-usbmidi-lib": {
+    "version": {
+      "epoch": 1,
+      "upstream": "4.4.84-404.glacier.10",
+      "debian_revision": "r18.17socmstar3"
+    }
+  },
+  "kernel-module-webos-tv": {
+    "version": {
+      "upstream": "1.0.0-618.glacier.10",
+      "debian_revision": "r5"
+    }
+  },
+  "keymanager": {
+    "version": {
+      "upstream": "2.0.0-76",
+      "debian_revision": "r7"
+    }
+  },
+  "keyutils": {
+    "version": {
+      "upstream": "1.5.5",
+      "debian_revision": "r3"
+    }
+  },
+  "killall": {
+    "version": {
+      "upstream": "22.21",
+      "debian_revision": "r0webos3starfish1"
+    }
+  },
+  "language-style": {
+    "version": {
+      "upstream": "1.5.0-15.gld4tv.2.2",
+      "debian_revision": "r2"
+    }
+  },
+  "leptonica": {
+    "version": {
+      "upstream": "1.73",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "lgncapi": {
+    "version": {
+      "upstream": "2.3.0-69",
+      "debian_revision": "r15"
+    }
+  },
+  "lgncapi-localization": {
+    "version": {
+      "upstream": "2.3.0-69",
+      "debian_revision": "r15"
+    }
+  },
+  "libarchive": {
+    "version": {
+      "upstream": "3.2.2",
+      "debian_revision": "r0"
+    }
+  },
+  "libasound-module-conf-pulse": {
+    "version": {
+      "upstream": "1.1.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libasound-module-ctl-pulse": {
+    "version": {
+      "upstream": "1.1.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libasound-module-pcm-pulse": {
+    "version": {
+      "upstream": "1.1.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libasound2": {
+    "version": {
+      "upstream": "1.1.2",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libattr1": {
+    "version": {
+      "upstream": "2.4.47",
+      "debian_revision": "r0"
+    }
+  },
+  "libavacontroller1": {
+    "version": {
+      "upstream": "1.0.0-4",
+      "debian_revision": "r6"
+    }
+  },
+  "libavahi-client3": {
+    "version": {
+      "upstream": "0.6.32",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavahi-common3": {
+    "version": {
+      "upstream": "0.6.32",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavahi-core7": {
+    "version": {
+      "upstream": "0.6.32",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavahi-glib1": {
+    "version": {
+      "upstream": "0.6.32",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavahi-gobject0": {
+    "version": {
+      "upstream": "0.6.32",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavcodec57": {
+    "version": {
+      "upstream": "3.3",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavfilter6": {
+    "version": {
+      "upstream": "3.3",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavformat57": {
+    "version": {
+      "upstream": "3.3",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libavutil55": {
+    "version": {
+      "upstream": "3.3",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libblkid1": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "libboost-filesystem1.61.0": {
+    "version": {
+      "upstream": "1.61.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libboost-program-options1.61.0": {
+    "version": {
+      "upstream": "1.61.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libboost-regex1.61.0": {
+    "version": {
+      "upstream": "1.61.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libboost-signals1.61.0": {
+    "version": {
+      "upstream": "1.61.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libboost-system1.61.0": {
+    "version": {
+      "upstream": "1.61.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libboost-thread1.61.0": {
+    "version": {
+      "upstream": "1.61.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libbson-1.0-0": {
+    "version": {
+      "upstream": "0.98.0+git0+b2d142f486",
+      "debian_revision": "r1"
+    }
+  },
+  "libbz2-1": {
+    "version": {
+      "upstream": "1.0.6",
+      "debian_revision": "r5starfish1"
+    }
+  },
+  "libc6": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0webos2pro2starfish5"
+    }
+  },
+  "libc6-utils": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0webos2pro2starfish5"
+    }
+  },
+  "libcairo2": {
+    "version": {
+      "upstream": "1.14.6",
+      "debian_revision": "r0pro5"
+    }
+  },
+  "libcap2": {
+    "version": {
+      "upstream": "2.25",
+      "debian_revision": "r0"
+    }
+  },
+  "libcares2": {
+    "version": {
+      "upstream": "1.12.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libcjson1": {
+    "version": {
+      "upstream": "1.8.0-35",
+      "debian_revision": "r4"
+    }
+  },
+  "libcom-err2": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "libconfig": {
+    "version": {
+      "upstream": "1.5",
+      "debian_revision": "r0"
+    }
+  },
+  "libcrypto1.0.0": {
+    "version": {
+      "upstream": "1.0.2p",
+      "debian_revision": "r0"
+    }
+  },
+  "libcurl5": {
+    "version": {
+      "upstream": "7.53.1",
+      "debian_revision": "r0webos9starfish1"
+    }
+  },
+  "libdaemon0": {
+    "version": {
+      "upstream": "0.14",
+      "debian_revision": "r0"
+    }
+  },
+  "libdbgfrwk": {
+    "version": {
+      "upstream": "1.0.0-29",
+      "debian_revision": "r10.1"
+    }
+  },
+  "libdbus-1-3": {
+    "version": {
+      "upstream": "1.10.10",
+      "debian_revision": "r0webos5starfish4"
+    }
+  },
+  "libdbus-glib-1-2": {
+    "version": {
+      "upstream": "0.106",
+      "debian_revision": "r0"
+    }
+  },
+  "libdvr1": {
+    "version": {
+      "upstream": "1.0.1-40",
+      "debian_revision": "r0"
+    }
+  },
+  "libe2p2": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "libexif12": {
+    "version": {
+      "upstream": "0.6.21",
+      "debian_revision": "r0"
+    }
+  },
+  "libexpat1": {
+    "version": {
+      "upstream": "2.2.5",
+      "debian_revision": "r0"
+    }
+  },
+  "libext2fs2": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "libfdisk1": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "libffi6": {
+    "version": {
+      "upstream": "3.2.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libflac8": {
+    "version": {
+      "upstream": "1.3.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libfontconfig1": {
+    "version": {
+      "upstream": "2.12.1",
+      "debian_revision": "r0pro6"
+    }
+  },
+  "libformw5": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "libfreetype6": {
+    "version": {
+      "upstream": "2.6.5",
+      "debian_revision": "r0pro0"
+    }
+  },
+  "libfribidi0": {
+    "version": {
+      "upstream": "0.19.7",
+      "debian_revision": "r0"
+    }
+  },
+  "libfuse2": {
+    "version": {
+      "upstream": "2.9.4",
+      "debian_revision": "r0"
+    }
+  },
+  "libgcc1": {
+    "version": {
+      "upstream": "6.2.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libgcrypt": {
+    "version": {
+      "upstream": "1.7.3",
+      "debian_revision": "r0"
+    }
+  },
+  "libglib-2.0-0": {
+    "version": {
+      "epoch": 1,
+      "upstream": "2.48.2-0webos4",
+      "debian_revision": "r0webos4"
+    }
+  },
+  "libglibmm-utils2": {
+    "version": {
+      "upstream": "0.4.1",
+      "debian_revision": "r2"
+    }
+  },
+  "libgmp3": {
+    "version": {
+      "upstream": "4.2.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libgnutls28": {
+    "version": {
+      "upstream": "3.3.27",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libgomp1": {
+    "version": {
+      "upstream": "6.2.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libgpg-error0": {
+    "version": {
+      "upstream": "1.24",
+      "debian_revision": "r0"
+    }
+  },
+  "libgphoto2-6": {
+    "version": {
+      "upstream": "2.5.16",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libgphoto2-camlibs": {
+    "version": {
+      "upstream": "2.5.16",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libgphoto2-port12": {
+    "version": {
+      "upstream": "2.5.16",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libgstadaptivedemux-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstapp-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstaudio-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstbadaudio-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstbadbase-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstbadvideo-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstbasecamerabinsrc-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstbasedrm-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstcodecparsers-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstcool-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.49",
+      "debian_revision": "r11socmstar1"
+    }
+  },
+  "libgstfft-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstisoff-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstmpegts-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstmultiapp-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstpbutils-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstphotography-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstriff-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstrtp-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstrtsp-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgstsdp-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgsttag-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libgsturidownloader-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.glacier.12",
+      "debian_revision": "r22socmstar2"
+    }
+  },
+  "libgstvideo-1.0-0": {
+    "version": {
+      "upstream": "1.12.0-1120.gld4tv.27",
+      "debian_revision": "r15socmstar1"
+    }
+  },
+  "libhangul": {
+    "version": {
+      "upstream": "0.1.0+git0+4a71565b28",
+      "debian_revision": "r2"
+    }
+  },
+  "libharfbuzz0": {
+    "version": {
+      "upstream": "1.0.3",
+      "debian_revision": "r0"
+    }
+  },
+  "libhelpers2": {
+    "version": {
+      "upstream": "2.0.0-52.gld4tv.4",
+      "debian_revision": "r0"
+    }
+  },
+  "libhunspell-1.3-0": {
+    "version": {
+      "upstream": "1.3.2",
+      "debian_revision": "r2"
+    }
+  },
+  "libicudata57": {
+    "version": {
+      "upstream": "57.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libicui18n57": {
+    "version": {
+      "upstream": "57.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libicuio57": {
+    "version": {
+      "upstream": "57.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libicutu57": {
+    "version": {
+      "upstream": "57.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libicuuc57": {
+    "version": {
+      "upstream": "57.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libim1": {
+    "version": {
+      "upstream": "1.0.0-104.8.glacier.2",
+      "debian_revision": "r15"
+    }
+  },
+  "libjpeg62": {
+    "version": {
+      "epoch": 1,
+      "upstream": "1.5.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libjson-c2": {
+    "version": {
+      "upstream": "0.12",
+      "debian_revision": "r0"
+    }
+  },
+  "libkadaptor": {
+    "version": {
+      "upstream": "1.0.0-425.glacier.22",
+      "debian_revision": "r0"
+    }
+  },
+  "libkmod2": {
+    "version": {
+      "upstream": "23+git0+65a885df5f",
+      "debian_revision": "r0"
+    }
+  },
+  "libleveldb1": {
+    "version": {
+      "upstream": "1.15.0",
+      "debian_revision": "r9"
+    }
+  },
+  "libltdl7": {
+    "version": {
+      "upstream": "2.4.6",
+      "debian_revision": "r0webos2"
+    }
+  },
+  "liblzma5": {
+    "version": {
+      "upstream": "5.2.2",
+      "debian_revision": "r0"
+    }
+  },
+  "libmedia-resource-calculator1": {
+    "version": {
+      "upstream": "1.0.0-61.glacier.1",
+      "debian_revision": "r6"
+    }
+  },
+  "libmenuw5": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "libmikmod3": {
+    "version": {
+      "upstream": "3.3.6",
+      "debian_revision": "r0"
+    }
+  },
+  "libmount1": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "libmsil-m3-1": {
+    "version": {
+      "upstream": "1.0.1-51.glacier.m3.2",
+      "debian_revision": "r0.1"
+    }
+  },
+  "libncurses5": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "libncursesw5": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "libndl": {
+    "version": {
+      "upstream": "1.0.0-26",
+      "debian_revision": "r8"
+    }
+  },
+  "libndl-media": {
+    "version": {
+      "upstream": "1.0.0-37.gld4tv.3",
+      "debian_revision": "r6starfish2"
+    }
+  },
+  "libndl-vt1": {
+    "version": {
+      "upstream": "1.0.0-1",
+      "debian_revision": "r2"
+    }
+  },
+  "libnih": {
+    "version": {
+      "upstream": "1.0.3-r2",
+      "debian_revision": "4ubuntu16"
+    }
+  },
+  "libnl-3-200": {
+    "version": {
+      "epoch": 1,
+      "upstream": "3.2.28",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "libnl-genl-3-200": {
+    "version": {
+      "epoch": 1,
+      "upstream": "3.2.28",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "libnsbmp0.1.0": {
+    "version": {
+      "upstream": "0.1.0",
+      "debian_revision": "r1"
+    }
+  },
+  "libnss-mdns": {
+    "version": {
+      "upstream": "0.10",
+      "debian_revision": "r7"
+    }
+  },
+  "libnyx7": {
+    "version": {
+      "upstream": "7.3.0-83",
+      "debian_revision": "r7starfish1"
+    }
+  },
+  "libogg0": {
+    "version": {
+      "upstream": "1.3.2",
+      "debian_revision": "r0"
+    }
+  },
+  "libopkg1": {
+    "version": {
+      "epoch": 1,
+      "upstream": "0.3.3",
+      "debian_revision": "r0pro7starfish1"
+    }
+  },
+  "libpanelw5": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "libpbnjson": {
+    "version": {
+      "upstream": "2.15.0-67",
+      "debian_revision": "r7"
+    }
+  },
+  "libpcap1": {
+    "version": {
+      "upstream": "1.7.4",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libpcre1": {
+    "version": {
+      "upstream": "8.39",
+      "debian_revision": "r0"
+    }
+  },
+  "libpf-miracastplugin1": {
+    "version": {
+      "upstream": "1.0.0-88.glacier.1",
+      "debian_revision": "r14"
+    }
+  },
+  "libpixman-1-0": {
+    "version": {
+      "epoch": 1,
+      "upstream": "0.34.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libpmcertificatemgr2": {
+    "version": {
+      "upstream": "2.0.0-31",
+      "debian_revision": "r9"
+    }
+  },
+  "libpmloglib3": {
+    "version": {
+      "upstream": "3.3.0-72.gld4tv.4",
+      "debian_revision": "r8starfish6"
+    }
+  },
+  "libpng12": {
+    "version": {
+      "upstream": "1.2.56",
+      "debian_revision": "r0"
+    }
+  },
+  "libpng16-16": {
+    "version": {
+      "upstream": "1.6.34",
+      "debian_revision": "r0"
+    }
+  },
+  "libpopt0": {
+    "version": {
+      "upstream": "1.16",
+      "debian_revision": "r3"
+    }
+  },
+  "libprotobuf-c1": {
+    "version": {
+      "upstream": "1.2.1",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "libpulse-simple0": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "libpulse0": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "libpulsecommon": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "libpulsecore": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "libpython2.7-1.0": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "libqrencode3": {
+    "version": {
+      "upstream": "3.4.4+git0+1b565c7b59",
+      "debian_revision": "r0"
+    }
+  },
+  "libqt5script5": {
+    "version": {
+      "upstream": "5.6.2+git0+9dc78a2d84",
+      "debian_revision": "r0"
+    }
+  },
+  "libqt5sensors-plugins": {
+    "version": {
+      "upstream": "5.6.2+git0+922c2bb671",
+      "debian_revision": "r0"
+    }
+  },
+  "libqt5sensors-qmlplugins": {
+    "version": {
+      "upstream": "5.6.2+git0+922c2bb671",
+      "debian_revision": "r0"
+    }
+  },
+  "libqt5sensors5": {
+    "version": {
+      "upstream": "5.6.2+git0+922c2bb671",
+      "debian_revision": "r0"
+    }
+  },
+  "libqt5xmlpatterns5": {
+    "version": {
+      "upstream": "5.6.2+git0+074571305e",
+      "debian_revision": "r0"
+    }
+  },
+  "libreadline5": {
+    "version": {
+      "upstream": "5.2",
+      "debian_revision": "r9"
+    }
+  },
+  "librolegen2": {
+    "version": {
+      "upstream": "2.1.0-25",
+      "debian_revision": "r5"
+    }
+  },
+  "libsbc1": {
+    "version": {
+      "upstream": "1.3",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "libsdl2-2.0-0": {
+    "version": {
+      "upstream": "2.0.5-83.gld4tv.15",
+      "debian_revision": "r21starfish6"
+    }
+  },
+  "libsdl2-image-2.0-0": {
+    "version": {
+      "upstream": "2.0.1-10",
+      "debian_revision": "r8"
+    }
+  },
+  "libsdl2-mixer-2.0-0": {
+    "version": {
+      "upstream": "2.0.1-9",
+      "debian_revision": "r5"
+    }
+  },
+  "libsdl2-net-2.0-0": {
+    "version": {
+      "upstream": "2.0.1-6",
+      "debian_revision": "r5"
+    }
+  },
+  "libsdl2-ttf-2.0-0": {
+    "version": {
+      "upstream": "2.0.14-12",
+      "debian_revision": "r5"
+    }
+  },
+  "libsecuretime1": {
+    "version": {
+      "upstream": "1.0.0-3",
+      "debian_revision": "r1"
+    }
+  },
+  "libsegfault-webos": {
+    "version": {
+      "upstream": "1.2.5-32.gld4tv.2",
+      "debian_revision": "r10"
+    }
+  },
+  "libsestore0": {
+    "version": {
+      "upstream": "0.1.17-19.glacier.3",
+      "debian_revision": "r4.0"
+    }
+  },
+  "libsigc-2.0-0": {
+    "version": {
+      "upstream": "2.2.11",
+      "debian_revision": "r0"
+    }
+  },
+  "libsmartcols1": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "libsmpeg2-2.0-0": {
+    "version": {
+      "upstream": "1.0.0-4.gld4tv.1",
+      "debian_revision": "r3"
+    }
+  },
+  "libsnappy1": {
+    "version": {
+      "upstream": "1.1.2+git0+1ff9be9b8f",
+      "debian_revision": "r2"
+    }
+  },
+  "libsnapshot-boot": {
+    "version": {
+      "upstream": "1.2.0-25",
+      "debian_revision": "r3"
+    }
+  },
+  "libsndfile1": {
+    "version": {
+      "upstream": "1.0.27",
+      "debian_revision": "r0"
+    }
+  },
+  "libsoup-2.4": {
+    "version": {
+      "upstream": "2.54.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libspeex1": {
+    "version": {
+      "upstream": "1.2rc2",
+      "debian_revision": "r0"
+    }
+  },
+  "libspeexdsp1": {
+    "version": {
+      "upstream": "1.2rc3",
+      "debian_revision": "r0"
+    }
+  },
+  "libsqlite3-0": {
+    "version": {
+      "epoch": 3,
+      "upstream": "3.14.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libss2": {
+    "version": {
+      "upstream": "1.43",
+      "debian_revision": "r1webos11"
+    }
+  },
+  "libssl1.0.0": {
+    "version": {
+      "upstream": "1.0.2p",
+      "debian_revision": "r0"
+    }
+  },
+  "libsspk1": {
+    "version": {
+      "upstream": "1.0.0-102.glacier.3",
+      "debian_revision": "r17.0"
+    }
+  },
+  "libstdc++6": {
+    "version": {
+      "upstream": "6.2.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libswresample2": {
+    "version": {
+      "upstream": "3.3",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libswscale4": {
+    "version": {
+      "upstream": "3.3",
+      "debian_revision": "r0starfish4"
+    }
+  },
+  "libtag1": {
+    "version": {
+      "upstream": "1.10",
+      "debian_revision": "r0"
+    }
+  },
+  "libtasn1-6": {
+    "version": {
+      "upstream": "4.9",
+      "debian_revision": "r0"
+    }
+  },
+  "libtiff5": {
+    "version": {
+      "upstream": "4.0.7",
+      "debian_revision": "r0"
+    }
+  },
+  "libtinfo5": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "libtinyxml2.6.2": {
+    "version": {
+      "upstream": "2.6.2",
+      "debian_revision": "r5pro1"
+    }
+  },
+  "libudev1": {
+    "version": {
+      "upstream": "3.2",
+      "debian_revision": "r0"
+    }
+  },
+  "libulockmgr1": {
+    "version": {
+      "upstream": "2.9.4",
+      "debian_revision": "r0"
+    }
+  },
+  "libunwind": {
+    "version": {
+      "upstream": "1.1+git0+bc8698fd7e",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "libusb-1.0-0": {
+    "version": {
+      "upstream": "1.0.20",
+      "debian_revision": "r0"
+    }
+  },
+  "libuuid1": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "libvorbis": {
+    "version": {
+      "upstream": "1.3.5",
+      "debian_revision": "r0"
+    }
+  },
+  "libvorbisidec1": {
+    "version": {
+      "upstream": "20150107",
+      "debian_revision": "r1"
+    }
+  },
+  "libvt1": {
+    "version": {
+      "upstream": "1.0.0-47.glacier.2",
+      "debian_revision": "r10"
+    }
+  },
+  "libwasabi1": {
+    "version": {
+      "upstream": "1.5.0-10",
+      "debian_revision": "r3.0"
+    }
+  },
+  "libwavpack1": {
+    "version": {
+      "upstream": "4.60.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libwca-support1": {
+    "version": {
+      "upstream": "1.0.0-35.19.glacier.2",
+      "debian_revision": "r7starfish1"
+    }
+  },
+  "libwebosi18n1": {
+    "version": {
+      "upstream": "1.0.1-13",
+      "debian_revision": "r1"
+    }
+  },
+  "libwebossurface0": {
+    "version": {
+      "upstream": "1.0.0-10",
+      "debian_revision": "r1starfish1"
+    }
+  },
+  "libwebp": {
+    "version": {
+      "upstream": "0.6.0",
+      "debian_revision": "r0"
+    }
+  },
+  "libxadapter1": {
+    "version": {
+      "upstream": "1.0.0-80",
+      "debian_revision": "r5.0"
+    }
+  },
+  "libxkbcommon0": {
+    "version": {
+      "upstream": "0.6.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libxml++-2.6-2": {
+    "version": {
+      "upstream": "2.38.1",
+      "debian_revision": "r0"
+    }
+  },
+  "libxml2": {
+    "version": {
+      "upstream": "2.9.4",
+      "debian_revision": "r0"
+    }
+  },
+  "libyajl2": {
+    "version": {
+      "upstream": "2.1.0",
+      "debian_revision": "r0webos1"
+    }
+  },
+  "libz1": {
+    "version": {
+      "upstream": "1.2.11",
+      "debian_revision": "r0"
+    }
+  },
+  "lighttpd": {
+    "version": {
+      "upstream": "1.4.41",
+      "debian_revision": "r0"
+    }
+  },
+  "lighttpd-module-access": {
+    "version": {
+      "upstream": "1.4.41",
+      "debian_revision": "r0"
+    }
+  },
+  "lighttpd-module-accesslog": {
+    "version": {
+      "upstream": "1.4.41",
+      "debian_revision": "r0"
+    }
+  },
+  "lighttpd-module-dirlisting": {
+    "version": {
+      "upstream": "1.4.41",
+      "debian_revision": "r0"
+    }
+  },
+  "lighttpd-module-indexfile": {
+    "version": {
+      "upstream": "1.4.41",
+      "debian_revision": "r0"
+    }
+  },
+  "lighttpd-module-staticfile": {
+    "version": {
+      "upstream": "1.4.41",
+      "debian_revision": "r0"
+    }
+  },
+  "lsb": {
+    "version": {
+      "upstream": "4.1",
+      "debian_revision": "r2webos5"
+    }
+  },
+  "lsbinitscripts": {
+    "version": {
+      "upstream": "9.68",
+      "debian_revision": "r0"
+    }
+  },
+  "luna-downloadmgr": {
+    "version": {
+      "upstream": "4.0.0-140.gld4tv.4",
+      "debian_revision": "r9starfish3"
+    }
+  },
+  "luna-init": {
+    "version": {
+      "upstream": "2.0.1-14",
+      "debian_revision": "r12pro1starfish14"
+    }
+  },
+  "luna-prefs": {
+    "version": {
+      "upstream": "3.0.0-16",
+      "debian_revision": "r12"
+    }
+  },
+  "luna-prefs-data": {
+    "version": {
+      "upstream": "3.0.0",
+      "debian_revision": "r1"
+    }
+  },
+  "luna-service2": {
+    "version": {
+      "upstream": "3.21.2-296.14.glacier.2",
+      "debian_revision": "r23starfish9"
+    }
+  },
+  "luna-service2-security-conf": {
+    "version": {
+      "upstream": "1.0.2-114.17.glacier.6",
+      "debian_revision": "r2starfish1"
+    }
+  },
+  "luna-surfacemanager": {
+    "version": {
+      "upstream": "1.1.0-202.20.glacier.1",
+      "debian_revision": "r39"
+    }
+  },
+  "luna-surfacemanager-extensions": {
+    "version": {
+      "upstream": "1.0.0-24.gld4tv.2",
+      "debian_revision": "r1"
+    }
+  },
+  "luna-sysservice": {
+    "version": {
+      "upstream": "4.4.0-87.gld4tv.10",
+      "debian_revision": "r6"
+    }
+  },
+  "lvm2": {
+    "version": {
+      "upstream": "2.02.138",
+      "debian_revision": "r0webos2starfish4"
+    }
+  },
+  "makedevs": {
+    "version": {
+      "upstream": "1.0.1",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "maliit-framework-webos": {
+    "version": {
+      "upstream": "0.99.0+20-75.gld4tv.3",
+      "debian_revision": "r27starfish1"
+    }
+  },
+  "mediadrm": {
+    "version": {
+      "upstream": "1.5.1-127.glacier.8",
+      "debian_revision": "r12"
+    }
+  },
+  "mediadrm-core": {
+    "version": {
+      "upstream": "1.5.1-32",
+      "debian_revision": "r9.0"
+    }
+  },
+  "mediadrm-player": {
+    "version": {
+      "upstream": "1.0.0-42",
+      "debian_revision": "r6"
+    }
+  },
+  "memchute": {
+    "version": {
+      "upstream": "3.0.0-82.39.glacier.11",
+      "debian_revision": "r12socmstar8"
+    }
+  },
+  "memchute-localization": {
+    "version": {
+      "upstream": "3.0.0-82.39.glacier.11",
+      "debian_revision": "r12socmstar8"
+    }
+  },
+  "miracast": {
+    "version": {
+      "upstream": "1.0.0-197.glacier.7",
+      "debian_revision": "r14"
+    }
+  },
+  "miracast-localization": {
+    "version": {
+      "upstream": "1.0.0-197.glacier.7",
+      "debian_revision": "r14"
+    }
+  },
+  "modutils-initscripts": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r7"
+    }
+  },
+  "mojoloader": {
+    "version": {
+      "upstream": "1.1-11",
+      "debian_revision": "r5"
+    }
+  },
+  "mojoservicelauncher": {
+    "version": {
+      "upstream": "3.0.1-104.4.goobang.1",
+      "debian_revision": "r7"
+    }
+  },
+  "mpegdash": {
+    "version": {
+      "upstream": "1.0.0-209.glacier.8",
+      "debian_revision": "r16"
+    }
+  },
+  "mrcu": {
+    "version": {
+      "upstream": "1.0.1-296.glacier.8",
+      "debian_revision": "r24"
+    }
+  },
+  "mrcu-fw": {
+    "version": {
+      "upstream": "17.00.00-60",
+      "debian_revision": "r5.1"
+    }
+  },
+  "mrcu-localization": {
+    "version": {
+      "upstream": "1.0.1-296.glacier.8",
+      "debian_revision": "r24"
+    }
+  },
+  "mss": {
+    "version": {
+      "upstream": "1.1.0-41.glacier.1",
+      "debian_revision": "r2"
+    }
+  },
+  "mstar-tee": {
+    "version": {
+      "upstream": "1.0.0-387.glacier.9",
+      "debian_revision": "r0.0"
+    }
+  },
+  "ncurses": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "ncurses-terminfo-base": {
+    "version": {
+      "upstream": "6.1+20180630",
+      "debian_revision": "r0"
+    }
+  },
+  "netbase": {
+    "version": {
+      "epoch": 1,
+      "upstream": "5.3",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "netcast-webapps": {
+    "version": {
+      "upstream": "1.0.0-20",
+      "debian_revision": "r2"
+    }
+  },
+  "nettle": {
+    "version": {
+      "upstream": "2.7.1",
+      "debian_revision": "r0"
+    }
+  },
+  "network-input-service": {
+    "version": {
+      "upstream": "1.0.0-14.gld4tv.1",
+      "debian_revision": "r1starfish5"
+    }
+  },
+  "nlp": {
+    "version": {
+      "upstream": "3.1.0-246.glacier.18",
+      "debian_revision": "r24"
+    }
+  },
+  "nlpmanager": {
+    "version": {
+      "upstream": "1.0.0-99",
+      "debian_revision": "r3"
+    }
+  },
+  "nodejs": {
+    "version": {
+      "upstream": "0.12.2",
+      "debian_revision": "r22"
+    }
+  },
+  "nodejs-module-webos-dynaload": {
+    "version": {
+      "upstream": "3.0.1-15",
+      "debian_revision": "r4"
+    }
+  },
+  "nodejs-module-webos-pmlog": {
+    "version": {
+      "upstream": "3.0.1-19",
+      "debian_revision": "r4"
+    }
+  },
+  "nodejs-module-webos-service": {
+    "version": {
+      "upstream": "1.0.1-25.gld4tv.2",
+      "debian_revision": "r3"
+    }
+  },
+  "nodejs-module-webos-sysbus": {
+    "version": {
+      "upstream": "3.0.1-41",
+      "debian_revision": "r6"
+    }
+  },
+  "nopd": {
+    "version": {
+      "upstream": "1.0.0-9.glacier.1",
+      "debian_revision": "r2"
+    }
+  },
+  "nopd-localization": {
+    "version": {
+      "upstream": "1.0.0-9.glacier.1",
+      "debian_revision": "r2"
+    }
+  },
+  "notificationmgr": {
+    "version": {
+      "upstream": "1.0.0-50.3.glacier.5",
+      "debian_revision": "r6"
+    }
+  },
+  "npapi-plugins": {
+    "version": {
+      "upstream": "1.0.0-179.gld4tv.1",
+      "debian_revision": "r15"
+    }
+  },
+  "npapi-plugins-localization": {
+    "version": {
+      "upstream": "1.0.0-179.gld4tv.1",
+      "debian_revision": "r15"
+    }
+  },
+  "nyx-utils": {
+    "version": {
+      "upstream": "1.5.0-29",
+      "debian_revision": "r2"
+    }
+  },
+  "openssl": {
+    "version": {
+      "upstream": "1.0.2p",
+      "debian_revision": "r0"
+    }
+  },
+  "openssl-conf": {
+    "version": {
+      "upstream": "1.0.2p",
+      "debian_revision": "r0"
+    }
+  },
+  "opkg": {
+    "version": {
+      "epoch": 1,
+      "upstream": "0.3.3",
+      "debian_revision": "r0pro7starfish1"
+    }
+  },
+  "opkg-arch-config": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r1"
+    }
+  },
+  "packagegroup-core-boot": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r17starfish1"
+    }
+  },
+  "packagegroup-starfish-atsc": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r5"
+    }
+  },
+  "packagegroup-starfish-bsp": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r12socmstar1"
+    }
+  },
+  "packagegroup-starfish-core": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r38socmstar1"
+    }
+  },
+  "packagegroup-starfish-extended": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r59"
+    }
+  },
+  "packagegroup-starfish-foss": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r10"
+    }
+  },
+  "packagegroup-starfish-ndk": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r4"
+    }
+  },
+  "packagegroup-starfish-qt5": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r7"
+    }
+  },
+  "packagegroup-webos-extended": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r27socmstar1pro7starfish21"
+    }
+  },
+  "packagegroup-webos-pro-core": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r61"
+    }
+  },
+  "packagegroup-webos-pro-extended": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r1"
+    }
+  },
+  "pacrunner": {
+    "version": {
+      "upstream": "0.9",
+      "debian_revision": "r0"
+    }
+  },
+  "partinfo-ro-fstab": {
+    "version": {
+      "upstream": "20170620-121",
+      "debian_revision": "r4.10.0"
+    }
+  },
+  "partinfo-rw-fstab": {
+    "version": {
+      "upstream": "20170620-121",
+      "debian_revision": "r4.10.0"
+    }
+  },
+  "partitiongroup-starfish-cabi-ota-yes-atsc-fstab": {
+    "version": {
+      "upstream": "4.4.2-500",
+      "debian_revision": "r5.0"
+    }
+  },
+  "partitiongroup-starfish-fonts-fstab": {
+    "version": {
+      "upstream": "4.4.2-2",
+      "debian_revision": "r1"
+    }
+  },
+  "partitiongroup-starfish-tvservice-atsc-fstab": {
+    "version": {
+      "upstream": "4.4.2-401",
+      "debian_revision": "r4.1"
+    }
+  },
+  "pbml-libs": {
+    "version": {
+      "upstream": "1.0.1-1",
+      "debian_revision": "r0.0"
+    }
+  },
+  "pbsw": {
+    "version": {
+      "upstream": "1.0.0-330.glacier.33",
+      "debian_revision": "r10"
+    }
+  },
+  "pdm-bin": {
+    "version": {
+      "upstream": "1.0.0-36",
+      "debian_revision": "r5.0"
+    }
+  },
+  "photorenderer": {
+    "version": {
+      "upstream": "2.0.0-72.glacier.1",
+      "debian_revision": "r7"
+    }
+  },
+  "physical-device-manager": {
+    "version": {
+      "upstream": "1.0.1-235.glacier.5",
+      "debian_revision": "r20"
+    }
+  },
+  "physical-device-manager-localization": {
+    "version": {
+      "upstream": "1.0.1-235.glacier.5",
+      "debian_revision": "r20"
+    }
+  },
+  "player-factory-libs": {
+    "version": {
+      "upstream": "1.0.0-311.glacier.19",
+      "debian_revision": "r23"
+    }
+  },
+  "playready-2.5": {
+    "version": {
+      "upstream": "2.5.1788-33.glacier.5",
+      "debian_revision": "r6.0.0"
+    }
+  },
+  "playready-3.0": {
+    "version": {
+      "upstream": "3.0.4019-33.glacier.5",
+      "debian_revision": "r6.0.0"
+    }
+  },
+  "pmcertificatemgrservice": {
+    "version": {
+      "upstream": "2.0.0-33",
+      "debian_revision": "r1"
+    }
+  },
+  "pmklogd": {
+    "version": {
+      "upstream": "2.0.0-17.gld4tv.1",
+      "debian_revision": "r3"
+    }
+  },
+  "pmlogctl": {
+    "version": {
+      "upstream": "3.0.0-19",
+      "debian_revision": "r3"
+    }
+  },
+  "pmlogdaemon": {
+    "version": {
+      "upstream": "3.1.0-138.7.glacier.1",
+      "debian_revision": "r8pro1starfish25"
+    }
+  },
+  "procps": {
+    "version": {
+      "upstream": "3.3.12",
+      "debian_revision": "r0pro8starfish8"
+    }
+  },
+  "prs": {
+    "version": {
+      "upstream": "1.0.0-116",
+      "debian_revision": "r10"
+    }
+  },
+  "psmisc": {
+    "version": {
+      "upstream": "22.21",
+      "debian_revision": "r0webos3starfish1"
+    }
+  },
+  "pstree": {
+    "version": {
+      "upstream": "22.21",
+      "debian_revision": "r0webos3starfish1"
+    }
+  },
+  "ptmalloc3": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r4"
+    }
+  },
+  "pulseaudio": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-lib-alsa-util": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-lib-cli": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-lib-protocol-cli": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-lib-protocol-native": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-lib-rtp": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-misc": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-alsa-card": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-alsa-sink": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-alsa-source": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-always-sink": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-augment-properties": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-card-restore": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-cli-protocol-tcp": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-cli-protocol-unix": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-default-device-restore": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-detect": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-device-restore": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-filter-apply": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-filter-heuristics": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-intended-roles": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-native-protocol-tcp": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-native-protocol-unix": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-null-sink": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-null-source": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-palm-policy": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-position-event-sounds": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-rescue-streams": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-role-cork": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-rtp-recv": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-rtp-send": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-stream-restore": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-suspend-on-idle": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-switch-on-port-available": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-module-udev-detect": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "pulseaudio-server": {
+    "version": {
+      "upstream": "9.0-33.gld4tv.4",
+      "debian_revision": "r15starfish2"
+    }
+  },
+  "python-codecs": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-contextlib": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-core": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-crypt": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-ctypes": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-curses": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-datetime": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-fcntl": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-io": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-json": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-lang": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-logging": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-math": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-mime": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-netclient": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-pickle": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-pprint": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-re": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-readline": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-shell": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-stringold": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-subprocess": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-syslog": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-textutils": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "python-xml": {
+    "version": {
+      "upstream": "2.7.12",
+      "debian_revision": "r1webos1"
+    }
+  },
+  "qml-image-extension": {
+    "version": {
+      "upstream": "1.0.0-10",
+      "debian_revision": "r4"
+    }
+  },
+  "qml-starfish-components": {
+    "version": {
+      "upstream": "1.0.0-32.gld4tv.2",
+      "debian_revision": "r3"
+    }
+  },
+  "qml-tv-framework": {
+    "version": {
+      "upstream": "1.0.0-37",
+      "debian_revision": "r2.7"
+    }
+  },
+  "qml-webos-bridge": {
+    "version": {
+      "upstream": "1.0.0-89.8.glacier.4",
+      "debian_revision": "r8"
+    }
+  },
+  "qml-webos-components": {
+    "version": {
+      "upstream": "1.0.0-32.gld4tv.2",
+      "debian_revision": "r9"
+    }
+  },
+  "qml-webos-framework": {
+    "version": {
+      "upstream": "1.0.0-114.gld4tv.8",
+      "debian_revision": "r19starfish1"
+    }
+  },
+  "qosm": {
+    "version": {
+      "upstream": "1.1.1-33",
+      "debian_revision": "r3"
+    }
+  },
+  "qt-webos-accessibility-plugin": {
+    "version": {
+      "upstream": "1.0.0-10",
+      "debian_revision": "r6starfish1"
+    }
+  },
+  "qt5-multimedia-starfish": {
+    "version": {
+      "upstream": "1.0.0-15.gld4tv.4",
+      "debian_revision": "r6"
+    }
+  },
+  "qt5-qpa-starfish": {
+    "version": {
+      "upstream": "1.1.0-116.9.glacier.2",
+      "debian_revision": "r40"
+    }
+  },
+  "qtbase": {
+    "version": {
+      "upstream": "5.6.2+git0+b4ada3f0d8",
+      "debian_revision": "r0socmstar1pro60starfish14"
+    }
+  },
+  "qtbase-plugins": {
+    "version": {
+      "upstream": "5.6.2+git0+b4ada3f0d8",
+      "debian_revision": "r0socmstar1pro60starfish14"
+    }
+  },
+  "qtdeclarative": {
+    "version": {
+      "upstream": "5.6.2+git0+c1d726fe19",
+      "debian_revision": "r0pro27"
+    }
+  },
+  "qtdeclarative-plugins": {
+    "version": {
+      "upstream": "5.6.2+git0+c1d726fe19",
+      "debian_revision": "r0pro27"
+    }
+  },
+  "qtdeclarative-qmlplugins": {
+    "version": {
+      "upstream": "5.6.2+git0+c1d726fe19",
+      "debian_revision": "r0pro27"
+    }
+  },
+  "qtgraphicaleffects-qmlplugins": {
+    "version": {
+      "upstream": "5.6.2+git0+0b68e91d68",
+      "debian_revision": "r0"
+    }
+  },
+  "qtmultimedia": {
+    "version": {
+      "upstream": "5.6.2+git0+20686cb51f",
+      "debian_revision": "r0pro1starfish1"
+    }
+  },
+  "qtmultimedia-plugins": {
+    "version": {
+      "upstream": "5.6.2+git0+20686cb51f",
+      "debian_revision": "r0pro1starfish1"
+    }
+  },
+  "qtmultimedia-qmlplugins": {
+    "version": {
+      "upstream": "5.6.2+git0+20686cb51f",
+      "debian_revision": "r0pro1starfish1"
+    }
+  },
+  "qtquickcontrols-qmlplugins": {
+    "version": {
+      "upstream": "5.6.2+git0+59c6c0e0b1",
+      "debian_revision": "r0starfish3"
+    }
+  },
+  "qtwayland": {
+    "version": {
+      "upstream": "5.4.2-107.gld4tv.4",
+      "debian_revision": "r0pro12starfish2"
+    }
+  },
+  "qtwayland-plugins": {
+    "version": {
+      "upstream": "5.4.2-107.gld4tv.4",
+      "debian_revision": "r0pro12starfish2"
+    }
+  },
+  "qtwayland-webos": {
+    "version": {
+      "upstream": "1.0.0-21.8.glacier.1",
+      "debian_revision": "r7"
+    }
+  },
+  "rdxd": {
+    "version": {
+      "upstream": "4.0.2-186.2.glacier.1",
+      "debian_revision": "r7starfish1"
+    }
+  },
+  "rec-info-adapter": {
+    "version": {
+      "upstream": "1.0.0-7",
+      "debian_revision": "r0"
+    }
+  },
+  "rec-listmgr": {
+    "version": {
+      "upstream": "1.0.0-26.glacier.1",
+      "debian_revision": "r2"
+    }
+  },
+  "remotediag": {
+    "version": {
+      "upstream": "2.0.0-111.glacier.3",
+      "debian_revision": "r8.0"
+    }
+  },
+  "remotediag-localization": {
+    "version": {
+      "upstream": "2.0.0-111.glacier.3",
+      "debian_revision": "r8.0"
+    }
+  },
+  "remotelogger": {
+    "version": {
+      "upstream": "1.0.0-10",
+      "debian_revision": "r1"
+    }
+  },
+  "run-postinsts": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r9"
+    }
+  },
+  "sam": {
+    "version": {
+      "upstream": "2.0.0-245.39.glacier.6",
+      "debian_revision": "r19"
+    }
+  },
+  "sam-localization": {
+    "version": {
+      "upstream": "2.0.0-245.39.glacier.6",
+      "debian_revision": "r19"
+    }
+  },
+  "scd-service": {
+    "version": {
+      "upstream": "1.0.0-111.glacier.1",
+      "debian_revision": "r5"
+    }
+  },
+  "sdparm": {
+    "version": {
+      "upstream": "1.08",
+      "debian_revision": "r3webos1"
+    }
+  },
+  "sdx": {
+    "version": {
+      "upstream": "1.0.0-239.gld4tv.5",
+      "debian_revision": "r15"
+    }
+  },
+  "sdx-localization": {
+    "version": {
+      "upstream": "1.0.0-239.gld4tv.5",
+      "debian_revision": "r15"
+    }
+  },
+  "second-screen-service": {
+    "version": {
+      "upstream": "1.0.0-75.11.glacier.5",
+      "debian_revision": "r7"
+    }
+  },
+  "second-screen-service-localization": {
+    "version": {
+      "upstream": "1.0.0-75.11.glacier.5",
+      "debian_revision": "r7"
+    }
+  },
+  "security-common-criteria": {
+    "version": {
+      "upstream": "1.0.0-2",
+      "debian_revision": "r1"
+    }
+  },
+  "securitymanager": {
+    "version": {
+      "upstream": "1.0.70-112.glacier.13",
+      "debian_revision": "r27.0"
+    }
+  },
+  "settingsservice": {
+    "version": {
+      "upstream": "1.0.22-227.gld4tv.14",
+      "debian_revision": "r22starfish8"
+    }
+  },
+  "settingsservice-conf": {
+    "version": {
+      "upstream": "1.0.0-23.34.glacier.22",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "sg3-utils": {
+    "version": {
+      "upstream": "1.42",
+      "debian_revision": "r0webos2"
+    }
+  },
+  "shadow-base": {
+    "version": {
+      "upstream": "4.2.1",
+      "debian_revision": "r0webos2"
+    }
+  },
+  "shadow-gpl": {
+    "version": {
+      "upstream": "4.2.1",
+      "debian_revision": "r0webos2"
+    }
+  },
+  "shadow-securetty": {
+    "version": {
+      "upstream": "4.2.1",
+      "debian_revision": "r3"
+    }
+  },
+  "sleepd": {
+    "version": {
+      "upstream": "2.0.0-48.gld4tv.2",
+      "debian_revision": "r6"
+    }
+  },
+  "smart-stb-controller": {
+    "version": {
+      "upstream": "1.0.0-6.glacier.3",
+      "debian_revision": "r0"
+    }
+  },
+  "smart-stb-controller-localization": {
+    "version": {
+      "upstream": "1.0.0-6.glacier.3",
+      "debian_revision": "r0"
+    }
+  },
+  "smartmontools": {
+    "version": {
+      "upstream": "6.5",
+      "debian_revision": "r0starfish1"
+    }
+  },
+  "snapshot-boot-manager": {
+    "version": {
+      "upstream": "1.9.1-61",
+      "debian_revision": "r20socmstar1"
+    }
+  },
+  "sqlcipher": {
+    "version": {
+      "upstream": "3.0.0",
+      "debian_revision": "r3"
+    }
+  },
+  "sqlite3": {
+    "version": {
+      "epoch": 3,
+      "upstream": "3.14.1",
+      "debian_revision": "r0"
+    }
+  },
+  "ss-player": {
+    "version": {
+      "upstream": "1.0.0-51",
+      "debian_revision": "r6"
+    }
+  },
+  "starfish-customization-consumer": {
+    "version": {
+      "upstream": "1.0.0-17.glacier.5",
+      "debian_revision": "r49"
+    }
+  },
+  "starfish-initscripts": {
+    "version": {
+      "upstream": "3.4.5-138.gld4tv.14",
+      "debian_revision": "r46socmstar2"
+    }
+  },
+  "starfish-initscripts-gpl": {
+    "version": {
+      "upstream": "3.4.5-138.gld4tv.14",
+      "debian_revision": "r46socmstar2"
+    }
+  },
+  "starfish-luna-surface-manager": {
+    "version": {
+      "upstream": "1.1.0-440.40.glacier.11",
+      "debian_revision": "r67"
+    }
+  },
+  "starfish-luna-surface-manager-localization": {
+    "version": {
+      "upstream": "1.1.0-440.40.glacier.11",
+      "debian_revision": "r67"
+    }
+  },
+  "starfish-media-pipeline": {
+    "version": {
+      "upstream": "1.0.0-260.glacier.8",
+      "debian_revision": "r17"
+    }
+  },
+  "starfish-open-source-software-notice": {
+    "version": {
+      "upstream": "1.0.0-49.gld4tv.9",
+      "debian_revision": "r10"
+    }
+  },
+  "starfish-subtitle-libs": {
+    "version": {
+      "upstream": "1.0.0-91.glacier.6",
+      "debian_revision": "r13"
+    }
+  },
+  "starfish-systemui-assets": {
+    "version": {
+      "upstream": "1.1.0-4.gld4tv.4",
+      "debian_revision": "r1"
+    }
+  },
+  "starfish-systemui-keyfilters": {
+    "version": {
+      "upstream": "1.0.0-3.25.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "starfish-systemui-keyfilters-localization": {
+    "version": {
+      "upstream": "1.0.0-3.25.glacier.2",
+      "debian_revision": "r0"
+    }
+  },
+  "sysvinit-pidof": {
+    "version": {
+      "upstream": "2.88dsf",
+      "debian_revision": "r14"
+    }
+  },
+  "tar": {
+    "version": {
+      "upstream": "1.17",
+      "debian_revision": "r3webos2"
+    }
+  },
+  "tesseract": {
+    "version": {
+      "upstream": "3.04.00+git0+228317caa1",
+      "debian_revision": "r0"
+    }
+  },
+  "tesseract-lang-eng": {
+    "version": {
+      "upstream": "3.04.00+git0+3cf1e2df1f",
+      "debian_revision": "r0"
+    }
+  },
+  "tnm": {
+    "version": {
+      "upstream": "1.0.0-111",
+      "debian_revision": "r9"
+    }
+  },
+  "tpl-libs": {
+    "version": {
+      "upstream": "1.0.0-13",
+      "debian_revision": "r0"
+    }
+  },
+  "tts": {
+    "version": {
+      "upstream": "2.2.0-124.glacier.3",
+      "debian_revision": "r4"
+    }
+  },
+  "tvlink-network-proxy": {
+    "version": {
+      "upstream": "1.0.0-22",
+      "debian_revision": "r4"
+    }
+  },
+  "tvpowerd": {
+    "version": {
+      "upstream": "1.0.0-170.glacier.4",
+      "debian_revision": "r10socmstar1"
+    }
+  },
+  "tvrm": {
+    "version": {
+      "upstream": "1.0.0-50",
+      "debian_revision": "r1"
+    }
+  },
+  "tvservice-atsc-localization": {
+    "version": {
+      "upstream": "1.0.0-618.74.gorongosa.1",
+      "debian_revision": "r42.1"
+    }
+  },
+  "tvservice-atsc-rootfs": {
+    "version": {
+      "upstream": "1.0.0-618.74.gorongosa.1",
+      "debian_revision": "r42.1"
+    }
+  },
+  "tzcode": {
+    "version": {
+      "upstream": "2.24",
+      "debian_revision": "r0webos2pro2starfish5"
+    }
+  },
+  "tzdata": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-africa": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-americas": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-antarctica": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-arctic": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-asia": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-atlantic": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-australia": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-europe": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-misc": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-pacific": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-posix": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "tzdata-right": {
+    "version": {
+      "upstream": "2017c",
+      "debian_revision": "r0webos6"
+    }
+  },
+  "uchardet": {
+    "version": {
+      "upstream": "0.0.1",
+      "debian_revision": "r1"
+    }
+  },
+  "udev-cache": {
+    "version": {
+      "upstream": "3.2",
+      "debian_revision": "r0"
+    }
+  },
+  "umediaserver": {
+    "version": {
+      "upstream": "1.0.0-160.27.glacier.6",
+      "debian_revision": "r7starfish5"
+    }
+  },
+  "umediaserver-configs": {
+    "version": {
+      "upstream": "1.0.0-32.18.glacier.5",
+      "debian_revision": "r5"
+    }
+  },
+  "updater": {
+    "version": {
+      "upstream": "4.1.6-230.glacier.4",
+      "debian_revision": "r16.0"
+    }
+  },
+  "uploadd": {
+    "version": {
+      "upstream": "3.0.6-87.gld4tv.7",
+      "debian_revision": "r4starfish3"
+    }
+  },
+  "upnp-webos": {
+    "version": {
+      "upstream": "4.69.2-69.glacier.2",
+      "debian_revision": "r11.0"
+    }
+  },
+  "upstart": {
+    "version": {
+      "upstream": "1.10-0webos1",
+      "debian_revision": "r5starfish1"
+    }
+  },
+  "uriparser": {
+    "version": {
+      "upstream": "0.8.0",
+      "debian_revision": "r2"
+    }
+  },
+  "user-context-manager": {
+    "version": {
+      "upstream": "1.0.0-13",
+      "debian_revision": "r1"
+    }
+  },
+  "util-linux": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-cfdisk": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-fdisk": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-getopt": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-losetup": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-mkfs": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-mount": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-mountpoint": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-prlimit": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-readprofile": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-sfdisk": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-sulogin": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-swaponoff": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "util-linux-umount": {
+    "version": {
+      "upstream": "2.28.1",
+      "debian_revision": "r0webos2starfish1"
+    }
+  },
+  "utp": {
+    "version": {
+      "upstream": "1.0.0-74.glacier.3",
+      "debian_revision": "r1"
+    }
+  },
+  "videothumbnailer": {
+    "version": {
+      "upstream": "1.0.0-30",
+      "debian_revision": "r6"
+    }
+  },
+  "wam": {
+    "version": {
+      "upstream": "1.0.0-43.68.glacier.15",
+      "debian_revision": "r8socmstar1starfish16"
+    }
+  },
+  "wam-localization": {
+    "version": {
+      "upstream": "1.0.0-43.68.glacier.15",
+      "debian_revision": "r8socmstar1starfish16"
+    }
+  },
+  "wayland": {
+    "version": {
+      "upstream": "1.11.0",
+      "debian_revision": "r0pro4"
+    }
+  },
+  "webappmgr3-pluggable": {
+    "version": {
+      "upstream": "1.0.0-100.32.glacier.2",
+      "debian_revision": "r13"
+    }
+  },
+  "webos-bluetooth-service": {
+    "version": {
+      "upstream": "1.0.0-81.64.glacier.3",
+      "debian_revision": "r12starfish4"
+    }
+  },
+  "webos-connman-adapter": {
+    "version": {
+      "upstream": "1.1.0-182.26.glacier.7",
+      "debian_revision": "r4pro11starfish14"
+    }
+  },
+  "webos-fontconfig-files": {
+    "version": {
+      "upstream": "2.0.0-41.gld4tv.2",
+      "debian_revision": "r5"
+    }
+  },
+  "webos-image-converter": {
+    "version": {
+      "upstream": "1.0.0",
+      "debian_revision": "r1"
+    }
+  },
+  "webos-image-service": {
+    "version": {
+      "upstream": "1.0.0-6",
+      "debian_revision": "r1"
+    }
+  },
+  "webos-jail": {
+    "version": {
+      "upstream": "2.1.2-158.9.glacier.5",
+      "debian_revision": "r6"
+    }
+  },
+  "webos-nettools": {
+    "version": {
+      "upstream": "1.1.0-27.gld4tv.2",
+      "debian_revision": "r1"
+    }
+  },
+  "webos-preload-manager": {
+    "version": {
+      "upstream": "1.0.0-12.6.glacier.5",
+      "debian_revision": "r0"
+    }
+  },
+  "webos-sddp": {
+    "version": {
+      "upstream": "1.0.0-12",
+      "debian_revision": "r0"
+    }
+  },
+  "widevine-modular-package": {
+    "version": {
+      "upstream": "3.2.1-37.glacier.2",
+      "debian_revision": "r2.0"
+    }
+  },
+  "wifidrv-mtk": {
+    "version": {
+      "upstream": "1.0.0-100.glacier.7",
+      "debian_revision": "r8"
+    }
+  },
+  "wifidrv-rtk": {
+    "version": {
+      "upstream": "1.0.0-33.glacier.5",
+      "debian_revision": "r2"
+    }
+  },
+  "wpa-supplicant": {
+    "version": {
+      "upstream": "2.0-62.gld4tv.12",
+      "debian_revision": "r0pro18starfish35"
+    }
+  },
+  "wpa-supplicant-cli": {
+    "version": {
+      "upstream": "2.0-62.gld4tv.12",
+      "debian_revision": "r0pro18starfish35"
+    }
+  },
+  "wpa-supplicant-conf": {
+    "version": {
+      "upstream": "1.0",
+      "debian_revision": "r0"
+    }
+  },
+  "wpa-supplicant-passphrase": {
+    "version": {
+      "upstream": "2.0-62.gld4tv.12",
+      "debian_revision": "r0pro18starfish35"
+    }
+  },
+  "xkeyboard-config": {
+    "version": {
+      "upstream": "2.11+36-14.gld4tv.1",
+      "debian_revision": "r0pro1"
+    }
+  }
+}

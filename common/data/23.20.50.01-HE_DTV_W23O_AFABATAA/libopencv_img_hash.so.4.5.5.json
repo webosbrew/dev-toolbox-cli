@@ -1,5 +1,6 @@
 {
   "name": "libopencv_img_hash.so.405",
+  "package": "lib32-libopencv-img-hash405",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

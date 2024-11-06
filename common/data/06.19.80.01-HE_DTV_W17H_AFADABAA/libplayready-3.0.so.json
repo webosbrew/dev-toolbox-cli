@@ -1,5 +1,6 @@
 {
   "name": "libplayready-3.0.so",
+  "package": "playready-3.0",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

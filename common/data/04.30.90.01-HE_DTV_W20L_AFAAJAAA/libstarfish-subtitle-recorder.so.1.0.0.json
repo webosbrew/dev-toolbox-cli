@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-subtitle-recorder.so.1",
+  "package": "starfish-subtitle-libs",
   "needed": [
     "libc.so.6",
     "libcairo.so.2",

@@ -1,5 +1,6 @@
 {
   "name": "libopencv_dnn.so.405",
+  "package": "lib32-libopencv-dnn405",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

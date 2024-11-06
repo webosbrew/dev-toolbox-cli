@@ -1,5 +1,6 @@
 {
   "name": "libNDL_media_impl.so.1",
+  "package": "lib32-libndl-media",
   "needed": [
     "libPmLogLib.so.3",
     "libSDL2-2.0.so.0",

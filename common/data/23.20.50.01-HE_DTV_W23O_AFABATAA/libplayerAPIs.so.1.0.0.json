@@ -1,5 +1,6 @@
 {
   "name": "libplayerAPIs.so.1",
+  "package": "lib32-starfish-media-pipeline",
   "needed": [
     "libPmLogLib.so.3",
     "libav-proxy.so.1",

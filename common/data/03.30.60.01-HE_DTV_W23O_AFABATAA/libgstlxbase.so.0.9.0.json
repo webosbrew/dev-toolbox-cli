@@ -1,0 +1,30 @@
+{
+  "name": "libgstlxbase.so.0",
+  "package": "lib32-gst-plugins-bsp",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "liblogs.so.2",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "glog_log",
+    "gst_hma_cache_clean",
+    "gst_hma_debug_get_size_alloced",
+    "gst_hma_debug_status",
+    "gst_hma_free",
+    "gst_hma_free_all",
+    "gst_hma_new",
+    "gst_hma_pool_free",
+    "gst_hma_pool_new",
+    "gst_lx_buffer_extra_append",
+    "gst_lx_buffer_new_and_alloc",
+    "gst_lx_buffer_set_dec_priv",
+    "gst_lx_buffer_set_priv",
+    "gst_lxlog_deinit",
+    "gst_lxlog_init",
+    "gst_lxutil_compare_double",
+    "gst_lxutil_option_int",
+    "gst_lxutil_option_str"
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "name": "libpowerd.so.4",
+  "package": "powerd",
   "needed": [
     "libc.so.6",
     "libcjson.so.1",

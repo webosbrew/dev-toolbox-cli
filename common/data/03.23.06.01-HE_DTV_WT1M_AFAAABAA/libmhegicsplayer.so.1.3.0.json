@@ -1,5 +1,6 @@
 {
   "name": "libmhegicsplayer.so.1",
+  "package": "libmhegicsplayer1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

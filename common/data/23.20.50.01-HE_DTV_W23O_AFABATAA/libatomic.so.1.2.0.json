@@ -1,5 +1,6 @@
 {
   "name": "libatomic.so.1",
+  "package": "lib32-libatomic1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

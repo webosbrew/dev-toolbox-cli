@@ -1,5 +1,6 @@
 {
   "name": "libavformat.so.58",
+  "package": "lib32-libavformat58",
   "needed": [
     "libavcodec.so.58",
     "libavutil.so.56",

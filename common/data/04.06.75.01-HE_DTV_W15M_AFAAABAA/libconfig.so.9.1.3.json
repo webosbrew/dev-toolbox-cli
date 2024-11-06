@@ -1,5 +1,6 @@
 {
   "name": "libconfig.so.9",
+  "package": "libconfig",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

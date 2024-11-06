@@ -1,0 +1,13 @@
+{
+  "name": "librim_util.so",
+  "package": "lib32-iconnectivity",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "RIM_base_64_decode",
+    "RIM_base_64_encode"
+  ]
+}

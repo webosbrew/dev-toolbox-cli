@@ -1,5 +1,6 @@
 {
   "name": "libbtcust.so.1",
+  "package": "blueangel",
   "needed": [
     "libbtcust_tab.so.1",
     "libc.so.6",

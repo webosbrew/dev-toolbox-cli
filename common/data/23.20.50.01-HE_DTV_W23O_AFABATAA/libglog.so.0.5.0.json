@@ -1,5 +1,6 @@
 {
   "name": "libglog.so.0",
+  "package": "lib32-libglog0",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

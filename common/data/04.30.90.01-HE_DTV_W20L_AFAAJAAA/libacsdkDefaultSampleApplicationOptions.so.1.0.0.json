@@ -1,5 +1,6 @@
 {
   "name": "libacsdkDefaultSampleApplicationOptions.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libCBLAuthDelegate.so",

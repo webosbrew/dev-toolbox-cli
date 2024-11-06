@@ -1,5 +1,6 @@
 {
   "name": "libWebAppMgrCore.so.1.0.0",
+  "package": "lib32-gwam",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

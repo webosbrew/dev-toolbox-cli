@@ -1,5 +1,6 @@
 {
   "name": "libbtmngr-api.so.1",
+  "package": "bluetooth-manager",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

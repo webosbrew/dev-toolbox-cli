@@ -1,5 +1,6 @@
 {
   "name": "libHbbtv2Plugin.so",
+  "package": "hbbtv2-plugin",
   "needed": [
     "libAcb.so.1",
     "libPmLogLib.so.3",

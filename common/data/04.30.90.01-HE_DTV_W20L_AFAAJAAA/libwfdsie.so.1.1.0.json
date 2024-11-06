@@ -1,5 +1,6 @@
 {
   "name": "libwfdsie.so.1",
+  "package": "webos-connman-adapter",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

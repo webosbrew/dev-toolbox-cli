@@ -1,5 +1,6 @@
 {
   "name": "liblcn.so.1",
+  "package": "lib32-liblcn1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

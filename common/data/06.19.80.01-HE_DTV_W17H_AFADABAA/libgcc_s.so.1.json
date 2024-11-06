@@ -1,5 +1,6 @@
 {
   "name": "libgcc_s.so.1",
+  "package": "libgcc-s1",
   "needed": [
     "libc.so.6"
   ],

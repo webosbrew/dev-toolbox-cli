@@ -1,5 +1,6 @@
 {
   "name": "libdile_uhdcp.so.1",
+  "package": "dile-libs",
   "needed": [
     "libc.so.6",
     "libdrmddi.so.2",

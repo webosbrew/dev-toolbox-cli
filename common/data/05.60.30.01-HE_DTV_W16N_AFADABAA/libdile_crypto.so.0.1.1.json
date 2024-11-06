@@ -1,5 +1,6 @@
 {
   "name": "libdile_crypto.so.0",
+  "package": "dile-libs",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.0",

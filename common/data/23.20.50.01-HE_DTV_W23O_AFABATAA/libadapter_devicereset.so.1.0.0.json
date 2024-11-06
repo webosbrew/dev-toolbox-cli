@@ -1,5 +1,6 @@
 {
   "name": "libadapter_devicereset.so.1",
+  "package": "lib32-tvco-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

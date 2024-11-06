@@ -1,5 +1,6 @@
 {
   "name": "libPocoEncodings.so.60",
+  "package": "libpocoencodings60",
   "needed": [
     "libPocoFoundation.so.60",
     "libgcc_s.so.1",

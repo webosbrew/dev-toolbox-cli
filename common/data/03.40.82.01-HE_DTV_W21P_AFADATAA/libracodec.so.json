@@ -1,0 +1,30 @@
+{
+  "name": "libracodec.so",
+  "package": "omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libomxrtk_utils.so",
+    "librpccore.so"
+  ],
+  "symbols": [
+    "delete_rasink",
+    "firmware_init",
+    "firmware_uninit",
+    "new_rasink",
+    "rasink_buffer_clear",
+    "rasink_configure",
+    "rasink_delay",
+    "rasink_drain",
+    "rasink_flush",
+    "rasink_get_total_buffer_size",
+    "rasink_get_used_buffer_size",
+    "rasink_pause",
+    "rasink_run",
+    "rasink_set_threshold_info",
+    "rasink_stop",
+    "rasink_write",
+    "rasink_write_null"
+  ]
+}

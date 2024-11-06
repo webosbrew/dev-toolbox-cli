@@ -1,5 +1,6 @@
 {
   "name": "mod_staticfile.so",
+  "package": "lighttpd-module-staticfile",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

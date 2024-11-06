@@ -1,5 +1,6 @@
 {
   "name": "libxadapter.so.1",
+  "package": "libxadapter1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

@@ -1,5 +1,6 @@
 {
   "name": "libavutil.so.52",
+  "package": "ffmpeg",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libcom_err.so.2",
+  "package": "libcom-err2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

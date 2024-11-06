@@ -1,5 +1,6 @@
 {
   "name": "librdx.so.3",
+  "package": "rdxd",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

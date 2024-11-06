@@ -1,5 +1,6 @@
 {
   "name": "libSDL2_net-2.0.so.0",
+  "package": "libsdl2-net-2.0-0",
   "needed": [
     "libSDL2-2.0.so.0",
     "libc.so.6",

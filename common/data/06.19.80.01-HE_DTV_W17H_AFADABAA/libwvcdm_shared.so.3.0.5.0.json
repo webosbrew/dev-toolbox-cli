@@ -1,5 +1,6 @@
 {
   "name": "libwvcdm_shared.so",
+  "package": "widevine-modular-package",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.0",

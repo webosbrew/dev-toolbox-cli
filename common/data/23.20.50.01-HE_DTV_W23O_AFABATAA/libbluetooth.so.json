@@ -1,5 +1,6 @@
 {
   "name": "libbluetooth.so",
+  "package": "lib32-fluoride-mtk",
   "needed": [
     "ld-linux.so.3",
     "libaudio.a2dp.default.so",

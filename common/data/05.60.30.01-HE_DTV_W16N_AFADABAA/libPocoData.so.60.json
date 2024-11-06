@@ -1,5 +1,6 @@
 {
   "name": "libPocoData.so.60",
+  "package": "libpocodata60",
   "needed": [
     "libPocoFoundation.so.60",
     "libc.so.6",

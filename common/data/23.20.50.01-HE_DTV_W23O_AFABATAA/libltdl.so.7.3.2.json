@@ -1,5 +1,6 @@
 {
   "name": "libltdl.so.7",
+  "package": "lib32-libltdl7",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

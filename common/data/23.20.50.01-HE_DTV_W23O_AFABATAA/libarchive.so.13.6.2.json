@@ -1,5 +1,6 @@
 {
   "name": "libarchive.so.13",
+  "package": "lib32-libarchive",
   "needed": [
     "libbz2.so.1",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libbluetooth.lg_webos_if.so.1",
+  "package": "blueangel",
   "needed": [
     "libbluetooth.blueangel.so.1",
     "libbtcust.so.1",

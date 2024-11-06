@@ -1,5 +1,6 @@
 {
   "name": "librim_qsp.so.3",
+  "package": "lib32-iconnectivity",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

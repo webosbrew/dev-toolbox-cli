@@ -1,5 +1,6 @@
 {
   "name": "libnyx.so.7",
+  "package": "lib32-libnyx7",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libPocoZip.so.60",
+  "package": "libpocozip60",
   "needed": [
     "libPocoFoundation.so.60",
     "libc.so.6",

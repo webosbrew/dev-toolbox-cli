@@ -1,5 +1,6 @@
 {
   "name": "libUplCalculator.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libc.so.6",

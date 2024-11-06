@@ -1,5 +1,6 @@
 {
   "name": "libsnapshot-boot.so.1",
+  "package": "libsnapshot-boot",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

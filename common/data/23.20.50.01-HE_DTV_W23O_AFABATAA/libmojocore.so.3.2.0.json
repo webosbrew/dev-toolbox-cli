@@ -1,5 +1,6 @@
 {
   "name": "libmojocore.so.3",
+  "package": "lib32-db8",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

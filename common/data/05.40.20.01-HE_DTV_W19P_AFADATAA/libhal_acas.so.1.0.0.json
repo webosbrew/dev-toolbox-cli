@@ -1,0 +1,40 @@
+{
+  "name": "libhal_acas.so.1.0.0",
+  "package": "hal-libs",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.0.0",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "Aacs_atrinfo",
+    "AcasLib_CritSec",
+    "Acas_CritSec",
+    "Acas_ScFd",
+    "HAL_ACAS_GetParam",
+    "HAL_ACAS_Init",
+    "HAL_ACAS_LIB_DEBUG_GetStatus",
+    "HAL_ACAS_LIB_DEBUG_SetStatus",
+    "HAL_ACAS_LIB_DeInitialize",
+    "HAL_ACAS_LIB_Descramble",
+    "HAL_ACAS_LIB_GetScrambleKeyProtectCommandParam",
+    "HAL_ACAS_LIB_Initialize",
+    "HAL_ACAS_LIB_ReadSecureData",
+    "HAL_ACAS_LIB_SetScrambleKeyProtectCommandRes",
+    "HAL_ACAS_LIB_UpdateKey",
+    "HAL_ACAS_Reset",
+    "HAL_ACAS_SetParam",
+    "HAL_ACAS_TransferAPDU",
+    "_ZN13CRTKTraceCallC1EjPKc",
+    "_ZN13CRTKTraceCallC2EjPKc",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev",
+    "_ZN8CCritSecD1Ev",
+    "_ZN8CCritSecD2Ev",
+    "_ZN9CAutoLockD1Ev",
+    "_ZN9CAutoLockD2Ev"
+  ]
+}

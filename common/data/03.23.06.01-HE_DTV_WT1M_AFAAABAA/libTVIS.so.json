@@ -1,5 +1,6 @@
 {
   "name": "libTVIS.so",
+  "package": "libtvis",
   "needed": [
     "libc.so.6",
     "libcares.so.2",

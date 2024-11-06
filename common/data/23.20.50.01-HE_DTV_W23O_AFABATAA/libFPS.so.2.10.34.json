@@ -1,5 +1,6 @@
 {
   "name": "libFPS.so.2",
+  "package": "lib32-libfps2",
   "needed": [],
   "symbols": [
     "FPSCreateMovieSession",

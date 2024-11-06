@@ -1,5 +1,6 @@
 {
   "name": "libvtv.so.1",
+  "package": "libvtv1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

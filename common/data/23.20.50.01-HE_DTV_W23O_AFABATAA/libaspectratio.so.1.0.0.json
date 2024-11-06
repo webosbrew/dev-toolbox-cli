@@ -1,5 +1,6 @@
 {
   "name": "libaspectratio.so.1",
+  "package": "lib32-libaspectratio1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

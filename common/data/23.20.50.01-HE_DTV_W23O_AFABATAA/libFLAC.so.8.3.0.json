@@ -1,5 +1,6 @@
 {
   "name": "libFLAC.so.8",
+  "package": "lib32-libflac8",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libusb-0.1.so.4",
+  "package": "libusb-0.1-4",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

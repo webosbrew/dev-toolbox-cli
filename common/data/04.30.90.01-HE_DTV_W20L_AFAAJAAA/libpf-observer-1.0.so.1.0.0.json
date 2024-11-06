@@ -1,5 +1,6 @@
 {
   "name": "libpf-observer-1.0.so.1",
+  "package": "player-factory-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

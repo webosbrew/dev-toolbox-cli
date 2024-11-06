@@ -1,5 +1,6 @@
 {
   "name": "libwayland-client.so.0",
+  "package": "lib32-wayland",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

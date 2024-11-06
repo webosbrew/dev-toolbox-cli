@@ -1,5 +1,6 @@
 {
   "name": "libServicePlugin.so",
+  "package": "lib32-npapi-plugins",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

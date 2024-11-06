@@ -1,5 +1,6 @@
 {
   "name": "liblxv.so.2",
+  "package": "lib32-libkadaptor",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libdile_i2c.so.1",
+  "package": "dile-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

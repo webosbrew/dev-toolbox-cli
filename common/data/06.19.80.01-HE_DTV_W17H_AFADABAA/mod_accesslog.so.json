@@ -1,5 +1,6 @@
 {
   "name": "mod_accesslog.so",
+  "package": "lighttpd-module-accesslog",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

@@ -1,5 +1,6 @@
 {
   "name": "liblibm.so.1",
+  "package": "libdbgfrwk",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

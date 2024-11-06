@@ -1,5 +1,6 @@
 {
   "name": "libOpenCL.so.1",
+  "package": "lib32-opencl-icd-loader",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

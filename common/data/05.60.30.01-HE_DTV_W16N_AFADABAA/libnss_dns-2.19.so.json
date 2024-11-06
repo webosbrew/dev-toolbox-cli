@@ -1,5 +1,6 @@
 {
   "name": "libnss_dns.so.2",
+  "package": "libc6",
   "needed": [
     "libc.so.6",
     "libresolv.so.2"

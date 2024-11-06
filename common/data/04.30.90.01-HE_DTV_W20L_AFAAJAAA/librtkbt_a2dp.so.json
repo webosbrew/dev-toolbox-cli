@@ -1,5 +1,6 @@
 {
   "name": "libaudio.a2dp.default.so",
+  "package": "bluedroid-rtk-all",
   "needed": [
     "libbluetooth.default.so",
     "libc.so.6",

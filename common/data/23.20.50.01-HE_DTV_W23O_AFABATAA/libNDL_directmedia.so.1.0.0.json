@@ -1,5 +1,6 @@
 {
   "name": "libNDL_directmedia.so.1",
+  "package": "lib32-libndl-media",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

@@ -1,5 +1,6 @@
 {
   "name": "libasound.so.2",
+  "package": "lib32-libasound2",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

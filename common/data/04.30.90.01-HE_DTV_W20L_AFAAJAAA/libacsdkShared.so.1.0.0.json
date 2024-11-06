@@ -1,5 +1,6 @@
 {
   "name": "libacsdkShared.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libacsdkManufactory.so",

@@ -1,5 +1,6 @@
 {
   "name": "libabsl_die_if_null.so.2308.0.0",
+  "package": "lib32-abseil-cpp",
   "needed": [
     "libabsl_log_internal_message.so.2308.0.0",
     "libabsl_strings.so.2308.0.0",

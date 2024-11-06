@@ -1,5 +1,6 @@
 {
   "name": "libboost_filesystem.so.1.78.0",
+  "package": "lib32-libboost-filesystem1.78.0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

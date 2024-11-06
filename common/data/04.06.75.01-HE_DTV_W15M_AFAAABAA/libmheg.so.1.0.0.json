@@ -1,5 +1,6 @@
 {
   "name": "libmheg.so.1.0.0",
+  "package": "hybridtv-dvb",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

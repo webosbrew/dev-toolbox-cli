@@ -1,5 +1,6 @@
 {
   "name": "libunwind.so.8",
+  "package": "libunwind",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

@@ -1,5 +1,6 @@
 {
   "name": "libginga-cbe.so",
+  "package": "lib32-ginga-webruntime",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

@@ -1,5 +1,6 @@
 {
   "name": "ld-linux.so.3",
+  "package": "libc6",
   "needed": [],
   "symbols": [
     "GLIBC_2.4@GLIBC_2.4",

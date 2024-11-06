@@ -1,0 +1,22 @@
+{
+  "name": "libDummySink.so",
+  "package": "lib32-amazon-alexa-adapter",
+  "needed": [
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySink13consumeMetricESt10shared_ptrIN14alexaClientSDK9avsCommon5utils7metrics11MetricEventEE",
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySink6createEv",
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySinkC1Ev",
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySinkC2Ev",
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySinkD0Ev",
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySinkD1Ev",
+    "_ZN19alexaSmartScreenSDK7metrics4sink9DummySinkD2Ev",
+    "_ZTIN14alexaClientSDK9avsCommon5utils7metrics19MetricSinkInterfaceE",
+    "_ZTIN19alexaSmartScreenSDK7metrics4sink9DummySinkE",
+    "_ZTSN14alexaClientSDK9avsCommon5utils7metrics19MetricSinkInterfaceE",
+    "_ZTSN19alexaSmartScreenSDK7metrics4sink9DummySinkE",
+    "_ZTVN19alexaSmartScreenSDK7metrics4sink9DummySinkE"
+  ]
+}

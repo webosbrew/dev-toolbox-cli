@@ -1,5 +1,6 @@
 {
   "name": "libabsl_crc_cord_state.so.2308.0.0",
+  "package": "lib32-abseil-cpp",
   "needed": [
     "libabsl_crc32c.so.2308.0.0",
     "libc.so.6",

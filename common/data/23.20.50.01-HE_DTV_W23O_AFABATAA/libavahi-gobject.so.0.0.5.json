@@ -1,5 +1,6 @@
 {
   "name": "libavahi-gobject.so.0",
+  "package": "lib32-libavahi-gobject0",
   "needed": [
     "libavahi-client.so.3",
     "libavahi-common.so.3",

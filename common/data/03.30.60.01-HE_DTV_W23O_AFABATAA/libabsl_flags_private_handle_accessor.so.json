@@ -1,0 +1,15 @@
+{
+  "name": "libabsl_flags_private_handle_accessor.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032414flags_internal21PrivateHandleAccessor18ValidateInputValueERKNS0_15CommandLineFlagENS0_11string_viewE",
+    "_ZN4absl12lts_2021032414flags_internal21PrivateHandleAccessor24IsSpecifiedOnCommandLineERKNS0_15CommandLineFlagE",
+    "_ZN4absl12lts_2021032414flags_internal21PrivateHandleAccessor33CheckDefaultValueParsingRoundtripERKNS0_15CommandLineFlagE",
+    "_ZN4absl12lts_2021032414flags_internal21PrivateHandleAccessor6TypeIdERKNS0_15CommandLineFlagE",
+    "_ZN4absl12lts_2021032414flags_internal21PrivateHandleAccessor9ParseFromERNS0_15CommandLineFlagENS0_11string_viewENS1_15FlagSettingModeENS1_11ValueSourceERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN4absl12lts_2021032414flags_internal21PrivateHandleAccessor9SaveStateERNS0_15CommandLineFlagE"
+  ]
+}

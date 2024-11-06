@@ -1,5 +1,6 @@
 {
   "name": "libAVSGatewayManager.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libRegistrationManager.so",

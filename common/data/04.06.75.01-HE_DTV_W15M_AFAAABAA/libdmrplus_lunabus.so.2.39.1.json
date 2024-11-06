@@ -1,5 +1,6 @@
 {
   "name": "libdmrplus_lunabus.so.2",
+  "package": "upnp-webos",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

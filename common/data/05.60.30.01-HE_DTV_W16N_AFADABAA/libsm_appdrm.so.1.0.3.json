@@ -1,5 +1,6 @@
 {
   "name": "libsm_appdrm.so.1",
+  "package": "securitymanager",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

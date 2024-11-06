@@ -1,5 +1,6 @@
 {
   "name": "libtpl_marlin.so",
+  "package": "mediadrm",
   "needed": [
     "libc.so.6"
   ],

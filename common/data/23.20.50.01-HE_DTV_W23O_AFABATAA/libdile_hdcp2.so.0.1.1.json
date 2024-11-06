@@ -1,5 +1,6 @@
 {
   "name": "libdile_hdcp2.so.0",
+  "package": "lib32-dile-libs",
   "needed": [
     "libc.so.6",
     "libcrypto.so.3",

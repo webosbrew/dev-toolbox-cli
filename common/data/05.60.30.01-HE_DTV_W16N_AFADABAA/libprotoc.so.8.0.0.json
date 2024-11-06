@@ -1,5 +1,6 @@
 {
   "name": "libprotoc.so.8",
+  "package": "protobuf",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

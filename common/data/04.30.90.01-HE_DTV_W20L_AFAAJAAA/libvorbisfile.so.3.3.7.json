@@ -1,5 +1,6 @@
 {
   "name": "libvorbisfile.so.3",
+  "package": "libvorbis",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "liblxa.so.2",
+  "package": "lib32-libkadaptor",
   "needed": [
     "libaudcommon.so.1",
     "libc.so.6",

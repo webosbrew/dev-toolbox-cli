@@ -1,5 +1,6 @@
 {
   "name": "libleaudio.so",
+  "package": "lib32-fluoride-tool-mtk",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

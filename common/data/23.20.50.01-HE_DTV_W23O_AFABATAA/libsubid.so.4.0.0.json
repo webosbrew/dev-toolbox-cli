@@ -1,5 +1,6 @@
 {
   "name": "libsubid.so.4",
+  "package": "lib32-shadow",
   "needed": [
     "libattr.so.1",
     "libc.so.6",

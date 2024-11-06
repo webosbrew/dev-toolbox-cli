@@ -1,0 +1,15 @@
+{
+  "name": "libomx_adec.so",
+  "package": "omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libomxrtk_utils.so",
+    "librpccore.so",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "OMX_ComponentInit"
+  ]
+}

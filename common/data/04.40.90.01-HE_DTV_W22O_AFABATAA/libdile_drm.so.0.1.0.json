@@ -1,0 +1,41 @@
+{
+  "name": "libdile_drm.so.0",
+  "package": "lib32-dile-libs",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libcrypto.so.1.1",
+    "libdile_boardinfo.so.1",
+    "libdrmddi.so.2",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_DRM_AESHWFinish",
+    "DILE_DRM_AESHWInit",
+    "DILE_DRM_AESHWUpdate",
+    "DILE_DRM_DIVXDRM_GetHWSecretKey",
+    "DILE_DRM_DeleteSecureData",
+    "DILE_DRM_GetClearDataLength",
+    "DILE_DRM_GetHWID",
+    "DILE_DRM_GetHWRandomData",
+    "DILE_DRM_GetSecureClock",
+    "DILE_DRM_GetSecureData",
+    "DILE_DRM_GetSecureDataProtected",
+    "DILE_DRM_GetWidevineDeviceID",
+    "DILE_DRM_GetWidevineKeyBoxSize",
+    "DILE_DRM_InitDrv",
+    "DILE_DRM_IsSecureDataExist",
+    "DILE_DRM_JPMARLIN_CheckSecretData",
+    "DILE_DRM_JPMARLIN_GetKeySize",
+    "DILE_DRM_JPMARLIN_Verify",
+    "DILE_DRM_JPMARLIN_WriteKeyData",
+    "DILE_DRM_JPMARLIN_WriteSecretData",
+    "DILE_DRM_SetSecureClock",
+    "DILE_DRM_SetSecureData",
+    "DILE_DRM_StartSecureUDTS",
+    "DILE_DRM_StopSecureUDTS",
+    "DILE_DRM_VerifyHDCP14forHDMI",
+    "DILE_DRM_VerifyHDCP22forHDMI",
+    "DILE_DRM_WriteWidevineKeyBox"
+  ]
+}

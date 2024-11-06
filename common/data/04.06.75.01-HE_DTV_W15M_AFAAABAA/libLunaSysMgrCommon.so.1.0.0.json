@@ -1,5 +1,6 @@
 {
   "name": "libLunaSysMgrCommon.so.1",
+  "package": "liblunasysmgrcommon1",
   "needed": [
     "libPmLogLib.so.3",
     "libQt5Core.so.5",

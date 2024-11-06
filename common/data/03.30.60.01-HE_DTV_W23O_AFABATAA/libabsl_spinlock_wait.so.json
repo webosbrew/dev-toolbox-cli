@@ -1,0 +1,15 @@
+{
+  "name": "libabsl_spinlock_wait.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "AbslInternalSpinLockDelay_lts_20210324",
+    "AbslInternalSpinLockWake_lts_20210324",
+    "_ZN4absl12lts_2021032413base_internal12SpinLockWaitEPSt6atomicIjEiPKNS1_22SpinLockWaitTransitionENS1_14SchedulingModeE",
+    "_ZN4absl12lts_2021032413base_internal24SpinLockSuggestedDelayNSEi"
+  ]
+}

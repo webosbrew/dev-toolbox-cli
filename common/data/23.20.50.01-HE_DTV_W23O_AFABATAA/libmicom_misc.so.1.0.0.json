@@ -1,5 +1,6 @@
 {
   "name": "libmicom_misc.so.1",
+  "package": "lib32-micom-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

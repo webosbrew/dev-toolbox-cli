@@ -1,5 +1,6 @@
 {
   "name": "libiepgshare.so.1",
+  "package": "lib32-iepg",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

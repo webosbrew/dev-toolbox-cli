@@ -1,5 +1,6 @@
 {
   "name": "libnl-genl-3.so.200",
+  "package": "libnl-3-genl",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

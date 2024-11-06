@@ -1,5 +1,6 @@
 {
   "name": "libaptX-1.0.0-int-WebOS1-ARMv7A.so",
+  "package": "bluetooth-external-codec",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

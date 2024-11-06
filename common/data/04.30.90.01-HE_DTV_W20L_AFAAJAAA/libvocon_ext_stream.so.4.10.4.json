@@ -1,5 +1,6 @@
 {
   "name": "libvocon_ext_stream.so.4",
+  "package": "libnlp",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

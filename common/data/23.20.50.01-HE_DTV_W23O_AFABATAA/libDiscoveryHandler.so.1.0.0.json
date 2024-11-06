@@ -1,5 +1,6 @@
 {
   "name": "libDiscoveryHandler.so.1",
+  "package": "lib32-amazon-alexa-adapter",
   "needed": [
     "ld-linux.so.3",
     "libLogger.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libelement-base.so.1",
+  "package": "lib32-libelement-base1",
   "needed": [
     "libboost_thread.so.1.78.0",
     "libc.so.6",

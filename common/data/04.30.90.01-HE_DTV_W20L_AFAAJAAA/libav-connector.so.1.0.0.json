@@ -1,5 +1,6 @@
 {
   "name": "libav-connector.so.1",
+  "package": "starfish-media-pipeline",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libgibbsplayer.so.1.0.0",
+  "package": "lib32-gibbs-player",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

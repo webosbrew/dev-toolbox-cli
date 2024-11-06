@@ -1,5 +1,6 @@
 {
   "name": "libformw.so.5",
+  "package": "libformw5",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

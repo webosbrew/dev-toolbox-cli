@@ -1,5 +1,6 @@
 {
   "name": "libqse_json.so.6",
+  "package": "lib32-iconnectivity",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libpf-1.0.so.1",
+  "package": "player-factory-libs-lpbin",
   "needed": [
     "libPmLogLib.so.3",
     "libavacontroller.so.1",

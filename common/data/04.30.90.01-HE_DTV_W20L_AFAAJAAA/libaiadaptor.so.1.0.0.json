@@ -1,5 +1,6 @@
 {
   "name": "libaiadaptor.so.1.0.0",
+  "package": "aiservice",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

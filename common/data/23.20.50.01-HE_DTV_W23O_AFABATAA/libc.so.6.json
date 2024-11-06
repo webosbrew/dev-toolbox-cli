@@ -1,5 +1,6 @@
 {
   "name": "libc.so.6",
+  "package": "lib32-libc6",
   "needed": [
     "ld-linux.so.3"
   ],

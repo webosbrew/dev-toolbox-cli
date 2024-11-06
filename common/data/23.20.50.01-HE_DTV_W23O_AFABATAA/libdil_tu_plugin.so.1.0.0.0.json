@@ -1,5 +1,6 @@
 {
   "name": "libdil_tu_plugin.so.1",
+  "package": "lib32-legacy-broadcast-atsc",
   "needed": [
     "libc.so.6",
     "libdile_gpio.so.1",

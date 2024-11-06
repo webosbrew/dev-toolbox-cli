@@ -1,5 +1,6 @@
 {
   "name": "mod_dirlisting.so",
+  "package": "lighttpd-module-dirlisting",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

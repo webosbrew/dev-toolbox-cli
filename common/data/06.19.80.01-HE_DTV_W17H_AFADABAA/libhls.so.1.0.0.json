@@ -1,5 +1,6 @@
 {
   "name": "libhls.so.1",
+  "package": "hls-player",
   "needed": [
     "libPmLogLib.so.3",
     "libavacontroller.so.1",

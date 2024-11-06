@@ -1,5 +1,6 @@
 {
   "name": "libNDL_vt.so.1",
+  "package": "lib32-libndl-vt1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

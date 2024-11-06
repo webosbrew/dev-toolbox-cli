@@ -1,5 +1,6 @@
 {
   "name": "libairplay-commander.so.1",
+  "package": "libairplay-commander1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

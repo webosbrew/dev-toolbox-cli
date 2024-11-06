@@ -1,5 +1,6 @@
 {
   "name": "libabsl_random_internal_pool_urbg.so.2308.0.0",
+  "package": "lib32-abseil-cpp",
   "needed": [
     "ld-linux.so.3",
     "libabsl_base.so.2308.0.0",

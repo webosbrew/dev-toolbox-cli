@@ -1,5 +1,6 @@
 {
   "name": "mod_indexfile.so",
+  "package": "lighttpd-module-indexfile",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

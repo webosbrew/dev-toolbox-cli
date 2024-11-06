@@ -1,5 +1,6 @@
 {
   "name": "libcdmi.so.1",
+  "package": "cdmi",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

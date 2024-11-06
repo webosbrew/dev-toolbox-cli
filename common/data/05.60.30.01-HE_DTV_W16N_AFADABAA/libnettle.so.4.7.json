@@ -1,5 +1,6 @@
 {
   "name": "libnettle.so.4",
+  "package": "nettle",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

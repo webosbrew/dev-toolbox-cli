@@ -1,5 +1,6 @@
 {
   "name": "liblgncopenapi.so.2",
+  "package": "lgncapi",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

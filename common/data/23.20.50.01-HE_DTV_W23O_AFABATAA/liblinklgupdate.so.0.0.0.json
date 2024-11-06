@@ -1,5 +1,6 @@
 {
   "name": "liblinklgupdate.so.0",
+  "package": "lib32-lgfota",
   "needed": [
     "libc.so.6",
     "libcrypto.so.3",

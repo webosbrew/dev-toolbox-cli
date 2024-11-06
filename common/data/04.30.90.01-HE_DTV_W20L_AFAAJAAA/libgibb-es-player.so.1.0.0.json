@@ -1,5 +1,6 @@
 {
   "name": "libgibb-es-player.so.1",
+  "package": "media-bridge",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_regex.so.1.68.0",

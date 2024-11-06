@@ -1,5 +1,6 @@
 {
   "name": "libttfautohint.so.1",
+  "package": "lib32-ttfautohint",
   "needed": [
     "libc.so.6",
     "libfreetype.so.6",

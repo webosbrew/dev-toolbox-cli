@@ -1,5 +1,6 @@
 {
   "name": "libmicro-toolkit.so.1",
+  "package": "libmicro-toolkit",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libobserver.so.1",
+  "package": "lib32-tvco-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

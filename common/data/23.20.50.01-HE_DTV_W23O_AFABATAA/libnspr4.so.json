@@ -1,5 +1,6 @@
 {
   "name": "libnspr4.so",
+  "package": "lib32-nspr",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

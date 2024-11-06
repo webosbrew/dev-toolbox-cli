@@ -1,5 +1,6 @@
 {
   "name": "libQt5Core.so.5",
+  "package": "qtbase",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

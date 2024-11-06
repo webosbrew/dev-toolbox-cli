@@ -1,5 +1,6 @@
 {
   "name": "libxtables.so.10",
+  "package": "iptables",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

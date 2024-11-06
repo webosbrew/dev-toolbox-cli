@@ -1,0 +1,18 @@
+{
+  "name": "libabsl_flags_program_name.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libabsl_strings.so",
+    "libabsl_synchronization.so",
+    "libabsl_throw_delegate.so",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032414flags_internal21ProgramInvocationNameB5cxx11Ev",
+    "_ZN4absl12lts_2021032414flags_internal24SetProgramInvocationNameENS0_11string_viewE",
+    "_ZN4absl12lts_2021032414flags_internal26ShortProgramInvocationNameB5cxx11Ev",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag"
+  ]
+}

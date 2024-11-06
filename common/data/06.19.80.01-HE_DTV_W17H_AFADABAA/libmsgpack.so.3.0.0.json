@@ -1,5 +1,6 @@
 {
   "name": "libmsgpack.so.3",
+  "package": "msgpack",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

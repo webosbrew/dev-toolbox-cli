@@ -1,5 +1,6 @@
 {
   "name": "libacsdkShutdownManager.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAVSCommon.so",
     "libgcc_s.so.1",

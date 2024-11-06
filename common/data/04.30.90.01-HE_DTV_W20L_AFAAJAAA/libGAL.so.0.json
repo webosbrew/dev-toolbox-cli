@@ -1,5 +1,6 @@
 {
   "name": "libGAL.so",
+  "package": "aipqfw",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

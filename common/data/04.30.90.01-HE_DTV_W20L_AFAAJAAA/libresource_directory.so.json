@@ -1,5 +1,6 @@
 {
   "name": "libresource_directory.so",
+  "package": "iotivity-resource",
   "needed": [
     "libc.so.6",
     "libconnectivity_abstraction.so",

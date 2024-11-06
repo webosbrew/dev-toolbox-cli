@@ -1,5 +1,6 @@
 {
   "name": "libjson.so.0",
+  "package": "json-c",
   "needed": [
     "libc.so.6",
     "libjson-c.so.2"

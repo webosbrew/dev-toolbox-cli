@@ -1,5 +1,6 @@
 {
   "name": "libcecp.so.1.0.0",
+  "package": "lib32-libcecp1.0.0",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

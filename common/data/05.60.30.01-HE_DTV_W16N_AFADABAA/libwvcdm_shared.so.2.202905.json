@@ -1,5 +1,6 @@
 {
   "name": "libwvcdm_shared.so",
+  "package": "widevine-modular-package",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

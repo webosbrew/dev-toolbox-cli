@@ -1,5 +1,6 @@
 {
   "name": "libacsdkSampleApplicationCBLAuthRequester.so.1",
+  "package": "lib32-amazon-alexa-adapter",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

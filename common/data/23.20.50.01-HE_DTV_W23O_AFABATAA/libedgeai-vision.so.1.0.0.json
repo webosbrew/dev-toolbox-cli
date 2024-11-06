@@ -1,5 +1,6 @@
 {
   "name": "libedgeai-vision.so.1",
+  "package": "lib32-libedgeai-vision1",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

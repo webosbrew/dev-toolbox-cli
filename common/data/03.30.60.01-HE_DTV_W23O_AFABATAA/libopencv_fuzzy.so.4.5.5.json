@@ -1,0 +1,31 @@
+{
+  "name": "libopencv_fuzzy.so.405",
+  "package": "lib32-libopencv-fuzzy405",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libopencv_core.so.405",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN2cv2ft12createKernelERKNS_11_InputArrayES3_RKNS_12_OutputArrayEi",
+    "_ZN2cv2ft12createKernelEiiRKNS_12_OutputArrayEi",
+    "_ZN2cv2ft13FT02D_processERKNS_11_InputArrayES3_RKNS_12_OutputArrayES3_",
+    "_ZN2cv2ft13FT12D_processERKNS_11_InputArrayES3_RKNS_12_OutputArrayES3_",
+    "_ZN2cv2ft15FT02D_inverseFTERKNS_11_InputArrayES3_RKNS_12_OutputArrayEii",
+    "_ZN2cv2ft15FT02D_iterationERKNS_11_InputArrayES3_RKNS_12_OutputArrayES3_S6_b",
+    "_ZN2cv2ft15FT12D_inverseFTERKNS_11_InputArrayES3_RKNS_12_OutputArrayEii",
+    "_ZN2cv2ft16FT02D_FL_processERKNS_11_InputArrayEiRKNS_12_OutputArrayE",
+    "_ZN2cv2ft16FT02D_componentsERKNS_11_InputArrayES3_RKNS_12_OutputArrayES3_",
+    "_ZN2cv2ft16FT12D_componentsERKNS_11_InputArrayES3_RKNS_12_OutputArrayE",
+    "_ZN2cv2ft16FT12D_polynomialERKNS_11_InputArrayES3_RKNS_12_OutputArrayES6_S6_S6_S3_",
+    "_ZN2cv2ft22FT02D_FL_process_floatERKNS_11_InputArrayEiRKNS_12_OutputArrayE",
+    "_ZN2cv2ft33FT12D_createPolynomMatrixVerticalEiRKNS_12_OutputArrayEi",
+    "_ZN2cv2ft35FT12D_createPolynomMatrixHorizontalEiRKNS_12_OutputArrayEi",
+    "_ZN2cv2ft6filterERKNS_11_InputArrayES3_RKNS_12_OutputArrayE",
+    "_ZN2cv2ft7inpaintERKNS_11_InputArrayES3_RKNS_12_OutputArrayEiii",
+    "_ZNSt6vectorIN2cv3MatESaIS1_EE17_M_realloc_insertIJRKS1_EEEvN9__gnu_cxx17__normal_iteratorIPS1_S3_EEDpOT_",
+    "_ZNSt6vectorIN2cv3MatESaIS1_EED1Ev",
+    "_ZNSt6vectorIN2cv3MatESaIS1_EED2Ev"
+  ]
+}

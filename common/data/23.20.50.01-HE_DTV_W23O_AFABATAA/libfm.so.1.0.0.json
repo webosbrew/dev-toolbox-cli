@@ -1,5 +1,6 @@
 {
   "name": "libfm.so.1",
+  "package": "lib32-faultmanager",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libbtdrv.so.1",
+  "package": "blueangel",
   "needed": [
     "libbtstd.so.1",
     "libc.so.6",

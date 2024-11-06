@@ -1,5 +1,6 @@
 {
   "name": "libcrypto.so.3",
+  "package": "lib32-libcrypto3",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

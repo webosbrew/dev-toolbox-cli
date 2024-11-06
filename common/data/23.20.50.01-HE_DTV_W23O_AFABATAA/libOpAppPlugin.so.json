@@ -1,5 +1,6 @@
 {
   "name": "libOpAppPlugin.so",
+  "package": "lib32-hbbtv2-plugin",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

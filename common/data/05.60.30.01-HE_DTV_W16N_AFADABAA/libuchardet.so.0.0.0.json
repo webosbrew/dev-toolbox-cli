@@ -1,5 +1,6 @@
 {
   "name": "libuchardet.so.0",
+  "package": "uchardet",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

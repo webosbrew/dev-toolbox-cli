@@ -1,0 +1,9 @@
+{
+  "name": "libarm_compute_core.so",
+  "package": "lib32-arm-compute-library",
+  "needed": [
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": []
+}

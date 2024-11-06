@@ -1,5 +1,6 @@
 {
   "name": "libsb.so",
+  "package": "lib32-libsb",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

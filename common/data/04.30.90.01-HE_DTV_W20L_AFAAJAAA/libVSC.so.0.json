@@ -1,5 +1,6 @@
 {
   "name": "libVSC.so",
+  "package": "aipqfw",
   "needed": [
     "libGAL.so",
     "libc.so.6",

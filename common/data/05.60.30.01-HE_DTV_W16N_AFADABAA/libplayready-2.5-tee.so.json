@@ -1,5 +1,6 @@
 {
   "name": "libplayready-2.5-tee.so",
+  "package": "playready",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

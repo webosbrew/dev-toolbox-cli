@@ -1,0 +1,35 @@
+{
+  "name": "libvsmclient.so.1",
+  "package": "umediaserver",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libluna-service2.so.3",
+    "libpbnjson_cpp.so.2",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN9VSMClient10disconnectERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN9VSMClient10stopAvMuteERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN9VSMClient11CONNECT_URIE",
+    "_ZN9VSMClient11DISPLAY_URIE",
+    "_ZN9VSMClient11startAvMuteERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN9VSMClient14DISCONNECT_URIE",
+    "_ZN9VSMClient15connectCallbackEP8LSHandleP9LSMessagePv",
+    "_ZN9VSMClient17setMediaVideoDataERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN9VSMClient23AVBLOCK_STOP_AVMUTE_URLE",
+    "_ZN9VSMClient24AVBLOCK_START_AVMUTE_URLE",
+    "_ZN9VSMClient24SET_MEDIA_VIDEO_DATA_URLE",
+    "_ZN9VSMClient7connectERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN9VSMClientC1Eb",
+    "_ZN9VSMClientC2Eb",
+    "_ZN9VSMClientD1Ev",
+    "_ZN9VSMClientD2Ev",
+    "_ZNSt6thread11_State_implISt12_Bind_simpleIFPFvP10_GMainLoopES3_EEE6_M_runEv",
+    "_ZTINSt6thread11_State_implISt12_Bind_simpleIFPFvP10_GMainLoopES3_EEEE",
+    "_ZTSNSt6thread11_State_implISt12_Bind_simpleIFPFvP10_GMainLoopES3_EEEE",
+    "_ZTVNSt6thread11_State_implISt12_Bind_simpleIFPFvP10_GMainLoopES3_EEEE"
+  ]
+}

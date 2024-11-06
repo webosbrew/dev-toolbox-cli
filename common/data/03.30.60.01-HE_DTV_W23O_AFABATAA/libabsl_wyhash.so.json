@@ -1,0 +1,10 @@
+{
+  "name": "libabsl_wyhash.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2021032413hash_internal6WyhashEPKvjyPKy"
+  ]
+}

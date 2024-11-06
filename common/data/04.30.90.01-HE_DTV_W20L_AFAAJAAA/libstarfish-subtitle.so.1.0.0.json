@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-subtitle.so.1",
+  "package": "starfish-subtitle-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

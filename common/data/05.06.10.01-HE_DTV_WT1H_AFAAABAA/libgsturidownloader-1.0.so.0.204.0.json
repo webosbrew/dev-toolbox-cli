@@ -1,0 +1,34 @@
+{
+  "name": "libgsturidownloader-1.0.so.0",
+  "package": "libgsturidownloader-1.0-0",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgthread-2.0.so.0",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "gst_fragment_add_buffer",
+    "gst_fragment_get_buffer",
+    "gst_fragment_get_caps",
+    "gst_fragment_get_type",
+    "gst_fragment_new",
+    "gst_fragment_set_caps",
+    "gst_uri_downloader_cancel",
+    "gst_uri_downloader_fetch_uri",
+    "gst_uri_downloader_fetch_uri_with_range",
+    "gst_uri_downloader_get_type",
+    "gst_uri_downloader_new",
+    "gst_uri_downloader_reset",
+    "uridownloader_debug"
+  ]
+}

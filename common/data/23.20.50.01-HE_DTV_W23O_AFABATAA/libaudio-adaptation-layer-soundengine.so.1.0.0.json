@@ -1,5 +1,6 @@
 {
   "name": "libaudio-adaptation-layer-soundengine.so.1",
+  "package": "lib32-libaudio-adaptation-layer-soundengine1",
   "needed": [
     "libPmLogLib.so.3",
     "libailoader.so.2.0.0",

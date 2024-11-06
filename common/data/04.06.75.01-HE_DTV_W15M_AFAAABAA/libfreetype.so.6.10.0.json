@@ -1,5 +1,6 @@
 {
   "name": "libfreetype.so.6",
+  "package": "libfreetype6",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

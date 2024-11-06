@@ -1,5 +1,6 @@
 {
   "name": "libptmalloc3.so",
+  "package": "ptmalloc3",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

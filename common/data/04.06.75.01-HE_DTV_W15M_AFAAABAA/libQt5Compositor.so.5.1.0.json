@@ -1,5 +1,6 @@
 {
   "name": "libQt5Compositor.so.5",
+  "package": "qtwayland",
   "needed": [
     "libGLESv2.so",
     "libQt5Core.so.5",

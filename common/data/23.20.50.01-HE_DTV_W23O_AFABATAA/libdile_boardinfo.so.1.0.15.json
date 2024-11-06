@@ -1,5 +1,6 @@
 {
   "name": "libdile_boardinfo.so.1",
+  "package": "lib32-dile-libs",
   "needed": [
     "libc.so.6",
     "libdile_tvregion.so.1",

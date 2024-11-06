@@ -1,5 +1,6 @@
 {
   "name": "librpccore.so",
+  "package": "omx-il-rtk",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

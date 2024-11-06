@@ -1,5 +1,6 @@
 {
   "name": "libbluetooth.default.so",
+  "package": "bluedroid-rtk-all",
   "needed": [
     "libc.so.6",
     "libdbus-1.so.3",

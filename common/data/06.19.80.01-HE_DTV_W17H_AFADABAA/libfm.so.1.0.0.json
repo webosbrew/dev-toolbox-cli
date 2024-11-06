@@ -1,5 +1,6 @@
 {
   "name": "libfm.so.1",
+  "package": "faultmanager",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

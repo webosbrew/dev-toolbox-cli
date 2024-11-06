@@ -1,5 +1,6 @@
 {
   "name": "libdtcpip_core.so.0",
+  "package": "dtcpip",
   "needed": [
     "libc.so.6",
     "libdile_dtcp.so.0",

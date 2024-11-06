@@ -1,5 +1,6 @@
 {
   "name": "libAcbAPI.so.1",
+  "package": "appswitching-control-block",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

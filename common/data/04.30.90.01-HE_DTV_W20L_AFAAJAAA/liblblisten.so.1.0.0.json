@@ -1,5 +1,6 @@
 {
   "name": "liblblisten.so",
+  "package": "listenserver",
   "needed": [
     "libc.so.6",
     "libdns_sd.so.1",

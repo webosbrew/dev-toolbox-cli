@@ -1,5 +1,6 @@
 {
   "name": "libpvrWAYLAND_WSEGL.so.0.1",
+  "package": "gpu-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

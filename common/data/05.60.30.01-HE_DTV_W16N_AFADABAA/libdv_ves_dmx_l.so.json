@@ -1,5 +1,6 @@
 {
   "name": "libdv_ves_dmx_l.so",
+  "package": "dolby-vision",
   "needed": [
     "libc.so.6"
   ],

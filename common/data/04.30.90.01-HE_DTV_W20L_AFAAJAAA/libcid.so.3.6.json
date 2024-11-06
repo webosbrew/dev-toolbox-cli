@@ -1,5 +1,6 @@
 {
   "name": "libcid.so.3",
+  "package": "libcid3",
   "needed": [
     "libPocoCrypto.so.60",
     "libPocoFoundation.so.60",

@@ -1,5 +1,6 @@
 {
   "name": "libm.so.6",
+  "package": "lib32-libc6",
   "needed": [
     "libc.so.6"
   ],

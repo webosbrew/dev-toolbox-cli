@@ -1,5 +1,6 @@
 {
   "name": "libzstd.so.1",
+  "package": "lib32-libzstd1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

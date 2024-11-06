@@ -1,5 +1,6 @@
 {
   "name": "libwidevine_ce_cdm_shared.so",
+  "package": "widevine-modular-package",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

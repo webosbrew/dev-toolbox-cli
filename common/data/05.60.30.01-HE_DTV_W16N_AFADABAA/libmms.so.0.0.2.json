@@ -1,5 +1,6 @@
 {
   "name": "libmms.so.0",
+  "package": "libmms0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

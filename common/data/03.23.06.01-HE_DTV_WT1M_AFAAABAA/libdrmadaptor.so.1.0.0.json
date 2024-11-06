@@ -1,5 +1,6 @@
 {
   "name": "libdrmadaptor.so.1",
+  "package": "mediadrm",
   "needed": [
     "libc.so.6",
     "libdile_drm.so.0",

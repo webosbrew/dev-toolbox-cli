@@ -1,5 +1,6 @@
 {
   "name": "libabsl_log_internal_log_sink_set.so.2308.0.0",
+  "package": "lib32-abseil-cpp",
   "needed": [
     "ld-linux.so.3",
     "libabsl_log_globals.so.2308.0.0",

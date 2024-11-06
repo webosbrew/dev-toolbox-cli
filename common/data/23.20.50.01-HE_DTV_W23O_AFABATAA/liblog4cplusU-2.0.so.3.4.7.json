@@ -1,5 +1,6 @@
 {
   "name": "liblog4cplusU-2.0.so.3",
+  "package": "lib32-log4cplus",
   "needed": [
     "ld-linux.so.3",
     "libatomic.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libWebOSCoreCompositor.so.0",
+  "package": "luna-surfacemanager",
   "needed": [
     "libPmLogLib.so.3",
     "libQt5Compositor.so.5",

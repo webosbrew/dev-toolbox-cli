@@ -1,5 +1,6 @@
 {
   "name": "libQt5Quick.so.5",
+  "package": "qtdeclarative",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

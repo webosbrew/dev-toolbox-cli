@@ -1,5 +1,6 @@
 {
   "name": "libPmWirelessSystemFramework.so",
+  "package": "pmwirelesssystemframework",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libums_connector_wrapper.so.1",
+  "package": "umediaserver",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6",

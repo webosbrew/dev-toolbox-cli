@@ -1,5 +1,6 @@
 {
   "name": "libPocoXML.so.60",
+  "package": "libpocoxml60",
   "needed": [
     "libPocoFoundation.so.60",
     "libc.so.6",

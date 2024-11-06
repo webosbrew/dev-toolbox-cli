@@ -1,5 +1,6 @@
 {
   "name": "libspeex.so.1",
+  "package": "speex",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

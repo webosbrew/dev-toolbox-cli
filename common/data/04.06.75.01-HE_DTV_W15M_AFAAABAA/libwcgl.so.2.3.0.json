@@ -1,5 +1,6 @@
 {
   "name": "libwcgl.so.2",
+  "package": "lgncapi",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

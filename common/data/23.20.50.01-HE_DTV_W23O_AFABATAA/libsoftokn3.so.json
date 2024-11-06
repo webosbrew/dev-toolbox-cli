@@ -1,5 +1,6 @@
 {
   "name": "libsoftokn3.so",
+  "package": "lib32-nss",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libdualaudio.so",
+  "package": "lib32-fluoride-tool-mtk",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

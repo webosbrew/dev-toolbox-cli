@@ -1,5 +1,6 @@
 {
   "name": "libpixman-1.so.0",
+  "package": "libpixman-1-0",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

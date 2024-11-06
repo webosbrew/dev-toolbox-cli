@@ -1,5 +1,6 @@
 {
   "name": "libnl-route-3.so.200",
+  "package": "libnl-route-3-200",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

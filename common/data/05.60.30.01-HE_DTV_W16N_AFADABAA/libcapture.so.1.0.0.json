@@ -1,5 +1,6 @@
 {
   "name": "libcapture.so.1",
+  "package": "libcapture",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

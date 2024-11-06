@@ -1,5 +1,6 @@
 {
   "name": "libevent_pthreads-2.1.so.6",
+  "package": "libevent",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

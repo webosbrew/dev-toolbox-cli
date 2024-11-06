@@ -1,5 +1,6 @@
 {
   "name": "libQt5OpenGL.so.5",
+  "package": "qtbase",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

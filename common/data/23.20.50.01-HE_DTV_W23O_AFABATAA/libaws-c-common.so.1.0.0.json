@@ -1,5 +1,6 @@
 {
   "name": "libaws-c-common.so.1",
+  "package": "lib32-libaws-c-common1",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

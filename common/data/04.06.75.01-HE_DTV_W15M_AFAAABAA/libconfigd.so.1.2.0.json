@@ -1,5 +1,6 @@
 {
   "name": "libconfigd.so.1",
+  "package": "configd",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libresolv.so.2",
+  "package": "lib32-libc6",
   "needed": [
     "libc.so.6"
   ],

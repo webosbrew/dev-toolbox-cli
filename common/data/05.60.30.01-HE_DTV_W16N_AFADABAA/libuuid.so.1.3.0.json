@@ -1,5 +1,6 @@
 {
   "name": "libuuid.so.1",
+  "package": "libuuid1",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

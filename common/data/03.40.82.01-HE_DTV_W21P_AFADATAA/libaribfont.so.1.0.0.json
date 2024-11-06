@@ -1,0 +1,28 @@
+{
+  "name": "libaribfont.so.1",
+  "package": "libaribfont",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libfreetype.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0"
+  ],
+  "symbols": [
+    "ARIBFont_DBG_FT_SetDumpCode",
+    "ARIBFont_FT_Deinitialize",
+    "ARIBFont_FT_DrawFontImage",
+    "ARIBFont_FT_GetFontImage",
+    "ARIBFont_FT_GetFontRegionSize",
+    "ARIBFont_FT_Initialize",
+    "aribfont_logger",
+    "g_BorderStroker",
+    "g_EdgingStroker",
+    "g_u16AribFontDumpCode",
+    "pm_logger_create",
+    "pm_logger_debug",
+    "pm_logger_error",
+    "pm_logger_info",
+    "pm_logger_warning"
+  ]
+}

@@ -1,5 +1,6 @@
 {
   "name": "libjson-c.so.5",
+  "package": "lib32-libjson-c5",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

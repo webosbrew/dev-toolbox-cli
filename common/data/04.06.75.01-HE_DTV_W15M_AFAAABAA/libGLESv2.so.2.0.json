@@ -1,5 +1,6 @@
 {
   "name": "libGLESv2.so.2.0",
+  "package": "gpu-libs",
   "needed": [
     "libIMGegl.so",
     "libc.so.6",

@@ -1,0 +1,15 @@
+{
+  "name": "libanl.so.1",
+  "package": "lib32-libc6",
+  "needed": [
+    "libc.so.6",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "GLIBC_2.4@GLIBC_2.4",
+    "gai_cancel@GLIBC_2.4",
+    "gai_error@GLIBC_2.4",
+    "gai_suspend@GLIBC_2.4",
+    "getaddrinfo_a@GLIBC_2.4"
+  ]
+}

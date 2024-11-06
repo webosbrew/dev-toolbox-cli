@@ -1,5 +1,6 @@
 {
   "name": "libwebosapplicationframework.so.1",
+  "package": "lib32-amazon-alexa-adapter",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libfft2d_fftsg.so",
+  "package": "lib32-tensorflow-lite",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

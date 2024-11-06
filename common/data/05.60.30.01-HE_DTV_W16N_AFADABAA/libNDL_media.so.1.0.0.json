@@ -1,5 +1,6 @@
 {
   "name": "libNDL_media.so.1",
+  "package": "libndl-media",
   "needed": [
     "libdl.so.2",
     "libgcc_s.so.1"

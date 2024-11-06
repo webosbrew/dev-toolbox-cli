@@ -1,5 +1,6 @@
 {
   "name": "libbmldsmcc.so.003.016.001",
+  "package": "lib32-bml-libs",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

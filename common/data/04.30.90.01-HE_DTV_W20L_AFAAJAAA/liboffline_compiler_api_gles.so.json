@@ -1,5 +1,6 @@
 {
   "name": "liboffline_compiler_api_gles.so",
+  "package": "gpu-libs",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

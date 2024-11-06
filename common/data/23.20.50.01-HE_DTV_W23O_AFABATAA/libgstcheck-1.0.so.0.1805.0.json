@@ -1,5 +1,6 @@
 {
   "name": "libgstcheck-1.0.so.0",
+  "package": "lib32-gstreamer1.0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

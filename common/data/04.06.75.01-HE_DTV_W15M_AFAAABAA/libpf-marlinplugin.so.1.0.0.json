@@ -1,5 +1,6 @@
 {
   "name": "libpf-marlinplugin.so.1",
+  "package": "player-factory-libs-lpbin",
   "needed": [
     "libc.so.6",
     "libdrmcontroller.so.1",

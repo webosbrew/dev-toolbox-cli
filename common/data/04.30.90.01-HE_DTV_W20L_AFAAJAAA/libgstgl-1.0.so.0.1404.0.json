@@ -1,5 +1,6 @@
 {
   "name": "libgstgl-1.0.so.0",
+  "package": "libgstgl-1.0-0",
   "needed": [
     "libEGL.so",
     "libGLESv2.so",

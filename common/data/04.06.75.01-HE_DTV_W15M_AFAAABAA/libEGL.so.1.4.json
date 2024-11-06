@@ -1,5 +1,6 @@
 {
   "name": "libEGL.so.1.4",
+  "package": "gpu-libs",
   "needed": [
     "libIMGegl.so",
     "libc.so.6",

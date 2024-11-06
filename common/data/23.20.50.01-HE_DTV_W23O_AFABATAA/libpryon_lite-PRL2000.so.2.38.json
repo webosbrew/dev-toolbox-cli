@@ -1,5 +1,6 @@
 {
   "name": "libpryon_lite-PRL2000.so.2.38",
+  "package": "lib32-libpryon-lite-prl2000-2.38",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

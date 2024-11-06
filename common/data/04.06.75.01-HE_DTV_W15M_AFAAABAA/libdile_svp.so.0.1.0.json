@@ -1,5 +1,6 @@
 {
   "name": "libdile_svp.so.0",
+  "package": "dile-libs",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

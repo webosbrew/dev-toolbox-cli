@@ -1,5 +1,6 @@
 {
   "name": "libjpeg.so.62",
+  "package": "lib32-libjpeg62",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

@@ -1,5 +1,6 @@
 {
   "name": "libopenh264.so.6",
+  "package": "lib32-libopenh264-6",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

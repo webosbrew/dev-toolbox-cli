@@ -1,5 +1,6 @@
 {
   "name": "libavcaptureinf.so.1",
+  "package": "lib32-libavcaptureinf1",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

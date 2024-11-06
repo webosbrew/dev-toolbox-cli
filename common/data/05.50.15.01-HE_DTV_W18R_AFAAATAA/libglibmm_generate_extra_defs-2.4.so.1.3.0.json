@@ -1,0 +1,29 @@
+{
+  "name": "libglibmm_generate_extra_defs-2.4.so.1",
+  "package": "glibmm",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libffi.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgmodule-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libm.so.6",
+    "libpcre.so.1",
+    "libpthread.so.0",
+    "libsigc-2.0.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z11get_signalsB5cxx11mPFbmE",
+    "_Z13get_type_nameB5cxx11mPFbmE",
+    "_Z14get_propertiesB5cxx11m",
+    "_Z18gtype_is_a_pointerm",
+    "_Z20get_type_name_signalB5cxx11mPFbmE",
+    "_Z23get_type_name_parameterB5cxx11mPFbmE",
+    "_Z27get_property_with_node_nameP11_GParamSpecRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES8_",
+    "_Z8get_defsB5cxx11mPFbmE",
+    "_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_RKS8_"
+  ]
+}

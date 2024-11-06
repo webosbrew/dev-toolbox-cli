@@ -1,5 +1,6 @@
 {
   "name": "libSpeechEncoder.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "ld-linux.so.3",
     "libAVSCommon.so",

@@ -1,5 +1,6 @@
 {
   "name": "libicudata.so.50",
+  "package": "libicudata50",
   "needed": [
     "libc.so.6"
   ],

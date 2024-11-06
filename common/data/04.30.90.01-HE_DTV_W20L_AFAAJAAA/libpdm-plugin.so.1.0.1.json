@@ -1,5 +1,6 @@
 {
   "name": "libpdm-plugin.so.1",
+  "package": "libpdm-plugin1",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

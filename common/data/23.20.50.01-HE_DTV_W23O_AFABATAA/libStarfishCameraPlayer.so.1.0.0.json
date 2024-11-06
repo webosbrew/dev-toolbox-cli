@@ -1,5 +1,6 @@
 {
   "name": "libStarfishCameraPlayer.so.1",
+  "package": "lib32-starfish-camera-pipeline",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

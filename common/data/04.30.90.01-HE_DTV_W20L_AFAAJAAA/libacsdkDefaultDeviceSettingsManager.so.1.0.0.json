@@ -1,5 +1,6 @@
 {
   "name": "libacsdkDefaultDeviceSettingsManager.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "libAIP.so",
     "libAVSCommon.so",

@@ -1,5 +1,6 @@
 {
   "name": "libQt5WaylandCompositor.so.5",
+  "package": "lib32-qtwayland",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

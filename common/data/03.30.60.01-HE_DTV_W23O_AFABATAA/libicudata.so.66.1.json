@@ -1,0 +1,11 @@
+{
+  "name": "libicudata.so.66",
+  "package": "lib32-libicudata66",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "icudt66_dat"
+  ]
+}

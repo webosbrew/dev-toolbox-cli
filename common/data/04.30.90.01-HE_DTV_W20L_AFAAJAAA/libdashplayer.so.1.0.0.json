@@ -1,5 +1,6 @@
 {
   "name": "libdashplayer.so.1.0.0",
+  "package": "mpegdash",
   "needed": [
     "libPmLogLib.so.3",
     "libavaadaptor.so.1.0",

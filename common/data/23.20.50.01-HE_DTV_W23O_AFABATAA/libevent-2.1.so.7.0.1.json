@@ -1,5 +1,6 @@
 {
   "name": "libevent-2.1.so.7",
+  "package": "lib32-libevent-2.1-7",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

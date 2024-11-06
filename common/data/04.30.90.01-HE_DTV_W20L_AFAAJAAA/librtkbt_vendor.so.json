@@ -1,5 +1,6 @@
 {
   "name": "librtkbt_vendor.so",
+  "package": "bluedroid-rtk-all",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

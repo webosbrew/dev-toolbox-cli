@@ -1,5 +1,6 @@
 {
   "name": "libboost_thread.so.1.56.0",
+  "package": "libboost-thread1.56.0",
   "needed": [
     "libboost_system.so.1.56.0",
     "libc.so.6",

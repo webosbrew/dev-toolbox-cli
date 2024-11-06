@@ -1,5 +1,6 @@
 {
   "name": "libudev.so.0",
+  "package": "libudev0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

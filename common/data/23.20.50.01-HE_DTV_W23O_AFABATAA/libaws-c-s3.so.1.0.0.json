@@ -1,5 +1,6 @@
 {
   "name": "libaws-c-s3.so.0unstable",
+  "package": "lib32-libaws-c-s3-0unstable",
   "needed": [
     "libPmLogLib.so.3",
     "libaws-c-auth.so.1.0.0",

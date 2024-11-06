@@ -1,5 +1,6 @@
 {
   "name": "libtvrm_client.so.1",
+  "package": "tvrm",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

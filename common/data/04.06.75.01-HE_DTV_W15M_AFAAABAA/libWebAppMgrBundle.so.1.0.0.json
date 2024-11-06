@@ -1,5 +1,6 @@
 {
   "name": "libWebAppMgrBundle.so.1",
+  "package": "libwebappmgrbundle1",
   "needed": [
     "libQt5Core.so.5",
     "libQt5WebKit.so.5",

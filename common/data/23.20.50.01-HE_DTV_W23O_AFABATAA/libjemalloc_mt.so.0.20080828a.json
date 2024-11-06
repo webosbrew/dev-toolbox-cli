@@ -1,5 +1,6 @@
 {
   "name": "libjemalloc_mt.so.0",
+  "package": "lib32-jemalloc",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

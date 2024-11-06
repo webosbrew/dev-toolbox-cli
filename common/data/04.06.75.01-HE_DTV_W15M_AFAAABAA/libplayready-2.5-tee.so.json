@@ -1,5 +1,6 @@
 {
   "name": "libplayready-2.5-tee.so",
+  "package": "playready",
   "needed": [
     "libc.so.6",
     "libdile_crypto.so.0",

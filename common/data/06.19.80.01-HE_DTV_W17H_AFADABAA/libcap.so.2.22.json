@@ -1,5 +1,6 @@
 {
   "name": "libcap.so.2",
+  "package": "libcap2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

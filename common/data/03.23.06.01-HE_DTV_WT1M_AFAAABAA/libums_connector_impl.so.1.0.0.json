@@ -1,5 +1,6 @@
 {
   "name": "libums_connector_impl.so.1",
+  "package": "umediaserver",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

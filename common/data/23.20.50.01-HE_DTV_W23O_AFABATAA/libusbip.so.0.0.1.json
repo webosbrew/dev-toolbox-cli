@@ -1,5 +1,6 @@
 {
   "name": "libusbip.so.0",
+  "package": "lib32-usbip-tools",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

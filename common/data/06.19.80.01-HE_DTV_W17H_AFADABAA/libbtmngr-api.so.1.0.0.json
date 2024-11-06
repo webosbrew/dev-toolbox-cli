@@ -1,5 +1,6 @@
 {
   "name": "libbtmngr-api.so.1",
+  "package": "bluetooth-manager",
   "needed": [
     "libAcbAPI.so.1",
     "libbluetooth.lg_webos_if.so.1",

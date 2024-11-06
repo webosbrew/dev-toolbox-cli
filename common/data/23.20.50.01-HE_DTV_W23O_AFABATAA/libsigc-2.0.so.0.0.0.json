@@ -1,5 +1,6 @@
 {
   "name": "libsigc-2.0.so.0",
+  "package": "lib32-libsigc-2.0-0",
   "needed": [
     "libgcc_s.so.1",
     "libstdc++.so.6"

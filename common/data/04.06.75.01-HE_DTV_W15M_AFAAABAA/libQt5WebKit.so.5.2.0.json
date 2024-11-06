@@ -1,5 +1,6 @@
 {
   "name": "libQt5WebKit.so.5",
+  "package": "webkit-starfish",
   "needed": [
     "libAcb.so.1",
     "libAcbAPI.so.1",

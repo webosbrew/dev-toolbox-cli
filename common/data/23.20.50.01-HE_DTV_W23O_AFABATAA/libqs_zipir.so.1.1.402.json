@@ -1,5 +1,6 @@
 {
   "name": "libqs_zipir.so.1",
+  "package": "lib32-mrcu",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

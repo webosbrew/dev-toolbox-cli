@@ -1,5 +1,6 @@
 {
   "name": "libQt5WaylandShellSurface.so.1",
+  "package": "lib32-qtwayland",
   "needed": [
     "libQt5Core.so.5",
     "libQt5Gui.so.5",

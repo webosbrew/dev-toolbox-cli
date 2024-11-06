@@ -1,5 +1,6 @@
 {
   "name": "libopencv_gapi.so.405",
+  "package": "lib32-libopencv-gapi405",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

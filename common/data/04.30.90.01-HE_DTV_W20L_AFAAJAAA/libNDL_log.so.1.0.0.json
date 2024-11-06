@@ -1,5 +1,6 @@
 {
   "name": "libNDL_log.so.1",
+  "package": "libndl",
   "needed": [
     "libNDL.so.1",
     "libc.so.6",

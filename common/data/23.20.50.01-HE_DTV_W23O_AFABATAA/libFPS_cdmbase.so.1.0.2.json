@@ -1,5 +1,6 @@
 {
   "name": "libFPS_cdmbase.so.1",
+  "package": "lib32-libfps-cdmbase1",
   "needed": [
     "libFPS.so.2",
     "libPmLogLib.so.3",

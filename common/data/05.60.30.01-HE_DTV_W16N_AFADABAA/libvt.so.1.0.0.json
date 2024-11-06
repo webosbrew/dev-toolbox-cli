@@ -1,5 +1,6 @@
 {
   "name": "libvt.so.1",
+  "package": "libvt1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

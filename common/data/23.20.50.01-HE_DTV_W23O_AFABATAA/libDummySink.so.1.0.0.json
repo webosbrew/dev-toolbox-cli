@@ -1,5 +1,6 @@
 {
   "name": "libDummySink.so.1",
+  "package": "lib32-amazon-alexa-adapter",
   "needed": [
     "libACL.so.1",
     "libADSL.so.1",

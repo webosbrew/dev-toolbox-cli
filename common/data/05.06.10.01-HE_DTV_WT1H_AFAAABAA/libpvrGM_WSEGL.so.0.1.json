@@ -1,0 +1,15 @@
+{
+  "name": "libpvrGM_WSEGL.so.0.1",
+  "package": "gpu-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgm.so.1",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libsrv_um.so"
+  ],
+  "symbols": [
+    "WSEGL_GetFunctionTablePointer"
+  ]
+}

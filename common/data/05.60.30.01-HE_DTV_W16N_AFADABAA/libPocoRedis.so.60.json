@@ -1,5 +1,6 @@
 {
   "name": "libPocoRedis.so.60",
+  "package": "libpocoredis60",
   "needed": [
     "libPocoFoundation.so.60",
     "libPocoNet.so.60",

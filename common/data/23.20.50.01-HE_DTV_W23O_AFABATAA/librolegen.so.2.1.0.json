@@ -1,5 +1,6 @@
 {
   "name": "librolegen.so.2",
+  "package": "lib32-librolegen2",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

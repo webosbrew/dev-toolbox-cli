@@ -1,5 +1,6 @@
 {
   "name": "libaws-c-compression.so.1.0.0",
+  "package": "lib32-libaws-c-compression1.0.0",
   "needed": [
     "libaws-c-common.so.1",
     "libc.so.6",

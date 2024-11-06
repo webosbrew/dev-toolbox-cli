@@ -1,5 +1,6 @@
 {
   "name": "librcs_container.so",
+  "package": "iotivity-service",
   "needed": [
     "libboost_system.so.1.68.0",
     "libboost_thread.so.1.68.0",

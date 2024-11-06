@@ -1,5 +1,6 @@
 {
   "name": "libqrencode.so.3",
+  "package": "libqrencode3",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

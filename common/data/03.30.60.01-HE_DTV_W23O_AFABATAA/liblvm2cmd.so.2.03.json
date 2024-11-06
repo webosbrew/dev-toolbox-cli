@@ -1,0 +1,21 @@
+{
+  "name": "liblvm2cmd.so.2.03",
+  "package": "lib32-lvm2",
+  "needed": [
+    "libaio.so.1",
+    "libblkid.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6"
+  ],
+  "symbols": [
+    "Base@Base",
+    "Local@Local",
+    "lvm2_disable_dmeventd_monitoring@Base",
+    "lvm2_exit@Base",
+    "lvm2_init@Base",
+    "lvm2_log_fn@Base",
+    "lvm2_log_level@Base",
+    "lvm2_run@Base"
+  ]
+}

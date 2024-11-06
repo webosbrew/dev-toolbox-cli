@@ -1,0 +1,14 @@
+{
+  "name": "libqi_calculator.so",
+  "package": "mediadrm",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "qi_calculator_init",
+    "qi_calculator_on_join_requested",
+    "qi_calculator_scan",
+    "qi_calculator_term"
+  ]
+}

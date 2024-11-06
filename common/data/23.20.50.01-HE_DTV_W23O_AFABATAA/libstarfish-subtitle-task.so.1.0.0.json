@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-subtitle-task.so.1",
+  "package": "lib32-starfish-subtitle-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libaribfont.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libgm-wayland.so.1",
+  "package": "lib32-libgm-wayland1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

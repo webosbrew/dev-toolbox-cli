@@ -1,5 +1,6 @@
 {
   "name": "libboost_filesystem.so.1.53.0",
+  "package": "libboost-filesystem1.53.0",
   "needed": [
     "libboost_system.so.1.53.0",
     "libc.so.6",

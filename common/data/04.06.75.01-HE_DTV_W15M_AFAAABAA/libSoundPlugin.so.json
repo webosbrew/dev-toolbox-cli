@@ -1,5 +1,6 @@
 {
   "name": "libSoundPlugin.so",
+  "package": "npapi-plugins",
   "needed": [
     "libPmLogLib.so.3",
     "libasound.so.2",

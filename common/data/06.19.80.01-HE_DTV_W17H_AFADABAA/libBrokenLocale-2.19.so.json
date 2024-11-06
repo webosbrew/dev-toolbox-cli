@@ -1,5 +1,6 @@
 {
   "name": "libBrokenLocale.so.1",
+  "package": "libc6",
   "needed": [
     "libc.so.6"
   ],

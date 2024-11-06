@@ -1,0 +1,15 @@
+{
+  "name": "libEGL.so.1",
+  "package": "gpu-libs",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libmali.so.0",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": []
+}

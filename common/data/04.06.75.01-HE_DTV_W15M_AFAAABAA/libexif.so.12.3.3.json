@@ -1,5 +1,6 @@
 {
   "name": "libexif.so.12",
+  "package": "libexif12",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

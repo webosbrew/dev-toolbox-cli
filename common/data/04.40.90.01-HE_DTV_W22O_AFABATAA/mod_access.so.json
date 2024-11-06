@@ -1,0 +1,11 @@
+{
+  "name": "mod_access.so",
+  "package": "lib32-lighttpd-module-access",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "mod_access_plugin_init"
+  ]
+}

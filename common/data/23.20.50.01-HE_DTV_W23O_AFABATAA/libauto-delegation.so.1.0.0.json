@@ -1,5 +1,6 @@
 {
   "name": "libauto-delegation.so.1",
+  "package": "lib32-libauto-delegation1",
   "needed": [
     "libOpenCL.so.1",
     "libPmLogLib.so.3",

@@ -1,5 +1,6 @@
 {
   "name": "libwebosi18n.so.1",
+  "package": "libwebosi18n1",
   "needed": [
     "libboost_regex.so.1.56.0",
     "libc.so.6",

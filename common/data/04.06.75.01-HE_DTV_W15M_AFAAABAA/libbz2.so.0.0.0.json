@@ -1,5 +1,6 @@
 {
   "name": "libbz2.so.0",
+  "package": "libbz2-0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

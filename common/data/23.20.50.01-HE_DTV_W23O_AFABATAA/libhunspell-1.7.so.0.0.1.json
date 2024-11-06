@@ -1,5 +1,6 @@
 {
   "name": "libhunspell-1.7.so.0",
+  "package": "lib32-hunspell",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

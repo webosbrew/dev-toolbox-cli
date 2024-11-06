@@ -1,5 +1,6 @@
 {
   "name": "libavutil.so.56",
+  "package": "lib32-libavutil56",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

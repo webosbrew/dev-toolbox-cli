@@ -1,5 +1,6 @@
 {
   "name": "libSmartScreenClient.so",
+  "package": "amazon-alexa-adapter",
   "needed": [
     "ld-linux.so.3",
     "libACL.so",

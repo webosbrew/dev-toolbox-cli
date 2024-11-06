@@ -1,5 +1,6 @@
 {
   "name": "libluna-prefs.so.2",
+  "package": "luna-prefs",
   "needed": [
     "libc.so.6",
     "libcjson.so.1",

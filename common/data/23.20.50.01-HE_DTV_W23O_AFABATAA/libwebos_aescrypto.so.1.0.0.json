@@ -1,5 +1,6 @@
 {
   "name": "libwebos_aescrypto.so.1",
+  "package": "lib32-dtcpip",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

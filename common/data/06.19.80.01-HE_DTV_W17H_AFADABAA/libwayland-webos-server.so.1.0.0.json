@@ -1,5 +1,6 @@
 {
   "name": "libwayland-webos-server.so.1",
+  "package": "luna-surfacemanager-extensions",
   "needed": [
     "libc.so.6",
     "libwayland-server.so.0"

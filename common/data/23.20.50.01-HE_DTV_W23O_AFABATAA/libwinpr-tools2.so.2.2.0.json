@@ -1,5 +1,6 @@
 {
   "name": "libwinpr-tools2.so.2",
+  "package": "lib32-com.webos.app.rdp",
   "needed": [
     "libc.so.6",
     "libcrypto.so.3",

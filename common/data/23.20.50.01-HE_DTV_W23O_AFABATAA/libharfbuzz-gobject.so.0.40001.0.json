@@ -1,5 +1,6 @@
 {
   "name": "libharfbuzz-gobject.so.0",
+  "package": "lib32-libharfbuzz0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

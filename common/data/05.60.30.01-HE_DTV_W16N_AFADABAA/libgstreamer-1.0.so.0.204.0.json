@@ -1,5 +1,6 @@
 {
   "name": "libgstreamer-1.0.so.0",
+  "package": "gstreamer1.0",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

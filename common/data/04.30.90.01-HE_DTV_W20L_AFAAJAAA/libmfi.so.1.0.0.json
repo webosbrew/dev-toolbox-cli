@@ -1,5 +1,6 @@
 {
   "name": "libmfi.so.1",
+  "package": "libmfi1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

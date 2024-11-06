@@ -1,5 +1,6 @@
 {
   "name": "librecordAPIs.so.1",
+  "package": "starfish-media-pipeline",
   "needed": [
     "libPmLogLib.so.3",
     "libboost_filesystem.so.1.68.0",

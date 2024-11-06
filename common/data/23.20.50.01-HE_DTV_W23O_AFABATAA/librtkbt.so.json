@@ -1,5 +1,6 @@
 {
   "name": "libbluetooth.so",
+  "package": "lib32-fluoride-rtk-all",
   "needed": [
     "ld-linux.so.3",
     "libatomic.so.1",

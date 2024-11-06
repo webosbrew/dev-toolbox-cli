@@ -1,0 +1,17 @@
+{
+  "name": "libsystrim.so.3",
+  "package": "memchute",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpthread.so.0"
+  ],
+  "symbols": [
+    "_read_comm",
+    "begin_watch",
+    "check_zygote_process",
+    "end_watch",
+    "read_func",
+    "sleep_func"
+  ]
+}

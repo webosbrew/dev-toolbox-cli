@@ -1,5 +1,6 @@
 {
   "name": "libnpalljoyn.so",
+  "package": "alljoyn",
   "needed": [
     "libc.so.6",
     "libcrypto.so.1.0.0",

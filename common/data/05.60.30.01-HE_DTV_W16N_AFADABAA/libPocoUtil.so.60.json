@@ -1,5 +1,6 @@
 {
   "name": "libPocoUtil.so.60",
+  "package": "libpocoutil60",
   "needed": [
     "libPocoFoundation.so.60",
     "libPocoJSON.so.60",

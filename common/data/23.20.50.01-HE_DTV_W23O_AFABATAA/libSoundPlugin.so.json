@@ -1,5 +1,6 @@
 {
   "name": "libSoundPlugin.so",
+  "package": "lib32-npapi-plugins",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libavahi-core.so.7",
+  "package": "lib32-libavahi-core7",
   "needed": [
     "libavahi-common.so.3",
     "libc.so.6",

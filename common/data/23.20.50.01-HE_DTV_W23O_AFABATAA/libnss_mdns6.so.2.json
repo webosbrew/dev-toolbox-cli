@@ -1,5 +1,6 @@
 {
   "name": "libnss_mdns6.so.2",
+  "package": "lib32-libnss-mdns",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

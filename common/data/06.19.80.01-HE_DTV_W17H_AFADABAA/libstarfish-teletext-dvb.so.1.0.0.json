@@ -1,5 +1,6 @@
 {
   "name": "libstarfish-teletext-dvb.so.1",
+  "package": "starfish-subtitle-libs",
   "needed": [
     "libc.so.6",
     "libfreetype.so.6",

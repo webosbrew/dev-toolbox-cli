@@ -1,5 +1,6 @@
 {
   "name": "libailoader.so.2.0.0",
+  "package": "lib32-aiservice",
   "needed": [
     "libc.so.6",
     "libcrypto.so.3",

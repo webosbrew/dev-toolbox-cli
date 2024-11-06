@@ -1,5 +1,6 @@
 {
   "name": "libleaktracer.so.3",
+  "package": "lib32-memchute",
   "needed": [
     "ld-linux.so.3",
     "libPmLogLib.so.3",

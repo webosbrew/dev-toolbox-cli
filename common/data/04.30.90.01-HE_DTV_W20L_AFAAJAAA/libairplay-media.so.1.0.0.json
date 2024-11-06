@@ -1,5 +1,6 @@
 {
   "name": "libairplay-media.so.1",
+  "package": "libairplay-media1",
   "needed": [
     "libPmLogLib.so.3",
     "libavcodec.so.58",

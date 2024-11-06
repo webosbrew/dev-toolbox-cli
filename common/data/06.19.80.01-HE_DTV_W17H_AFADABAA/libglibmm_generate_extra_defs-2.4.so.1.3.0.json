@@ -1,5 +1,6 @@
 {
   "name": "libglibmm_generate_extra_defs-2.4.so.1",
+  "package": "glibmm",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

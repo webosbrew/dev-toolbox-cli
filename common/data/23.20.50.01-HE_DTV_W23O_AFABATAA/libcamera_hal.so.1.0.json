@@ -1,5 +1,6 @@
 {
   "name": "libcamera_hal.so.1",
+  "package": "lib32-com.webos.service.camera",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

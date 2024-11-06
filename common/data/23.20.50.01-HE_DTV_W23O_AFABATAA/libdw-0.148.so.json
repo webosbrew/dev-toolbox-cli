@@ -1,5 +1,6 @@
 {
   "name": "libdw.so.1",
+  "package": "lib32-libdw1",
   "needed": [
     "ld-linux.so.3",
     "libbz2.so.1",

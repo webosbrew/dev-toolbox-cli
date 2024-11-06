@@ -1,0 +1,29 @@
+{
+  "name": "libboost_timer.so.1.61.0",
+  "package": "libboost-timer1.61.0",
+  "needed": [
+    "libboost_chrono.so.1.61.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN5boost5timer14auto_cpu_timer6reportEv",
+    "_ZN5boost5timer14auto_cpu_timerC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5boost5timer14auto_cpu_timerC1ERSos",
+    "_ZN5boost5timer14auto_cpu_timerC1Es",
+    "_ZN5boost5timer14auto_cpu_timerC1EsRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5boost5timer14auto_cpu_timerC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5boost5timer14auto_cpu_timerC2ERSos",
+    "_ZN5boost5timer14auto_cpu_timerC2Es",
+    "_ZN5boost5timer14auto_cpu_timerC2EsRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5boost5timer14auto_cpu_timerD1Ev",
+    "_ZN5boost5timer14auto_cpu_timerD2Ev",
+    "_ZN5boost5timer6formatB5cxx11ERKNS0_9cpu_timesEs",
+    "_ZN5boost5timer6formatERKNS0_9cpu_timesEsRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN5boost5timer9cpu_timer4stopEv",
+    "_ZN5boost5timer9cpu_timer5startEv",
+    "_ZN5boost5timer9cpu_timer6resumeEv",
+    "_ZNK5boost5timer9cpu_timer7elapsedEv"
+  ]
+}

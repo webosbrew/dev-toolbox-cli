@@ -1,5 +1,6 @@
 {
   "name": "libadvrRecordAPIs.so.1",
+  "package": "lib32-record-player",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

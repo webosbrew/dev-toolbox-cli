@@ -1,5 +1,6 @@
 {
   "name": "libnsbmp.so.0.1.0",
+  "package": "libnsbmp0.1.0",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

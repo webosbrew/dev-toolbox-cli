@@ -1,5 +1,6 @@
 {
   "name": "liblog4cplus-1.1.so.7",
+  "package": "liblog4cplus-1.1-7",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

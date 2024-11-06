@@ -1,5 +1,6 @@
 {
   "name": "liballjoyn_controlpanel.so",
+  "package": "alljoyn",
   "needed": [
     "liballjoyn.so",
     "libc.so.6",

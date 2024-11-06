@@ -1,5 +1,6 @@
 {
   "name": "libopteeKeymasterCA.so",
+  "package": "lib32-libkadaptor",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

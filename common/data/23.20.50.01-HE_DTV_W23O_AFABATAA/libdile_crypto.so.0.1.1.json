@@ -1,5 +1,6 @@
 {
   "name": "libdile_crypto.so.0",
+  "package": "lib32-dile-libs",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

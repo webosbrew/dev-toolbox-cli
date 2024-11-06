@@ -1,5 +1,6 @@
 {
   "name": "libsyn123.so.0",
+  "package": "lib32-mpg123",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

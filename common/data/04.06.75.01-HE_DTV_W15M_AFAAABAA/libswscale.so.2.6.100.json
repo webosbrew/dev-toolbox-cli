@@ -1,5 +1,6 @@
 {
   "name": "libswscale.so.2",
+  "package": "ffmpeg",
   "needed": [
     "libavutil.so.52",
     "libc.so.6",

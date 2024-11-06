@@ -1,0 +1,35 @@
+{
+  "name": "libusc.so.0.1",
+  "package": "gpu-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6"
+  ],
+  "symbols": [
+    "PVRCleanupUniflexHw",
+    "PVRUniFlexCleanupEndOfTileProgram",
+    "PVRUniFlexCompileKernels",
+    "PVRUniFlexCompileToHw",
+    "PVRUniFlexCreateContext",
+    "PVRUniFlexCreateRenderTargetSetup",
+    "PVRUniFlexDeserialise",
+    "PVRUniFlexDeserialiseBuffer",
+    "PVRUniFlexDestroyContext",
+    "PVRUniFlexDestroyRenderTargetSetup",
+    "PVRUniFlexDisableRenderTarget",
+    "PVRUniFlexEnableRenderTarget",
+    "PVRUniFlexEncodeComparisonOperator",
+    "PVRUniFlexFreeComputeProgram",
+    "PVRUniFlexGenerateEndOfTileProgram",
+    "PVRUniFlexGetInputInstDesc",
+    "PVRUniFlexInitImageParameters",
+    "PVRUniFlexInitInst",
+    "PVRUniFlexInitSamplerParameters",
+    "PVRUniFlexSerialise",
+    "PVRUniFlexUnpackImageStateConstantOffset",
+    "PVRUniFlexUnpackSampleStateConstantOffset",
+    "PVRUniflexReadHWBinary",
+    "PVRUniflexWriteHWBinary"
+  ]
+}

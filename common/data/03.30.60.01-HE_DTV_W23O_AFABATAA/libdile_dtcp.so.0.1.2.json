@@ -1,0 +1,23 @@
+{
+  "name": "libdile_dtcp.so.0",
+  "package": "lib32-dile-libs",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.1.1",
+    "libdrmddi.so.2",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_DTCP_AES128CBCDecrypt",
+    "DILE_DTCP_DeleteDeviceSet",
+    "DILE_DTCP_GetDeviceId",
+    "DILE_DTCP_GetKeySize",
+    "DILE_DTCP_GetRandomNumber",
+    "DILE_DTCP_Initialize",
+    "DILE_DTCP_IsInitialized",
+    "DILE_DTCP_ReadCryptoConst",
+    "DILE_DTCP_ReadDeviceSet",
+    "DILE_DTCP_WriteDeviceSet",
+    "_verifyDeviceSet"
+  ]
+}

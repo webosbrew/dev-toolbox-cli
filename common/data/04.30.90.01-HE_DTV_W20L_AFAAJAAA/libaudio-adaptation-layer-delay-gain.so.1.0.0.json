@@ -1,5 +1,6 @@
 {
   "name": "libaudio-adaptation-layer-delay-gain.so.1",
+  "package": "libaudio-adaptation-layer-delay-gain1",
   "needed": [
     "libPmLogLib.so.3",
     "libasound.so.2",

@@ -1,5 +1,6 @@
 {
   "name": "liburiparser.so.1",
+  "package": "liburiparser1",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1"

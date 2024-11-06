@@ -1,5 +1,6 @@
 {
   "name": "libwidevine-wrapper.so.1",
+  "package": "lib32-widevine-service",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

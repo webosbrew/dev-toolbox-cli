@@ -1,5 +1,6 @@
 {
   "name": "libarmnnadaptor.so.1.0.0",
+  "package": "aiservice",
   "needed": [
     "libarmnn.so",
     "libarmnnTfLiteParser.so",

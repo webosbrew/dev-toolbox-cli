@@ -1,5 +1,6 @@
 {
   "name": "libmali.so.1.0",
+  "package": "gpu-libs",
   "needed": [
     "ld-linux.so.3",
     "libc.so.6",

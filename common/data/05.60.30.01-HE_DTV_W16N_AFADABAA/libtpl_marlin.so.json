@@ -1,5 +1,6 @@
 {
   "name": "libtpl_marlin.so",
+  "package": "tpl-libs",
   "needed": [
     "libc.so.6",
     "libdrmmc.so",

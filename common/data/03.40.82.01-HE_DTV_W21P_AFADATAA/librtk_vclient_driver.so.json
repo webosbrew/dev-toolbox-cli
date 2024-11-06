@@ -1,0 +1,23 @@
+{
+  "name": "librtk_vclient_driver.so",
+  "package": "omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libomxrtk_utils.so"
+  ],
+  "symbols": [
+    "rtk_dmaheap_alloc",
+    "rtk_dmaheap_alloc_newer",
+    "rtk_dmaheap_alloc_older",
+    "rtk_dmaheap_close",
+    "rtk_dmaheap_flush",
+    "rtk_dmaheap_free",
+    "rtk_dmaheap_mmap",
+    "rtk_dmaheap_munmap",
+    "rtk_dmaheap_open",
+    "rtk_dmaheap_sync_end",
+    "rtk_dmaheap_sync_start"
+  ]
+}

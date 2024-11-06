@@ -1,5 +1,6 @@
 {
   "name": "libgomp.so.1",
+  "package": "libgomp1",
   "needed": [
     "libc.so.6",
     "libpthread.so.0"

@@ -1,0 +1,33 @@
+{
+  "name": "libgstrtkdmaheap-1.0.so.0",
+  "package": "gstreamer1.0-plugins-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstallocators-1.0.so.0",
+    "libgstbase-1.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgstrtkutils-1.0.so.0",
+    "libgstvideo-1.0.so.0",
+    "libomx_vdec.so",
+    "libpthread.so.0",
+    "libracodec.so",
+    "librpccore.so",
+    "librtk_codec_video.so",
+    "librtk_vclient_driver.so",
+    "librtk_vclient_scale.so"
+  ],
+  "symbols": [
+    "gst_rtk_dmaheap_allocator_alloc",
+    "gst_rtk_dmaheap_allocator_get_type",
+    "gst_rtk_dmaheap_allocator_new",
+    "gst_rtk_dmaheap_buffer_pool_get_heap_type",
+    "gst_rtk_dmaheap_buffer_pool_get_type",
+    "gst_rtk_dmaheap_buffer_pool_new",
+    "gst_rtk_dmaheap_type_from_string",
+    "gst_rtk_dmaheap_type_to_string"
+  ]
+}

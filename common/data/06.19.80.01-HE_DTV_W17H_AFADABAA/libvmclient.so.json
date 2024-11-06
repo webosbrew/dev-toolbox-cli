@@ -1,5 +1,6 @@
 {
   "name": "libvmclient.so",
+  "package": "mediadrm-core",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

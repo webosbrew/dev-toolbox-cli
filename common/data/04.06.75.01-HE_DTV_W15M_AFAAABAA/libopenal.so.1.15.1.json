@@ -1,5 +1,6 @@
 {
   "name": "libopenal.so.1",
+  "package": "openal-webos",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

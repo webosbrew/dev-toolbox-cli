@@ -1,5 +1,6 @@
 {
   "name": "libboost_serialization.so.1.78.0",
+  "package": "lib32-boost-serialization",
   "needed": [
     "libc.so.6",
     "libgcc_s.so.1",

@@ -1,5 +1,6 @@
 {
   "name": "libqsp_brand.so",
+  "package": "iconnectivity",
   "needed": [
     "libc.so.6",
     "libdl.so.2",

@@ -1,5 +1,6 @@
 {
   "name": "libwca-support.so.1",
+  "package": "libwca-support1",
   "needed": [
     "libPmLogLib.so.3",
     "libc.so.6",

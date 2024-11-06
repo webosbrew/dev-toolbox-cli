@@ -1,5 +1,6 @@
 {
   "name": "libalphonsoadoverlay.so.1.0.0",
+  "package": "lib32-adoverlay-service",
   "needed": [
     "libPmLogLib.so.3",
     "libanl.so.1",

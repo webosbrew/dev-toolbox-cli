@@ -1,5 +1,6 @@
 {
   "name": "libsbc_enc.so",
+  "package": "blueangel",
   "needed": [
     "libbtstd.so",
     "libc.so.6",
