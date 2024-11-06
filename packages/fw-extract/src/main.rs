@@ -71,5 +71,5 @@ fn run(args: Args) -> Result<(), Error> {
             )
         })?;
     }
-    return Ok(());
+    Ok(())
 }

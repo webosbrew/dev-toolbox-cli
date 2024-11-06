@@ -10,7 +10,7 @@ use crate::{Firmware, FirmwareInfo, ReleaseCodename};
 
 impl FirmwareInfo {
     pub fn codename(&self) -> Option<ReleaseCodename> {
-        return match self.release.major {
+        match self.release.major {
             1 => Some(ReleaseCodename::Afro),
             2 => Some(ReleaseCodename::Beehive),
             3 => Some(if self.release.minor >= 5 {
@@ -27,8 +27,9 @@ impl FirmwareInfo {
             6 => Some(ReleaseCodename::Kisscurl),
             7 => Some(ReleaseCodename::Mullet),
             8 => Some(ReleaseCodename::Number1),
+            9 => Some(ReleaseCodename::Ombre),
             _ => None,
-        };
+        }
     }
 }
 
@@ -53,7 +54,7 @@ impl Firmware {
                 })
                 .ok();
         }
-        return None;
+        None
     }
 
     pub fn load<P>(path: P) -> Result<Firmware, Error>
@@ -73,11 +74,11 @@ impl Firmware {
             });
         })?;
 
-        return Ok(Firmware {
+        Ok(Firmware {
             path: path.to_path_buf(),
             info,
             index,
-        });
+        })
     }
 
     pub fn list<P>(data_path: P) -> Result<Vec<Firmware>, Error>
@@ -104,14 +105,14 @@ impl Firmware {
             })
             .collect();
         firmwares.sort_by(|a, b| a.info.release.cmp(&b.info.release));
-        return Ok(firmwares);
+        Ok(firmwares)
     }
 
     pub fn data_path() -> PathBuf {
-        return if cfg!(feature = "linux-install") {
+        if cfg!(feature = "linux-install") {
             PathBuf::from("/usr/share/webosbrew/compat-checker/data")
         } else {
             PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("..").join("data").canonicalize().unwrap()
-        };
+        }
     }
 }

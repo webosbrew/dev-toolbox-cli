@@ -119,7 +119,7 @@ impl FirmwareExtractor {
                 return Ok(None);
             };
         }
-        return Ok(Some(target));
+        Ok(Some(target))
     }
 
     fn join_link_target<P>(&self, target: P) -> Result<PathBuf, Error>
@@ -140,13 +140,13 @@ impl FirmwareExtractor {
                 }
             }
         }
-        return Err(Error::new(
+        Err(Error::new(
             ErrorKind::NotFound,
             format!(
                 "Can't find link target {}",
                 target.file_name().unwrap().to_string_lossy()
             ),
-        ));
+        ))
     }
 
     pub fn create<P: AsRef<Path>>(input: P) -> Result<Self, Error> {
@@ -155,12 +155,12 @@ impl FirmwareExtractor {
         let rootfs_path = input.join("rootfs.pak.unsquashfs");
         let lib_paths = Self::extract_lib_paths(input, &rootfs_path)?;
         let so_regex = Regex::new("^.+.so(\\.\\w+)*$").unwrap();
-        return Ok(Self {
+        Ok(Self {
             fw_info,
             rootfs_path,
             lib_paths,
             so_regex,
-        });
+        })
     }
 
     fn extract_fw_info(input: &Path) -> Result<FirmwareInfo, Error> {
@@ -184,7 +184,7 @@ impl FirmwareExtractor {
                 .join("etc")
                 .join("starfish-release"),
         )?
-        .read_to_string(&mut starfish_release)?;
+            .read_to_string(&mut starfish_release)?;
         let release_regex = Regex::new("release (\\d+\\.\\d+\\.\\d+)").unwrap();
         let release = release_regex
             .captures(&starfish_release)
@@ -196,7 +196,7 @@ impl FirmwareExtractor {
                     format!("Bad starfish-release: {starfish_release}"),
                 )
             })?;
-        return Ok(FirmwareInfo {
+        Ok(FirmwareInfo {
             version: String::from(version),
             ota_id: String::from(ota_id),
             release: Version::parse(release.as_str()).map_err(|e| {
@@ -205,7 +205,7 @@ impl FirmwareExtractor {
                     format!("Invalid version {}: {e:?}", release.as_str()),
                 )
             })?,
-        });
+        })
     }
     fn extract_lib_paths<Input, Root>(input: Input, root: Root) -> Result<Vec<PathBuf>, Error>
     where
@@ -216,7 +216,7 @@ impl FirmwareExtractor {
         let input = input.as_ref();
         let ldconf_path = root.join("etc").join("ld.so.conf");
         let reader = BufReader::new(File::open(ldconf_path)?);
-        return Ok(vec!["lib", "usr/lib"]
+        Ok(vec!["lib", "usr/lib"]
             .iter()
             .map(|p| root.join(PathBuf::from_slash(*p)))
             .chain(reader.lines().filter_map(|line| {
@@ -249,6 +249,6 @@ impl FirmwareExtractor {
                 }
                 return Some(root.join(PathBuf::from_slash(trimmed)));
             }))
-            .collect());
+            .collect())
     }
 }

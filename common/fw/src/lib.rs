@@ -37,4 +37,5 @@ pub enum ReleaseCodename {
     Kisscurl,
     Mullet,
     Number1,
+    Ombre,
 }
