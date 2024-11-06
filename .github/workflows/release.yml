@@ -9,12 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
-
-      - uses: olegtarasov/get-tag@v2.1.2
-        id: tagName
 
       - name: Update Packages
         shell: bash
@@ -41,7 +38,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Release ${{ steps.tagName.outputs.tag }}
+          name: Release ${{ github.event.release.tag_name }}
           allowUpdates: true
           omitNameDuringUpdate: true
           omitBodyDuringUpdate: true
