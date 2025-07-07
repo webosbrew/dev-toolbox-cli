@@ -1,0 +1,28 @@
+{
+  "name": "libhal_ecp.so",
+  "package": "lib32-hal-libs",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_ECP_CA_CI_PLUS_ExecuteTEE",
+    "HAL_ECP_CI_PLUS_Finalize",
+    "HAL_ECP_CI_PLUS_Initialize",
+    "HAL_ECP_CI_PLUS_LoadCertKey",
+    "HAL_ECP_CI_PLUS_LoadKeyMaterials",
+    "HAL_ECP_CI_PLUS_SetCipherKeysByChannel",
+    "HAL_ECP_CI_PLUS_SetCryptographyByChannel",
+    "HAL_ECP_CI_PLUS_WriteCertKey",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev",
+    "_ZN8CCritSecD1Ev",
+    "_ZN8CCritSecD2Ev",
+    "_ZN9CAutoLockD1Ev",
+    "_ZN9CAutoLockD2Ev"
+  ]
+}

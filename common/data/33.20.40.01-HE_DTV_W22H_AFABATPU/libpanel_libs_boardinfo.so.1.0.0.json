@@ -1,0 +1,34 @@
+{
+  "name": "libpanel_libs_boardinfo.so.1",
+  "package": "lib32-panel-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "DILE_V_BOARDINFO_getPanelInfo",
+    "DILE_V_BOARDINFO_setPanelInfo",
+    "DIL_PANEL_BOARDINFO_getVpPanelInfo",
+    "DIL_PANEL_BOARDINFO_setVpPanelInfo",
+    "getCmnI2cDevice",
+    "getPSSResult",
+    "getPanelEEPROM",
+    "getPanelFlash",
+    "getPanelGPIO",
+    "getPanelInfo",
+    "getPanelNAND",
+    "getPanelRegister",
+    "ipc_mutex",
+    "setCmnI2cDevice",
+    "setPanelFreerun",
+    "setPanelGPIO",
+    "setPanelInfo",
+    "setPanelInitState",
+    "setPanelNAND",
+    "setPanelRegister"
+  ]
+}

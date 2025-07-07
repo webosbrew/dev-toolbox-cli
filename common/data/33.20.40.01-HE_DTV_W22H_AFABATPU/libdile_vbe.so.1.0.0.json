@@ -1,0 +1,24 @@
+{
+  "name": "libdile_vbe.so.1",
+  "package": "lib32-dile-libs",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libdile_boardinfo.so.1",
+    "libdile_i2c.so.1",
+    "libdile_wav22.so.1",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "DILE_VBE_GetOSDAlphaVal",
+    "DILE_VBE_Init8KTconV19",
+    "DILE_VBE_Read4KTcon",
+    "DILE_VBE_Read8KTconV19",
+    "DILE_VBE_SetOSDRGBLvl",
+    "DILE_VBE_SetScreenMute",
+    "DILE_VBE_SetVideoMirror",
+    "DILE_VBE_Write4KTcon",
+    "DILE_VBE_Write8KTconV19",
+    "g8KTconV19Sema"
+  ]
+}

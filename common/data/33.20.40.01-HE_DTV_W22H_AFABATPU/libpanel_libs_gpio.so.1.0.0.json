@@ -1,0 +1,36 @@
+{
+  "name": "libpanel_libs_gpio.so.1",
+  "package": "lib32-panel-libs",
+  "needed": [
+    "libc.so.6",
+    "libdile_gpio.so.1",
+    "libgcc_s.so.1",
+    "libgio-2.0.so.0",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "DILE_V_GPIO_GetGPIOPinNum",
+    "DILE_V_GPIO_ReadInputPort",
+    "DILE_V_GPIO_WriteOutputPort",
+    "DIL_PANEL_GPIO_Read",
+    "DIL_PANEL_GPIO_Write",
+    "getCmnI2cDevice",
+    "getPSSResult",
+    "getPanelEEPROM",
+    "getPanelFlash",
+    "getPanelGPIO",
+    "getPanelInfo",
+    "getPanelNAND",
+    "getPanelRegister",
+    "ipc_mutex",
+    "setCmnI2cDevice",
+    "setPanelFreerun",
+    "setPanelGPIO",
+    "setPanelInfo",
+    "setPanelInitState",
+    "setPanelNAND",
+    "setPanelRegister"
+  ]
+}

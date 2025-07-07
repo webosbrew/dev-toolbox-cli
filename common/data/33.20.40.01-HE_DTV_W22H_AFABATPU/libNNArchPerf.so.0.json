@@ -1,0 +1,33 @@
+{
+  "name": "libNNArchPerf.so",
+  "package": "lib32-aipqfw",
+  "needed": [
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "APMCalcImageIdealCacheInPixel",
+    "APMCalcImageInterleaveMode",
+    "APMCalcKernelCachePercentage",
+    "APMCalcNNCycleCountBandWidth",
+    "APMCalcNumOfKernel",
+    "APMCalcSHCycleCountBandWidth",
+    "APMCalcTPCycleCountCore",
+    "APMDeriveHWFeatures",
+    "APMGetBugFeatures",
+    "APMNNTransposeCycleCountBandWidth",
+    "APMSetManualFeatures",
+    "CreateAPModel",
+    "DestroyAPModel",
+    "archGetFlagBits",
+    "archPRINT",
+    "archPerfFastXDP3",
+    "archSetFlagBits",
+    "isInterleavedMode"
+  ]
+}

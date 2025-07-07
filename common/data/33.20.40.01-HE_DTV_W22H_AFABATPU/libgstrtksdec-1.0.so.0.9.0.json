@@ -1,0 +1,11 @@
+{
+  "name": "libgstrtksdec-1.0.so.0",
+  "package": "lib32-gstreamer1.0-plugins-rtk",
+  "needed": [
+    "libgcc_s.so.1",
+    "librpccore.so"
+  ],
+  "symbols": [
+    "gst_rtk_sdec_get_wall_clock"
+  ]
+}

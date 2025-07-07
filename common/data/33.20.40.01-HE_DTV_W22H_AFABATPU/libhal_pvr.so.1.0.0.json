@@ -1,0 +1,35 @@
+{
+  "name": "libhal_pvr.so",
+  "package": "lib32-hal-libs",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_PVR_CRYPTO_DecryptData",
+    "HAL_PVR_CRYPTO_EncryptData",
+    "HAL_PVR_CRYPTO_GetCipherKeys",
+    "HAL_PVR_CRYPTO_GetSecureKey",
+    "HAL_PVR_CRYPTO_SetCipherAlgorithm",
+    "HAL_PVR_CRYPTO_SetCipherKeys",
+    "HAL_PVR_CRYPTO_SetEncryptionState",
+    "HAL_PVR_FinalizeCrypto",
+    "HAL_PVR_InitializeCrypto",
+    "_Z29RHAL_PVR_CRYPTO_GetCryptoInfo23_PVR_CIPHER_OPERATION_TP18_PVR_CRYPTO_TYPE_T",
+    "_Z29RHAL_PVR_CRYPTO_SetPacketSizei",
+    "_Z30RHAL_PVR_CRYPTO_InsertMemEntrymmi",
+    "_Z30RHAL_PVR_CRYPTO_RemoveMemEntrymmi",
+    "_Z32RHAL_PVR_CRYPTO_GetPhyAddrOffsetmm",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev",
+    "_ZN9CPVRMutexD1Ev",
+    "_ZN9CPVRMutexD2Ev",
+    "_ZNSt6vectorI9MEM_MAP_TSaIS0_EE17_M_realloc_insertIJRKS0_EEEvN9__gnu_cxx17__normal_iteratorIPS0_S2_EEDpOT_",
+    "_ZNSt6vectorI9MEM_MAP_TSaIS0_EED1Ev",
+    "_ZNSt6vectorI9MEM_MAP_TSaIS0_EED2Ev"
+  ]
+}

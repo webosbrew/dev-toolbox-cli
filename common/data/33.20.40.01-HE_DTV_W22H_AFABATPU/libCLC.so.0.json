@@ -1,0 +1,20 @@
+{
+  "name": "libCLC.so",
+  "package": "lib32-aipqfw",
+  "needed": [
+    "libGAL.so",
+    "libVSC.so",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "librt.so.1"
+  ],
+  "symbols": [
+    "gcCLCompileProgram",
+    "gcCompileKernel",
+    "gcLoadKernelCompiler",
+    "gcUnloadKernelCompiler"
+  ]
+}

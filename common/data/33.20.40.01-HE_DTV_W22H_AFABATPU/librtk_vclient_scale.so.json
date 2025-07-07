@@ -1,0 +1,15 @@
+{
+  "name": "librtk_vclient_scale.so",
+  "package": "lib32-omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libomxrtk_utils.so"
+  ],
+  "symbols": [
+    "omx_scale_engine_init",
+    "omx_scale_engine_release",
+    "omx_scale_engine_stretchblt"
+  ]
+}

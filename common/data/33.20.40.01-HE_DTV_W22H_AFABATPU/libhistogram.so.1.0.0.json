@@ -1,0 +1,18 @@
+{
+  "name": "libhistogram.so",
+  "package": "lib32-hal-libs",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_GetHistogram",
+    "HAL_SetPresetHistogram",
+    "HAL_StartHistogram",
+    "HAL_StopHistogram"
+  ]
+}

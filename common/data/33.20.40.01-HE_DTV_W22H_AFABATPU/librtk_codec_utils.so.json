@@ -1,0 +1,13 @@
+{
+  "name": "librtk_codec_utils.so",
+  "package": "lib32-omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "codecrtk_log_println_full",
+    "codecrtk_log_vprintln_full"
+  ]
+}

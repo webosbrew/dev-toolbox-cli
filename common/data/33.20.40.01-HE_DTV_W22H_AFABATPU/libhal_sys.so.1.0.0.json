@@ -1,0 +1,33 @@
+{
+  "name": "libhal_sys.so",
+  "package": "lib32-hal-libs",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "HAL_IPC_Read",
+    "HAL_IPC_Write",
+    "HAL_SYS_CheckModelIdStatus",
+    "HAL_SYS_CheckRPMBPartition",
+    "HAL_SYS_GetDFTMemTestResult",
+    "HAL_SYS_GetPWMCapability",
+    "HAL_SYS_GetPWMData",
+    "HAL_SYS_GetWolStatus",
+    "HAL_SYS_LockDebugPort",
+    "HAL_SYS_ManageDDRdata",
+    "HAL_SYS_SetPWM",
+    "HAL_SYS_SetWolOnOff",
+    "HAL_SYS_StartDFTMemTest",
+    "HAL_SYS_WakeUpInternalMicom",
+    "_Z29RHAL_SYS_SetCPUSpreadSpectrumj",
+    "_Z29RHAL_SYS_SetDDRSpreadSpectrumj",
+    "_Z30RHAL_SYS_SetDISPSpreadSpectrumj",
+    "_ZN13CRTKTraceCallD1Ev",
+    "_ZN13CRTKTraceCallD2Ev"
+  ]
+}

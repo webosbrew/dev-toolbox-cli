@@ -1,0 +1,26 @@
+{
+  "name": "libsutu_display.so",
+  "package": "lib32-gpu-libs",
+  "needed": [
+    "libc.so.6",
+    "libdrm.so.2",
+    "libgcc_s.so.1",
+    "libpthread.so.0",
+    "libsrv_um.so"
+  ],
+  "symbols": [
+    "sutu_DisplayCheckCapabilities",
+    "sutu_DisplayCreateContext",
+    "sutu_DisplayCreateWindowDrawable",
+    "sutu_DisplayDestroyContext",
+    "sutu_DisplayDestroyWindowDrawable",
+    "sutu_DisplayGetType",
+    "sutu_DisplayGetTypeName",
+    "sutu_DisplayHelperKickTA",
+    "sutu_DisplayHelperTQCommand",
+    "sutu_DisplayQueryCapabilities",
+    "sutu_DisplayWindowDrawableAcquire",
+    "sutu_DisplayWindowDrawablePresent",
+    "sutu_DisplayWindowDrawableRelease"
+  ]
+}

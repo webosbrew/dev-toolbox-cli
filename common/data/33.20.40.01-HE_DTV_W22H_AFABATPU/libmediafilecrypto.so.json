@@ -1,0 +1,15 @@
+{
+  "name": "libmediafilecrypto.so",
+  "package": "lib32-mediadrm",
+  "needed": [
+    "libc.so.6",
+    "libcrypto.so.3",
+    "libdile_crypto.so.0",
+    "libdrmutil.so.1",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "decryptImage"
+  ]
+}

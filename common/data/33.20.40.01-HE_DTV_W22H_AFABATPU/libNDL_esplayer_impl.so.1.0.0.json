@@ -1,0 +1,36 @@
+{
+  "name": "libNDL_esplayer_impl.so.1",
+  "package": "lib32-libndl-esmedia",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libplayerAPIs.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "NDL_IMPL_ESP_Create",
+    "NDL_IMPL_ESP_Delete",
+    "NDL_IMPL_ESP_Feed",
+    "NDL_IMPL_ESP_Flush",
+    "NDL_IMPL_ESP_GetCodecCapability",
+    "NDL_IMPL_ESP_GetCurrentPlayTime",
+    "NDL_IMPL_ESP_GetMediaID",
+    "NDL_IMPL_ESP_GetVolume",
+    "NDL_IMPL_ESP_Init",
+    "NDL_IMPL_ESP_Load",
+    "NDL_IMPL_ESP_Pause",
+    "NDL_IMPL_ESP_Play",
+    "NDL_IMPL_ESP_PushEOS",
+    "NDL_IMPL_ESP_Quit",
+    "NDL_IMPL_ESP_Seek",
+    "NDL_IMPL_ESP_SetHdrInfo",
+    "NDL_IMPL_ESP_SetPlayRate",
+    "NDL_IMPL_ESP_SetSink",
+    "NDL_IMPL_ESP_SetTimeToDecode",
+    "NDL_IMPL_ESP_SetVolume",
+    "NDL_IMPL_ESP_Unload",
+    "_Z15GetPmLogContextv",
+    "debug_all_enabled"
+  ]
+}

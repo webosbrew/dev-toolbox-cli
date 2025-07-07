@@ -1,0 +1,36 @@
+{
+  "name": "libluna_client.so.1",
+  "package": "lib32-com.webos.service.camera",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libluna-service2.so.3",
+    "librt.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN10LunaClient11unsubscribeEm",
+    "_ZN10LunaClient17registerToServiceEPKcPFbS1_bPvES2_",
+    "_ZN10LunaClient21unregisterFromServiceEPKc",
+    "_ZN10LunaClient8callSyncEPKcS1_PNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiPi",
+    "_ZN10LunaClient9callAsyncEPKcS1_PFbS1_PvES2_",
+    "_ZN10LunaClient9subscribeEPKcS1_PmPFbS1_PvES3_S1_",
+    "_ZN10LunaClientC1EP8LSHandle",
+    "_ZN10LunaClientC1EPKcP13_GMainContext",
+    "_ZN10LunaClientC1Ev",
+    "_ZN10LunaClientC2EP8LSHandle",
+    "_ZN10LunaClientC2EPKcP13_GMainContext",
+    "_ZN10LunaClientC2Ev",
+    "_ZN10LunaClientD0Ev",
+    "_ZN10LunaClientD1Ev",
+    "_ZN10LunaClientD2Ev",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_PvESt10_Select1stIS9_ESt4lessIS5_ESaIS9_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_St10unique_ptrIN10LunaClient22RegisterHandlerWrapperESt14default_deleteISA_EEESt10_Select1stISE_ESt4lessIS5_ESaISE_EE24_M_get_insert_unique_posERS7_",
+    "_ZNSt8_Rb_treeImSt4pairIKmSt10unique_ptrIN10LunaClient14HandlerWrapperESt14default_deleteIS4_EEESt10_Select1stIS8_ESt4lessImESaIS8_EE24_M_get_insert_unique_posERS1_",
+    "_ZTI10LunaClient",
+    "_ZTS10LunaClient",
+    "_ZTV10LunaClient"
+  ]
+}

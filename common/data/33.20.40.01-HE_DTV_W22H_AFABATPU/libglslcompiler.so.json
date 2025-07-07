@@ -1,0 +1,28 @@
+{
+  "name": "libglslcompiler.so",
+  "package": "lib32-gpu-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libsrv_um.so",
+    "libstdc++.so.6",
+    "libusc.so"
+  ],
+  "symbols": [
+    "CopyGLSLIntermediate",
+    "GLSLCompileToUniflex",
+    "GLSLDecodeIntermediate",
+    "GLSLDisplayMetrics",
+    "GLSLFreeCompiledUniflexProgram",
+    "GLSLFreeIntermediate",
+    "GLSLGetSupportedLanguageVersions",
+    "GLSLInitCompiler",
+    "GLSLReadIntermediate",
+    "GLSLShutDownCompiler",
+    "GLSLWriteIntermediate",
+    "RGXBS_CreateBinary",
+    "RGXBS_RemoveLinkedProgramFromCachedBinary",
+    "RGXBS_UpdateBinary"
+  ]
+}

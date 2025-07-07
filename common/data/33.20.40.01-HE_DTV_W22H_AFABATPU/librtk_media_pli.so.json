@@ -1,0 +1,14 @@
+{
+  "name": "librtk_media_pli.so",
+  "package": "lib32-omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so",
+    "librtk_media_utils.so"
+  ],
+  "symbols": [
+    "rtk_media_get_clock_time",
+    "rtk_media_pli_flush"
+  ]
+}

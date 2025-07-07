@@ -1,0 +1,43 @@
+{
+  "name": "libgstrtkclock-1.0.so.0",
+  "package": "lib32-gstreamer1.0-plugins-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libgobject-2.0.so.0",
+    "libgstreamer-1.0.so.0",
+    "libgstrtkutils-1.0.so.0",
+    "librpccore.so"
+  ],
+  "symbols": [
+    "gst_rtk_atsc3_handler_checkclockexist",
+    "gst_rtk_atsc3_handler_getbootstatus",
+    "gst_rtk_atsc3_handler_getclksyncoffset",
+    "gst_rtk_atsc3_handler_getmastertime",
+    "gst_rtk_atsc3_handler_getsetstarttime",
+    "gst_rtk_atsc3_handler_getsyncoffset",
+    "gst_rtk_atsc3_handler_init",
+    "gst_rtk_atsc3_handler_isclockexist",
+    "gst_rtk_atsc3_handler_obtain",
+    "gst_rtk_atsc3_handler_setclksyncoffset",
+    "gst_rtk_atsc3_handler_setclockmode",
+    "gst_rtk_atsc3_handler_start",
+    "gst_rtk_atsc3_handler_stop",
+    "gst_rtk_atsc3_wall_clock_get_type",
+    "gst_rtk_atsc3_wall_clock_obtain",
+    "gst_rtkrefclock_getAVsyncPTS",
+    "gst_rtkrefclock_get_AO_overflow",
+    "gst_rtkrefclock_get_addr",
+    "gst_rtkrefclock_get_audio_fullness",
+    "gst_rtkrefclock_get_currentpts",
+    "gst_rtkrefclock_get_position_by_rcd",
+    "gst_rtkrefclock_get_type",
+    "gst_rtkrefclock_replace",
+    "gst_rtkrefclock_set_clockmode",
+    "gst_rtkrefclock_set_drop_pts",
+    "gst_rtkrefclock_set_freerunTHR",
+    "gst_rtkrefclock_set_rcd",
+    "gst_rtkrefclock_set_sourcetype"
+  ]
+}

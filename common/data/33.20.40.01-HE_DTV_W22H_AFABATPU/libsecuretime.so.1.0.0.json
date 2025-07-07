@@ -1,0 +1,42 @@
+{
+  "name": "libsecuretime.so.1",
+  "package": "lib32-libsecuretime1",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_clock_gettime",
+    "_clock_settime",
+    "_enableSettime",
+    "_getlocaltime",
+    "_getsecuretime",
+    "_gettimeofday",
+    "_isSettimeCall",
+    "_original_clock_gettime",
+    "_original_clock_settime",
+    "_setsecuretime",
+    "_settimeofday",
+    "_time",
+    "_writeTimeFile",
+    "clock_gettime",
+    "clock_settime",
+    "enableSettime",
+    "getFileModifyTime",
+    "getNTPTime",
+    "getsecuretime",
+    "gettimeofday",
+    "isFileExist",
+    "ntptime",
+    "setNTPTimeFile",
+    "setSecureTimeFile",
+    "setTimeInfo",
+    "setsecuretime",
+    "settimeofday",
+    "st_initialize",
+    "st_initializeTime",
+    "st_logPrint",
+    "st_setFlagUseSettime",
+    "time"
+  ]
+}

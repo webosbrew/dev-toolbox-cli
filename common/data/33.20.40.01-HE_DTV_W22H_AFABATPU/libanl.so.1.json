@@ -1,0 +1,11 @@
+{
+  "name": "libanl.so.1",
+  "package": "lib32-libc6",
+  "needed": [
+    "libc.so.6"
+  ],
+  "symbols": [
+    "GLIBC_2.4@GLIBC_2.4",
+    "__libanl_version_placeholder@GLIBC_2.4"
+  ]
+}

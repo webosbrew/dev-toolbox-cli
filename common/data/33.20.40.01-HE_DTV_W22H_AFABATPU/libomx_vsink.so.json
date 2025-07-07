@@ -1,0 +1,20 @@
+{
+  "name": "libomx_vsink.so",
+  "package": "lib32-omx-il-rtk",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libomxrtk_utils.so",
+    "librpccore.so"
+  ],
+  "symbols": [
+    "OMX_ComponentInit",
+    "RTK_CommandString",
+    "RTK_ErrorString",
+    "RTK_EventString",
+    "RTK_IndexString",
+    "RTK_StateString",
+    "__RTK_DumpBufferHeader",
+    "__RTK_DumpPortDefinition"
+  ]
+}

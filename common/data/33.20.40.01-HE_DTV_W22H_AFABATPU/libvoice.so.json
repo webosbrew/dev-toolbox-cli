@@ -1,0 +1,42 @@
+{
+  "name": "libvoice.so.0",
+  "package": "lib32-libkadaptor",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z10aecfe_stopPv",
+    "_Z11aecfe_startPv",
+    "_Z12GetBuiltDatev",
+    "_Z12GetBuiltTimev",
+    "_Z12aecfe_createPv",
+    "_Z13aecfe_releasePv",
+    "_Z15aecfe_configurePvP10lib_config",
+    "_Z15aecfe_read_dataPvS_i",
+    "_Z16setFarFieldIoctlPKc",
+    "_Z17FarField_sem_initv",
+    "_Z17FarField_sem_postP5sem_t",
+    "_Z17FarField_sem_waitP5sem_t",
+    "_Z18FarField_sem_statev",
+    "_Z20FarField_sem_destroyv",
+    "_Z20initFarFieldIoctlDevv",
+    "_Z24chkFarFieldServiceStatusPKcPj",
+    "_Z24getFarFieldServiceStatusv",
+    "_Z24setFarFieldServiceStatusj",
+    "_Z7GetHashv",
+    "_ZN6PRTLOG3LOGEPKcz",
+    "_ZN6PRTLOGC1Ev",
+    "_ZN6PRTLOGC2Ev",
+    "_ZN6PRTLOGD1Ev",
+    "_ZN6PRTLOGD2Ev",
+    "alsa_params",
+    "alsa_status",
+    "cDevice",
+    "farField_handle",
+    "farfield_lib_config"
+  ]
+}
