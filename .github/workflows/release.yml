@@ -3,6 +3,16 @@ name: Release
 on:
   release:
     types: [ "published" ]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to create the release on (e.g. v20260626-cd038b0)'
+        required: true
+        type: string
+      draft:
+        description: 'Create the release as a draft for review before publishing'
+        type: boolean
+        default: true
 
 jobs:
   release-ubuntu:
@@ -38,7 +48,9 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Release ${{ github.event.release.tag_name }}
+          tag: ${{ github.event.release.tag_name || inputs.tag }}
+          name: Release ${{ github.event.release.tag_name || inputs.tag }}
+          draft: ${{ github.event_name == 'workflow_dispatch' && inputs.draft }}
           allowUpdates: true
           omitNameDuringUpdate: true
           omitBodyDuringUpdate: true
