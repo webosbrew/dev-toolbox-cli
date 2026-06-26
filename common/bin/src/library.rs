@@ -45,6 +45,7 @@ impl LibraryInfo {
         N: AsRef<str>,
     {
         let mut needed = Vec::<String>::new();
+        let mut rpath = Vec::<String>::new();
         let mut elf = ElfStream::<AnyEndian, S>::open_stream(source)?;
         let mut name = String::from(name.as_ref());
 
@@ -64,6 +65,15 @@ impl LibraryInfo {
                 }
                 abi::DT_SONAME => {
                     name = String::from(dynstr_table.get(entry.d_val() as usize).unwrap());
+                }
+                abi::DT_RPATH | abi::DT_RUNPATH => {
+                    rpath.extend(
+                        dynstr_table
+                            .get(entry.d_val() as usize)
+                            .unwrap()
+                            .split(":")
+                            .map(|s| String::from(s)),
+                    );
                 }
                 _ => {}
             }
@@ -140,8 +150,31 @@ impl LibraryInfo {
             needed,
             symbols,
             undefined,
+            rpath,
             names: Default::default(),
             priority: Default::default(),
         })
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use std::io::Cursor;
+
+    use crate::LibraryInfo;
+
+    #[test]
+    fn test_parse_runpath() {
+        // Fixture is a shared object built with -Wl,-rpath,'$ORIGIN/pulseaudio'
+        // -Wl,--enable-new-dtags, i.e. a DT_RUNPATH entry.
+        let mut content = Cursor::new(include_bytes!("fixtures/lib_runpath.so"));
+        let info = LibraryInfo::parse(&mut content, true, "lib_runpath.so")
+            .expect("should not have any error");
+        assert_eq!(info.name, "libfixture.so.1", "name should come from DT_SONAME");
+        assert!(
+            info.rpath.iter().any(|p| p == "$ORIGIN/pulseaudio"),
+            "rpath should capture DT_RUNPATH, got {:?}",
+            info.rpath
+        );
     }
 }
