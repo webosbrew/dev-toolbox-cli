@@ -22,6 +22,7 @@ fn bundled_lib(name: &str, needed: &[&str], symbols: &[&str], undefined: &[&str]
         symbols,
         names: vec![name.to_string()],
         undefined: undefined.iter().map(|s| s.to_string()).collect(),
+        rpath: vec![],
         priority: LibraryPriority::Rpath,
     }
 }

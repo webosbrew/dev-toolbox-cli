@@ -22,6 +22,8 @@ pub struct LibraryInfo {
     pub names: Vec<String>,
     #[serde(skip_serializing_if = "Vec::is_empty", default)]
     pub undefined: Vec<String>,
+    #[serde(skip_serializing, default)]
+    pub rpath: Vec<String>,
     #[serde(skip_serializing, default = "LibraryPriority::default")]
     pub priority: LibraryPriority,
 }
