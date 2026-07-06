@@ -360,7 +360,10 @@ fn print_detection_details(
             }
             if !web.es_features.is_empty() {
                 let feats: Vec<&str> = web.es_features.iter().map(|f| f.label()).collect();
-                out.write_fmt(format_args!("* JS syntax used: {}\n", feats.join(", ")))?;
+                out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
+            }
+            for url in &web.remote_resources {
+                out.write_fmt(format_args!("* Remote resource: {url}\n"))?;
             }
         }
         DetectionResult::Service { detection: svc, .. } => {
@@ -414,6 +417,11 @@ fn describe_web(web: &WebAppDetection) -> String {
     }
     if let Some(level) = web.es_level {
         parts.push(format!("requires {}", level.label()));
+    }
+    match web.remote_resources.len() {
+        0 => {}
+        1 => parts.push("loads 1 remote resource".to_string()),
+        n => parts.push(format!("loads {n} remote resources")),
     }
     if parts.is_empty() {
         "no framework detected".to_string()

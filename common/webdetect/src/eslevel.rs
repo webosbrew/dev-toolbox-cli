@@ -80,6 +80,9 @@ pub enum EsFeature {
     AsyncAwait,
     OptionalChaining,
     NullishCoalescing,
+    /// An `<script type="module">` in the HTML — an engine-level feature the JS
+    /// scan can't see (a module-loaded bundle may otherwise read as ES5).
+    EsModule,
 }
 
 impl EsFeature {
@@ -93,6 +96,11 @@ impl EsFeature {
             | EsFeature::Spread => EsLevel::Es2015,
             EsFeature::Exponent => EsLevel::Es2016,
             EsFeature::AsyncAwait => EsLevel::Es2017,
+            // ES modules ship in Chromium 61. The nearest EsLevel bucket floor
+            // is Es2018 (Chromium 60); since no target firmware ships Chromium
+            // 60–67 (the engine set jumps 53→68), this yields the same verdict
+            // as requiring 61 exactly.
+            EsFeature::EsModule => EsLevel::Es2018,
             EsFeature::OptionalChaining | EsFeature::NullishCoalescing => EsLevel::Es2020,
         }
     }
@@ -108,6 +116,7 @@ impl EsFeature {
             EsFeature::AsyncAwait => "async/await",
             EsFeature::OptionalChaining => "optional chaining (?.)",
             EsFeature::NullishCoalescing => "nullish coalescing (??)",
+            EsFeature::EsModule => "ES module (<script type=module>)",
         }
     }
 }

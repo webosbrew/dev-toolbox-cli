@@ -33,6 +33,7 @@ fn web_app(es: EsLevel) -> Component<AppInfo> {
                 webostvjs: None,
                 es_level: Some(es),
                 es_features: vec![],
+                remote_resources: vec![],
             }),
         },
         exe: None,

@@ -6,6 +6,7 @@
 //! support at least this"), and framework versions are only reported when a
 //! reliable signal (license banner, `ng-version` attribute) is present.
 
+use std::collections::HashSet;
 use std::fs;
 use std::path::Path;
 use std::sync::LazyLock;
@@ -23,9 +24,11 @@ const MAX_FILE_BYTES: u64 = 8 * 1024 * 1024;
 const MAX_JS_FILES: usize = 400;
 /// Recursion depth cap for the directory walk.
 const MAX_DEPTH: usize = 12;
+/// Cap on distinct remote resource URLs reported.
+const MAX_REMOTE: usize = 20;
 
-/// Detect the framework, webOSTV.js SDK and ES syntax level of the web app
-/// rooted at `dir`, whose HTML entry point is `index_html`.
+/// Detect the framework, webOSTV.js SDK, ES syntax level and remote resources
+/// of the web app rooted at `dir`, whose HTML entry point is `index_html`.
 pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
     let html = fs::read_to_string(index_html).unwrap_or_default();
 
@@ -33,7 +36,10 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
     collect_js(dir, 0, &mut js);
 
     let (framework, also_present, webostvjs) = detect_frameworks(&html, &js);
-    let (es_level, es_features) = detect_es(&js);
+    // `<script type="module">` is an HTML-level engine signal the JS scan misses.
+    let has_module = RE_SCRIPT_MODULE.is_match(&html);
+    let (es_level, es_features) = detect_es(&js, has_module);
+    let remote_resources = detect_remote_resources(&html);
 
     WebAppDetection {
         framework,
@@ -41,6 +47,7 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
         webostvjs,
         es_level,
         es_features,
+        remote_resources,
     }
 }
 
@@ -98,6 +105,13 @@ re!(RE_JQUERY_PRESENT, r"jquery|jQuery");
 re!(RE_ENACT, r"@enact/|enactVersion|enact_dev|enactMeta");
 re!(RE_WEBOSTV, r"(?i)webOSTV(?:-dev)?\.js");
 re!(RE_WEBOSTV_VER, r"webOSTV(?:-dev)?\.js\s*(?:v(?:ersion)?)?\s*([0-9]+\.[0-9]+\.[0-9]+)");
+
+// HTML-level signals.
+re!(RE_SCRIPT_MODULE, r#"(?i)<script[^>]*\btype\s*=\s*["']module["']"#);
+re!(
+    RE_REMOTE_RESOURCE,
+    r#"(?i)(?:src|href)\s*=\s*["']((?:https?:)?//[^"']+)["']"#
+);
 
 /// Returns (primary framework, other frameworks present, webOSTV.js presence).
 ///
@@ -225,11 +239,9 @@ re!(RE_ASYNC, r"\b(?:async|await)\b");
 re!(RE_OPTIONAL_CHAIN, r"\?\.");
 re!(RE_NULLISH, r"\?\?");
 
-/// Scan the bundle for JS syntax features and derive the minimum ES level.
-fn detect_es(js: &[(String, String)]) -> (Option<EsLevel>, Vec<EsFeature>) {
-    if js.is_empty() {
-        return (None, Vec::new());
-    }
+/// Scan the bundle for JS syntax features (plus the HTML `type="module"` flag)
+/// and derive the minimum ES level.
+fn detect_es(js: &[(String, String)], html_module: bool) -> (Option<EsLevel>, Vec<EsFeature>) {
     let checks: [(&LazyLock<Regex>, EsFeature); 9] = [
         (&RE_LET_CONST, EsFeature::LetConst),
         (&RE_ARROW, EsFeature::Arrow),
@@ -247,12 +259,36 @@ fn detect_es(js: &[(String, String)]) -> (Option<EsLevel>, Vec<EsFeature>) {
             features.push(feature);
         }
     }
+    if html_module {
+        features.push(EsFeature::EsModule);
+    }
+    // Nothing to go on: no JS files and no module tag → level unknown.
+    if js.is_empty() && !html_module {
+        return (None, features);
+    }
     let level = features
         .iter()
         .map(|f| f.level())
         .max()
         .unwrap_or(EsLevel::Es5);
     (Some(level), features)
+}
+
+/// Collect distinct remote resource URLs (`http(s)://` or protocol-relative
+/// `//host/...`) referenced by `src`/`href` in the HTML. Informational only.
+fn detect_remote_resources(html: &str) -> Vec<String> {
+    let mut seen: HashSet<String> = HashSet::new();
+    let mut out: Vec<String> = Vec::new();
+    for cap in RE_REMOTE_RESOURCE.captures_iter(html) {
+        let url = cap.get(1).unwrap().as_str().to_string();
+        if seen.insert(url.clone()) {
+            out.push(url);
+            if out.len() >= MAX_REMOTE {
+                break;
+            }
+        }
+    }
+    out
 }
 
 #[cfg(test)]
@@ -320,7 +356,7 @@ mod tests {
 
     #[test]
     fn es_level_is_max_feature() {
-        let (level, feats) = detect_es(&js("const x = a?.b; let y = async () => await z;"));
+        let (level, feats) = detect_es(&js("const x = a?.b; let y = async () => await z;"), false);
         assert_eq!(level, Some(EsLevel::Es2020)); // optional chaining
         assert!(feats.contains(&EsFeature::OptionalChaining));
         assert!(feats.contains(&EsFeature::AsyncAwait));
@@ -329,7 +365,7 @@ mod tests {
 
     #[test]
     fn es5_bundle_reads_as_es5() {
-        let (level, feats) = detect_es(&js("var x = 1; function f() { return x; }"));
+        let (level, feats) = detect_es(&js("var x = 1; function f() { return x; }"), false);
         assert_eq!(level, Some(EsLevel::Es5));
         assert!(feats.is_empty());
     }
@@ -337,14 +373,51 @@ mod tests {
     #[test]
     fn jsdoc_banner_is_not_an_exponent() {
         // A `/** ... */` license banner must not be read as the `**` operator.
-        let (level, feats) = detect_es(&js("/** @license v1 */ var x = 1;"));
+        let (level, feats) = detect_es(&js("/** @license v1 */ var x = 1;"), false);
         assert_eq!(level, Some(EsLevel::Es5));
         assert!(!feats.contains(&EsFeature::Exponent));
     }
 
     #[test]
     fn real_exponent_is_detected() {
-        let (_level, feats) = detect_es(&js("var y = a ** 2;"));
+        let (_level, feats) = detect_es(&js("var y = a ** 2;"), false);
         assert!(feats.contains(&EsFeature::Exponent));
+    }
+
+    #[test]
+    fn script_module_raises_es_level_over_es5_bundle() {
+        // An otherwise-ES5 bundle loaded as a module still needs a modern engine.
+        let (level, feats) = detect_es(&js("var x = 1;"), true);
+        assert_eq!(level, Some(EsLevel::Es2018));
+        assert!(feats.contains(&EsFeature::EsModule));
+    }
+
+    #[test]
+    fn detects_script_module_tag() {
+        assert!(RE_SCRIPT_MODULE.is_match(r#"<script type="module" src="app.js"></script>"#));
+        assert!(RE_SCRIPT_MODULE.is_match(r#"<script src="a.js" type='module'></script>"#));
+        assert!(!RE_SCRIPT_MODULE.is_match(r#"<script src="app.js"></script>"#));
+    }
+
+    #[test]
+    fn collects_remote_resources_deduped() {
+        let html = r#"<html><head>
+            <script src="https://cdn.example.com/lib.js"></script>
+            <link href="//fonts.example.com/f.css">
+            <script src="bundle.js"></script>
+            <img src="https://cdn.example.com/lib.js">
+        </head></html>"#;
+        let remotes = detect_remote_resources(html);
+        assert_eq!(remotes.len(), 2); // local bundle.js excluded, duplicate deduped
+        assert!(remotes.iter().any(|u| u.contains("cdn.example.com/lib.js")));
+        assert!(remotes.iter().any(|u| u.starts_with("//fonts.example.com")));
+    }
+
+    #[test]
+    fn no_remote_resources_when_all_local() {
+        let remotes = detect_remote_resources(
+            r#"<script src="bundle.js"></script><link href="style.css">"#,
+        );
+        assert!(remotes.is_empty());
     }
 }

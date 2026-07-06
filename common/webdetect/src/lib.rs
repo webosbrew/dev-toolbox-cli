@@ -30,6 +30,9 @@ pub struct WebAppDetection {
     pub es_level: Option<EsLevel>,
     /// The syntax features that evidence `es_level`.
     pub es_features: Vec<EsFeature>,
+    /// Distinct remote resource URLs (`http(s)://` or `//host/...`) referenced
+    /// by `index.html`. Informational — does not affect the compat verdict.
+    pub remote_resources: Vec<String>,
 }
 
 #[derive(Debug, Clone)]
