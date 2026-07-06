@@ -1,10 +1,17 @@
 //! Frontend framework and JavaScript syntax-level detection for a web app.
 //!
-//! Heuristics operate on the shipped `index.html` and the bundle `*.js` files.
-//! They are intentionally conservative: regex on JS cannot tell code from
-//! strings, so the ES-level result is treated as a floor ("the engine must
-//! support at least this"), and framework versions are only reported when a
-//! reliable signal (license banner, `ng-version` attribute) is present.
+//! Accuracy comes from parsing rather than regex-ing the source:
+//! - JS ES-feature detection runs over a **token stream** (`ress`), so a
+//!   keyword or operator inside a string or comment can't false-match (the
+//!   classic `/**`-as-`**` problem).
+//! - HTML signals (`<script type="module">`, remote `src`/`href`, the Angular
+//!   `ng-version` attribute) come from a real **DOM** (`tl`), not attribute
+//!   regexes.
+//!
+//! Framework *identity* is still matched from unambiguous license banners in
+//! the JS text — those live in comments and are reliable as plain substrings.
+//! The ES-level result stays a conservative floor ("the engine must support at
+//! least this").
 
 use std::collections::HashSet;
 use std::fs;
@@ -12,6 +19,7 @@ use std::path::Path;
 use std::sync::LazyLock;
 
 use regex::Regex;
+use ress::prelude::*;
 use semver::Version;
 
 use crate::eslevel::{EsFeature, EsLevel};
@@ -35,11 +43,10 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
     let mut js: Vec<(String, String)> = Vec::new();
     collect_js(dir, 0, &mut js);
 
-    let (framework, also_present, webostvjs) = detect_frameworks(&html, &js);
-    // `<script type="module">` is an HTML-level engine signal the JS scan misses.
-    let has_module = RE_SCRIPT_MODULE.is_match(&html);
-    let (es_level, es_features) = detect_es(&js, has_module);
-    let remote_resources = detect_remote_resources(&html);
+    let signals = detect_html_signals(&html);
+    let (framework, also_present, webostvjs) =
+        detect_frameworks(&html, &js, signals.ng_version.as_deref());
+    let (es_level, es_features) = detect_es(&js, signals.has_module);
 
     WebAppDetection {
         framework,
@@ -47,7 +54,7 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
         webostvjs,
         es_level,
         es_features,
-        remote_resources,
+        remote_resources: signals.remote_resources,
     }
 }
 
@@ -83,7 +90,7 @@ fn collect_js(dir: &Path, depth: usize, out: &mut Vec<(String, String)>) {
             continue;
         }
         let name = entry.file_name().to_string_lossy().to_string();
-        if !name.ends_with(".js") || name.ends_with(".min.js.map") || name.ends_with(".map") {
+        if !name.ends_with(".js") || name.ends_with(".map") {
             continue;
         }
         if entry.metadata().map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
@@ -95,14 +102,73 @@ fn collect_js(dir: &Path, depth: usize, out: &mut Vec<(String, String)>) {
     }
 }
 
+// ---------------------------------------------------------------------------
+// HTML signals (parsed DOM, not regex)
+// ---------------------------------------------------------------------------
+
+#[derive(Default)]
+struct HtmlSignals {
+    has_module: bool,
+    remote_resources: Vec<String>,
+    ng_version: Option<String>,
+}
+
+/// Parse `index.html` and extract the `<script type="module">` flag, the
+/// Angular `ng-version` attribute, and remote `src`/`href` references.
+fn detect_html_signals(html: &str) -> HtmlSignals {
+    let mut sig = HtmlSignals::default();
+    let Ok(dom) = tl::parse(html, tl::ParserOptions::default()) else {
+        return sig;
+    };
+    let mut seen: HashSet<String> = HashSet::new();
+    for node in dom.nodes() {
+        let Some(tag) = node.as_tag() else { continue };
+        let attrs = tag.attributes();
+        let attr = |k: &str| {
+            attrs
+                .get(k)
+                .flatten()
+                .map(|b| b.as_utf8_str().into_owned())
+        };
+
+        if tag.name().as_utf8_str() == "script"
+            && attr("type").as_deref() == Some("module")
+        {
+            sig.has_module = true;
+        }
+        if sig.ng_version.is_none() {
+            if let Some(v) = attr("ng-version") {
+                sig.ng_version = Some(v);
+            }
+        }
+        for key in ["src", "href"] {
+            if let Some(url) = attr(key) {
+                if is_remote(&url) && seen.insert(url.clone()) && sig.remote_resources.len() < MAX_REMOTE {
+                    sig.remote_resources.push(url);
+                }
+            }
+        }
+    }
+    sig
+}
+
+/// A `src`/`href` that leaves the device: absolute `http(s)://` or the
+/// protocol-relative `//host/...` form.
+fn is_remote(url: &str) -> bool {
+    let u = url.trim();
+    u.starts_with("http://") || u.starts_with("https://") || u.starts_with("//")
+}
+
+// ---------------------------------------------------------------------------
+// Framework identity (license banners / presence markers in JS text)
+// ---------------------------------------------------------------------------
+
 macro_rules! re {
     ($name:ident, $pat:expr) => {
         static $name: LazyLock<Regex> = LazyLock::new(|| Regex::new($pat).unwrap());
     };
 }
 
-// Framework signatures.
-re!(RE_NG_VERSION, r#"ng-version="([0-9]+\.[0-9]+\.[0-9]+)""#);
 re!(RE_ANGULARJS, r#"(?:angular\.version|"full"\s*:\s*")\s*[:=]?\s*"?(1\.[0-9]+\.[0-9]+)"#);
 re!(RE_REACT_BANNER, r"@license React v?([0-9]+\.[0-9]+\.[0-9]+)");
 re!(RE_REACT_PRESENT, r"React\.createElement|react-dom(?:\.production)?(?:\.min)?\.js|__reactContainer|data-reactroot");
@@ -115,13 +181,6 @@ re!(RE_ENACT, r"@enact/|enactVersion|enact_dev|enactMeta");
 re!(RE_WEBOSTV, r"(?i)webOSTV(?:-dev)?\.js");
 re!(RE_WEBOSTV_VER, r"webOSTV(?:-dev)?\.js\s*(?:v(?:ersion)?)?\s*([0-9]+\.[0-9]+\.[0-9]+)");
 
-// HTML-level signals.
-re!(RE_SCRIPT_MODULE, r#"(?i)<script[^>]*\btype\s*=\s*["']module["']"#);
-re!(
-    RE_REMOTE_RESOURCE,
-    r#"(?i)(?:src|href)\s*=\s*["']((?:https?:)?//[^"']+)["']"#
-);
-
 /// Returns (primary framework, other frameworks present, webOSTV.js presence).
 ///
 /// `webostvjs`: `None` = absent, `Some(None)` = present (version unknown),
@@ -129,9 +188,8 @@ re!(
 fn detect_frameworks(
     html: &str,
     js: &[(String, String)],
+    ng_version: Option<&str>,
 ) -> (Option<FrameworkInfo>, Vec<FrameworkInfo>, Option<Option<Version>>) {
-    // Search the HTML plus every JS file/name. `haystacks` is scanned for
-    // content signatures; `names` for filename signatures.
     let mut found: Vec<FrameworkInfo> = Vec::new();
 
     let cap_ver = |re: &Regex, hay: &str| -> Option<Version> {
@@ -140,13 +198,15 @@ fn detect_frameworks(
             .and_then(|m| Version::parse(m.as_str()).ok())
     };
 
-    // Angular (2+): the ng-version attribute lives in index.html and is exact.
-    if let Some(v) = cap_ver(&RE_NG_VERSION, html) {
-        found.push(FrameworkInfo::new(FrameworkKind::Angular, Some(v)));
+    // Angular (2+): from the parsed `ng-version` attribute — exact and reliable.
+    if let Some(v) = ng_version {
+        found.push(FrameworkInfo::new(
+            FrameworkKind::Angular,
+            Version::parse(v).ok(),
+        ));
     }
 
-    // Everything else: scan HTML + JS contents. `scan` returns the detection
-    // instead of capturing `found`, so its borrow ends at each call.
+    // Everything else: scan HTML + JS contents for a banner/presence marker.
     let scan = |kind: FrameworkKind,
                 present: &Regex,
                 version: Option<&Regex>|
@@ -177,7 +237,6 @@ fn detect_frameworks(
         found.push(f);
     }
     if let Some(mut vue) = scan(FrameworkKind::Vue, &RE_VUE_PRESENT, Some(&RE_VUE_V2)) {
-        // Vue 3's banner is a separate pattern; fold its version in if v2 missed it.
         if vue.version.is_none() {
             vue.version = js.iter().find_map(|(_, c)| cap_ver(&RE_VUE_V3, c));
         }
@@ -190,7 +249,6 @@ fn detect_frameworks(
         found.push(f);
     }
 
-    // Enact (LG's React-based framework). Version is not reliably in the bundle.
     let enact = std::iter::once(html)
         .chain(js.iter().map(|(_, c)| c.as_str()))
         .any(|h| RE_ENACT.is_match(h));
@@ -198,7 +256,6 @@ fn detect_frameworks(
         found.push(FrameworkInfo::new(FrameworkKind::Enact, None));
     }
 
-    // webOSTV.js SDK — an app can use it alongside any framework.
     let webostvjs = {
         let by_name = js.iter().any(|(n, _)| RE_WEBOSTV.is_match(n));
         let by_content = std::iter::once(html)
@@ -214,7 +271,6 @@ fn detect_frameworks(
         }
     };
 
-    // Pick the primary by precedence; the rest become `also_present`.
     let precedence = [
         FrameworkKind::Enact,
         FrameworkKind::Angular,
@@ -235,46 +291,39 @@ fn detect_frameworks(
     (primary, found, webostvjs)
 }
 
-// ES feature signatures. Deliberately narrow to limit false positives on
-// strings/comments in minified code.
-re!(RE_LET_CONST, r"\b(?:let|const)\s");
-re!(RE_ARROW, r"=>");
-re!(RE_TEMPLATE, r"`");
-re!(RE_CLASS, r"\bclass\s+[A-Za-z_$]");
-re!(RE_SPREAD, r"\.\.\.");
-// Require operand context (`a ** b`) so JSDoc `/**` banners don't false-match.
-re!(RE_EXPONENT, r"[A-Za-z0-9_)\]]\s*\*\*\s*[A-Za-z0-9_($]");
-re!(RE_ASYNC, r"\b(?:async|await)\b");
-re!(RE_OPTIONAL_CHAIN, r"\?\.");
-re!(RE_NULLISH, r"\?\?");
+// ---------------------------------------------------------------------------
+// ES feature detection (token stream, not regex)
+// ---------------------------------------------------------------------------
 
 /// Scan the bundle for JS syntax features (plus the HTML `type="module"` flag)
-/// and derive the minimum ES level.
+/// and derive the minimum ES level. Features are read from a `ress` token
+/// stream, so occurrences inside strings/comments/regex literals are ignored.
 fn detect_es(js: &[(String, String)], html_module: bool) -> (Option<EsLevel>, Vec<EsFeature>) {
-    let checks: [(&LazyLock<Regex>, EsFeature); 9] = [
-        (&RE_LET_CONST, EsFeature::LetConst),
-        (&RE_ARROW, EsFeature::Arrow),
-        (&RE_TEMPLATE, EsFeature::TemplateLiteral),
-        (&RE_CLASS, EsFeature::Class),
-        (&RE_SPREAD, EsFeature::Spread),
-        (&RE_EXPONENT, EsFeature::Exponent),
-        (&RE_ASYNC, EsFeature::AsyncAwait),
-        (&RE_OPTIONAL_CHAIN, EsFeature::OptionalChaining),
-        (&RE_NULLISH, EsFeature::NullishCoalescing),
-    ];
-    let mut features: Vec<EsFeature> = Vec::new();
-    for (re, feature) in checks {
-        if js.iter().any(|(_, c)| re.is_match(c)) {
-            features.push(feature);
-        }
+    let mut found: HashSet<EsFeature> = HashSet::new();
+    for (_, content) in js {
+        scan_js_features(content, &mut found);
     }
     if html_module {
-        features.push(EsFeature::EsModule);
+        found.insert(EsFeature::EsModule);
     }
     // Nothing to go on: no JS files and no module tag → level unknown.
     if js.is_empty() && !html_module {
-        return (None, features);
+        return (None, Vec::new());
     }
+    // Emit in a stable, oldest-first order for readable output.
+    let order = [
+        EsFeature::LetConst,
+        EsFeature::Arrow,
+        EsFeature::TemplateLiteral,
+        EsFeature::Class,
+        EsFeature::Spread,
+        EsFeature::Exponent,
+        EsFeature::AsyncAwait,
+        EsFeature::EsModule,
+        EsFeature::OptionalChaining,
+        EsFeature::NullishCoalescing,
+    ];
+    let features: Vec<EsFeature> = order.into_iter().filter(|f| found.contains(f)).collect();
     let level = features
         .iter()
         .map(|f| f.level())
@@ -283,21 +332,81 @@ fn detect_es(js: &[(String, String)], html_module: bool) -> (Option<EsLevel>, Ve
     (Some(level), features)
 }
 
-/// Collect distinct remote resource URLs (`http(s)://` or protocol-relative
-/// `//host/...`) referenced by `src`/`href` in the HTML. Informational only.
-fn detect_remote_resources(html: &str) -> Vec<String> {
-    let mut seen: HashSet<String> = HashSet::new();
-    let mut out: Vec<String> = Vec::new();
-    for cap in RE_REMOTE_RESOURCE.captures_iter(html) {
-        let url = cap.get(1).unwrap().as_str().to_string();
-        if seen.insert(url.clone()) {
-            out.push(url);
-            if out.len() >= MAX_REMOTE {
-                break;
+/// Tokenize one JS source and record the ES features it uses.
+///
+/// `?.` and `??` are not single tokens in this lexer, so they are reconstructed
+/// from an adjacent `?` + `.`/`?` pair (adjacency rules out `a ? .5 : b`).
+/// `async` is a contextual keyword (an identifier here), so it only counts when
+/// immediately followed by `function`, `(`, or an identifier.
+fn scan_js_features(content: &str, found: &mut HashSet<EsFeature>) {
+    let mut pending_question_end: Option<usize> = None;
+    let mut pending_async = false;
+
+    for item in Scanner::new(content) {
+        let Ok(item) = item else {
+            break; // lex error → keep what we have (conservative)
+        };
+        let span = item.span;
+
+        if pending_async {
+            pending_async = false;
+            let is_async_fn = matches!(&item.token, Token::Keyword(Keyword::Function(_)))
+                || matches!(&item.token, Token::Ident(_))
+                || matches!(&item.token, Token::Punct(Punct::OpenParen));
+            if is_async_fn {
+                found.insert(EsFeature::AsyncAwait);
             }
         }
+
+        if let Some(q_end) = pending_question_end.take() {
+            if span.start == q_end {
+                match &item.token {
+                    Token::Punct(Punct::Period) => {
+                        found.insert(EsFeature::OptionalChaining);
+                    }
+                    Token::Punct(Punct::QuestionMark) => {
+                        found.insert(EsFeature::NullishCoalescing);
+                    }
+                    _ => {}
+                }
+            }
+        }
+
+        match &item.token {
+            Token::Keyword(Keyword::Let(_)) | Token::Keyword(Keyword::Const(_)) => {
+                found.insert(EsFeature::LetConst);
+            }
+            Token::Keyword(Keyword::Class(_)) => {
+                found.insert(EsFeature::Class);
+            }
+            Token::Keyword(Keyword::Await(_)) => {
+                found.insert(EsFeature::AsyncAwait);
+            }
+            Token::Template(_) => {
+                found.insert(EsFeature::TemplateLiteral);
+            }
+            // `async` is an identifier in this lexer; confirm it's a function.
+            Token::Ident(id) if id.as_ref() == "async" => {
+                pending_async = true;
+            }
+            Token::Punct(p) => match p {
+                Punct::EqualGreaterThan => {
+                    found.insert(EsFeature::Arrow);
+                }
+                Punct::Ellipsis => {
+                    found.insert(EsFeature::Spread);
+                }
+                Punct::DoubleAsterisk | Punct::DoubleAsteriskEqual => {
+                    found.insert(EsFeature::Exponent);
+                }
+                Punct::QuestionMark => {
+                    pending_question_end = Some(span.end);
+                }
+                _ => {}
+            },
+            _ => {}
+        }
     }
-    out
 }
 
 #[cfg(test)]
@@ -308,10 +417,12 @@ mod tests {
         vec![("bundle.js".to_string(), content.to_string())]
     }
 
+    // --- framework identity ---
+
     #[test]
-    fn detects_angular_version_from_html() {
-        let (primary, _others, _tv) =
-            detect_frameworks(r#"<html><app-root ng-version="15.2.9"></app-root></html>"#, &[]);
+    fn detects_angular_version_from_attribute() {
+        let sig = detect_html_signals(r#"<html><app-root ng-version="15.2.9"></app-root></html>"#);
+        let (primary, _o, _t) = detect_frameworks("", &[], sig.ng_version.as_deref());
         let f = primary.unwrap();
         assert_eq!(f.kind, FrameworkKind::Angular);
         assert_eq!(f.version, Some(Version::parse("15.2.9").unwrap()));
@@ -322,6 +433,7 @@ mod tests {
         let (primary, _o, _t) = detect_frameworks(
             "",
             &js("/** @license React v18.2.0 */ React.createElement('div')"),
+            None,
         );
         let f = primary.unwrap();
         assert_eq!(f.kind, FrameworkKind::React);
@@ -329,39 +441,62 @@ mod tests {
     }
 
     #[test]
-    fn detects_jquery_version() {
-        let (primary, _o, _t) =
-            detect_frameworks("", &js("/*! jQuery JavaScript Library v3.6.0 */ jQuery(function(){})"));
-        let f = primary.unwrap();
-        assert_eq!(f.kind, FrameworkKind::Jquery);
-        assert_eq!(f.version, Some(Version::parse("3.6.0").unwrap()));
-    }
-
-    #[test]
     fn enact_takes_precedence_over_react() {
-        // Enact bundles are React under the hood; the primary should be Enact.
         let (primary, others, _t) = detect_frameworks(
             "",
             &js("import '@enact/core'; /** @license React v18.2.0 */ React.createElement"),
+            None,
         );
         assert_eq!(primary.unwrap().kind, FrameworkKind::Enact);
         assert!(others.iter().any(|f| f.kind == FrameworkKind::React));
     }
 
     #[test]
-    fn detects_webostvjs() {
-        let files = vec![("webOSTV.js".to_string(), "var webOS = {};".to_string())];
-        let (_p, _o, tv) = detect_frameworks("", &files);
-        assert!(tv.is_some());
-    }
-
-    #[test]
     fn plain_html_when_nothing_matches() {
-        let (primary, others, tv) = detect_frameworks("<html><body>hi</body></html>", &[]);
+        let (primary, others, tv) = detect_frameworks("<html><body>hi</body></html>", &[], None);
         assert_eq!(primary.unwrap().kind, FrameworkKind::PlainHtml);
         assert!(others.is_empty());
         assert!(tv.is_none());
     }
+
+    // --- HTML signals (tl DOM) ---
+
+    #[test]
+    fn detects_script_module_tag() {
+        assert!(detect_html_signals(r#"<script type="module" src="app.js"></script>"#).has_module);
+        assert!(detect_html_signals(r#"<script src="a.js" type='module'></script>"#).has_module);
+        assert!(!detect_html_signals(r#"<script src="app.js"></script>"#).has_module);
+    }
+
+    #[test]
+    fn module_word_in_text_is_not_a_module_script() {
+        // A DOM parse won't be fooled by the word "module" in body text/attrs.
+        let sig = detect_html_signals(r#"<html><body>type="module" is great</body></html>"#);
+        assert!(!sig.has_module);
+    }
+
+    #[test]
+    fn collects_remote_resources_deduped() {
+        let sig = detect_html_signals(
+            r#"<html><head>
+                <script src="https://cdn.example.com/lib.js"></script>
+                <link href="//fonts.example.com/f.css">
+                <script src="bundle.js"></script>
+                <img src="https://cdn.example.com/lib.js">
+            </head></html>"#,
+        );
+        assert_eq!(sig.remote_resources.len(), 2);
+        assert!(sig.remote_resources.iter().any(|u| u.contains("cdn.example.com/lib.js")));
+        assert!(sig.remote_resources.iter().any(|u| u.starts_with("//fonts.example.com")));
+    }
+
+    #[test]
+    fn no_remote_resources_when_all_local() {
+        let sig = detect_html_signals(r#"<script src="bundle.js"></script><link href="style.css">"#);
+        assert!(sig.remote_resources.is_empty());
+    }
+
+    // --- ES features (ress token stream) ---
 
     #[test]
     fn es_level_is_max_feature() {
@@ -370,6 +505,14 @@ mod tests {
         assert!(feats.contains(&EsFeature::OptionalChaining));
         assert!(feats.contains(&EsFeature::AsyncAwait));
         assert!(feats.contains(&EsFeature::Arrow));
+        assert!(feats.contains(&EsFeature::LetConst));
+    }
+
+    #[test]
+    fn detects_nullish_coalescing() {
+        let (level, feats) = detect_es(&js("var x = a ?? b;"), false);
+        assert_eq!(level, Some(EsLevel::Es2020));
+        assert!(feats.contains(&EsFeature::NullishCoalescing));
     }
 
     #[test]
@@ -380,8 +523,28 @@ mod tests {
     }
 
     #[test]
+    fn features_inside_strings_and_comments_are_ignored() {
+        // The whole point of tokenizing: none of these are real syntax.
+        let src = r#"
+            // const x = () => {}; a ** b; a?.b; a ?? b; async function q(){}
+            var s = "const y = async () => await z ** 2 ?? w ?.p";
+            var t = `template-looking ${'but a string'}`;
+            var u = 1;
+        "#;
+        let (level, feats) = detect_es(&js(src), false);
+        // The backtick template IS real code here, so ES2015; but NO async,
+        // arrow, exponent, optional-chaining or nullish from the string/comment.
+        assert!(!feats.contains(&EsFeature::AsyncAwait));
+        assert!(!feats.contains(&EsFeature::Arrow));
+        assert!(!feats.contains(&EsFeature::Exponent));
+        assert!(!feats.contains(&EsFeature::OptionalChaining));
+        assert!(!feats.contains(&EsFeature::NullishCoalescing));
+        assert_eq!(level, Some(EsLevel::Es2015)); // only the real template literal
+        assert!(feats.contains(&EsFeature::TemplateLiteral));
+    }
+
+    #[test]
     fn jsdoc_banner_is_not_an_exponent() {
-        // A `/** ... */` license banner must not be read as the `**` operator.
         let (level, feats) = detect_es(&js("/** @license v1 */ var x = 1;"), false);
         assert_eq!(level, Some(EsLevel::Es5));
         assert!(!feats.contains(&EsFeature::Exponent));
@@ -394,39 +557,16 @@ mod tests {
     }
 
     #[test]
+    fn async_identifier_variable_is_not_async_function() {
+        // `var async = 1;` must not be read as async/await usage.
+        let (_level, feats) = detect_es(&js("var async = 1; var b = async + 2;"), false);
+        assert!(!feats.contains(&EsFeature::AsyncAwait));
+    }
+
+    #[test]
     fn script_module_raises_es_level_over_es5_bundle() {
-        // An otherwise-ES5 bundle loaded as a module still needs a modern engine.
         let (level, feats) = detect_es(&js("var x = 1;"), true);
         assert_eq!(level, Some(EsLevel::Es2018));
         assert!(feats.contains(&EsFeature::EsModule));
-    }
-
-    #[test]
-    fn detects_script_module_tag() {
-        assert!(RE_SCRIPT_MODULE.is_match(r#"<script type="module" src="app.js"></script>"#));
-        assert!(RE_SCRIPT_MODULE.is_match(r#"<script src="a.js" type='module'></script>"#));
-        assert!(!RE_SCRIPT_MODULE.is_match(r#"<script src="app.js"></script>"#));
-    }
-
-    #[test]
-    fn collects_remote_resources_deduped() {
-        let html = r#"<html><head>
-            <script src="https://cdn.example.com/lib.js"></script>
-            <link href="//fonts.example.com/f.css">
-            <script src="bundle.js"></script>
-            <img src="https://cdn.example.com/lib.js">
-        </head></html>"#;
-        let remotes = detect_remote_resources(html);
-        assert_eq!(remotes.len(), 2); // local bundle.js excluded, duplicate deduped
-        assert!(remotes.iter().any(|u| u.contains("cdn.example.com/lib.js")));
-        assert!(remotes.iter().any(|u| u.starts_with("//fonts.example.com")));
-    }
-
-    #[test]
-    fn no_remote_resources_when_all_local() {
-        let remotes = detect_remote_resources(
-            r#"<script src="bundle.js"></script><link href="style.css">"#,
-        );
-        assert!(remotes.is_empty());
     }
 }

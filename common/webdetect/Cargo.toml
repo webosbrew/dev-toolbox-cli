@@ -12,6 +12,8 @@ regex = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 semver = { workspace = true }
+ress = "0.11.7"
+tl = "0.7.8"
 
 [dev-dependencies]
 tempfile = { workspace = true }

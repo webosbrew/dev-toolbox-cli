@@ -69,7 +69,7 @@ impl EsLevel {
 
 /// A concrete JS syntax feature detected in a bundle, used as evidence for the
 /// derived [`EsLevel`].
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum EsFeature {
     LetConst,
     Arrow,
