@@ -8,6 +8,7 @@ use webdetect_lib::{ServiceRuntimeDetection, WebAppDetection};
 mod component;
 mod ipk;
 mod links;
+mod path;
 
 #[derive(Debug)]
 pub struct Package {

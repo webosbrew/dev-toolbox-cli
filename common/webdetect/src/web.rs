@@ -30,7 +30,7 @@ const MAX_REMOTE: usize = 20;
 /// Detect the framework, webOSTV.js SDK, ES syntax level and remote resources
 /// of the web app rooted at `dir`, whose HTML entry point is `index_html`.
 pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
-    let html = fs::read_to_string(index_html).unwrap_or_default();
+    let html = read_capped(index_html);
 
     let mut js: Vec<(String, String)> = Vec::new();
     collect_js(dir, 0, &mut js);
@@ -49,6 +49,15 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
         es_features,
         remote_resources,
     }
+}
+
+/// Read a file to a string, but skip (return empty) anything larger than
+/// [`MAX_FILE_BYTES`] so a pathological entry can't exhaust memory.
+fn read_capped(path: &Path) -> String {
+    if fs::metadata(path).map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
+        return String::new();
+    }
+    fs::read_to_string(path).unwrap_or_default()
 }
 
 /// Recursively gather `*.js` file contents (skipping source maps), bounded by
