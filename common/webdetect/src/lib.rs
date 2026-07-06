@@ -50,6 +50,7 @@ impl FrameworkInfo {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum FrameworkKind {
     Enact,
+    Enyo,
     React,
     Vue,
     Angular,
@@ -63,6 +64,7 @@ impl FrameworkKind {
     pub fn label(self) -> &'static str {
         match self {
             FrameworkKind::Enact => "Enact",
+            FrameworkKind::Enyo => "Enyo",
             FrameworkKind::React => "React",
             FrameworkKind::Vue => "Vue",
             FrameworkKind::Angular => "Angular",

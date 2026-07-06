@@ -178,6 +178,13 @@ re!(RE_VUE_PRESENT, r"__vue__|createElementVNode|Vue\.createApp|\bVue\b");
 re!(RE_JQUERY, r"jQuery(?: JavaScript Library)? v([0-9]+\.[0-9]+\.[0-9]+)");
 re!(RE_JQUERY_PRESENT, r"jquery|jQuery");
 re!(RE_ENACT, r"@enact/|enactVersion|enact_dev|enactMeta");
+// Enyo (the legacy LG/webOS framework Enact descends from): the `enyo.*` API
+// and its bundle/file markers.
+re!(
+    RE_ENYO,
+    r"\benyo\.(?:kind|Control|Component|Application|version|ready|singleton)\b|@enyo/|\benyojs\b|enyo(?:\.min)?\.js"
+);
+re!(RE_ENYO_VER, r#"enyo\.version\s*=\s*\{[^}]*?core["']?\s*:\s*["']([0-9]+\.[0-9]+\.[0-9]+)"#);
 re!(RE_WEBOSTV, r"(?i)webOSTV(?:-dev)?\.js");
 re!(RE_WEBOSTV_VER, r"webOSTV(?:-dev)?\.js\s*(?:v(?:ersion)?)?\s*([0-9]+\.[0-9]+\.[0-9]+)");
 
@@ -256,6 +263,11 @@ fn detect_frameworks(
         found.push(FrameworkInfo::new(FrameworkKind::Enact, None));
     }
 
+    // Enyo (best-effort version from `enyo.version = { core: "x.y.z" }`).
+    if let Some(f) = scan(FrameworkKind::Enyo, &RE_ENYO, Some(&RE_ENYO_VER)) {
+        found.push(f);
+    }
+
     let webostvjs = {
         let by_name = js.iter().any(|(n, _)| RE_WEBOSTV.is_match(n));
         let by_content = std::iter::once(html)
@@ -273,6 +285,7 @@ fn detect_frameworks(
 
     let precedence = [
         FrameworkKind::Enact,
+        FrameworkKind::Enyo,
         FrameworkKind::Angular,
         FrameworkKind::React,
         FrameworkKind::Vue,
@@ -457,6 +470,34 @@ mod tests {
         assert_eq!(primary.unwrap().kind, FrameworkKind::PlainHtml);
         assert!(others.is_empty());
         assert!(tv.is_none());
+    }
+
+    #[test]
+    fn detects_enyo_from_api_usage() {
+        let (primary, _o, _t) =
+            detect_frameworks("", &js("enyo.kind({ name: 'App', kind: enyo.Control });"), None);
+        assert_eq!(primary.unwrap().kind, FrameworkKind::Enyo);
+    }
+
+    #[test]
+    fn detects_enyo_version() {
+        let (primary, _o, _t) = detect_frameworks(
+            "",
+            &js(r#"enyo.version = { core: "2.7.0", canvas: "2.7.0" };"#),
+            None,
+        );
+        let f = primary.unwrap();
+        assert_eq!(f.kind, FrameworkKind::Enyo);
+        assert_eq!(f.version, Some(Version::parse("2.7.0").unwrap()));
+    }
+
+    #[test]
+    fn enact_takes_precedence_over_enyo_markers() {
+        // Enact's lineage means some enyo-ish strings can co-occur; Enact wins.
+        let (primary, others, _t) =
+            detect_frameworks("", &js("import '@enact/core'; enyo.kind({});"), None);
+        assert_eq!(primary.unwrap().kind, FrameworkKind::Enact);
+        assert!(others.iter().any(|f| f.kind == FrameworkKind::Enyo));
     }
 
     // --- HTML signals (tl DOM) ---
