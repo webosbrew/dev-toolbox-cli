@@ -53,6 +53,23 @@ impl EsLevel {
         EsLevel::Es5
     }
 
+    /// Minimum Node.js major/minor that supports the syntax this level implies
+    /// (V8 landing points). Used to check a service's own code against the
+    /// firmware's bundled Node.js — a trustworthy, code-derived requirement
+    /// (unlike `engines.node`, which isn't read).
+    pub fn min_node_version(self) -> (u64, u64) {
+        match self {
+            EsLevel::Es5 => (0, 10),
+            EsLevel::Es2015 => (6, 0), // let/const/arrow/class/template/spread
+            EsLevel::Es2016 => (7, 0), // ** exponentiation
+            EsLevel::Es2017 => (7, 6), // async/await
+            EsLevel::Es2018 => (10, 0), // object spread, async iteration
+            EsLevel::Es2019 => (12, 0),
+            EsLevel::Es2020 => (14, 0), // optional chaining, nullish coalescing
+            EsLevel::Es2021Plus => (15, 0),
+        }
+    }
+
     pub fn label(self) -> &'static str {
         match self {
             EsLevel::Es5 => "ES5",
@@ -134,6 +151,14 @@ mod tests {
         // WebKit 537-era / Chromium 38 predate ES2015.
         assert_eq!(EsLevel::from_chromium_major(38), EsLevel::Es5);
         assert_eq!(EsLevel::from_chromium_major(0), EsLevel::Es5);
+    }
+
+    #[test]
+    fn min_node_versions_are_ordered() {
+        assert_eq!(EsLevel::Es5.min_node_version(), (0, 10));
+        assert_eq!(EsLevel::Es2017.min_node_version(), (7, 6));
+        assert_eq!(EsLevel::Es2020.min_node_version(), (14, 0));
+        assert!(EsLevel::Es2020.min_node_version() > EsLevel::Es2015.min_node_version());
     }
 
     #[test]

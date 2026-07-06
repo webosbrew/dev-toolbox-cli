@@ -303,11 +303,8 @@ fn print_detection_summary(
                     .chain(results.iter().map(|(_, r)| Cell::new(&web_engine_label(r))))
                     .collect(),
             ));
-            // Whether that engine supports the app's ES level.
-            let title = match web.es_level {
-                Some(level) => format!("{} support", level.label()),
-                None => "ES support".to_string(),
-            };
+            // Whether that engine supports the app's ES syntax level (gating).
+            let title = es_support_title(web.es_level);
             table.add_row(Row::new(
                 iter::once(Cell::new(&title))
                     .chain(
@@ -317,20 +314,56 @@ fn print_detection_summary(
                     )
                     .collect(),
             ));
+            // Advisory: runtime APIs the app uses (may need polyfills). Suppressed
+            // when the app bundles its own polyfills (the row would be moot).
+            if !web.es_apis.is_empty() && web.polyfills.is_empty() {
+                table.add_row(Row::new(
+                    iter::once(Cell::new("Runtime APIs"))
+                        .chain(results.iter().map(|(_, r)| out.advisory_cell(api_advisory(r), out_fmt)))
+                        .collect(),
+                ));
+            }
         }
         DetectionResult::Service { detection: svc, .. } => {
             out.write_fmt(format_args!("JS service — {}\n\n", describe_service(svc)))?;
-            // Each firmware's Node.js version — informational only; there is no
-            // reliable requirement to check a webOS service against.
+            // Each firmware's Node.js version.
             table.add_row(Row::new(
                 iter::once(Cell::new("Node.js (firmware)"))
                     .chain(results.iter().map(|(_, r)| Cell::new(&node_label(r))))
                     .collect(),
             ));
+            // Whether that Node.js supports the service's ES syntax level
+            // (gating; derived from code, not engines.node).
+            if svc.es_level.is_some() {
+                let title = es_support_title(svc.es_level);
+                table.add_row(Row::new(
+                    iter::once(Cell::new(&title))
+                        .chain(
+                            results
+                                .iter()
+                                .map(|(_, r)| out.verdict_cell(component_verdict(r), out_fmt)),
+                        )
+                        .collect(),
+                ));
+            }
+            if !svc.es_apis.is_empty() && svc.polyfills.is_empty() {
+                table.add_row(Row::new(
+                    iter::once(Cell::new("Runtime APIs"))
+                        .chain(results.iter().map(|(_, r)| out.advisory_cell(api_advisory(r), out_fmt)))
+                        .collect(),
+                ));
+            }
         }
     }
     out.print_table(&table)?;
     return Ok(());
+}
+
+fn es_support_title(level: Option<webdetect_lib::EsLevel>) -> String {
+    match level {
+        Some(level) => format!("{} support", level.label()),
+        None => "ES support".to_string(),
+    }
 }
 
 /// Render `--details` for a non-native component: syntax-feature / dependency
@@ -354,22 +387,28 @@ fn print_detection_details(
                 let feats: Vec<&str> = web.es_features.iter().map(|f| f.label()).collect();
                 out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
             }
+            print_api_details(&web.es_apis, &web.polyfills, out)?;
             for url in &web.remote_resources {
                 out.write_fmt(format_args!("* Remote resource: {url}\n"))?;
             }
         }
         DetectionResult::Service { detection: svc, .. } => {
             out.h4("JS service")?;
+            if !svc.es_features.is_empty() {
+                let feats: Vec<&str> = svc.es_features.iter().map(|f| f.label()).collect();
+                out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
+            }
+            print_api_details(&svc.es_apis, &svc.polyfills, out)?;
             for (name, ver) in &svc.dependencies {
                 out.write_fmt(format_args!("* Dependency: {name} {ver}\n"))?;
             }
         }
     }
-    // Report incompatible firmwares with their reason.
+    // Report incompatible firmwares with their reason (gating verdicts only).
     let mut any_fail = false;
     for (fw, r) in results {
         if let Some(detection) = &r.detection {
-            if let Some(CompatVerdict::Fail { reason }) = detection.verdict() {
+            if let CompatVerdict::Fail { reason } = detection.verdict() {
                 if !any_fail {
                     out.h5("Incompatible on")?;
                     any_fail = true;
@@ -379,6 +418,34 @@ fn print_detection_details(
         }
     }
     out.write_fmt(format_args!("\n"))?;
+    return Ok(());
+}
+
+/// List the detected runtime APIs (advisory). When the component bundles its
+/// own polyfills, note that instead — the API list would be moot.
+fn print_api_details(
+    apis: &[webdetect_lib::ApiUse],
+    polyfills: &[String],
+    out: &mut Box<dyn ReportOutput>,
+) -> Result<(), Error> {
+    if !polyfills.is_empty() {
+        out.write_fmt(format_args!(
+            "* Bundles polyfills ({}) — runtime APIs are self-provided\n",
+            polyfills.join(", ")
+        ))?;
+        return Ok(());
+    }
+    if apis.is_empty() {
+        return Ok(());
+    }
+    let names: Vec<&str> = apis.iter().map(|a| a.name.as_str()).collect();
+    if let Some(level) = apis.iter().map(|a| a.level).max() {
+        out.write_fmt(format_args!(
+            "* Runtime APIs (up to {}, may need polyfills): {}\n",
+            level.label(),
+            names.join(", ")
+        ))?;
+    }
     return Ok(());
 }
 
@@ -407,6 +474,9 @@ fn describe_web(web: &WebAppDetection) -> String {
     if let Some(level) = web.es_level {
         parts.push(format!("requires {}", level.label()));
     }
+    if !web.polyfills.is_empty() {
+        parts.push(format!("bundles polyfills ({})", web.polyfills.join(", ")));
+    }
     match web.remote_resources.len() {
         0 => {}
         1 => parts.push("loads 1 remote resource".to_string()),
@@ -419,23 +489,40 @@ fn describe_web(web: &WebAppDetection) -> String {
     }
 }
 
-/// One-line description of the detected JS service (dependencies only — its
-/// Node.js requirement is not inferable, see ServiceRuntimeDetection).
+/// One-line description of the detected JS service: its ES language level
+/// (checked against Node.js) and dependency count.
 fn describe_service(svc: &ServiceRuntimeDetection) -> String {
-    match svc.dependencies.len() {
-        0 => "Node.js service".to_string(),
-        1 => "Node.js service; 1 dependency".to_string(),
-        n => format!("Node.js service; {n} dependencies"),
+    let mut parts: Vec<String> = vec!["Node.js service".to_string()];
+    if let Some(level) = svc.es_level {
+        parts.push(format!("requires {}", level.label()));
     }
+    if !svc.polyfills.is_empty() {
+        parts.push(format!("bundles polyfills ({})", svc.polyfills.join(", ")));
+    }
+    match svc.dependencies.len() {
+        0 => {}
+        1 => parts.push("1 dependency".to_string()),
+        n => parts.push(format!("{n} dependencies")),
+    }
+    parts.join("; ")
 }
 
-/// The web app's ES compatibility verdict for a component result (Unknown if
-/// absent). Only web apps carry a verdict; services are informational.
+/// The gating ES compatibility verdict for a component result (Unknown if
+/// there is no detection).
 fn component_verdict(result: &ComponentVerifyResult) -> &CompatVerdict {
     result
         .detection
         .as_ref()
-        .and_then(|d| d.verdict())
+        .map(|d| d.verdict())
+        .unwrap_or(&CompatVerdict::Unknown)
+}
+
+/// The advisory runtime-API verdict for a component result.
+fn api_advisory(result: &ComponentVerifyResult) -> &CompatVerdict {
+    result
+        .detection
+        .as_ref()
+        .map(|d| d.api_advisory())
         .unwrap_or(&CompatVerdict::Unknown)
 }
 

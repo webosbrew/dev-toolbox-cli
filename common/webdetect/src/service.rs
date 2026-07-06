@@ -6,6 +6,7 @@ use std::path::Path;
 
 use serde::Deserialize;
 
+use crate::js;
 use crate::ServiceRuntimeDetection;
 
 #[derive(Debug, Default, Deserialize)]
@@ -16,19 +17,28 @@ struct PackageJson {
     dependencies: BTreeMap<String, String>,
 }
 
-/// Read `<dir>/package.json` and extract the service's dependencies and entry
-/// point. Returns an empty detection when there is no parseable `package.json`
-/// (e.g. a QML or non-JS service).
+/// Inspect a service directory: read `package.json` for dependencies/entry
+/// point, and analyze the service's own `.js` code for its ES language level
+/// (checked against the firmware's Node.js) and runtime-API usage.
 ///
 /// Note: `engines.node` is deliberately NOT read — webOS services don't set it
-/// reliably, so it cannot be trusted as a runtime requirement.
+/// reliably. The ES level, by contrast, is derived from the actual code and so
+/// is trustworthy.
 pub fn detect_service_runtime(dir: &Path) -> ServiceRuntimeDetection {
     let text = fs::read_to_string(dir.join("package.json")).unwrap_or_default();
     let pkg: PackageJson = serde_json::from_str(&text).unwrap_or_default();
 
+    let mut sources: Vec<(String, String)> = Vec::new();
+    js::collect_js(dir, 0, &mut sources);
+    let analysis = js::analyze_js(&sources, false);
+
     ServiceRuntimeDetection {
         dependencies: pkg.dependencies.into_iter().collect(),
         main: pkg.main,
+        es_level: analysis.es_level,
+        es_features: analysis.es_features,
+        es_apis: analysis.es_apis,
+        polyfills: js::detect_polyfills(&sources),
     }
 }
 

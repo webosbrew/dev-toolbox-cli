@@ -9,12 +9,22 @@
 use semver::Version;
 
 mod eslevel;
+mod js;
 mod service;
 mod web;
 
 pub use eslevel::{EsFeature, EsLevel};
 pub use service::detect_service_runtime;
 pub use web::detect_web_app;
+
+/// A notable static runtime API used by the code (e.g. `Object.assign`), with
+/// the ES level that introduced it. Advisory only — such APIs can be
+/// polyfilled, so their use never gates compatibility.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ApiUse {
+    pub name: String,
+    pub level: EsLevel,
+}
 
 /// What was detected about a web/frontend app.
 #[derive(Debug, Clone)]
@@ -30,6 +40,11 @@ pub struct WebAppDetection {
     pub es_level: Option<EsLevel>,
     /// The syntax features that evidence `es_level`.
     pub es_features: Vec<EsFeature>,
+    /// Notable static runtime APIs used (advisory — may be polyfilled).
+    pub es_apis: Vec<ApiUse>,
+    /// Bundled polyfill libraries detected (core-js, @babel/runtime, ...). When
+    /// non-empty the app self-polyfills, so the API advisory is suppressed.
+    pub polyfills: Vec<String>,
     /// Distinct remote resource URLs (`http(s)://` or `//host/...`) referenced
     /// by `index.html`. Informational — does not affect the compat verdict.
     pub remote_resources: Vec<String>,
@@ -86,4 +101,13 @@ pub struct ServiceRuntimeDetection {
     pub dependencies: Vec<(String, String)>,
     /// The `main` entry point, if declared.
     pub main: Option<String>,
+    /// Minimum ES level the service's own code requires — a code-derived,
+    /// trustworthy requirement checked against the firmware's Node.js version.
+    pub es_level: Option<EsLevel>,
+    /// The syntax features that evidence `es_level`.
+    pub es_features: Vec<EsFeature>,
+    /// Notable static runtime APIs used (advisory — may be polyfilled).
+    pub es_apis: Vec<ApiUse>,
+    /// Bundled polyfill libraries detected — suppresses the API advisory.
+    pub polyfills: Vec<String>,
 }
