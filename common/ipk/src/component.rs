@@ -41,6 +41,11 @@ impl Component<AppInfo> {
             )
         })?;
         if !info.is_native() {
+            // Web/hosted app: detect the frontend framework and JS syntax level
+            // from the shipped HTML/JS while the extracted files still exist.
+            let index_html = dir.join(Cow::from_slash(&info.main));
+            let mut info = info;
+            info.web = Some(webdetect_lib::detect_web_app(dir, &index_html));
             return Ok(Self {
                 id: info.id.clone(),
                 info,
@@ -84,6 +89,10 @@ impl Component<ServiceInfo> {
         let info: ServiceInfo = serde_json::from_reader(File::open(dir.join("services.json"))?)
             .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Bad appinfo.json: {e:?}")))?;
         if !info.is_native() {
+            // JS/Node service: detect the declared Node.js runtime from the
+            // bundled package.json while the extracted files still exist.
+            let mut info = info;
+            info.runtime = Some(webdetect_lib::detect_service_runtime(dir));
             return Ok(Self {
                 id: info.id.clone(),
                 info: info.clone(),

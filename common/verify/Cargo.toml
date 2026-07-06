@@ -8,8 +8,11 @@ edition = "2021"
 [dependencies]
 bin-lib = { path = "../../common/bin", optional = true }
 ipk-lib = { path = "../../common/ipk", optional = true }
+fw-lib = { path = "../../common/fw", optional = true }
+webdetect-lib = { path = "../../common/webdetect", optional = true }
+semver = { workspace = true, optional = true }
 
 [features]
 default = ["bin"]
 bin = ["dep:bin-lib"]
-ipk = ["bin", "dep:ipk-lib"]
+ipk = ["bin", "dep:ipk-lib", "dep:fw-lib", "dep:webdetect-lib", "dep:semver"]

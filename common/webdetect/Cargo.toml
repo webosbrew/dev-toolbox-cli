@@ -1,0 +1,17 @@
+[package]
+name = "webdetect-lib"
+version = "0.1.0"
+edition = "2021"
+
+# Detects the web/frontend framework and JavaScript syntax level of a webOS web
+# app, and the declared Node.js runtime of a JS service. Pure text/JSON analysis
+# with no ELF/ipk/firmware knowledge.
+
+[dependencies]
+regex = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+semver = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

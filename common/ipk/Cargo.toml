@@ -15,3 +15,6 @@ common-path = "1.0.0"
 
 [dependencies.bin-lib]
 path = "../bin"
+
+[dependencies.webdetect-lib]
+path = "../webdetect"

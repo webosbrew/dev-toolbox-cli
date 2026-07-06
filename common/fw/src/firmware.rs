@@ -6,7 +6,7 @@ use std::path::{Path, PathBuf};
 
 use bin_lib::LibraryInfo;
 
-use crate::{Firmware, FirmwareInfo, ReleaseCodename};
+use crate::{Firmware, FirmwareInfo, PackageEntry, ReleaseCodename};
 
 impl FirmwareInfo {
     pub fn codename(&self) -> Option<ReleaseCodename> {
@@ -74,10 +74,18 @@ impl Firmware {
             });
         })?;
 
+        // packages.json carries the installed OS package versions (Node.js, the
+        // web engine, ...). Older data dumps may lack it, so tolerate absence.
+        let packages: HashMap<String, PackageEntry> = File::open(path.join("packages.json"))
+            .ok()
+            .and_then(|file| serde_json::from_reader(BufReader::new(file)).ok())
+            .unwrap_or_default();
+
         Ok(Firmware {
             path: path.to_path_buf(),
             info,
             index,
+            packages,
         })
     }
 

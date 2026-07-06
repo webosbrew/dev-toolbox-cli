@@ -5,7 +5,7 @@ use prettytable::format::{FormatBuilder, LinePosition, LineSeparator, TableForma
 use prettytable::{Cell, Table};
 use term::{color, Attr};
 
-use verify_lib::ipk::ComponentBinVerifyResult;
+use verify_lib::ipk::{ComponentBinVerifyResult, CompatVerdict};
 
 use crate::OutputFormat;
 
@@ -31,6 +31,35 @@ pub trait PrintTable {
                 cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
                 cell
             }
+        };
+    }
+
+    /// Cell for a non-native compatibility verdict, styled like `result_cell`.
+    fn verdict_cell(&self, verdict: &CompatVerdict, out_fmt: &OutputFormat) -> Cell {
+        return match verdict {
+            CompatVerdict::Ok => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":ok:"
+                } else {
+                    "OK"
+                });
+                cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
+                cell
+            }
+            CompatVerdict::Fail { .. } => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":x:"
+                } else {
+                    "FAIL"
+                });
+                cell.style(Attr::ForegroundColor(color::BRIGHT_RED));
+                cell
+            }
+            CompatVerdict::Unknown => Cell::new(if *out_fmt == OutputFormat::Markdown {
+                ":grey_question:"
+            } else {
+                "UNKNOWN"
+            }),
         };
     }
 
