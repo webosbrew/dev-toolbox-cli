@@ -1,6 +1,5 @@
 //! Node.js service runtime detection from a bundled `package.json`.
 
-use std::collections::BTreeMap;
 use std::fs;
 use std::path::Path;
 
@@ -13,12 +12,10 @@ use crate::ServiceRuntimeDetection;
 struct PackageJson {
     #[serde(default)]
     main: Option<String>,
-    #[serde(default)]
-    dependencies: BTreeMap<String, String>,
 }
 
-/// Inspect a service directory: read `package.json` for dependencies/entry
-/// point, and analyze the service's own `.js` code for its ES language level
+/// Inspect a service directory: read `package.json` for the entry point, and
+/// analyze the service's own `.js` code for its ES language level
 /// (checked against the firmware's Node.js) and runtime-API usage.
 ///
 /// Note: `engines.node` is deliberately NOT read — webOS services don't set it
@@ -33,7 +30,6 @@ pub fn detect_service_runtime(dir: &Path) -> ServiceRuntimeDetection {
     let analysis = js::analyze_js(&sources, false);
 
     ServiceRuntimeDetection {
-        dependencies: pkg.dependencies.into_iter().collect(),
         main: pkg.main,
         es_level: analysis.es_level,
         es_features: analysis.es_features,
@@ -55,22 +51,18 @@ mod tests {
     }
 
     #[test]
-    fn parses_main_and_deps() {
+    fn parses_main() {
         let dir = write_pkg(
-            r#"{ "main": "service.js", "engines": { "node": ">=12.0.0" },
-                "dependencies": { "express": "^4.18.0", "lodash": "4.17.21" } }"#,
+            r#"{ "main": "service.js", "name": "com.example.app.service" }"#,
         );
         let d = detect_service_runtime(dir.path());
         assert_eq!(d.main.as_deref(), Some("service.js"));
-        assert_eq!(d.dependencies.len(), 2);
-        assert_eq!(d.dependencies[0].0, "express");
     }
 
     #[test]
     fn missing_package_json_is_empty() {
         let dir = tempfile::TempDir::new().unwrap();
         let d = detect_service_runtime(dir.path());
-        assert!(d.dependencies.is_empty());
         assert!(d.main.is_none());
     }
 }

@@ -97,8 +97,6 @@ impl FrameworkKind {
 /// reliably, so it is not trusted as a runtime requirement.
 #[derive(Debug, Clone, Default)]
 pub struct ServiceRuntimeDetection {
-    /// `dependencies` as (name, version-spec) pairs, sorted by name.
-    pub dependencies: Vec<(String, String)>,
     /// The `main` entry point, if declared.
     pub main: Option<String>,
     /// Minimum ES level the service's own code requires — a code-derived,

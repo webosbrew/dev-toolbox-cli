@@ -366,8 +366,8 @@ fn es_support_title(level: Option<webdetect_lib::EsLevel>) -> String {
     }
 }
 
-/// Render `--details` for a non-native component: syntax-feature / dependency
-/// evidence, then any firmware on which it is incompatible and why.
+/// Render `--details` for a non-native component: syntax-feature evidence,
+/// then any firmware on which it is incompatible and why.
 fn print_detection_details(
     results: &Vec<(&Firmware, &ComponentVerifyResult)>,
     out: &mut Box<dyn ReportOutput>,
@@ -399,9 +399,6 @@ fn print_detection_details(
                 out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
             }
             print_api_details(&svc.es_apis, &svc.polyfills, out)?;
-            for (name, ver) in &svc.dependencies {
-                out.write_fmt(format_args!("* Dependency: {name} {ver}\n"))?;
-            }
         }
     }
     // Report incompatible firmwares with their reason (gating verdicts only).
@@ -490,7 +487,7 @@ fn describe_web(web: &WebAppDetection) -> String {
 }
 
 /// One-line description of the detected JS service: its ES language level
-/// (checked against Node.js) and dependency count.
+/// (checked against Node.js).
 fn describe_service(svc: &ServiceRuntimeDetection) -> String {
     let mut parts: Vec<String> = vec!["Node.js service".to_string()];
     if let Some(level) = svc.es_level {
@@ -498,11 +495,6 @@ fn describe_service(svc: &ServiceRuntimeDetection) -> String {
     }
     if !svc.polyfills.is_empty() {
         parts.push(format!("bundles polyfills ({})", svc.polyfills.join(", ")));
-    }
-    match svc.dependencies.len() {
-        0 => {}
-        1 => parts.push("1 dependency".to_string()),
-        n => parts.push(format!("{n} dependencies")),
     }
     parts.join("; ")
 }

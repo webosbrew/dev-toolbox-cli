@@ -51,7 +51,6 @@ fn node_service(id: &str, es: EsLevel) -> Component<ServiceInfo> {
             engine: Some("node".to_string()),
             executable: None,
             runtime: Some(ServiceRuntimeDetection {
-                dependencies: vec![("express".to_string(), "^4.18.0".to_string())],
                 main: None,
                 es_level: Some(es),
                 es_features: vec![],
