@@ -10,6 +10,7 @@ use path_slash::CowExt;
 
 use bin_lib::{BinaryInfo, LibraryInfo, LibraryPriority};
 
+use crate::path::ensure_within;
 use crate::{AppInfo, Component, ServiceInfo, Symlinks};
 
 impl AppInfo {
@@ -41,6 +42,12 @@ impl Component<AppInfo> {
             )
         })?;
         if !info.is_native() {
+            // Web/hosted app: detect the frontend framework and JS syntax level
+            // from the shipped HTML/JS while the extracted files still exist.
+            // `main` is untrusted; keep it inside the app directory.
+            let index_html = ensure_within(dir, &dir.join(Cow::from_slash(&info.main)))?;
+            let mut info = info;
+            info.web = Some(webdetect_lib::detect_web_app(dir, &index_html));
             return Ok(Self {
                 id: info.id.clone(),
                 info,
@@ -48,7 +55,7 @@ impl Component<AppInfo> {
                 libs: Default::default(),
             });
         }
-        let exe_path = dir.join(Cow::from_slash(&info.main));
+        let exe_path = ensure_within(dir, &dir.join(Cow::from_slash(&info.main)))?;
         let bin_info = BinaryInfo::parse(
             File::open(&exe_path).map_err(|e| {
                 Error::new(
@@ -84,6 +91,10 @@ impl Component<ServiceInfo> {
         let info: ServiceInfo = serde_json::from_reader(File::open(dir.join("services.json"))?)
             .map_err(|e| Error::new(ErrorKind::InvalidData, format!("Bad appinfo.json: {e:?}")))?;
         if !info.is_native() {
+            // JS/Node service: detect the declared Node.js runtime from the
+            // bundled package.json while the extracted files still exist.
+            let mut info = info;
+            info.runtime = Some(webdetect_lib::detect_service_runtime(dir));
             return Ok(Self {
                 id: info.id.clone(),
                 info: info.clone(),
@@ -92,9 +103,9 @@ impl Component<ServiceInfo> {
             });
         }
         let executable = info.executable.as_ref().unwrap();
-        let exe_path = dir.join(Cow::from_slash(executable));
+        let exe_path = ensure_within(dir, &dir.join(Cow::from_slash(executable)))?;
         let bin_info = BinaryInfo::parse(
-            File::open(dir.join(&exe_path))?,
+            File::open(&exe_path)?,
             exe_path.file_name().unwrap().to_string_lossy(),
             true,
         )

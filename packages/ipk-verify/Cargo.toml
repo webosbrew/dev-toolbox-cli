@@ -32,6 +32,9 @@ path = "../../common/bin"
 [dependencies.ipk-lib]
 path = "../../common/ipk"
 
+[dependencies.webdetect-lib]
+path = "../../common/webdetect"
+
 [features]
 linux-install = ["fw-lib/linux-install"]
 

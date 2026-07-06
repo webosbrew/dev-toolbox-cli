@@ -34,6 +34,13 @@ impl VerifyResult for ComponentVerifyResult {
                 return false;
             }
         }
+        // A definitive non-native incompatibility (e.g. app ES level exceeds the
+        // firmware's web engine) also fails the component; Unknown does not.
+        if let Some(detection) = &self.detection {
+            if detection.is_incompatible() {
+                return false;
+            }
+        }
         return true;
     }
 }
@@ -114,6 +121,7 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
                     name: String::new(),
                 },
                 libs: Default::default(),
+                detection: None,
             };
         };
         let bin = self.verify_bin(exe, find_library);
@@ -173,6 +181,8 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
                 ComponentBinVerifyResult::Failed(bin)
             },
             libs,
+            // Filled in by Package::verify_for_firmware for non-native components.
+            detection: None,
         };
     }
 }

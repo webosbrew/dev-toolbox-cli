@@ -7,6 +7,7 @@ use std::path::Path;
 use debpkg::{Control, DebPkg};
 use path_slash::CowExt;
 
+use crate::path::ensure_within;
 use crate::{AppInfo, Component, Package, PackageInfo, ServiceInfo, Symlinks};
 
 impl Package {
@@ -49,29 +50,35 @@ impl Package {
             }
         }
         let links = Symlinks::new(links);
-        let package_info = File::open(tmp.as_ref().join(Cow::from_slash(&format!(
-            "usr/palm/packages/{id}/packageinfo.json"
-        ))))?;
+        // The package id and the app/service ids come from untrusted metadata;
+        // guard every path joined onto the extraction dir against traversal.
+        let root = tmp.as_ref();
+        let package_info_path = ensure_within(
+            root,
+            &root.join(Cow::from_slash(&format!(
+                "usr/palm/packages/{id}/packageinfo.json"
+            ))),
+        )?;
+        let package_info = File::open(package_info_path)?;
         let package_info: PackageInfo = serde_json::from_reader(package_info).map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,
                 format!("Bad packageinfo.json: {e:?}"),
             )
         })?;
-        let app = Component::<AppInfo>::parse(
-            tmp.as_ref().join(Cow::from_slash(&format!(
+        let app_dir = ensure_within(
+            root,
+            &root.join(Cow::from_slash(&format!(
                 "usr/palm/applications/{}",
                 package_info.app
             ))),
-            &links,
         )?;
+        let app = Component::<AppInfo>::parse(app_dir, &links)?;
         let mut services = Vec::new();
         for id in &package_info.services {
-            let service = Component::<ServiceInfo>::parse(
-                tmp.as_ref()
-                    .join(Cow::from_slash(&format!("usr/palm/services/{id}"))),
-                &links,
-            )?;
+            let service_dir =
+                ensure_within(root, &root.join(Cow::from_slash(&format!("usr/palm/services/{id}"))))?;
+            let service = Component::<ServiceInfo>::parse(service_dir, &links)?;
             services.push(service);
         }
         return Ok(Self {

@@ -3,10 +3,12 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 
 use bin_lib::{BinaryInfo, LibraryInfo};
+use webdetect_lib::{ServiceRuntimeDetection, WebAppDetection};
 
 mod component;
 mod ipk;
 mod links;
+mod path;
 
 #[derive(Debug)]
 pub struct Package {
@@ -40,6 +42,10 @@ pub struct AppInfo {
     pub title: String,
     pub app_description: Option<String>,
     pub main: String,
+    /// Web/frontend technology detected for non-native apps (filled at parse
+    /// time; not part of appinfo.json).
+    #[serde(skip)]
+    pub web: Option<WebAppDetection>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -47,6 +53,10 @@ pub struct ServiceInfo {
     pub id: String,
     pub engine: Option<String>,
     pub executable: Option<String>,
+    /// Node.js runtime detected for non-native services (filled at parse time;
+    /// not part of services.json).
+    #[serde(skip)]
+    pub runtime: Option<ServiceRuntimeDetection>,
 }
 
 #[derive(Debug)]

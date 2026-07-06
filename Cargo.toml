@@ -5,6 +5,7 @@ members = [
     "common/bin",
     "common/ipk",
     "common/verify",
+    "common/webdetect",
     "packages/elf-verify",
     "packages/ipk-verify",
     "packages/fw-extract",
