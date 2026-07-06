@@ -19,47 +19,42 @@ use std::path::Path;
 use std::sync::LazyLock;
 
 use regex::Regex;
-use ress::prelude::*;
 use semver::Version;
 
-use crate::eslevel::{EsFeature, EsLevel};
+use crate::js::{self, MAX_FILE_BYTES};
 use crate::{FrameworkInfo, FrameworkKind, WebAppDetection};
 
-/// Skip individual files larger than this (minified vendor blobs aside, real
-/// app code is far smaller); keeps a pathological package from blowing memory.
-const MAX_FILE_BYTES: u64 = 8 * 1024 * 1024;
-/// Stop after scanning this many JS files.
-const MAX_JS_FILES: usize = 400;
-/// Recursion depth cap for the directory walk.
-const MAX_DEPTH: usize = 12;
 /// Cap on distinct remote resource URLs reported.
 const MAX_REMOTE: usize = 20;
 
-/// Detect the framework, webOSTV.js SDK, ES syntax level and remote resources
-/// of the web app rooted at `dir`, whose HTML entry point is `index_html`.
+/// Detect the framework, webOSTV.js SDK, ES syntax level, runtime APIs and
+/// remote resources of the web app rooted at `dir`, whose HTML entry point is
+/// `index_html`.
 pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
     let html = read_capped(index_html);
 
-    let mut js: Vec<(String, String)> = Vec::new();
-    collect_js(dir, 0, &mut js);
+    let mut sources: Vec<(String, String)> = Vec::new();
+    js::collect_js(dir, 0, &mut sources);
 
     let signals = detect_html_signals(&html);
     // Many webOS apps (Enyo/Enact single-file builds) inline all JS into
     // index.html rather than shipping separate .js files; include those inline
     // scripts so ES-level detection sees them too.
     if !signals.inline_js.is_empty() {
-        js.push(("index.html".to_string(), signals.inline_js.clone()));
+        sources.push(("index.html".to_string(), signals.inline_js.clone()));
     }
     let (framework, also_present, webostvjs) =
-        detect_frameworks(&html, &js, signals.ng_version.as_deref());
-    let (es_level, es_features) = detect_es(&js, signals.has_module);
+        detect_frameworks(&html, &sources, signals.ng_version.as_deref());
+    let analysis = js::analyze_js(&sources, signals.has_module);
 
     WebAppDetection {
         framework,
         also_present,
         webostvjs,
-        es_level,
-        es_features,
+        es_level: analysis.es_level,
+        es_features: analysis.es_features,
+        es_apis: analysis.es_apis,
+        polyfills: js::detect_polyfills(&sources),
         remote_resources: signals.remote_resources,
     }
 }
@@ -71,41 +66,6 @@ fn read_capped(path: &Path) -> String {
         return String::new();
     }
     fs::read_to_string(path).unwrap_or_default()
-}
-
-/// Recursively gather `*.js` file contents (skipping source maps), bounded by
-/// the depth/count/size caps above.
-fn collect_js(dir: &Path, depth: usize, out: &mut Vec<(String, String)>) {
-    if depth > MAX_DEPTH || out.len() >= MAX_JS_FILES {
-        return;
-    }
-    let Ok(entries) = fs::read_dir(dir) else {
-        return;
-    };
-    for entry in entries.flatten() {
-        if out.len() >= MAX_JS_FILES {
-            return;
-        }
-        let path = entry.path();
-        let Ok(ft) = entry.file_type() else { continue };
-        if ft.is_dir() {
-            collect_js(&path, depth + 1, out);
-            continue;
-        }
-        if !ft.is_file() {
-            continue;
-        }
-        let name = entry.file_name().to_string_lossy().to_string();
-        if !name.ends_with(".js") || name.ends_with(".map") {
-            continue;
-        }
-        if entry.metadata().map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
-            continue;
-        }
-        if let Ok(content) = fs::read(&path) {
-            out.push((name, String::from_utf8_lossy(&content).into_owned()));
-        }
-    }
 }
 
 // ---------------------------------------------------------------------------
@@ -342,124 +302,6 @@ fn detect_frameworks(
     (primary, found, webostvjs)
 }
 
-// ---------------------------------------------------------------------------
-// ES feature detection (token stream, not regex)
-// ---------------------------------------------------------------------------
-
-/// Scan the bundle for JS syntax features (plus the HTML `type="module"` flag)
-/// and derive the minimum ES level. Features are read from a `ress` token
-/// stream, so occurrences inside strings/comments/regex literals are ignored.
-fn detect_es(js: &[(String, String)], html_module: bool) -> (Option<EsLevel>, Vec<EsFeature>) {
-    let mut found: HashSet<EsFeature> = HashSet::new();
-    for (_, content) in js {
-        scan_js_features(content, &mut found);
-    }
-    if html_module {
-        found.insert(EsFeature::EsModule);
-    }
-    // Nothing to go on: no JS files and no module tag → level unknown.
-    if js.is_empty() && !html_module {
-        return (None, Vec::new());
-    }
-    // Emit in a stable, oldest-first order for readable output.
-    let order = [
-        EsFeature::LetConst,
-        EsFeature::Arrow,
-        EsFeature::TemplateLiteral,
-        EsFeature::Class,
-        EsFeature::Spread,
-        EsFeature::Exponent,
-        EsFeature::AsyncAwait,
-        EsFeature::EsModule,
-        EsFeature::OptionalChaining,
-        EsFeature::NullishCoalescing,
-    ];
-    let features: Vec<EsFeature> = order.into_iter().filter(|f| found.contains(f)).collect();
-    let level = features
-        .iter()
-        .map(|f| f.level())
-        .max()
-        .unwrap_or(EsLevel::Es5);
-    (Some(level), features)
-}
-
-/// Tokenize one JS source and record the ES features it uses.
-///
-/// `?.` and `??` are not single tokens in this lexer, so they are reconstructed
-/// from an adjacent `?` + `.`/`?` pair (adjacency rules out `a ? .5 : b`).
-/// `async` is a contextual keyword (an identifier here), so it only counts when
-/// immediately followed by `function`, `(`, or an identifier.
-fn scan_js_features(content: &str, found: &mut HashSet<EsFeature>) {
-    let mut pending_question_end: Option<usize> = None;
-    let mut pending_async = false;
-
-    for item in Scanner::new(content) {
-        let Ok(item) = item else {
-            break; // lex error → keep what we have (conservative)
-        };
-        let span = item.span;
-
-        if pending_async {
-            pending_async = false;
-            let is_async_fn = matches!(&item.token, Token::Keyword(Keyword::Function(_)))
-                || matches!(&item.token, Token::Ident(_))
-                || matches!(&item.token, Token::Punct(Punct::OpenParen));
-            if is_async_fn {
-                found.insert(EsFeature::AsyncAwait);
-            }
-        }
-
-        if let Some(q_end) = pending_question_end.take() {
-            if span.start == q_end {
-                match &item.token {
-                    Token::Punct(Punct::Period) => {
-                        found.insert(EsFeature::OptionalChaining);
-                    }
-                    Token::Punct(Punct::QuestionMark) => {
-                        found.insert(EsFeature::NullishCoalescing);
-                    }
-                    _ => {}
-                }
-            }
-        }
-
-        match &item.token {
-            Token::Keyword(Keyword::Let(_)) | Token::Keyword(Keyword::Const(_)) => {
-                found.insert(EsFeature::LetConst);
-            }
-            Token::Keyword(Keyword::Class(_)) => {
-                found.insert(EsFeature::Class);
-            }
-            Token::Keyword(Keyword::Await(_)) => {
-                found.insert(EsFeature::AsyncAwait);
-            }
-            Token::Template(_) => {
-                found.insert(EsFeature::TemplateLiteral);
-            }
-            // `async` is an identifier in this lexer; confirm it's a function.
-            Token::Ident(id) if id.as_ref() == "async" => {
-                pending_async = true;
-            }
-            Token::Punct(p) => match p {
-                Punct::EqualGreaterThan => {
-                    found.insert(EsFeature::Arrow);
-                }
-                Punct::Ellipsis => {
-                    found.insert(EsFeature::Spread);
-                }
-                Punct::DoubleAsterisk | Punct::DoubleAsteriskEqual => {
-                    found.insert(EsFeature::Exponent);
-                }
-                Punct::QuestionMark => {
-                    pending_question_end = Some(span.end);
-                }
-                _ => {}
-            },
-            _ => {}
-        }
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -584,79 +426,5 @@ mod tests {
         );
         assert!(sig.inline_js.contains("async"));
         assert!(!sig.inline_js.contains("not")); // JSON script body excluded
-    }
-
-    // --- ES features (ress token stream) ---
-
-    #[test]
-    fn es_level_is_max_feature() {
-        let (level, feats) = detect_es(&js("const x = a?.b; let y = async () => await z;"), false);
-        assert_eq!(level, Some(EsLevel::Es2020)); // optional chaining
-        assert!(feats.contains(&EsFeature::OptionalChaining));
-        assert!(feats.contains(&EsFeature::AsyncAwait));
-        assert!(feats.contains(&EsFeature::Arrow));
-        assert!(feats.contains(&EsFeature::LetConst));
-    }
-
-    #[test]
-    fn detects_nullish_coalescing() {
-        let (level, feats) = detect_es(&js("var x = a ?? b;"), false);
-        assert_eq!(level, Some(EsLevel::Es2020));
-        assert!(feats.contains(&EsFeature::NullishCoalescing));
-    }
-
-    #[test]
-    fn es5_bundle_reads_as_es5() {
-        let (level, feats) = detect_es(&js("var x = 1; function f() { return x; }"), false);
-        assert_eq!(level, Some(EsLevel::Es5));
-        assert!(feats.is_empty());
-    }
-
-    #[test]
-    fn features_inside_strings_and_comments_are_ignored() {
-        // The whole point of tokenizing: none of these are real syntax.
-        let src = r#"
-            // const x = () => {}; a ** b; a?.b; a ?? b; async function q(){}
-            var s = "const y = async () => await z ** 2 ?? w ?.p";
-            var t = `template-looking ${'but a string'}`;
-            var u = 1;
-        "#;
-        let (level, feats) = detect_es(&js(src), false);
-        // The backtick template IS real code here, so ES2015; but NO async,
-        // arrow, exponent, optional-chaining or nullish from the string/comment.
-        assert!(!feats.contains(&EsFeature::AsyncAwait));
-        assert!(!feats.contains(&EsFeature::Arrow));
-        assert!(!feats.contains(&EsFeature::Exponent));
-        assert!(!feats.contains(&EsFeature::OptionalChaining));
-        assert!(!feats.contains(&EsFeature::NullishCoalescing));
-        assert_eq!(level, Some(EsLevel::Es2015)); // only the real template literal
-        assert!(feats.contains(&EsFeature::TemplateLiteral));
-    }
-
-    #[test]
-    fn jsdoc_banner_is_not_an_exponent() {
-        let (level, feats) = detect_es(&js("/** @license v1 */ var x = 1;"), false);
-        assert_eq!(level, Some(EsLevel::Es5));
-        assert!(!feats.contains(&EsFeature::Exponent));
-    }
-
-    #[test]
-    fn real_exponent_is_detected() {
-        let (_level, feats) = detect_es(&js("var y = a ** 2;"), false);
-        assert!(feats.contains(&EsFeature::Exponent));
-    }
-
-    #[test]
-    fn async_identifier_variable_is_not_async_function() {
-        // `var async = 1;` must not be read as async/await usage.
-        let (_level, feats) = detect_es(&js("var async = 1; var b = async + 2;"), false);
-        assert!(!feats.contains(&EsFeature::AsyncAwait));
-    }
-
-    #[test]
-    fn script_module_raises_es_level_over_es5_bundle() {
-        let (level, feats) = detect_es(&js("var x = 1;"), true);
-        assert_eq!(level, Some(EsLevel::Es2018));
-        assert!(feats.contains(&EsFeature::EsModule));
     }
 }

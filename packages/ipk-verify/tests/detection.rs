@@ -33,6 +33,8 @@ fn web_app(es: EsLevel) -> Component<AppInfo> {
                 webostvjs: None,
                 es_level: Some(es),
                 es_features: vec![],
+                es_apis: vec![],
+                polyfills: vec![],
                 remote_resources: vec![],
             }),
         },
@@ -41,7 +43,7 @@ fn web_app(es: EsLevel) -> Component<AppInfo> {
     }
 }
 
-fn node_service(id: &str) -> Component<ServiceInfo> {
+fn node_service(id: &str, es: EsLevel) -> Component<ServiceInfo> {
     Component {
         id: id.to_string(),
         info: ServiceInfo {
@@ -51,6 +53,10 @@ fn node_service(id: &str) -> Component<ServiceInfo> {
             runtime: Some(ServiceRuntimeDetection {
                 dependencies: vec![("express".to_string(), "^4.18.0".to_string())],
                 main: None,
+                es_level: Some(es),
+                es_features: vec![],
+                es_apis: vec![],
+                polyfills: vec![],
             }),
         },
         exe: None,
@@ -77,14 +83,14 @@ fn web_app_es_level_checked_against_engine() {
 
     // Chromium 120 supports ES2017 → OK, component is good.
     let r = pkg.verify_for_firmware(&no_libs, None, Some(&WebEngine::Chromium(Version::new(120, 0, 0))));
-    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), Some(&CompatVerdict::Ok));
+    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), &CompatVerdict::Ok);
     assert!(r.app.is_good());
 
     // Chromium 53 (webOS 4) predates async/await → FAIL, component not good.
     let r = pkg.verify_for_firmware(&no_libs, None, Some(&WebEngine::Chromium(Version::new(53, 0, 2785))));
     assert!(matches!(
         r.app.detection.as_ref().unwrap().verdict(),
-        Some(CompatVerdict::Fail { .. })
+        CompatVerdict::Fail { .. }
     ));
     assert!(!r.app.is_good());
 
@@ -92,41 +98,45 @@ fn web_app_es_level_checked_against_engine() {
     let r = pkg.verify_for_firmware(&no_libs, None, Some(&WebEngine::WebKit(Version::new(537, 41, 0))));
     assert!(matches!(
         r.app.detection.as_ref().unwrap().verdict(),
-        Some(CompatVerdict::Fail { .. })
+        CompatVerdict::Fail { .. }
     ));
 
     // Firmware with no known web engine → Unknown, which must NOT fail the build.
     let r = pkg.verify_for_firmware(&no_libs, None, None);
-    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), Some(&CompatVerdict::Unknown));
+    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), &CompatVerdict::Unknown);
     assert!(r.app.is_good());
 }
 
 #[test]
-fn services_are_detected_but_never_fail_on_node() {
-    // engines.node is not trusted, so a JS service carries no compat verdict and
-    // must never fail the build regardless of the firmware's Node.js version.
+fn service_es_level_checked_against_node() {
+    // Service language level is code-derived (not engines.node) and gates:
+    // an ES2020 service (optional chaining → Node 14+) fails on Node 12,
+    // passes on Node 16; an ES5 service passes anywhere.
     let pkg = package(
         web_app(EsLevel::Es5),
         vec![
-            node_service("com.example.app.svc1"),
-            node_service("com.example.app.svc2"),
+            node_service("com.example.app.modern", EsLevel::Es2020),
+            node_service("com.example.app.legacy", EsLevel::Es5),
         ],
     );
 
-    let r = pkg.verify_for_firmware(
-        &no_libs,
-        Some(&Version::new(16, 20, 2)),
-        Some(&WebEngine::Chromium(Version::new(120, 0, 0))),
-    );
-    assert_eq!(r.services.len(), 2);
-    for svc in &r.services {
-        let detection = svc.detection.as_ref().unwrap();
-        assert!(detection.verdict().is_none()); // informational only
-        assert!(!detection.is_incompatible());
-        assert!(svc.is_good());
-    }
+    // webOS 7.4 ships Node 12.21 — too old for ES2020.
+    let r = pkg.verify_for_firmware(&no_libs, Some(&Version::new(12, 21, 0)), None);
+    assert!(matches!(
+        r.services[0].detection.as_ref().unwrap().verdict(),
+        CompatVerdict::Fail { .. }
+    ));
+    assert!(!r.services[0].is_good());
+    assert_eq!(r.services[1].detection.as_ref().unwrap().verdict(), &CompatVerdict::Ok);
+    assert!(r.services[1].is_good());
 
-    // Even with no Node package on the firmware, services stay good.
+    // webOS 10.2 ships Node 16.20 — supports ES2020.
+    let r = pkg.verify_for_firmware(&no_libs, Some(&Version::new(16, 20, 2)), None);
+    assert_eq!(r.services[0].detection.as_ref().unwrap().verdict(), &CompatVerdict::Ok);
+    assert!(r.services[0].is_good());
+
+    // Unknown firmware Node → Unknown, never a fail.
     let r = pkg.verify_for_firmware(&no_libs, None, None);
-    assert!(r.services.iter().all(|s| s.is_good()));
+    assert_eq!(r.services[0].detection.as_ref().unwrap().verdict(), &CompatVerdict::Unknown);
+    assert!(r.services[0].is_good());
 }

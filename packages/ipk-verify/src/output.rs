@@ -63,6 +63,32 @@ pub trait PrintTable {
         };
     }
 
+    /// Cell for an advisory (non-gating) runtime-API verdict: native support vs
+    /// "may need a polyfill". Rendered in a softer style than a hard FAIL.
+    fn advisory_cell(&self, verdict: &CompatVerdict, out_fmt: &OutputFormat) -> Cell {
+        return match verdict {
+            CompatVerdict::Ok => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":ok:"
+                } else {
+                    "native"
+                });
+                cell.style(Attr::ForegroundColor(color::BRIGHT_GREEN));
+                cell
+            }
+            CompatVerdict::Fail { .. } => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":warning:"
+                } else {
+                    "polyfill?"
+                });
+                cell.style(Attr::ForegroundColor(color::YELLOW));
+                cell
+            }
+            CompatVerdict::Unknown => Cell::new("—"),
+        };
+    }
+
     fn table_format(&self, out_fmt: &OutputFormat) -> TableFormat {
         match out_fmt {
             OutputFormat::Markdown => FormatBuilder::new()
