@@ -6,7 +6,7 @@
 //! declares ([`detect_service_runtime`]). It is pure text/JSON analysis with no
 //! ELF, ipk or firmware knowledge so it can be unit-tested in isolation.
 
-use semver::{Version, VersionReq};
+use semver::Version;
 
 mod eslevel;
 mod service;
@@ -77,10 +77,11 @@ impl FrameworkKind {
 }
 
 /// What was detected about a Node.js/JS service from its `package.json`.
+///
+/// `engines.node` is intentionally excluded — webOS services don't declare it
+/// reliably, so it is not trusted as a runtime requirement.
 #[derive(Debug, Clone, Default)]
 pub struct ServiceRuntimeDetection {
-    /// `engines.node` parsed as a semver requirement, when present and valid.
-    pub declared_node: Option<VersionReq>,
     /// `dependencies` as (name, version-spec) pairs, sorted by name.
     pub dependencies: Vec<(String, String)>,
     /// The `main` entry point, if declared.

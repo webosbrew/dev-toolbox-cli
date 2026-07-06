@@ -1,7 +1,7 @@
 use bin_lib::LibraryInfo;
 use fw_lib::WebEngine;
 use ipk_lib::{AppInfo, Component, Package, ServiceInfo};
-use semver::{Version, VersionReq};
+use semver::Version;
 use webdetect_lib::{EsLevel, ServiceRuntimeDetection, WebAppDetection};
 
 use crate::{bin::BinVerifyResult, Verify, VerifyResult};
@@ -44,10 +44,10 @@ pub enum DetectionResult {
     },
     Service {
         detection: ServiceRuntimeDetection,
-        /// The firmware's Node.js version.
+        /// The firmware's Node.js version — informational only. There is no
+        /// compat verdict for services: `engines.node` isn't trusted and webOS
+        /// services carry no other reliable runtime requirement.
         available_node: Option<Version>,
-        /// Whether the firmware's Node.js satisfies the declared requirement.
-        node: CompatVerdict,
     },
 }
 
@@ -60,18 +60,19 @@ pub enum CompatVerdict {
 }
 
 impl DetectionResult {
-    /// The single compatibility verdict for this component on this firmware.
-    pub fn verdict(&self) -> &CompatVerdict {
+    /// The compatibility verdict for this component on this firmware, if it has
+    /// one. Services are informational only (no verdict).
+    pub fn verdict(&self) -> Option<&CompatVerdict> {
         match self {
-            DetectionResult::WebApp { es, .. } => es,
-            DetectionResult::Service { node, .. } => node,
+            DetectionResult::WebApp { es, .. } => Some(es),
+            DetectionResult::Service { .. } => None,
         }
     }
 
     /// Whether this component is definitively incompatible (a `Fail` verdict);
-    /// `Unknown` is not treated as incompatible.
+    /// `Unknown`/no-verdict is not treated as incompatible.
     pub fn is_incompatible(&self) -> bool {
-        matches!(self.verdict(), CompatVerdict::Fail { .. })
+        matches!(self.verdict(), Some(CompatVerdict::Fail { .. }))
     }
 }
 
@@ -146,11 +147,9 @@ fn service_detection(
     node: Option<&Version>,
 ) -> Option<DetectionResult> {
     let detection = svc.info.runtime.clone()?;
-    let verdict = node_verdict(&detection.declared_node, node);
     return Some(DetectionResult::Service {
         detection,
         available_node: node.cloned(),
-        node: verdict,
     });
 }
 
@@ -179,21 +178,3 @@ fn web_verdict(es_level: Option<EsLevel>, engine: Option<&WebEngine>) -> CompatV
     }
 }
 
-/// Does the firmware's Node.js satisfy the service's declared `engines.node`?
-fn node_verdict(req: &Option<VersionReq>, node: Option<&Version>) -> CompatVerdict {
-    let Some(node) = node else {
-        return CompatVerdict::Unknown;
-    };
-    match req {
-        None => CompatVerdict::Unknown, // nothing declared to check against
-        Some(req) => {
-            if req.matches(node) {
-                CompatVerdict::Ok
-            } else {
-                CompatVerdict::Fail {
-                    reason: format!("service requires node {req}, firmware ships {node}"),
-                }
-            }
-        }
-    }
-}

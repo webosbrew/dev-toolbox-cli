@@ -7,7 +7,7 @@
 use bin_lib::LibraryInfo;
 use fw_lib::WebEngine;
 use ipk_lib::{AppInfo, Component, Package, ServiceInfo};
-use semver::{Version, VersionReq};
+use semver::Version;
 use verify_lib::ipk::{CompatVerdict, VerifyForFirmware};
 use verify_lib::VerifyResult;
 use webdetect_lib::{
@@ -41,7 +41,7 @@ fn web_app(es: EsLevel) -> Component<AppInfo> {
     }
 }
 
-fn node_service(id: &str, req: &str) -> Component<ServiceInfo> {
+fn node_service(id: &str) -> Component<ServiceInfo> {
     Component {
         id: id.to_string(),
         info: ServiceInfo {
@@ -49,8 +49,7 @@ fn node_service(id: &str, req: &str) -> Component<ServiceInfo> {
             engine: Some("node".to_string()),
             executable: None,
             runtime: Some(ServiceRuntimeDetection {
-                declared_node: VersionReq::parse(req).ok(),
-                dependencies: vec![],
+                dependencies: vec![("express".to_string(), "^4.18.0".to_string())],
                 main: None,
             }),
         },
@@ -78,14 +77,14 @@ fn web_app_es_level_checked_against_engine() {
 
     // Chromium 120 supports ES2017 → OK, component is good.
     let r = pkg.verify_for_firmware(&no_libs, None, Some(&WebEngine::Chromium(Version::new(120, 0, 0))));
-    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), &CompatVerdict::Ok);
+    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), Some(&CompatVerdict::Ok));
     assert!(r.app.is_good());
 
     // Chromium 53 (webOS 4) predates async/await → FAIL, component not good.
     let r = pkg.verify_for_firmware(&no_libs, None, Some(&WebEngine::Chromium(Version::new(53, 0, 2785))));
     assert!(matches!(
         r.app.detection.as_ref().unwrap().verdict(),
-        CompatVerdict::Fail { .. }
+        Some(CompatVerdict::Fail { .. })
     ));
     assert!(!r.app.is_good());
 
@@ -93,43 +92,41 @@ fn web_app_es_level_checked_against_engine() {
     let r = pkg.verify_for_firmware(&no_libs, None, Some(&WebEngine::WebKit(Version::new(537, 41, 0))));
     assert!(matches!(
         r.app.detection.as_ref().unwrap().verdict(),
-        CompatVerdict::Fail { .. }
+        Some(CompatVerdict::Fail { .. })
     ));
 
     // Firmware with no known web engine → Unknown, which must NOT fail the build.
     let r = pkg.verify_for_firmware(&no_libs, None, None);
-    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), &CompatVerdict::Unknown);
+    assert_eq!(r.app.detection.as_ref().unwrap().verdict(), Some(&CompatVerdict::Unknown));
     assert!(r.app.is_good());
 }
 
 #[test]
-fn multiple_services_each_get_their_own_node_verdict() {
+fn services_are_detected_but_never_fail_on_node() {
+    // engines.node is not trusted, so a JS service carries no compat verdict and
+    // must never fail the build regardless of the firmware's Node.js version.
     let pkg = package(
         web_app(EsLevel::Es5),
         vec![
-            node_service("com.example.app.svc1", ">=12.0.0"),
-            node_service("com.example.app.svc2", ">=99.0.0"),
+            node_service("com.example.app.svc1"),
+            node_service("com.example.app.svc2"),
         ],
     );
 
-    // webOS 10.2 ships Node 16.20.2.
     let r = pkg.verify_for_firmware(
         &no_libs,
         Some(&Version::new(16, 20, 2)),
         Some(&WebEngine::Chromium(Version::new(120, 0, 0))),
     );
     assert_eq!(r.services.len(), 2);
-    assert_eq!(r.services[0].detection.as_ref().unwrap().verdict(), &CompatVerdict::Ok);
-    assert!(r.services[0].is_good());
-    assert!(matches!(
-        r.services[1].detection.as_ref().unwrap().verdict(),
-        CompatVerdict::Fail { .. }
-    ));
-    assert!(!r.services[1].is_good());
+    for svc in &r.services {
+        let detection = svc.detection.as_ref().unwrap();
+        assert!(detection.verdict().is_none()); // informational only
+        assert!(!detection.is_incompatible());
+        assert!(svc.is_good());
+    }
 
-    // No Node package on the firmware → Unknown for both, never a fail.
+    // Even with no Node package on the firmware, services stay good.
     let r = pkg.verify_for_firmware(&no_libs, None, None);
-    assert_eq!(r.services[0].detection.as_ref().unwrap().verdict(), &CompatVerdict::Unknown);
-    assert_eq!(r.services[1].detection.as_ref().unwrap().verdict(), &CompatVerdict::Unknown);
-    assert!(r.services[1].is_good());
+    assert!(r.services.iter().all(|s| s.is_good()));
 }

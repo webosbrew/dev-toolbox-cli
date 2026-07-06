@@ -320,19 +320,11 @@ fn print_detection_summary(
         }
         DetectionResult::Service { detection: svc, .. } => {
             out.write_fmt(format_args!("JS service — {}\n\n", describe_service(svc)))?;
-            // Each firmware's Node.js version.
+            // Each firmware's Node.js version — informational only; there is no
+            // reliable requirement to check a webOS service against.
             table.add_row(Row::new(
-                iter::once(Cell::new("Node.js"))
+                iter::once(Cell::new("Node.js (firmware)"))
                     .chain(results.iter().map(|(_, r)| Cell::new(&node_label(r))))
-                    .collect(),
-            ));
-            table.add_row(Row::new(
-                iter::once(Cell::new("Node support"))
-                    .chain(
-                        results
-                            .iter()
-                            .map(|(_, r)| out.verdict_cell(component_verdict(r), out_fmt)),
-                    )
                     .collect(),
             ));
         }
@@ -368,9 +360,6 @@ fn print_detection_details(
         }
         DetectionResult::Service { detection: svc, .. } => {
             out.h4("JS service")?;
-            if let Some(req) = &svc.declared_node {
-                out.write_fmt(format_args!("* Requires Node.js {req}\n"))?;
-            }
             for (name, ver) in &svc.dependencies {
                 out.write_fmt(format_args!("* Dependency: {name} {ver}\n"))?;
             }
@@ -380,7 +369,7 @@ fn print_detection_details(
     let mut any_fail = false;
     for (fw, r) in results {
         if let Some(detection) = &r.detection {
-            if let CompatVerdict::Fail { reason } = detection.verdict() {
+            if let Some(CompatVerdict::Fail { reason }) = detection.verdict() {
                 if !any_fail {
                     out.h5("Incompatible on")?;
                     any_fail = true;
@@ -430,27 +419,23 @@ fn describe_web(web: &WebAppDetection) -> String {
     }
 }
 
-/// One-line description of the detected JS service (Node requirement, deps).
+/// One-line description of the detected JS service (dependencies only — its
+/// Node.js requirement is not inferable, see ServiceRuntimeDetection).
 fn describe_service(svc: &ServiceRuntimeDetection) -> String {
-    let mut parts: Vec<String> = Vec::new();
-    match &svc.declared_node {
-        Some(req) => parts.push(format!("requires Node.js {req}")),
-        None => parts.push("no engines.node declared".to_string()),
-    }
     match svc.dependencies.len() {
-        0 => {}
-        1 => parts.push("1 dependency".to_string()),
-        n => parts.push(format!("{n} dependencies")),
+        0 => "Node.js service".to_string(),
+        1 => "Node.js service; 1 dependency".to_string(),
+        n => format!("Node.js service; {n} dependencies"),
     }
-    parts.join("; ")
 }
 
-/// The compatibility verdict for a component result (Unknown if absent).
+/// The web app's ES compatibility verdict for a component result (Unknown if
+/// absent). Only web apps carry a verdict; services are informational.
 fn component_verdict(result: &ComponentVerifyResult) -> &CompatVerdict {
     result
         .detection
         .as_ref()
-        .map(|d| d.verdict())
+        .and_then(|d| d.verdict())
         .unwrap_or(&CompatVerdict::Unknown)
 }
 

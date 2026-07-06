@@ -44,6 +44,12 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
     collect_js(dir, 0, &mut js);
 
     let signals = detect_html_signals(&html);
+    // Many webOS apps (Enyo/Enact single-file builds) inline all JS into
+    // index.html rather than shipping separate .js files; include those inline
+    // scripts so ES-level detection sees them too.
+    if !signals.inline_js.is_empty() {
+        js.push(("index.html".to_string(), signals.inline_js.clone()));
+    }
     let (framework, also_present, webostvjs) =
         detect_frameworks(&html, &js, signals.ng_version.as_deref());
     let (es_level, es_features) = detect_es(&js, signals.has_module);
@@ -111,16 +117,22 @@ struct HtmlSignals {
     has_module: bool,
     remote_resources: Vec<String>,
     ng_version: Option<String>,
+    /// Concatenated bodies of inline `<script>` elements (for ES detection when
+    /// the app inlines its JS instead of shipping separate .js files).
+    inline_js: String,
 }
 
 /// Parse `index.html` and extract the `<script type="module">` flag, the
-/// Angular `ng-version` attribute, and remote `src`/`href` references.
+/// Angular `ng-version` attribute, remote `src`/`href` references, and the
+/// bodies of inline `<script>` elements.
 fn detect_html_signals(html: &str) -> HtmlSignals {
     let mut sig = HtmlSignals::default();
     let Ok(dom) = tl::parse(html, tl::ParserOptions::default()) else {
         return sig;
     };
+    let parser = dom.parser();
     let mut seen: HashSet<String> = HashSet::new();
+    let mut inline: Vec<String> = Vec::new();
     for node in dom.nodes() {
         let Some(tag) = node.as_tag() else { continue };
         let attrs = tag.attributes();
@@ -131,10 +143,18 @@ fn detect_html_signals(html: &str) -> HtmlSignals {
                 .map(|b| b.as_utf8_str().into_owned())
         };
 
-        if tag.name().as_utf8_str() == "script"
-            && attr("type").as_deref() == Some("module")
-        {
-            sig.has_module = true;
+        if tag.name().as_utf8_str() == "script" {
+            let ty = attr("type");
+            if ty.as_deref() == Some("module") {
+                sig.has_module = true;
+            }
+            // Inline JS (no src, JS-ish type) → collect for tokenizing.
+            if attr("src").is_none() && is_js_script_type(ty.as_deref()) {
+                let body = tag.inner_text(parser);
+                if !body.trim().is_empty() {
+                    inline.push(body.into_owned());
+                }
+            }
         }
         if sig.ng_version.is_none() {
             if let Some(v) = attr("ng-version") {
@@ -149,7 +169,25 @@ fn detect_html_signals(html: &str) -> HtmlSignals {
             }
         }
     }
+    // `;` between scripts so tokens from adjacent bodies can't merge.
+    sig.inline_js = inline.join("\n;\n");
     sig
+}
+
+/// Whether a `<script type>` names executable JavaScript (so its inline body is
+/// worth tokenizing). `application/json`, `importmap`, etc. are not.
+fn is_js_script_type(ty: Option<&str>) -> bool {
+    match ty {
+        None => true,
+        Some(t) => matches!(
+            t.trim().to_ascii_lowercase().as_str(),
+            "" | "text/javascript"
+                | "application/javascript"
+                | "module"
+                | "text/ecmascript"
+                | "application/ecmascript"
+        ),
+    }
 }
 
 /// A `src`/`href` that leaves the device: absolute `http(s)://` or the
@@ -535,6 +573,17 @@ mod tests {
     fn no_remote_resources_when_all_local() {
         let sig = detect_html_signals(r#"<script src="bundle.js"></script><link href="style.css">"#);
         assert!(sig.remote_resources.is_empty());
+    }
+
+    #[test]
+    fn collects_inline_script_body() {
+        // Apps that inline all JS into index.html (Enyo/Enact single-file builds).
+        let sig = detect_html_signals(
+            r#"<html><head><script>const x = async () => await 1;</script>
+               <script type="application/json">{"not":"js"}</script></head></html>"#,
+        );
+        assert!(sig.inline_js.contains("async"));
+        assert!(!sig.inline_js.contains("not")); // JSON script body excluded
     }
 
     // --- ES features (ress token stream) ---
