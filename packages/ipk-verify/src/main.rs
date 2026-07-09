@@ -130,6 +130,7 @@ fn main() {
             print_component_details(
                 results.iter().map(|(fw, res)| (*fw, &res.app)).collect(),
                 &mut output,
+                &format,
             )
             .unwrap();
         }
@@ -158,6 +159,7 @@ fn main() {
                         .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
                         .collect(),
                     &mut output,
+                    &format,
                 )
                 .unwrap();
             }
@@ -222,6 +224,7 @@ fn print_component_summary(
 fn print_component_details(
     results: Vec<(&Firmware, &ComponentVerifyResult)>,
     out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
 ) -> Result<bool, Error> {
     let (_, result) = *results.first().unwrap();
     if result.detection.is_some() {
@@ -236,7 +239,7 @@ fn print_component_details(
     for (fw, result) in &results {
         if let ComponentBinVerifyResult::Failed(result) = &result.exe {
             out.h5(&format!("On {}", fw.info))?;
-            print_bin_verify_details(result, out)?;
+            print_bin_verify_details(result, out, out_fmt)?;
             out.write_fmt(format_args!("\n"))?;
         }
     }
@@ -257,7 +260,7 @@ fn print_component_details(
         for (fw, result) in &results {
             if let ComponentBinVerifyResult::Failed(result) = &result.libs.get(index).unwrap().1 {
                 out.h5(&format!("On {}", fw.info))?;
-                print_bin_verify_details(result, out)?;
+                print_bin_verify_details(result, out, out_fmt)?;
                 out.write_fmt(format_args!("\n"))?;
             }
         }
@@ -265,15 +268,34 @@ fn print_component_details(
     return Ok(false);
 }
 
+/// A long list of undefined symbols is folded into a collapsible `<details>`
+/// block rather than emitted inline.
+const SYMBOL_FOLD_THRESHOLD: usize = 10;
+
 fn print_bin_verify_details(
     result: &BinVerifyResult,
     out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
     for lib in &result.missing_lib {
         out.write_fmt(format_args!("* Library {lib} is missing\n"))?;
     }
+    // Collapse a long symbol list behind a <details>/<summary> so the report
+    // stays scannable. GitHub renders raw HTML in Markdown; other formats keep
+    // the plain bullet list (raw tags would be noise there).
+    let fold = *out_fmt == OutputFormat::Markdown
+        && result.undefined_sym.len() > SYMBOL_FOLD_THRESHOLD;
+    if fold {
+        out.write_fmt(format_args!(
+            "<details>\n<summary>{} undefined symbols</summary>\n\n",
+            result.undefined_sym.len()
+        ))?;
+    }
     for sym in &result.undefined_sym {
         out.write_fmt(format_args!("* Symbol {sym} is undefined\n"))?;
+    }
+    if fold {
+        out.write_fmt(format_args!("</details>\n"))?;
     }
     return Ok(());
 }
