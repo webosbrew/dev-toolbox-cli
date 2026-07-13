@@ -1,4 +1,4 @@
-use bin_lib::LibraryInfo;
+use bin_lib::{BundledArtifact, LibraryInfo};
 use fw_lib::WebEngine;
 use ipk_lib::{AppInfo, Component, Package, ServiceInfo};
 use semver::Version;
@@ -56,6 +56,9 @@ pub enum DetectionResult {
         /// Whether the firmware's Node.js natively provides the runtime APIs the
         /// service uses (advisory).
         api: CompatVerdict,
+        /// Native ELF files the service bundles (its own node/ffmpeg/.so).
+        /// Supplementary info; does not affect the verdict.
+        bundled: Vec<BundledArtifact>,
     },
 }
 
@@ -178,6 +181,7 @@ fn service_detection(
         available_node: node.cloned(),
         node: node_verdict,
         api,
+        bundled: svc.info.bundled.clone(),
     });
 }
 

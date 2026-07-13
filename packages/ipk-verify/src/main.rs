@@ -228,7 +228,7 @@ fn print_component_details(
 ) -> Result<bool, Error> {
     let (_, result) = *results.first().unwrap();
     if result.detection.is_some() {
-        print_detection_details(&results, out)?;
+        print_detection_details(&results, out, out_fmt)?;
         return Ok(results.iter().all(|r| r.1.is_good()));
     }
     out.h4(result.exe.name())?;
@@ -393,6 +393,7 @@ fn es_support_title(level: Option<webdetect_lib::EsLevel>) -> String {
 fn print_detection_details(
     results: &Vec<(&Firmware, &ComponentVerifyResult)>,
     out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
     let (_, first) = results.first().unwrap();
     let detection = first.detection.as_ref().unwrap();
@@ -414,13 +415,18 @@ fn print_detection_details(
                 out.write_fmt(format_args!("* Remote resource: {url}\n"))?;
             }
         }
-        DetectionResult::Service { detection: svc, .. } => {
+        DetectionResult::Service {
+            detection: svc,
+            bundled,
+            ..
+        } => {
             out.h4("JS service")?;
             if !svc.es_features.is_empty() {
                 let feats: Vec<&str> = svc.es_features.iter().map(|f| f.label()).collect();
                 out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
             }
             print_api_details(&svc.es_apis, &svc.polyfills, out)?;
+            print_bundled_artifacts(bundled, out, out_fmt)?;
         }
     }
     // Report incompatible firmwares with their reason (gating verdicts only).
@@ -464,6 +470,42 @@ fn print_api_details(
             level.label(),
             names.join(", ")
         ))?;
+    }
+    return Ok(());
+}
+
+/// List the native binaries a JS service bundles (its own node/ffmpeg/.so).
+/// Supplementary info — never affects the verdict. On Markdown it is folded into
+/// a `<details>` block so the report stays scannable; other formats get a plain
+/// bulleted list.
+fn print_bundled_artifacts(
+    bundled: &[bin_lib::BundledArtifact],
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    if bundled.is_empty() {
+        return Ok(());
+    }
+    let fold = *out_fmt == OutputFormat::Markdown;
+    if fold {
+        out.write_fmt(format_args!(
+            "<details>\n<summary>Bundles {} native binar{}</summary>\n\n",
+            bundled.len(),
+            if bundled.len() == 1 { "y" } else { "ies" },
+        ))?;
+    } else {
+        out.write_fmt(format_args!("Bundled native binaries:\n"))?;
+    }
+    for a in bundled {
+        match &a.arch {
+            Some(arch) => {
+                out.write_fmt(format_args!("* {} — {}, {}\n", a.path, a.kind.label(), arch))?
+            }
+            None => out.write_fmt(format_args!("* {} — {}\n", a.path, a.kind.label()))?,
+        }
+    }
+    if fold {
+        out.write_fmt(format_args!("</details>\n"))?;
     }
     return Ok(());
 }

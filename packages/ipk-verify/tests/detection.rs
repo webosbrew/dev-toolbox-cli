@@ -57,6 +57,7 @@ fn node_service(id: &str, es: EsLevel) -> Component<ServiceInfo> {
                 es_apis: vec![],
                 polyfills: vec![],
             }),
+            bundled: vec![],
         },
         exe: None,
         libs: vec![],

@@ -2,7 +2,7 @@ use serde::Deserialize;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use bin_lib::{BinaryInfo, LibraryInfo};
+use bin_lib::{BinaryInfo, BundledArtifact, LibraryInfo};
 use webdetect_lib::{ServiceRuntimeDetection, WebAppDetection};
 
 mod component;
@@ -57,6 +57,11 @@ pub struct ServiceInfo {
     /// not part of services.json).
     #[serde(skip)]
     pub runtime: Option<ServiceRuntimeDetection>,
+    /// Native ELF files (own `node`, `ffmpeg`, `.so`s) a JS service bundles
+    /// alongside its scripts. Supplementary report info; filled at parse time,
+    /// not part of services.json.
+    #[serde(skip)]
+    pub bundled: Vec<BundledArtifact>,
 }
 
 #[derive(Debug)]

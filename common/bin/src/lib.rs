@@ -1,7 +1,10 @@
 use serde::{Deserialize, Serialize};
 
+pub mod artifact;
 pub mod binary;
 pub mod library;
+
+pub use artifact::{ArtifactKind, BundledArtifact};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct BinaryInfo {
