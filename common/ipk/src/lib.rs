@@ -18,7 +18,7 @@ pub struct Package {
     pub services: Vec<Component<ServiceInfo>>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Component<T> {
     pub id: String,
     pub info: T,
@@ -62,6 +62,12 @@ pub struct ServiceInfo {
     /// not part of services.json.
     #[serde(skip)]
     pub bundled: Vec<BundledArtifact>,
+    /// Each bundled executable as its own verifiable unit (its `exe` plus the
+    /// libraries reachable via its rpath), so the bundled runtime can be checked
+    /// against a firmware's libraries the same way a native component is. Filled
+    /// at parse time; supplementary (never gates the verdict).
+    #[serde(skip)]
+    pub bundled_bins: Vec<Component<()>>,
 }
 
 #[derive(Debug)]

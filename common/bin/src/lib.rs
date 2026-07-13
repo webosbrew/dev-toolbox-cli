@@ -6,7 +6,7 @@ pub mod library;
 
 pub use artifact::{ArtifactKind, BundledArtifact};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BinaryInfo {
     pub name: String,
     pub rpath: Vec<String>,

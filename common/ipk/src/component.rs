@@ -96,7 +96,9 @@ impl Component<ServiceInfo> {
             // note any native binaries it ships (its own node/ffmpeg/.so).
             let mut info = info;
             info.runtime = Some(webdetect_lib::detect_service_runtime(dir));
-            info.bundled = scan_bundled_artifacts(dir);
+            let scan = scan_bundled(dir, links);
+            info.bundled = scan.artifacts;
+            info.bundled_bins = scan.bins;
             return Ok(Self {
                 id: info.id.clone(),
                 info: info.clone(),
@@ -136,32 +138,42 @@ const BUNDLED_MAX_DEPTH: usize = 12;
 /// Stop after collecting this many bundled artifacts.
 const BUNDLED_MAX: usize = 256;
 
-/// Walk a service directory and classify every bundled ELF (its own `node`,
-/// `ffmpeg`, `.so`s, ...). Non-ELF files (scripts, JSON, assets) are skipped.
-/// Paths are relative to `dir`, slash-separated, and the list is sorted for
-/// stable report output.
-fn scan_bundled_artifacts(dir: &Path) -> Vec<BundledArtifact> {
-    let mut out = Vec::new();
-    walk_bundled(dir, dir, 0, &mut out);
-    out.sort_by(|a, b| a.path.cmp(&b.path));
-    out
+/// The bundled native content of a JS service: an inventory of every ELF (kind +
+/// arch, for a quick listing) and, for each bundled *executable*, a verifiable
+/// unit (its `exe` plus the libraries reachable via its rpath / sibling `lib`
+/// dir) so the bundled runtime can be checked against a firmware's libraries.
+#[derive(Default)]
+pub(crate) struct BundledScan {
+    pub artifacts: Vec<BundledArtifact>,
+    pub bins: Vec<Component<()>>,
 }
 
-fn walk_bundled(root: &Path, dir: &Path, depth: usize, out: &mut Vec<BundledArtifact>) {
-    if depth > BUNDLED_MAX_DEPTH || out.len() >= BUNDLED_MAX {
+/// Walk a service directory: classify every bundled ELF and, for each
+/// executable, build a verifiable [`Component`]. Non-ELF files (scripts, JSON,
+/// assets) are skipped. Output is sorted by path for stable report ordering.
+pub(crate) fn scan_bundled(dir: &Path, links: &Symlinks) -> BundledScan {
+    let mut scan = BundledScan::default();
+    walk_bundled(dir, dir, 0, links, &mut scan);
+    scan.artifacts.sort_by(|a, b| a.path.cmp(&b.path));
+    scan.bins.sort_by(|a, b| a.id.cmp(&b.id));
+    scan
+}
+
+fn walk_bundled(root: &Path, dir: &Path, depth: usize, links: &Symlinks, scan: &mut BundledScan) {
+    if depth > BUNDLED_MAX_DEPTH || scan.artifacts.len() >= BUNDLED_MAX {
         return;
     }
     let Ok(entries) = fs::read_dir(dir) else {
         return;
     };
     for entry in entries.flatten() {
-        if out.len() >= BUNDLED_MAX {
+        if scan.artifacts.len() >= BUNDLED_MAX {
             return;
         }
         let Ok(ft) = entry.file_type() else { continue };
         let path = entry.path();
         if ft.is_dir() {
-            walk_bundled(root, &path, depth + 1, out);
+            walk_bundled(root, &path, depth + 1, links, scan);
             continue;
         }
         if !ft.is_file() {
@@ -173,10 +185,45 @@ fn walk_bundled(root: &Path, dir: &Path, depth: usize, out: &mut Vec<BundledArti
             .unwrap_or(&path)
             .to_slash_lossy()
             .into_owned();
-        if let Some(artifact) = BundledArtifact::identify(file, rel) {
-            out.push(artifact);
+        let Some(artifact) = BundledArtifact::identify(file, rel.clone()) else {
+            continue;
+        };
+        let is_exe = artifact.kind == bin_lib::ArtifactKind::Executable;
+        scan.artifacts.push(artifact);
+        if is_exe {
+            if let Some(component) = verifiable_bundled_exe(&path, rel, links) {
+                scan.bins.push(component);
+            }
         }
     }
+}
+
+/// Parse a bundled executable and discover the libraries it can load, mirroring
+/// how a native component resolves its own libraries. These services locate
+/// their libs via the loader's `--library-path <dir>/lib` at spawn time rather
+/// than a `DT_RPATH`, so the executable's sibling `lib/` directory is treated as
+/// a search path (rpath precedence) in addition to any real rpath.
+fn verifiable_bundled_exe(path: &Path, rel: String, links: &Symlinks) -> Option<Component<()>> {
+    let bin = BinaryInfo::parse(
+        File::open(path).ok()?,
+        path.file_name().unwrap().to_string_lossy(),
+        true,
+    )
+    .ok()?;
+    let parent = path.parent()?;
+    let mut rpath = Component::<()>::rpath(&bin.rpath, path);
+    if let Ok(sibling_lib) = parent.join("lib").canonicalize() {
+        if !rpath.contains(&sibling_lib) {
+            rpath.push(sibling_lib);
+        }
+    }
+    let libs = Component::<()>::list_libs(parent, &rpath, links).ok()?;
+    Some(Component {
+        id: rel,
+        info: (),
+        exe: Some(bin),
+        libs,
+    })
 }
 
 impl<T> Component<T> {
@@ -324,6 +371,15 @@ mod tests {
                 .any(|a| a.path == "bin/node" && a.arch.is_some()),
             "expected bin/node to be reported, got {:?}",
             svc.info.bundled
+        );
+        // The bundled executable also becomes a verifiable unit.
+        assert!(
+            svc.info
+                .bundled_bins
+                .iter()
+                .any(|c| c.id == "bin/node" && c.exe.is_some()),
+            "expected bin/node as a verifiable component, got {:?}",
+            svc.info.bundled_bins.iter().map(|c| &c.id).collect::<Vec<_>>()
         );
     }
 

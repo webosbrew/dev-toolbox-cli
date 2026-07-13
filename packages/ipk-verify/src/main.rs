@@ -427,6 +427,7 @@ fn print_detection_details(
             }
             print_api_details(&svc.es_apis, &svc.polyfills, out)?;
             print_bundled_artifacts(bundled, out, out_fmt)?;
+            print_bundled_compat(results, out, out_fmt)?;
         }
     }
     // Report incompatible firmwares with their reason (gating verdicts only).
@@ -508,6 +509,102 @@ fn print_bundled_artifacts(
         out.write_fmt(format_args!("</details>\n"))?;
     }
     return Ok(());
+}
+
+/// Verify report for a JS service's bundled native binaries — a single
+/// native-style table whose rows are the bundled executables (its own
+/// node/ffmpeg) followed by the unique bundled libraries, each OK/failed per
+/// firmware. Folded into a `<details>` block on Markdown. Supplementary: this
+/// table never changes the package verdict.
+fn print_bundled_compat(
+    results: &Vec<(&Firmware, &ComponentVerifyResult)>,
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    let (_, first) = results.first().unwrap();
+    if first.bundled.is_empty() {
+        return Ok(());
+    }
+    let fold = *out_fmt == OutputFormat::Markdown;
+    if fold {
+        out.write_fmt(format_args!(
+            "<details>\n<summary>Bundled runtime — library compatibility</summary>\n\n"
+        ))?;
+    } else {
+        out.write_fmt(format_args!("Bundled runtime — library compatibility:\n\n"))?;
+    }
+
+    let mut table = Table::new();
+    table.set_format(out.table_format(out_fmt));
+    table.set_titles(Row::from_iter(iter::once(String::new()).chain(
+        results.iter().map(|(fw, _)| fw.info.release.to_string()),
+    )));
+
+    // Bundled executables (its own node/ffmpeg/...), one row each.
+    for idx in 0..first.bundled.len() {
+        let name = first.bundled[idx].exe.name().to_string();
+        table.add_row(Row::new(
+            iter::once(Cell::new(&name))
+                .chain(
+                    results
+                        .iter()
+                        .map(|(_, r)| out.result_cell(&r.bundled[idx].exe, out_fmt)),
+                )
+                .collect(),
+        ));
+    }
+
+    // Bundled libraries, deduped by name (versioned file + soname alias resolve
+    // to the same library) and sorted.
+    let mut lib_names: Vec<String> = Vec::new();
+    for comp in &first.bundled {
+        for (_, lib) in &comp.libs {
+            let n = lib.name().to_string();
+            if !lib_names.contains(&n) {
+                lib_names.push(n);
+            }
+        }
+    }
+    lib_names.sort();
+    for lib_name in &lib_names {
+        table.add_row(Row::new(
+            iter::once(Cell::new(&format!("lib {lib_name}")))
+                .chain(
+                    results
+                        .iter()
+                        .map(|(_, r)| out.result_cell(worst_bundled_lib(r, lib_name), out_fmt)),
+                )
+                .collect(),
+        ));
+    }
+
+    out.print_table(&table)?;
+    if fold {
+        out.write_fmt(format_args!("</details>\n"))?;
+    }
+    return Ok(());
+}
+
+/// The status of a bundled library across all of a service's bundled binaries:
+/// `Failed` if it fails to resolve for any of them, otherwise the first result.
+/// The same library file resolves identically for every binary on a given
+/// firmware, so this only ever collapses duplicate rows.
+fn worst_bundled_lib<'a>(
+    result: &'a ComponentVerifyResult,
+    name: &str,
+) -> &'a ComponentBinVerifyResult {
+    let mut found: Option<&ComponentBinVerifyResult> = None;
+    for comp in &result.bundled {
+        for (_, lib) in &comp.libs {
+            if lib.name() == name {
+                if matches!(lib, ComponentBinVerifyResult::Failed(_)) {
+                    return lib;
+                }
+                found.get_or_insert(lib);
+            }
+        }
+    }
+    found.expect("library is present in every firmware's bundled set")
 }
 
 fn framework_label(fw: &webdetect_lib::FrameworkInfo) -> String {

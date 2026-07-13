@@ -58,6 +58,7 @@ fn node_service(id: &str, es: EsLevel) -> Component<ServiceInfo> {
                 polyfills: vec![],
             }),
             bundled: vec![],
+            bundled_bins: vec![],
         },
         exe: None,
         libs: vec![],

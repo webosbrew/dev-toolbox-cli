@@ -54,41 +54,44 @@ impl LibraryInfo {
             .map(|tbl| tbl.iter().collect())
             .unwrap_or_default();
 
-        let dynstr_header = *elf.section_header_by_name(".dynstr")?.unwrap();
-        let dynstr_table = elf.section_data_as_strtab(&dynstr_header).unwrap();
-        for entry in dynamic_entries {
-            match entry.d_tag {
-                abi::DT_NEEDED => {
-                    needed.push(String::from(
-                        dynstr_table.get(entry.d_val() as usize).unwrap(),
-                    ));
+        // Guard against an ELF without `.dynstr`/`.dynsym` (not a real shared
+        // object) instead of panicking.
+        if let Some(dynstr_header) = elf.section_header_by_name(".dynstr")?.copied() {
+            let dynstr_table = elf.section_data_as_strtab(&dynstr_header)?;
+            for entry in dynamic_entries {
+                match entry.d_tag {
+                    abi::DT_NEEDED => {
+                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
+                            needed.push(String::from(s));
+                        }
+                    }
+                    abi::DT_SONAME => {
+                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
+                            name = String::from(s);
+                        }
+                    }
+                    abi::DT_RPATH | abi::DT_RUNPATH => {
+                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
+                            rpath.extend(s.split(":").map(|s| String::from(s)));
+                        }
+                    }
+                    _ => {}
                 }
-                abi::DT_SONAME => {
-                    name = String::from(dynstr_table.get(entry.d_val() as usize).unwrap());
-                }
-                abi::DT_RPATH | abi::DT_RUNPATH => {
-                    rpath.extend(
-                        dynstr_table
-                            .get(entry.d_val() as usize)
-                            .unwrap()
-                            .split(":")
-                            .map(|s| String::from(s)),
-                    );
-                }
-                _ => {}
             }
         }
 
-        let (sym_table, str) = elf.dynamic_symbol_table()?.unwrap();
-        let all_syms: Vec<(Symbol, String)> = sym_table
-            .iter()
-            .map(move |sym| {
-                (
-                    sym.clone(),
-                    String::from(str.get(sym.st_name as usize).unwrap_or("")),
-                )
-            })
-            .collect();
+        let all_syms: Vec<(Symbol, String)> = match elf.dynamic_symbol_table()? {
+            Some((sym_table, str)) => sym_table
+                .iter()
+                .map(move |sym| {
+                    (
+                        sym.clone(),
+                        String::from(str.get(sym.st_name as usize).unwrap_or("")),
+                    )
+                })
+                .collect(),
+            None => Vec::new(),
+        };
         let ver_table = elf.symbol_version_table()?;
         let mut symbols: Vec<String> = all_syms
             .iter()
