@@ -122,6 +122,7 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
                 },
                 libs: Default::default(),
                 detection: None,
+                bundled: Default::default(),
             };
         };
         let bin = self.verify_bin(exe, find_library);
@@ -183,6 +184,7 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
             libs,
             // Filled in by Package::verify_for_firmware for non-native components.
             detection: None,
+            bundled: Default::default(),
         };
     }
 }

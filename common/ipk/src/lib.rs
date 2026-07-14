@@ -2,7 +2,7 @@ use serde::Deserialize;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use bin_lib::{BinaryInfo, LibraryInfo};
+use bin_lib::{BinaryInfo, BundledArtifact, LibraryInfo};
 use webdetect_lib::{ServiceRuntimeDetection, WebAppDetection};
 
 mod component;
@@ -18,7 +18,7 @@ pub struct Package {
     pub services: Vec<Component<ServiceInfo>>,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Component<T> {
     pub id: String,
     pub info: T,
@@ -57,6 +57,17 @@ pub struct ServiceInfo {
     /// not part of services.json).
     #[serde(skip)]
     pub runtime: Option<ServiceRuntimeDetection>,
+    /// Native ELF files (own `node`, `ffmpeg`, `.so`s) a JS service bundles
+    /// alongside its scripts. Supplementary report info; filled at parse time,
+    /// not part of services.json.
+    #[serde(skip)]
+    pub bundled: Vec<BundledArtifact>,
+    /// Each bundled executable as its own verifiable unit (its `exe` plus the
+    /// libraries reachable via its rpath), so the bundled runtime can be checked
+    /// against a firmware's libraries the same way a native component is. Filled
+    /// at parse time; supplementary (never gates the verdict).
+    #[serde(skip)]
+    pub bundled_bins: Vec<Component<()>>,
 }
 
 #[derive(Debug)]

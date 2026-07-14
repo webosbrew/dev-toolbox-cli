@@ -1,9 +1,12 @@
 use serde::{Deserialize, Serialize};
 
+pub mod artifact;
 pub mod binary;
 pub mod library;
 
-#[derive(Debug, Serialize, Deserialize)]
+pub use artifact::{ArtifactKind, BundledArtifact};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BinaryInfo {
     pub name: String,
     pub rpath: Vec<String>,

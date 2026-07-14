@@ -1,4 +1,4 @@
-use bin_lib::LibraryInfo;
+use bin_lib::{BundledArtifact, LibraryInfo};
 use fw_lib::WebEngine;
 use ipk_lib::{AppInfo, Component, Package, ServiceInfo};
 use semver::Version;
@@ -22,6 +22,10 @@ pub struct ComponentVerifyResult {
     /// Non-native technology detection + per-firmware compatibility. `None` for
     /// native components (which go through the exe/libs path instead).
     pub detection: Option<DetectionResult>,
+    /// A JS service's bundled native binaries, each verified against the
+    /// firmware's libraries like a native component. Supplementary — these
+    /// results never gate the package verdict. Empty for everything else.
+    pub bundled: Vec<ComponentVerifyResult>,
 }
 
 #[derive(Debug, Eq, PartialEq)]
@@ -56,6 +60,9 @@ pub enum DetectionResult {
         /// Whether the firmware's Node.js natively provides the runtime APIs the
         /// service uses (advisory).
         api: CompatVerdict,
+        /// Native ELF files the service bundles (its own node/ffmpeg/.so).
+        /// Supplementary info; does not affect the verdict.
+        bundled: Vec<BundledArtifact>,
     },
 }
 
@@ -143,6 +150,15 @@ impl VerifyForFirmware for Package {
         result.app.detection = web_detection(&self.app, engine);
         for (svc_result, svc) in result.services.iter_mut().zip(self.services.iter()) {
             svc_result.detection = service_detection(svc, node);
+            // Verify each bundled native binary like a native component, so the
+            // report can show whether the service's own runtime loads on this
+            // firmware. Supplementary: does not affect `svc_result.is_good()`.
+            svc_result.bundled = svc
+                .info
+                .bundled_bins
+                .iter()
+                .map(|component| component.verify(find_library))
+                .collect();
         }
         return result;
     }
@@ -178,6 +194,7 @@ fn service_detection(
         available_node: node.cloned(),
         node: node_verdict,
         api,
+        bundled: svc.info.bundled.clone(),
     });
 }
 

@@ -6,9 +6,9 @@
 //! means keywords/operators/identifiers inside strings, comments and regex
 //! literals are ignored.
 
-use std::collections::{BTreeMap, HashSet};
+use std::collections::{BTreeMap, HashSet, VecDeque};
 use std::fs;
-use std::path::Path;
+use std::path::{Component, Path, PathBuf};
 
 use ress::prelude::*;
 
@@ -62,6 +62,163 @@ pub(crate) fn collect_js(dir: &Path, depth: usize, out: &mut Vec<(String, String
             out.push((name, String::from_utf8_lossy(&content).into_owned()));
         }
     }
+}
+
+/// Module-resolution extensions tried for an extensionless specifier and for a
+/// directory's `index` file, in Node's precedence order.
+const RESOLVE_EXTS: [&str; 3] = ["js", "cjs", "mjs"];
+
+/// Gather the JS a Node service's entry point actually pulls in: starting from
+/// `main` (default `index.js`), follow the **static** module graph via relative
+/// `require`/`import`/`export … from`/`import(...)` specifiers, staying inside
+/// `dir`.
+///
+/// Unlike [`collect_js`] (used for a web app's flat bundle), this does *not*
+/// slurp every `.js` under the tree. A service commonly ships vendored code —
+/// `node_modules`, or a server it spawns on its **own** bundled Node — whose ES
+/// level says nothing about what the firmware's Node runs. Only first-party code
+/// reachable from `main` runs on the firmware Node, so only that is graded.
+/// Bare specifiers (npm packages, built-ins) are deliberately not followed.
+pub(crate) fn collect_service_js(dir: &Path, main: Option<&str>, out: &mut Vec<(String, String)>) {
+    let Some(entry) = resolve_module(dir, dir, main.unwrap_or("index.js")) else {
+        return;
+    };
+    let mut visited: HashSet<PathBuf> = HashSet::new();
+    let mut queue: VecDeque<PathBuf> = VecDeque::new();
+    queue.push_back(entry);
+    while let Some(path) = queue.pop_front() {
+        if out.len() >= MAX_JS_FILES {
+            return;
+        }
+        if !visited.insert(path.clone()) {
+            continue;
+        }
+        if fs::metadata(&path).map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
+            continue;
+        }
+        let Ok(bytes) = fs::read(&path) else { continue };
+        let content = String::from_utf8_lossy(&bytes).into_owned();
+        let base = path.parent().unwrap_or(dir);
+        for spec in extract_relative_specifiers(&content) {
+            if let Some(dep) = resolve_module(dir, base, &spec) {
+                if !visited.contains(&dep) {
+                    queue.push_back(dep);
+                }
+            }
+        }
+        let name = path.file_name().unwrap().to_string_lossy().into_owned();
+        out.push((name, content));
+    }
+}
+
+/// Resolve a relative module specifier `spec` (or an entry `main`) against
+/// `base`, Node-style: try the path as a JS file, then with a `.js/.cjs/.mjs`
+/// extension, then as a directory's `index` file. Returns the resolved path only
+/// when it exists and stays lexically within `root`.
+fn resolve_module(root: &Path, base: &Path, spec: &str) -> Option<PathBuf> {
+    let candidate = base.join(spec);
+    // 1. Exact path to an existing JS-family file (an explicit extension).
+    if candidate.is_file() {
+        return has_js_ext(&candidate).then(|| contain(root, &candidate)).flatten();
+    }
+    // 2. Bare specifier + extension (`./foo` → `./foo.js`). Appends rather than
+    //    replacing, so a dotted basename (`./foo.bar`) isn't mangled.
+    for ext in RESOLVE_EXTS {
+        let p = PathBuf::from(format!("{}.{ext}", candidate.to_string_lossy()));
+        if p.is_file() {
+            return contain(root, &p);
+        }
+    }
+    // 3. Directory index (`./dir` → `./dir/index.js`).
+    if candidate.is_dir() {
+        for ext in RESOLVE_EXTS {
+            let p = candidate.join(format!("index.{ext}"));
+            if p.is_file() {
+                return contain(root, &p);
+            }
+        }
+    }
+    None
+}
+
+fn has_js_ext(path: &Path) -> bool {
+    matches!(
+        path.extension().and_then(|e| e.to_str()),
+        Some("js") | Some("cjs") | Some("mjs")
+    )
+}
+
+/// Keep `path` only if it stays within `root` after lexically resolving `.`/`..`
+/// (an extracted package has no on-disk symlinks, so this matches the real
+/// tree). Guards against a specifier like `../../etc/passwd`.
+fn contain(root: &Path, path: &Path) -> Option<PathBuf> {
+    let root = lexical_normalize(root);
+    let path = lexical_normalize(path);
+    path.starts_with(&root).then_some(path)
+}
+
+fn lexical_normalize(path: &Path) -> PathBuf {
+    let mut out = PathBuf::new();
+    for comp in path.components() {
+        match comp {
+            Component::ParentDir => {
+                out.pop();
+            }
+            Component::CurDir => {}
+            other => out.push(other.as_os_str()),
+        }
+    }
+    out
+}
+
+/// A token, reduced to just what the module-specifier lookback needs.
+enum SpecTok {
+    Import,
+    OpenParen,
+    Ident(String),
+    Str(String),
+    Other,
+}
+
+/// Extract the **relative** module specifiers (`./`, `../`) a source statically
+/// references via `require('x')`, `import(...)`, `import 'x'`, and
+/// `import`/`export … from 'x'`. Tokenizing means specifiers written as string
+/// literals in comments or unrelated strings are not matched.
+fn extract_relative_specifiers(content: &str) -> Vec<String> {
+    let mut specs = Vec::new();
+    // The last two meaningful (non-comment) tokens, for lookback.
+    let mut prev: Option<SpecTok> = None;
+    let mut prev2: Option<SpecTok> = None;
+    for item in Scanner::new(content) {
+        let Ok(item) = item else { break };
+        let cur = match &item.token {
+            Token::Comment(_) => continue,
+            Token::String(s) => SpecTok::Str(s.as_ref().to_string()),
+            Token::Ident(id) => SpecTok::Ident(id.as_ref().to_string()),
+            Token::Keyword(Keyword::Import(_)) => SpecTok::Import,
+            Token::Punct(Punct::OpenParen) => SpecTok::OpenParen,
+            _ => SpecTok::Other,
+        };
+        if let SpecTok::Str(s) = &cur {
+            let is_specifier = match (&prev, &prev2) {
+                // require('x')
+                (Some(SpecTok::OpenParen), Some(SpecTok::Ident(n))) if n == "require" => true,
+                // import('x')
+                (Some(SpecTok::OpenParen), Some(SpecTok::Import)) => true,
+                // import … from 'x' / export … from 'x' (`from` is contextual)
+                (Some(SpecTok::Ident(n)), _) if n == "from" => true,
+                // side-effect import 'x'
+                (Some(SpecTok::Import), _) => true,
+                _ => false,
+            };
+            if is_specifier && (s.starts_with("./") || s.starts_with("../")) {
+                specs.push(s.clone());
+            }
+        }
+        prev2 = prev.take();
+        prev = Some(cur);
+    }
+    specs
 }
 
 /// Analyze JS sources for ES syntax level and static runtime-API usage.
