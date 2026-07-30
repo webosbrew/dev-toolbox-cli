@@ -16,7 +16,7 @@ trait ComponentImpl {
     where
         F: Fn(&str) -> Option<LibraryInfo>;
 
-    fn resolve_in_global_scope<F>(&self, undefined: &mut Vec<String>, find_library: &F)
+    fn resolve_in_global_scope<F>(&self, result: &mut BinVerifyResult, find_library: &F)
     where
         F: Fn(&str) -> Option<LibraryInfo>;
 }
@@ -85,7 +85,7 @@ impl<T> ComponentImpl for Component<T> {
     /// sibling `libGLESv2.so.2`. Verifying each library only against its own
     /// `DT_NEEDED` chain misses this and produces false "undefined symbol"
     /// reports, so resolve whatever is left against the global scope.
-    fn resolve_in_global_scope<F>(&self, undefined: &mut Vec<String>, find_library: &F)
+    fn resolve_in_global_scope<F>(&self, result: &mut BinVerifyResult, find_library: &F)
     where
         F: Fn(&str) -> Option<LibraryInfo>,
     {
@@ -95,7 +95,7 @@ impl<T> ComponentImpl for Component<T> {
         let resolver = |name: &str| self.resolve_lib(name, find_library);
         let mut visited: HashSet<String> = Default::default();
         for needed in &exe.needed {
-            if undefined.is_empty() {
+            if result.undefined_sym.is_empty() && result.undefined_sym_lazy.is_empty() {
                 break;
             }
             if !visited.insert(needed.clone()) {
@@ -104,7 +104,13 @@ impl<T> ComponentImpl for Component<T> {
             let Some(lib) = resolver(needed) else {
                 continue;
             };
-            recursive_resolve_symbols(&lib, undefined, &mut visited, &resolver);
+            recursive_resolve_symbols(
+                &lib,
+                &mut result.undefined_sym,
+                &mut result.undefined_sym_lazy,
+                &mut visited,
+                &resolver,
+            );
         }
     }
 }
@@ -148,23 +154,15 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
                         rpath: Default::default(),
                         needed: lib.needed.clone(),
                         undefined: lib.undefined.clone(),
+                        undefined_lazy: lib.undefined_lazy.clone(),
                     },
                     find_library,
                 );
                 // A bundled library's imports may be provided by a sibling
                 // library co-loaded by the executable, not just by its own
                 // DT_NEEDED chain. Resolve the leftovers against that scope.
-                self.resolve_in_global_scope(&mut verify_result.undefined_sym, find_library);
-                (
-                    required,
-                    if verify_result.is_good() {
-                        ComponentBinVerifyResult::Ok {
-                            name: verify_result.name,
-                        }
-                    } else {
-                        ComponentBinVerifyResult::Failed(verify_result)
-                    },
-                )
+                self.resolve_in_global_scope(&mut verify_result, find_library);
+                (required, verify_result.into())
             })
             .collect();
         libs.sort_by(|(required_a, lib_a), (required_b, lib_b)| {
@@ -176,11 +174,7 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
         });
         return ComponentVerifyResult {
             id: self.id.clone(),
-            exe: if bin.is_good() {
-                ComponentBinVerifyResult::Ok { name: bin.name }
-            } else {
-                ComponentBinVerifyResult::Failed(bin)
-            },
+            exe: bin.into(),
             libs,
             // Filled in by Package::verify_for_firmware for non-native components.
             detection: None,
@@ -189,11 +183,26 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
     }
 }
 
+/// A binary's verdict: fails on anything that stops it from loading, warns when
+/// only a lazily-bound import is missing, otherwise passes.
+impl From<BinVerifyResult> for ComponentBinVerifyResult {
+    fn from(result: BinVerifyResult) -> Self {
+        if !result.is_good() {
+            return ComponentBinVerifyResult::Failed(result);
+        }
+        if result.has_warnings() {
+            return ComponentBinVerifyResult::Warned(result);
+        }
+        return ComponentBinVerifyResult::Ok { name: result.name };
+    }
+}
+
 impl ComponentBinVerifyResult {
     pub fn name(&self) -> &str {
         return match self {
             ComponentBinVerifyResult::Skipped { name } => name,
             ComponentBinVerifyResult::Ok { name } => name,
+            ComponentBinVerifyResult::Warned(result) => &result.name,
             ComponentBinVerifyResult::Failed(result) => &result.name,
         };
     }

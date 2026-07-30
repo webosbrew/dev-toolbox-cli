@@ -232,14 +232,14 @@ fn print_component_details(
         return Ok(results.iter().all(|r| r.1.is_good()));
     }
     out.h4(result.exe.name())?;
-    if results.iter().all(|r| r.1.is_good()) {
+    if results.iter().all(|r| r.1.is_good()) && !results.iter().any(|r| has_notes(&r.1.exe)) {
         out.write_fmt(format_args!("All OK\n"))?;
         return Ok(true);
     }
     for (fw, result) in &results {
-        if let ComponentBinVerifyResult::Failed(result) = &result.exe {
+        if let Some(bin) = notes(&result.exe) {
             out.h5(&format!("On {}", fw.info))?;
-            print_bin_verify_details(result, out, out_fmt)?;
+            print_bin_verify_details(bin, out, out_fmt)?;
             out.write_fmt(format_args!("\n"))?;
         }
     }
@@ -247,20 +247,17 @@ fn print_component_details(
         if !required {
             continue;
         }
-        if results.iter().all(|(_, result)| {
-            if let ComponentBinVerifyResult::Failed(_) = result.libs.get(index).unwrap().1 {
-                false
-            } else {
-                true
-            }
-        }) {
+        if !results
+            .iter()
+            .any(|(_, result)| has_notes(&result.libs.get(index).unwrap().1))
+        {
             continue;
         }
         out.h4(lib.name())?;
         for (fw, result) in &results {
-            if let ComponentBinVerifyResult::Failed(result) = &result.libs.get(index).unwrap().1 {
+            if let Some(bin) = notes(&result.libs.get(index).unwrap().1) {
                 out.h5(&format!("On {}", fw.info))?;
-                print_bin_verify_details(result, out, out_fmt)?;
+                print_bin_verify_details(bin, out, out_fmt)?;
                 out.write_fmt(format_args!("\n"))?;
             }
         }
@@ -280,24 +277,60 @@ fn print_bin_verify_details(
     for lib in &result.missing_lib {
         out.write_fmt(format_args!("* Library {lib} is missing\n"))?;
     }
+    print_symbol_list(&result.undefined_sym, "", "undefined symbols", out, out_fmt)?;
+    // A lazily-bound import is a hint, not a failure: the loader resolves it on
+    // the first call, so the binary still starts.
+    print_symbol_list(
+        &result.undefined_sym_lazy,
+        " (bound lazily)",
+        "undefined symbols bound lazily — the binary loads, a call to one aborts it",
+        out,
+        out_fmt,
+    )?;
+    return Ok(());
+}
+
+/// Write one bullet per symbol. `suffix` marks the kind on every line, `summary`
+/// labels the fold.
+fn print_symbol_list(
+    symbols: &[String],
+    suffix: &str,
+    summary: &str,
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    if symbols.is_empty() {
+        return Ok(());
+    }
     // Collapse a long symbol list behind a <details>/<summary> so the report
     // stays scannable. GitHub renders raw HTML in Markdown; other formats keep
     // the plain bullet list (raw tags would be noise there).
-    let fold = *out_fmt == OutputFormat::Markdown
-        && result.undefined_sym.len() > SYMBOL_FOLD_THRESHOLD;
+    let fold = *out_fmt == OutputFormat::Markdown && symbols.len() > SYMBOL_FOLD_THRESHOLD;
     if fold {
         out.write_fmt(format_args!(
-            "<details>\n<summary>{} undefined symbols</summary>\n\n",
-            result.undefined_sym.len()
+            "<details>\n<summary>{} {summary}</summary>\n\n",
+            symbols.len()
         ))?;
     }
-    for sym in &result.undefined_sym {
-        out.write_fmt(format_args!("* Symbol {sym} is undefined\n"))?;
+    for sym in symbols {
+        out.write_fmt(format_args!("* Symbol {sym} is undefined{suffix}\n"))?;
     }
     if fold {
         out.write_fmt(format_args!("</details>\n"))?;
     }
     return Ok(());
+}
+
+/// The detail body of a result worth reporting: a failure or a warning.
+fn notes(result: &ComponentBinVerifyResult) -> Option<&BinVerifyResult> {
+    return match result {
+        ComponentBinVerifyResult::Failed(bin) | ComponentBinVerifyResult::Warned(bin) => Some(bin),
+        _ => None,
+    };
+}
+
+fn has_notes(result: &ComponentBinVerifyResult) -> bool {
+    return notes(result).is_some();
 }
 
 /// Render the summary for a non-native component: the firmware-independent
@@ -594,17 +627,23 @@ fn worst_bundled_lib<'a>(
     name: &str,
 ) -> &'a ComponentBinVerifyResult {
     let mut found: Option<&ComponentBinVerifyResult> = None;
+    let mut warned: Option<&ComponentBinVerifyResult> = None;
     for comp in &result.bundled {
         for (_, lib) in &comp.libs {
             if lib.name() == name {
                 if matches!(lib, ComponentBinVerifyResult::Failed(_)) {
                     return lib;
                 }
+                if matches!(lib, ComponentBinVerifyResult::Warned(_)) {
+                    warned.get_or_insert(lib);
+                }
                 found.get_or_insert(lib);
             }
         }
     }
-    found.expect("library is present in every firmware's bundled set")
+    return warned
+        .or(found)
+        .expect("library is present in every firmware's bundled set");
 }
 
 fn framework_label(fw: &webdetect_lib::FrameworkInfo) -> String {

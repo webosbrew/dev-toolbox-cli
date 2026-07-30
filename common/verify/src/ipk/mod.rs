@@ -32,6 +32,9 @@ pub struct ComponentVerifyResult {
 pub enum ComponentBinVerifyResult {
     Skipped { name: String },
     Ok { name: String },
+    /// Loads, but something is off — an import the loader binds lazily has no
+    /// definition, so a call to it aborts the process. Never gates the verdict.
+    Warned(BinVerifyResult),
     Failed(BinVerifyResult),
 }
 

@@ -62,6 +62,11 @@ fn main() {
                 println!("Missing symbol: {}", sym);
                 all_ok = false;
             }
+            // The loader resolves these on the first call, so the binary still
+            // loads. Report them, but do not fail.
+            for sym in result.undefined_sym_lazy {
+                println!("Warning: missing symbol {} is bound lazily", sym);
+            }
         }
         if all_ok {
             println!("All OK.");

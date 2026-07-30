@@ -22,6 +22,16 @@ pub trait PrintTable {
                 cell
             }
             ComponentBinVerifyResult::Skipped { .. } => Cell::new("SKIP"),
+            // Loads, but a lazily-bound import is missing. Softer than a FAIL.
+            ComponentBinVerifyResult::Warned(_) => {
+                let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
+                    ":warning:"
+                } else {
+                    "WARN"
+                });
+                cell.style(Attr::ForegroundColor(color::YELLOW));
+                cell
+            }
             ComponentBinVerifyResult::Failed(_) => {
                 let mut cell = Cell::new(if *out_fmt == OutputFormat::Markdown {
                     ":x:"

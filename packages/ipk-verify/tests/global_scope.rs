@@ -22,6 +22,7 @@ fn bundled_lib(name: &str, needed: &[&str], symbols: &[&str], undefined: &[&str]
         symbols,
         names: vec![name.to_string()],
         undefined: undefined.iter().map(|s| s.to_string()).collect(),
+        undefined_lazy: vec![],
         rpath: vec![],
         priority: LibraryPriority::Rpath,
     }
@@ -36,6 +37,7 @@ fn component(exe_needed: &[&str], libs: Vec<LibraryInfo>) -> Component<()> {
             rpath: vec![],
             needed: exe_needed.iter().map(|s| s.to_string()).collect(),
             undefined: vec![],
+            undefined_lazy: vec![],
         }),
         libs,
     }

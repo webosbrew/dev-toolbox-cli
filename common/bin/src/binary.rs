@@ -3,6 +3,7 @@ use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
 use elf::{abi, ElfStream};
 
+use crate::reloc::lazy_bound_symbols;
 use crate::BinaryInfo;
 
 impl BinaryInfo {
@@ -25,7 +26,7 @@ impl BinaryInfo {
         // dependencies or imports rather than panicking.
         if let Some(dynstr_header) = elf.section_header_by_name(".dynstr")?.copied() {
             let dynstr_table = elf.section_data_as_strtab(&dynstr_header)?;
-            for entry in dynamic_entries {
+            for entry in dynamic_entries.iter().cloned() {
                 match entry.d_tag {
                     abi::DT_NEEDED => {
                         if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
@@ -44,6 +45,8 @@ impl BinaryInfo {
             }
         }
 
+        let lazy_syms = lazy_bound_symbols(&mut elf, &dynamic_entries)?;
+
         let symbols: Vec<(Symbol, String)> = match elf.dynamic_symbol_table()? {
             Some((sym_table, str)) => sym_table
                 .iter()
@@ -58,29 +61,33 @@ impl BinaryInfo {
         };
         let ver_table = elf.symbol_version_table()?;
 
-        let undefined: Vec<String> = symbols
-            .iter()
-            .enumerate()
-            .flat_map(|(index, (sym, name))| {
-                if !sym.is_undefined() || sym.st_name == 0 || sym.st_bind() == abi::STB_WEAK {
-                    return vec![];
-                }
-                if let Some(ver) = ver_table
-                    .as_ref()
-                    .map(|t| t.get_requirement(index).ok().flatten())
-                    .flatten()
-                {
-                    return vec![format!("{name}@{}", ver.name)];
-                }
-                return vec![name.clone()];
-            })
-            .collect();
+        let mut undefined = Vec::<String>::new();
+        let mut undefined_lazy = Vec::<String>::new();
+        for (index, (sym, name)) in symbols.iter().enumerate() {
+            if !sym.is_undefined() || sym.st_name == 0 || sym.st_bind() == abi::STB_WEAK {
+                continue;
+            }
+            let symbol = match ver_table
+                .as_ref()
+                .map(|t| t.get_requirement(index).ok().flatten())
+                .flatten()
+            {
+                Some(ver) => format!("{name}@{}", ver.name),
+                None => name.clone(),
+            };
+            if lazy_syms.contains(&index) {
+                undefined_lazy.push(symbol);
+            } else {
+                undefined.push(symbol);
+            }
+        }
 
         return Ok(Self {
             name: String::from(name.as_ref()),
             rpath,
             needed,
             undefined,
+            undefined_lazy,
         });
     }
 }
@@ -98,4 +105,25 @@ mod tests {
             BinaryInfo::parse(&mut content, "sample.bin", true).expect("should not have any error");
         assert_eq!(info.needed[0], "libc.so.6");
     }
+
+    /// The fixture calls `puts`/`abort` through the PLT and does not force eager
+    /// binding, so every import lands in the lazy list.
+    #[test]
+    fn plt_imports_are_lazily_bound() {
+        let mut content = Cursor::new(include_bytes!("fixtures/sample.bin"));
+        let info =
+            BinaryInfo::parse(&mut content, "sample.bin", true).expect("should not have any error");
+        assert!(
+            info.undefined_lazy.iter().any(|s| s.starts_with("puts@")),
+            "puts is called through the PLT, got lazy {:?} eager {:?}",
+            info.undefined_lazy,
+            info.undefined
+        );
+        assert!(
+            info.undefined.is_empty(),
+            "nothing needs eager binding here, got {:?}",
+            info.undefined
+        );
+    }
 }
+

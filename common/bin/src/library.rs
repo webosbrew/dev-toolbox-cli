@@ -5,6 +5,8 @@ use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
 use elf::{abi, ElfStream, ParseError};
 
+use crate::reloc::lazy_bound_symbols;
+
 use crate::LibraryInfo;
 
 const IGNORED_SYMBOLS: &[&str] = &[
@@ -58,7 +60,7 @@ impl LibraryInfo {
         // object) instead of panicking.
         if let Some(dynstr_header) = elf.section_header_by_name(".dynstr")?.copied() {
             let dynstr_table = elf.section_data_as_strtab(&dynstr_header)?;
-            for entry in dynamic_entries {
+            for entry in dynamic_entries.iter().cloned() {
                 match entry.d_tag {
                     abi::DT_NEEDED => {
                         if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
@@ -79,6 +81,12 @@ impl LibraryInfo {
                 }
             }
         }
+
+        let lazy_syms = if with_undefined {
+            lazy_bound_symbols(&mut elf, &dynamic_entries)?
+        } else {
+            Default::default()
+        };
 
         let all_syms: Vec<(Symbol, String)> = match elf.dynamic_symbol_table()? {
             Some((sym_table, str)) => sym_table
@@ -117,32 +125,32 @@ impl LibraryInfo {
             })
             .collect();
 
-        let undefined: Vec<String> = if with_undefined {
-            let mut list: Vec<String> = all_syms
-                .iter()
-                .enumerate()
-                .flat_map(|(index, (sym, name))| {
-                    if !sym.is_undefined()
-                        || sym.st_name == 0
-                        || sym.st_bind() == abi::STB_WEAK
-                        || IGNORED_SYMBOLS.contains(&&**name)
-                    {
-                        return vec![];
+        let mut undefined = Vec::<String>::new();
+        let mut undefined_lazy = Vec::<String>::new();
+        if with_undefined {
+            for (index, (sym, name)) in all_syms.iter().enumerate() {
+                if !sym.is_undefined()
+                    || sym.st_name == 0
+                    || sym.st_bind() == abi::STB_WEAK
+                    || IGNORED_SYMBOLS.contains(&&**name)
+                {
+                    continue;
+                }
+                let mut symbol = name.clone();
+                if let Some(ver_table) = &ver_table {
+                    if let Some(ver) = ver_table.get_requirement(index).ok().flatten() {
+                        symbol = format!("{name}@{}", ver.name);
                     }
-
-                    if let Some(ver_table) = &ver_table {
-                        if let Some(ver) = ver_table.get_requirement(index).ok().flatten() {
-                            return vec![format!("{name}@{}", ver.name)];
-                        }
-                    }
-                    return vec![name.clone()];
-                })
-                .collect();
-            list.sort_unstable();
-            list
-        } else {
-            Vec::new()
-        };
+                }
+                if lazy_syms.contains(&index) {
+                    undefined_lazy.push(symbol);
+                } else {
+                    undefined.push(symbol);
+                }
+            }
+            undefined.sort_unstable();
+            undefined_lazy.sort_unstable();
+        }
 
         needed.sort_unstable();
         symbols.sort_unstable();
@@ -153,6 +161,7 @@ impl LibraryInfo {
             needed,
             symbols,
             undefined,
+            undefined_lazy,
             rpath,
             names: Default::default(),
             priority: Default::default(),
