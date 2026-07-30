@@ -36,11 +36,9 @@ impl BinaryInfo {
                             needed.push(String::from(s));
                         }
                     }
-                    abi::DT_RPATH | abi::DT_RUNPATH => {
-                        if with_rpath {
-                            if let Ok(s) = dynstr_table.get(offset) {
-                                rpath.extend(s.split(':').map(String::from));
-                            }
+                    abi::DT_RPATH | abi::DT_RUNPATH if with_rpath => {
+                        if let Ok(s) = dynstr_table.get(offset) {
+                            rpath.extend(s.split(':').map(String::from));
                         }
                     }
                     _ => {}

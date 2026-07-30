@@ -62,7 +62,7 @@ pub(crate) fn collect_js(dir: &Path, depth: usize, out: &mut Vec<(String, String
         if !is_js {
             continue;
         }
-        if entry.metadata().map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
+        if entry.metadata().map_or(u64::MAX, |m| m.len()) > MAX_FILE_BYTES {
             continue;
         }
         if let Ok(content) = fs::read(&path) {
@@ -100,7 +100,7 @@ pub(crate) fn collect_service_js(dir: &Path, main: Option<&str>, out: &mut Vec<(
         if !visited.insert(path.clone()) {
             continue;
         }
-        if fs::metadata(&path).map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
+        if fs::metadata(&path).map_or(u64::MAX, |m| m.len()) > MAX_FILE_BYTES {
             continue;
         }
         let Ok(bytes) = fs::read(&path) else { continue };

@@ -62,7 +62,7 @@ pub fn detect_web_app(dir: &Path, index_html: &Path) -> WebAppDetection {
 /// Read a file to a string, but skip (return empty) anything larger than
 /// [`MAX_FILE_BYTES`] so a pathological entry can't exhaust memory.
 fn read_capped(path: &Path) -> String {
-    if fs::metadata(path).map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
+    if fs::metadata(path).map_or(u64::MAX, |m| m.len()) > MAX_FILE_BYTES {
         return String::new();
     }
     fs::read_to_string(path).unwrap_or_default()
