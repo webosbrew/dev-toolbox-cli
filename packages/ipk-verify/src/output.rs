@@ -2,8 +2,9 @@ use std::fs::File;
 use std::io::{Error, Stdout, Write};
 
 use prettytable::format::{FormatBuilder, LinePosition, LineSeparator, TableFormat};
-use prettytable::{Cell, Table};
-use term::{color, Attr};
+// `color` and `Attr` come from prettytable's own `term`, so take them from
+// there. Depending on `term` directly pulls in a second, incompatible copy.
+use prettytable::{color, Attr, Cell, Table};
 
 use verify_lib::ipk::{ComponentBinVerifyResult, CompatVerdict};
 

@@ -35,7 +35,7 @@ where
     let Some(jmprel) = dynamic
         .iter()
         .find(|entry| entry.d_tag == abi::DT_JMPREL)
-        .map(|entry| entry.clone().d_ptr())
+        .map(Dyn::d_ptr)
     else {
         return Ok(HashSet::new());
     };
@@ -75,7 +75,7 @@ const DF_1_NOW: u64 = 0x1;
 
 /// Whether the object asks the loader to resolve every symbol at load time.
 fn binds_now(dynamic: &[Dyn]) -> bool {
-    return dynamic.iter().cloned().any(|entry| match entry.d_tag {
+    return dynamic.iter().any(|entry| match entry.d_tag {
         abi::DT_BIND_NOW => true,
         abi::DT_FLAGS => entry.d_val() & DF_BIND_NOW != 0,
         abi::DT_FLAGS_1 => entry.d_val() & DF_1_NOW != 0,

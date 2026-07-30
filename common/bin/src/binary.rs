@@ -26,7 +26,7 @@ impl BinaryInfo {
         // dependencies or imports rather than panicking.
         if let Some(dynstr_header) = elf.section_header_by_name(".dynstr")?.copied() {
             let dynstr_table = elf.section_data_as_strtab(&dynstr_header)?;
-            for entry in dynamic_entries.iter().cloned() {
+            for entry in &dynamic_entries {
                 let tag = entry.d_tag;
                 // Every value read below is a byte offset into `.dynstr`.
                 let offset = usize::try_from(entry.d_val()).unwrap_or(usize::MAX);

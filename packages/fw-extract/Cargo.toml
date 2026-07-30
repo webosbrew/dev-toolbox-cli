@@ -25,8 +25,8 @@ serde_json = { workspace = true }
 semver = { workspace = true }
 fw-lib = { path = "../../common/fw" }
 bin-lib = { path = "../../common/bin" }
-debian-control = "0.1.38"
-debversion = "0.4.4"
+debian-control = "0.1.44"
+debversion = "0.5.4"
 
 [dependencies.clap]
 workspace = true
@@ -42,3 +42,6 @@ assets = [
     ["../../common/data/**/*", "usr/share/webosbrew/compat-checker/data/", "644"]
 ]
 features = ["linux-install"]
+
+[dev-dependencies]
+tempfile = { workspace = true }
