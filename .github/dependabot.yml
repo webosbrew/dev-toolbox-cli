@@ -1,0 +1,20 @@
+version: 2
+
+updates:
+  # The workflows pin a major version, so this only fires for a new major.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: [ "*" ]
+
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      cargo:
+        patterns: [ "*" ]
+        update-types: [ minor, patch ]
