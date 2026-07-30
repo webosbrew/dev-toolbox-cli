@@ -125,5 +125,39 @@ mod tests {
             info.undefined
         );
     }
+
+    /// Taking a function's address emits a second, non-PLT relocation, and the
+    /// loader resolves that one while the object loads. Such a symbol must count
+    /// as eager even though it also has a PLT entry.
+    ///
+    /// `sample_eager.bin` is `sample.bin` with the binding of `__gmon_start__`
+    /// changed from weak to global (byte 0x1f8, its `st_info` in `.dynsym`:
+    /// 0x20 -> 0x10). That symbol already carries both relocations in the
+    /// fixture — `R_ARM_JUMP_SLOT` in `.rel.plt` and `R_ARM_GLOB_DAT` in
+    /// `.rel.dyn` — but the parser drops weak imports before classifying them,
+    /// which hid the verdict.
+    #[test]
+    fn symbol_with_a_non_plt_relocation_is_eager() {
+        let mut content = Cursor::new(include_bytes!("fixtures/sample_eager.bin"));
+        let info = BinaryInfo::parse(&mut content, "sample_eager.bin", true)
+            .expect("should not have any error");
+        assert!(
+            info.undefined.iter().any(|s| s == "__gmon_start__"),
+            "the GLOB_DAT relocation makes it eager, got eager {:?} lazy {:?}",
+            info.undefined,
+            info.undefined_lazy
+        );
+        assert!(
+            !info.undefined_lazy.iter().any(|s| s == "__gmon_start__"),
+            "must not also be reported as lazy, got {:?}",
+            info.undefined_lazy
+        );
+        // The PLT-only imports are unaffected.
+        assert!(
+            info.undefined_lazy.iter().any(|s| s.starts_with("puts@")),
+            "got lazy {:?}",
+            info.undefined_lazy
+        );
+    }
 }
 
