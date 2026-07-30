@@ -9,6 +9,32 @@ on:
       - '**'
 
 jobs:
+  # Path handling differs per host: `canonicalize` returns a `\\?\` verbatim path
+  # on Windows and resolves symlinks (`/var` -> `/private/var`) on macOS. Run the
+  # tests on all three so rpath and extraction bugs cannot hide on one host.
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Use Rust Stable
+        run: rustup toolchain install stable --profile minimal
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ runner.os }}
+
+      - name: Run Tests
+        run: cargo test --workspace
+
   build-ubuntu:
     runs-on: ubuntu-latest
 
