@@ -112,7 +112,7 @@ checksum = "ace50bade8e6234aa140d9a2f552bbee1db4d353f69b8217bc503490fc1a9f26"
 
 [[package]]
 name = "bin-lib"
-version = "0.1.2"
+version = "0.3.0"
 dependencies = [
  "elf",
  "semver",
@@ -444,7 +444,7 @@ checksum = "4445909572dbd556c457c849c4ca58623d84b27c8fff1e74b0b4227d8b90d17b"
 
 [[package]]
 name = "elf-verify"
-version = "0.1.3"
+version = "0.3.0"
 dependencies = [
  "bin-lib",
  "clap",
@@ -516,7 +516,7 @@ dependencies = [
 
 [[package]]
 name = "fw-extract"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bin-lib",
  "clap",
@@ -532,7 +532,7 @@ dependencies = [
 
 [[package]]
 name = "fw-lib"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "bin-lib",
  "semver",
@@ -542,7 +542,7 @@ dependencies = [
 
 [[package]]
 name = "gen-manifest"
-version = "0.1.4"
+version = "0.3.0"
 dependencies = [
  "clap",
  "ipk-lib",
@@ -785,7 +785,7 @@ dependencies = [
 
 [[package]]
 name = "ipk-lib"
-version = "0.1.4"
+version = "0.3.0"
 dependencies = [
  "bin-lib",
  "common-path",
@@ -799,7 +799,7 @@ dependencies = [
 
 [[package]]
 name = "ipk-verify"
-version = "0.1.6"
+version = "0.3.0"
 dependencies = [
  "bin-lib",
  "clap",
@@ -1361,7 +1361,7 @@ checksum = "f8c5f0a0af699448548ad1a2fbf920fb4bee257eae39953ba95cb84891a0446a"
 
 [[package]]
 name = "verify-lib"
-version = "0.1.3"
+version = "0.3.0"
 dependencies = [
  "bin-lib",
  "fw-lib",
@@ -1439,7 +1439,7 @@ checksum = "65fc09f10666a9f147042251e0dda9c18f166ff7de300607007e96bdebc1068d"
 
 [[package]]
 name = "webdetect-lib"
-version = "0.1.0"
+version = "0.3.0"
 dependencies = [
  "regex",
  "ress",
