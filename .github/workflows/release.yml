@@ -1,12 +1,25 @@
 name: Release
+run-name: "Release ${{ github.ref_name }}"
 
 on:
   release:
-    types: [ "published" ]
+    types: [ released ]
 
 jobs:
-  release-ubuntu:
-    runs-on: ubuntu-latest
+  # Debian packages, one per tool, for apt users.
+  debian:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Built on 22.04 to keep the glibc requirement low.
+          - runs-on: ubuntu-22.04
+            arch: amd64
+          - runs-on: ubuntu-22.04-arm
+            arch: arm64
+    runs-on: ${{ matrix.runs-on }}
 
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +35,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          shared-key: ${{ runner.os }}
+          shared-key: deb-${{ matrix.arch }}
 
       - name: Install cargo-deb
         run: cargo install cargo-deb
@@ -30,15 +43,14 @@ jobs:
       - name: Build Packages
         run: |
           for f in packages/*; do
-            cargo deb -p $(basename "$f") || exit 1
+            cargo deb -p "$(basename "$f")" || exit 1
           done
 
-      - name: Create Release (Ubuntu)
-        id: create_release_ubuntu
+      - name: Upload Packages (Ubuntu ${{ matrix.arch }})
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Release ${{ github.event.release.tag_name }}
+          name: Release ${{ github.ref_name }}
           allowUpdates: true
           omitNameDuringUpdate: true
           omitBodyDuringUpdate: true

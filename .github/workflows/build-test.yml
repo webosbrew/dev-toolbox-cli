@@ -10,15 +10,14 @@ on:
 
 jobs:
   # Path handling differs per host: `canonicalize` returns a `\\?\` verbatim path
-  # on Windows and resolves symlinks (`/var` -> `/private/var`) on macOS. Run the
-  # tests on all three so rpath and extraction bugs cannot hide on one host.
+  # on Windows and resolves symlinks (`/var` -> `/private/var`) on macOS. Build
+  # and test on all three so those bugs cannot hide on one host.
   test:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
-
-    runs-on: ${{ matrix.os }}
+        runs-on: [ ubuntu-latest, macos-latest, windows-latest ]
+    runs-on: ${{ matrix.runs-on }}
 
     steps:
       - uses: actions/checkout@v4
@@ -32,10 +31,31 @@ jobs:
         with:
           shared-key: ${{ runner.os }}
 
-      - name: Run Tests
-        run: cargo test --workspace
+      - name: Build
+        run: cargo build --workspace --locked
 
-  build-ubuntu:
+      - name: Run Tests
+        run: cargo test --workspace --locked
+
+  clippy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Use Rust Stable
+        run: rustup toolchain install stable --profile minimal --component clippy
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: ${{ runner.os }}
+
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
+  build-deb:
     runs-on: ubuntu-latest
 
     steps:
@@ -48,7 +68,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          shared-key: ${{ runner.os }}
+          shared-key: deb-${{ runner.os }}
 
       - name: Install cargo-deb
         run: cargo install cargo-deb
@@ -56,5 +76,5 @@ jobs:
       - name: Build Packages
         run: |
           for f in packages/*; do
-            cargo deb -p $(basename "$f") || exit 1
+            cargo deb -p "$(basename "$f")" || exit 1
           done
