@@ -51,8 +51,8 @@ impl Component<AppInfo> {
             return Ok(Self {
                 id: info.id.clone(),
                 info,
-                exe: Default::default(),
-                libs: Default::default(),
+                exe: None,
+                libs: Vec::new(),
             });
         }
         let exe_path = ensure_within(dir, &dir.join(Cow::from_slash(&info.main)))?;
@@ -102,8 +102,8 @@ impl Component<ServiceInfo> {
             return Ok(Self {
                 id: info.id.clone(),
                 info: info.clone(),
-                exe: Default::default(),
-                libs: Default::default(),
+                exe: None,
+                libs: Vec::new(),
             });
         }
         let executable = info.executable.as_ref().unwrap();
@@ -116,7 +116,7 @@ impl Component<ServiceInfo> {
         .map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,
-                format!("Bad app executable {}: {e:?}", executable),
+                format!("Bad app executable {executable}: {e:?}"),
             )
         })?;
         let libs = Self::list_libs(
@@ -238,11 +238,10 @@ impl<T> Component<T> {
         return exe
             .needed
             .iter()
-            .find(|needed| lib.has_name(needed))
-            .is_some();
+            .any(|needed| lib.has_name(needed));
     }
 
-    fn rpath<P>(rpath: &Vec<String>, bin_path: P) -> Vec<PathBuf>
+    fn rpath<P>(rpath: &[String], bin_path: P) -> Vec<PathBuf>
     where
         P: AsRef<Path>,
     {
@@ -268,7 +267,7 @@ impl<T> Component<T> {
                     .ok()
             })
             .filter(|p| {
-                let Some(common) = common_path(&p, &origin_canon) else {
+                let Some(common) = common_path(p, &origin_canon) else {
                     return false;
                 };
                 return common.components().count() > root_depth;
@@ -357,7 +356,7 @@ mod tests {
     use std::collections::HashMap;
 
     fn empty_links() -> Symlinks {
-        Symlinks::new(HashMap::new())
+        Symlinks::new(&HashMap::new())
     }
 
     #[test]
@@ -420,7 +419,7 @@ mod tests {
         fs::write(&exe, b"x").unwrap();
 
         let paths = Component::<()>::rpath(
-            &vec![
+            &[
                 // Does not exist -> dropped.
                 String::from("$ORIGIN/lib/backports"),
                 String::from("$ORIGIN/../lib/backports"),
@@ -431,7 +430,7 @@ mod tests {
 
         let backports = d.join("lib/backports").canonicalize().unwrap();
         let bin = d.join("bin").canonicalize().unwrap();
-        assert_eq!(paths, vec![backports, bin], "got {:?}", paths);
+        assert_eq!(paths, vec![backports, bin], "got {paths:?}");
     }
 
     #[test]
@@ -448,9 +447,9 @@ mod tests {
             .unwrap()
             .to_path_buf();
 
-        let paths = Component::<()>::rpath(&vec![root.to_string_lossy().into_owned()], &exe);
+        let paths = Component::<()>::rpath(&[root.to_string_lossy().into_owned()], &exe);
 
-        assert!(paths.is_empty(), "expected no rpath dirs, got {:?}", paths);
+        assert!(paths.is_empty(), "expected no rpath dirs, got {paths:?}");
     }
 
     #[test]

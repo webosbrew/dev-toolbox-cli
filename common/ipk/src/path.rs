@@ -5,7 +5,7 @@
 //! and service ids from `packageinfo.json`, and the `main`/`executable` entry
 //! from `appinfo.json`/`services.json`. Without a check, a value like
 //! `../../../../dev/zero` or `/etc/passwd` would make the verifier open a file
-//! outside the package (a device read is an easy DoS). `tar`'s `unpack_in`
+//! outside the package (a device read is an easy `DoS`). `tar`'s `unpack_in`
 //! already blocks traversal when *writing* extracted files; this guards the
 //! *reads* we do afterwards.
 

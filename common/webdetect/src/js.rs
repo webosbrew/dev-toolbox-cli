@@ -6,7 +6,7 @@
 //! means keywords/operators/identifiers inside strings, comments and regex
 //! literals are ignored.
 
-use std::collections::{BTreeMap, HashSet, VecDeque};
+use std::collections::{BTreeMap, BTreeSet, HashSet, VecDeque};
 use std::fs;
 use std::path::{Component, Path, PathBuf};
 
@@ -23,6 +23,8 @@ const MAX_JS_FILES: usize = 400;
 const MAX_DEPTH: usize = 12;
 
 /// The result of analyzing a set of JS sources.
+// Every field describes an ECMAScript trait, so the shared prefix is the point.
+#[allow(clippy::struct_field_names)]
 pub(crate) struct JsAnalysis {
     pub es_level: Option<EsLevel>,
     pub es_features: Vec<EsFeature>,
@@ -52,7 +54,12 @@ pub(crate) fn collect_js(dir: &Path, depth: usize, out: &mut Vec<(String, String
             continue;
         }
         let name = entry.file_name().to_string_lossy().to_string();
-        if !name.ends_with(".js") || name.ends_with(".map") {
+        // A source map ends in `.map`, so matching on the extension alone
+        // already skips it.
+        let is_js = Path::new(&name)
+            .extension()
+            .is_some_and(|ext| ext.eq_ignore_ascii_case("js"));
+        if !is_js {
             continue;
         }
         if entry.metadata().map(|m| m.len()).unwrap_or(u64::MAX) > MAX_FILE_BYTES {
@@ -144,7 +151,7 @@ fn resolve_module(root: &Path, base: &Path, spec: &str) -> Option<PathBuf> {
 fn has_js_ext(path: &Path) -> bool {
     matches!(
         path.extension().and_then(|e| e.to_str()),
-        Some("js") | Some("cjs") | Some("mjs")
+        Some("js" | "cjs" | "mjs")
     )
 }
 
@@ -200,6 +207,8 @@ fn extract_relative_specifiers(content: &str) -> Vec<String> {
             _ => SpecTok::Other,
         };
         if let SpecTok::Str(s) = &cur {
+            // One arm per syntax, kept apart so each stays readable.
+            #[allow(clippy::match_same_arms)]
             let is_specifier = match (&prev, &prev2) {
                 // require('x')
                 (Some(SpecTok::OpenParen), Some(SpecTok::Ident(n))) if n == "require" => true,
@@ -329,7 +338,7 @@ fn scan_js_tokens(
         let is_period = matches!(&item.token, Token::Punct(Punct::Period));
 
         match &item.token {
-            Token::Keyword(Keyword::Let(_)) | Token::Keyword(Keyword::Const(_)) => {
+            Token::Keyword(Keyword::Let(_) | Keyword::Const(_)) => {
                 features.insert(EsFeature::LetConst);
             }
             Token::Keyword(Keyword::Class(_)) => {
@@ -398,8 +407,10 @@ fn scan_js_tokens(
 /// Level for a `Global.member` static API, or `None` if unremarkable.
 /// Only unambiguous namespaced APIs are listed (prototype methods like
 /// `.includes`/`.flat` are excluded — their receiver type is unknowable).
+// One arm per API family, so the table reads like the spec it mirrors.
+#[allow(clippy::match_same_arms)]
 fn static_api_level(recv: &str, method: &str) -> Option<EsLevel> {
-    use EsLevel::*;
+    use EsLevel::{Es2015, Es2017, Es2019, Es2020, Es2021Plus};
     Some(match (recv, method) {
         ("Object", "assign" | "getOwnPropertySymbols" | "setPrototypeOf") => Es2015,
         ("Object", "values" | "entries" | "getOwnPropertyDescriptors") => Es2017,
@@ -423,7 +434,7 @@ fn static_api_level(recv: &str, method: &str) -> Option<EsLevel> {
 
 /// Level for a bare global identifier, or `None`.
 fn bare_api_level(name: &str) -> Option<EsLevel> {
-    use EsLevel::*;
+    use EsLevel::{Es2020, Es2021Plus};
     Some(match name {
         "globalThis" | "BigInt" => Es2020,
         "WeakRef" | "FinalizationRegistry" => Es2021Plus,
@@ -436,25 +447,25 @@ fn bare_api_level(name: &str) -> Option<EsLevel> {
 /// *references* every API to feature-detect/define it) and must be suppressed.
 /// Returns canonical library names.
 pub(crate) fn detect_polyfills(js: &[(String, String)]) -> Vec<String> {
-    let mut found: BTreeMap<&str, ()> = BTreeMap::new();
+    let mut found: BTreeSet<&str> = BTreeSet::new();
     for (_, c) in js {
         if c.contains("core-js") || c.contains("__core-js_shared__") {
-            found.insert("core-js", ());
+            found.insert("core-js");
         }
         if c.contains("@babel/runtime")
             || c.contains("_interopRequireDefault")
             || c.contains("babelHelpers")
         {
-            found.insert("@babel/runtime", ());
+            found.insert("@babel/runtime");
         }
         if c.contains("regeneratorRuntime") {
-            found.insert("regenerator", ());
+            found.insert("regenerator");
         }
         if c.contains("es5-shim") || c.contains("es6-shim") {
-            found.insert("es-shims", ());
+            found.insert("es-shims");
         }
     }
-    found.into_keys().map(String::from).collect()
+    found.into_iter().map(String::from).collect()
 }
 
 #[cfg(test)]

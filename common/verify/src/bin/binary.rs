@@ -15,7 +15,7 @@ impl Verify<BinVerifyResult> for BinaryInfo {
         result
             .undefined_sym_lazy
             .extend(self.undefined_lazy.clone());
-        let mut visited_libs: HashSet<String> = Default::default();
+        let mut visited_libs: HashSet<String> = HashSet::new();
 
         for needed in &self.needed {
             let Some(lib) = find_library(needed) else {
@@ -64,9 +64,9 @@ impl BinVerifyResult {
     pub fn new(name: String) -> Self {
         return Self {
             name,
-            missing_lib: Default::default(),
-            undefined_sym: Default::default(),
-            undefined_sym_lazy: Default::default(),
+            missing_lib: Vec::new(),
+            undefined_sym: Vec::new(),
+            undefined_sym_lazy: Vec::new(),
         };
     }
 }

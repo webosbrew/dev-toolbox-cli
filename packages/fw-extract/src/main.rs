@@ -34,7 +34,7 @@ struct FirmwareExtractor {
 fn main() {
     let args = Args::parse();
     if let Err(e) = run(args) {
-        eprintln!("{}", e.to_string());
+        eprintln!("{e}");
         exit(1);
     }
 }
@@ -57,7 +57,7 @@ fn run(args: Args) -> Result<(), Error> {
             fs::create_dir_all(output.clone()).map_err(|e| {
                 Error::new(
                     e.kind(),
-                    format!("Failed to create directory for output: {:?}", e),
+                    format!("Failed to create directory for output: {e:?}"),
                 )
             })?;
         } else if !args.rewrite {
@@ -72,22 +72,22 @@ fn run(args: Args) -> Result<(), Error> {
         extractor.extract_libs(&files_pkg_index, &mut lib_index, &output);
         let writer =
             BufWriter::new(File::create(output.join("index.json")).map_err(|e| {
-                Error::new(e.kind(), format!("Failed to open index.json: {:?}", e))
+                Error::new(e.kind(), format!("Failed to open index.json: {e:?}"))
             })?);
         serde_json::to_writer_pretty(writer, &lib_index).map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,
-                format!("Failed to write index {:?}", e),
+                format!("Failed to write index {e:?}"),
             )
         })?;
         let writer = BufWriter::new(
             File::create(output.join("info.json"))
-                .map_err(|e| Error::new(e.kind(), format!("Failed to open info.json: {:?}", e)))?,
+                .map_err(|e| Error::new(e.kind(), format!("Failed to open info.json: {e:?}")))?,
         );
         serde_json::to_writer_pretty(writer, &extractor.fw_info).map_err(|e| {
             Error::new(
                 ErrorKind::InvalidData,
-                format!("Failed to write firmware info {:?}", e),
+                format!("Failed to write firmware info {e:?}"),
             )
         })?;
     }

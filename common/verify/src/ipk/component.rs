@@ -93,7 +93,7 @@ impl<T> ComponentImpl for Component<T> {
             return;
         };
         let resolver = |name: &str| self.resolve_lib(name, find_library);
-        let mut visited: HashSet<String> = Default::default();
+        let mut visited: HashSet<String> = HashSet::new();
         for needed in &exe.needed {
             if result.undefined_sym.is_empty() && result.undefined_sym_lazy.is_empty() {
                 break;
@@ -126,9 +126,9 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
                 exe: ComponentBinVerifyResult::Skipped {
                     name: String::new(),
                 },
-                libs: Default::default(),
+                libs: Vec::new(),
                 detection: None,
-                bundled: Default::default(),
+                bundled: Vec::new(),
             };
         };
         let bin = self.verify_bin(exe, find_library);
@@ -138,8 +138,8 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
             .map(|lib| {
                 let required = self.is_required(lib);
                 // System library has higher precedence
-                if lib.priority != LibraryPriority::Rpath {
-                    if find_library(&lib.name).is_some() {
+                if lib.priority != LibraryPriority::Rpath
+                    && find_library(&lib.name).is_some() {
                         return (
                             required,
                             ComponentBinVerifyResult::Skipped {
@@ -147,11 +147,10 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
                             },
                         );
                     }
-                }
                 let mut verify_result = self.verify_bin(
                     &BinaryInfo {
                         name: lib.name.clone(),
-                        rpath: Default::default(),
+                        rpath: Vec::new(),
                         needed: lib.needed.clone(),
                         undefined: lib.undefined.clone(),
                         undefined_lazy: lib.undefined_lazy.clone(),
@@ -170,7 +169,7 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
             if !required_cmp.is_eq() {
                 return required_cmp.reverse();
             }
-            return lib_a.name().cmp(&lib_b.name());
+            return lib_a.name().cmp(lib_b.name());
         });
         return ComponentVerifyResult {
             id: self.id.clone(),
@@ -178,7 +177,7 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
             libs,
             // Filled in by Package::verify_for_firmware for non-native components.
             detection: None,
-            bundled: Default::default(),
+            bundled: Vec::new(),
         };
     }
 }
@@ -200,10 +199,10 @@ impl From<BinVerifyResult> for ComponentBinVerifyResult {
 impl ComponentBinVerifyResult {
     pub fn name(&self) -> &str {
         return match self {
-            ComponentBinVerifyResult::Skipped { name } => name,
-            ComponentBinVerifyResult::Ok { name } => name,
-            ComponentBinVerifyResult::Warned(result) => &result.name,
-            ComponentBinVerifyResult::Failed(result) => &result.name,
+            ComponentBinVerifyResult::Skipped { name } | ComponentBinVerifyResult::Ok { name } => name,
+            ComponentBinVerifyResult::Warned(result) | ComponentBinVerifyResult::Failed(result) => {
+                &result.name
+            }
         };
     }
 }

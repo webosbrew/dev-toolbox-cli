@@ -49,11 +49,11 @@ impl FirmwareExtractor {
                         let Ok(line) = line else {
                             continue;
                         };
-                        let Some(line) = line.split("\t").next() else {
+                        let Some(line) = line.split('\t').next() else {
                             continue;
                         };
                         files_pkg_index.insert(
-                            root.join(PathBuf::from_slash(line.trim_start_matches("/"))),
+                            root.join(PathBuf::from_slash(line.trim_start_matches('/'))),
                             String::from(path.file_stem().unwrap().to_string_lossy()),
                         );
                     }
@@ -108,7 +108,7 @@ impl FirmwareExtractor {
                 match ent {
                     Ok(ent) => {
                         self.handle_entry(
-                            ent,
+                            &ent,
                             &self.so_regex,
                             files_pkg_index,
                             lib_index,
@@ -129,7 +129,7 @@ impl FirmwareExtractor {
 
     fn handle_entry<P>(
         &self,
-        ent: DirEntry,
+        ent: &DirEntry,
         so_regex: &Regex,
         files_pkg_index: &BTreeMap<PathBuf, String>,
         lib_index: &mut BTreeMap<String, String>,
@@ -165,12 +165,12 @@ impl FirmwareExtractor {
                 if debug > 0 {
                     println!("Saving symbols list for {name}");
                 }
-                let symbols_name = format!("{}.json", name);
+                let symbols_name = format!("{name}.json");
                 File::create(output.as_ref().join(&symbols_name))
                     .and_then(|file| {
                         let writer = BufWriter::new(file);
                         return serde_json::to_writer_pretty(writer, &lib_info).map_err(|e| {
-                            Error::new(ErrorKind::InvalidData, format!("Failed to write {:?}", e))
+                            Error::new(ErrorKind::InvalidData, format!("Failed to write {e:?}"))
                         });
                     })
                     .unwrap();
@@ -223,7 +223,7 @@ impl FirmwareExtractor {
                     );
                     return Ok(None);
                 }
-            };
+            }
         }
         Ok(Some(target))
     }
@@ -274,10 +274,8 @@ impl FirmwareExtractor {
     fn extract_fw_info(input: &Path) -> Result<FirmwareInfo, Error> {
         let (version, ota_id) = input
             .file_name()
-            .map(|name| name.to_str())
-            .flatten()
-            .map(|s| s.split_once("-"))
-            .flatten()
+            .and_then(|name| name.to_str())
+            .and_then(|s| s.split_once('-'))
             .ok_or_else(|| {
                 Error::new(
                     ErrorKind::NotFound,
@@ -296,8 +294,7 @@ impl FirmwareExtractor {
         let release_regex = Regex::new("release (\\d+\\.\\d+\\.\\d+)").unwrap();
         let release = release_regex
             .captures(&starfish_release)
-            .map(|cap| cap.get(1))
-            .flatten()
+            .and_then(|cap| cap.get(1))
             .ok_or_else(|| {
                 Error::new(
                     ErrorKind::NotFound,
@@ -324,7 +321,7 @@ impl FirmwareExtractor {
         let input = input.as_ref();
         let ldconf_path = root.join("etc").join("ld.so.conf");
         let reader = BufReader::new(File::open(ldconf_path)?);
-        Ok(vec!["lib", "usr/lib"]
+        Ok(["lib", "usr/lib"]
             .iter()
             .map(|p| root.join(PathBuf::from_slash(*p)))
             .chain(reader.lines().filter_map(|line| {
@@ -336,13 +333,13 @@ impl FirmwareExtractor {
                 }
                 if let Some(bsp) = trimmed.strip_prefix("mnt/bsppart/") {
                     return fs::read_dir(input)
-                        .and_then(|mut dir| {
-                            return Ok(dir.find_map(|entry| {
+                        .map(|mut dir| {
+                            return dir.find_map(|entry| {
                                 if let Ok(entry) = entry {
                                     let file_name = entry.file_name();
                                     if Regex::new(r"bsppart(-\w+)?.pak.unsquashfs")
                                         .unwrap()
-                                        .is_match(&*file_name.to_string_lossy())
+                                        .is_match(&file_name.to_string_lossy())
                                     {
                                         return Some(
                                             input.join(file_name).join(PathBuf::from_slash(bsp)),
@@ -350,7 +347,7 @@ impl FirmwareExtractor {
                                     }
                                 }
                                 return None;
-                            }));
+                            });
                         })
                         .ok()
                         .flatten();
@@ -372,11 +369,11 @@ impl FirmwareExtractor {
                     return vec![];
                 };
                 let path = ent.path();
-                return vec![
+                return [
                     "usr/lib/opkg/info",
                     "bsp/var/lib/opkg/info", /*, "var/lib/opkg/info"*/
                 ]
-                    .iter()
+                .iter()
                     .map(|x| path.join(PathBuf::from_slash(x)))
                     .filter(|p| p.is_dir())
                     .collect();

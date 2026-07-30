@@ -55,17 +55,17 @@ fn main() {
             let result = info.verify(&|name| firmware.find_library(name));
             println!("Verify result for firmware {}:", firmware.info);
             for lib in result.missing_lib {
-                println!("Missing library: {}", lib);
+                println!("Missing library: {lib}");
                 all_ok = false;
             }
             for sym in result.undefined_sym {
-                println!("Missing symbol: {}", sym);
+                println!("Missing symbol: {sym}");
                 all_ok = false;
             }
             // The loader resolves these on the first call, so the binary still
             // loads. Report them, but do not fail.
             for sym in result.undefined_sym_lazy {
-                println!("Warning: missing symbol {} is bound lazily", sym);
+                println!("Warning: missing symbol {sym} is bound lazily");
             }
         }
         if all_ok {

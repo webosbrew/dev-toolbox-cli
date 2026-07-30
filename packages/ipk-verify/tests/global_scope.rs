@@ -13,15 +13,15 @@ use verify_lib::ipk::ComponentBinVerifyResult;
 use verify_lib::Verify;
 
 fn bundled_lib(name: &str, needed: &[&str], symbols: &[&str], undefined: &[&str]) -> LibraryInfo {
-    let mut symbols: Vec<String> = symbols.iter().map(|s| s.to_string()).collect();
+    let mut symbols: Vec<String> = symbols.iter().map(std::string::ToString::to_string).collect();
     symbols.sort_unstable();
     LibraryInfo {
         name: name.to_string(),
         package: None,
-        needed: needed.iter().map(|s| s.to_string()).collect(),
+        needed: needed.iter().map(std::string::ToString::to_string).collect(),
         symbols,
         names: vec![name.to_string()],
-        undefined: undefined.iter().map(|s| s.to_string()).collect(),
+        undefined: undefined.iter().map(std::string::ToString::to_string).collect(),
         undefined_lazy: vec![],
         rpath: vec![],
         priority: LibraryPriority::Rpath,
@@ -35,7 +35,7 @@ fn component(exe_needed: &[&str], libs: Vec<LibraryInfo>) -> Component<()> {
         exe: Some(BinaryInfo {
             name: "app".to_string(),
             rpath: vec![],
-            needed: exe_needed.iter().map(|s| s.to_string()).collect(),
+            needed: exe_needed.iter().map(std::string::ToString::to_string).collect(),
             undefined: vec![],
             undefined_lazy: vec![],
         }),

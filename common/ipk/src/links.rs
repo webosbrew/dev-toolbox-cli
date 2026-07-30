@@ -13,10 +13,10 @@ impl Symlinks {
         return result;
     }
 
-    pub fn new(links: HashMap<PathBuf, PathBuf>) -> Self {
+    pub fn new(links: &HashMap<PathBuf, PathBuf>) -> Self {
         let mut mapping: HashMap<PathBuf, PathBuf> = HashMap::new();
-        for (link, _) in &links {
-            if let Some(t) = Self::final_target(&links, link) {
+        for link in links.keys() {
+            if let Some(t) = Self::final_target(links, link) {
                 mapping.insert(link.clone(), t);
             }
         }

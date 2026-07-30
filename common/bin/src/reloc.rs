@@ -69,12 +69,16 @@ where
     return Ok(lazy);
 }
 
+/// `DF_BIND_NOW` and `DF_1_NOW`, typed to match `Dyn::d_val`.
+const DF_BIND_NOW: u64 = 0x8;
+const DF_1_NOW: u64 = 0x1;
+
 /// Whether the object asks the loader to resolve every symbol at load time.
 fn binds_now(dynamic: &[Dyn]) -> bool {
     return dynamic.iter().cloned().any(|entry| match entry.d_tag {
         abi::DT_BIND_NOW => true,
-        abi::DT_FLAGS => entry.d_val() as i64 & abi::DF_BIND_NOW != 0,
-        abi::DT_FLAGS_1 => entry.d_val() as i64 & abi::DF_1_NOW != 0,
+        abi::DT_FLAGS => entry.d_val() & DF_BIND_NOW != 0,
+        abi::DT_FLAGS_1 => entry.d_val() & DF_1_NOW != 0,
         _ => false,
     });
 }

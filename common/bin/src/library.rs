@@ -1,4 +1,5 @@
 use std::cmp::Ordering;
+use std::collections::HashSet;
 
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
@@ -6,8 +7,7 @@ use elf::symbol::Symbol;
 use elf::{abi, ElfStream, ParseError};
 
 use crate::reloc::lazy_bound_symbols;
-
-use crate::LibraryInfo;
+use crate::{LibraryInfo, LibraryPriority};
 
 const IGNORED_SYMBOLS: &[&str] = &[
     "__bss_end__",
@@ -23,14 +23,14 @@ const IGNORED_SYMBOLS: &[&str] = &[
 
 impl LibraryInfo {
     pub fn has_name(&self, name: &str) -> bool {
-        self.name == name || self.names.iter().find(|n| *n == name).is_some()
+        self.name == name || self.names.iter().any(|n| n == name)
     }
 
     pub fn has_symbol(&self, symbol: &str) -> bool {
         self.symbols
             .binary_search_by(|def| {
                 let ordering = symbol.cmp(def);
-                if ordering != Ordering::Equal && def.contains("@") && !symbol.contains("@") {
+                if ordering != Ordering::Equal && def.contains('@') && !symbol.contains('@') {
                     let sym_len = symbol.len();
                     if def.len() >= sym_len {
                         return symbol.cmp(&def[..sym_len]).reverse();
@@ -61,20 +61,23 @@ impl LibraryInfo {
         if let Some(dynstr_header) = elf.section_header_by_name(".dynstr")?.copied() {
             let dynstr_table = elf.section_data_as_strtab(&dynstr_header)?;
             for entry in dynamic_entries.iter().cloned() {
-                match entry.d_tag {
+                let tag = entry.d_tag;
+                // Every value read below is a byte offset into `.dynstr`.
+                let offset = usize::try_from(entry.d_val()).unwrap_or(usize::MAX);
+                match tag {
                     abi::DT_NEEDED => {
-                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
+                        if let Ok(s) = dynstr_table.get(offset) {
                             needed.push(String::from(s));
                         }
                     }
                     abi::DT_SONAME => {
-                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
+                        if let Ok(s) = dynstr_table.get(offset) {
                             name = String::from(s);
                         }
                     }
                     abi::DT_RPATH | abi::DT_RUNPATH => {
-                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
-                            rpath.extend(s.split(":").map(|s| String::from(s)));
+                        if let Ok(s) = dynstr_table.get(offset) {
+                            rpath.extend(s.split(':').map(String::from));
                         }
                     }
                     _ => {}
@@ -85,7 +88,7 @@ impl LibraryInfo {
         let lazy_syms = if with_undefined {
             lazy_bound_symbols(&mut elf, &dynamic_entries)?
         } else {
-            Default::default()
+            HashSet::new()
         };
 
         let all_syms: Vec<(Symbol, String)> = match elf.dynamic_symbol_table()? {
@@ -157,14 +160,14 @@ impl LibraryInfo {
 
         Ok(Self {
             name,
-            package: Default::default(),
+            package: None,
             needed,
             symbols,
             undefined,
             undefined_lazy,
             rpath,
-            names: Default::default(),
-            priority: Default::default(),
+            names: Vec::new(),
+            priority: LibraryPriority::default(),
         })
     }
 }

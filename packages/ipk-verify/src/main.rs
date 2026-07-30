@@ -85,7 +85,7 @@ fn main() {
     let mut all_good = true;
     for package in &args.packages {
         eprintln!("Opening package {}...", package.to_string_lossy());
-        let package = match Package::open(&package) {
+        let package = match Package::open(package) {
             Ok(package) => package,
             Err(e) => {
                 eprintln!(
@@ -120,7 +120,7 @@ fn main() {
         output.h3(&format!("App {}", result.app.id)).unwrap();
         if !args.no_summary {
             print_component_summary(
-                results.iter().map(|(fw, res)| (*fw, &res.app)).collect(),
+                &results.iter().map(|(fw, res)| (*fw, &res.app)).collect::<Vec<_>>(),
                 &mut output,
                 &format,
             )
@@ -128,7 +128,7 @@ fn main() {
         }
         if args.details {
             print_component_details(
-                results.iter().map(|(fw, res)| (*fw, &res.app)).collect(),
+                &results.iter().map(|(fw, res)| (*fw, &res.app)).collect::<Vec<_>>(),
                 &mut output,
                 &format,
             )
@@ -143,10 +143,10 @@ fn main() {
                 .unwrap();
             if !args.no_summary {
                 print_component_summary(
-                    results
+                    &results
                         .iter()
                         .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
-                        .collect(),
+                        .collect::<Vec<_>>(),
                     &mut output,
                     &format,
                 )
@@ -154,10 +154,10 @@ fn main() {
             }
             if args.details {
                 print_component_details(
-                    results
+                    &results
                         .iter()
                         .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
-                        .collect(),
+                        .collect::<Vec<_>>(),
                     &mut output,
                     &format,
                 )
@@ -171,13 +171,13 @@ fn main() {
 }
 
 fn print_component_summary(
-    results: Vec<(&Firmware, &ComponentVerifyResult)>,
+    results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
     let (_, result) = *results.first().unwrap();
     if result.detection.is_some() {
-        return print_detection_summary(&results, out, out_fmt);
+        return print_detection_summary(results, out, out_fmt);
     }
     if let ComponentBinVerifyResult::Skipped { .. } = &result.exe {
         out.write_fmt(format_args!("Skip because this component is not native\n"))?;
@@ -185,13 +185,15 @@ fn print_component_summary(
     }
     let mut table = Table::new();
     table.set_format(out.table_format(out_fmt));
-    table.set_titles(Row::from_iter(
-        iter::once(String::new()).chain(
-            results
-                .iter()
-                .map(|(firmware, _result)| firmware.info.release.to_string()),
-        ),
-    ));
+    table.set_titles(
+        iter::once(String::new())
+            .chain(
+                results
+                    .iter()
+                    .map(|(firmware, _result)| firmware.info.release.to_string()),
+            )
+            .collect(),
+    );
     table.add_row(Row::new(
         iter::once(Cell::new(result.exe.name()))
             .chain(
@@ -222,13 +224,13 @@ fn print_component_summary(
 }
 
 fn print_component_details(
-    results: Vec<(&Firmware, &ComponentVerifyResult)>,
+    results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
 ) -> Result<bool, Error> {
     let (_, result) = *results.first().unwrap();
     if result.detection.is_some() {
-        print_detection_details(&results, out, out_fmt)?;
+        print_detection_details(results, out, out_fmt)?;
         return Ok(results.iter().all(|r| r.1.is_good()));
     }
     out.h4(result.exe.name())?;
@@ -236,7 +238,7 @@ fn print_component_details(
         out.write_fmt(format_args!("All OK\n"))?;
         return Ok(true);
     }
-    for (fw, result) in &results {
+    for (fw, result) in results {
         if let Some(bin) = notes(&result.exe) {
             out.h5(&format!("On {}", fw.info))?;
             print_bin_verify_details(bin, out, out_fmt)?;
@@ -254,7 +256,7 @@ fn print_component_details(
             continue;
         }
         out.h4(lib.name())?;
-        for (fw, result) in &results {
+        for (fw, result) in results {
             if let Some(bin) = notes(&result.libs.get(index).unwrap().1) {
                 out.h5(&format!("On {}", fw.info))?;
                 print_bin_verify_details(bin, out, out_fmt)?;
@@ -336,7 +338,7 @@ fn has_notes(result: &ComponentBinVerifyResult) -> bool {
 /// Render the summary for a non-native component: the firmware-independent
 /// detected technology as a text line, then a per-firmware compatibility table.
 fn print_detection_summary(
-    results: &Vec<(&Firmware, &ComponentVerifyResult)>,
+    results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
@@ -345,9 +347,11 @@ fn print_detection_summary(
 
     let mut table = Table::new();
     table.set_format(out.table_format(out_fmt));
-    table.set_titles(Row::from_iter(iter::once(String::new()).chain(
-        results.iter().map(|(fw, _)| fw.info.release.to_string()),
-    )));
+    table.set_titles(
+        iter::once(String::new())
+            .chain(results.iter().map(|(fw, _)| fw.info.release.to_string()))
+            .collect(),
+    );
 
     match detection {
         DetectionResult::WebApp { detection: web, .. } => {
@@ -424,7 +428,7 @@ fn es_support_title(level: Option<webdetect_lib::EsLevel>) -> String {
 /// Render `--details` for a non-native component: syntax-feature evidence,
 /// then any firmware on which it is incompatible and why.
 fn print_detection_details(
-    results: &Vec<(&Firmware, &ComponentVerifyResult)>,
+    results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
@@ -533,7 +537,7 @@ fn print_bundled_artifacts(
     for a in bundled {
         match &a.arch {
             Some(arch) => {
-                out.write_fmt(format_args!("* {} — {}, {}\n", a.path, a.kind.label(), arch))?
+                out.write_fmt(format_args!("* {} — {}, {}\n", a.path, a.kind.label(), arch))?;
             }
             None => out.write_fmt(format_args!("* {} — {}\n", a.path, a.kind.label()))?,
         }
@@ -550,7 +554,7 @@ fn print_bundled_artifacts(
 /// firmware. Folded into a `<details>` block on Markdown. Supplementary: this
 /// table never changes the package verdict.
 fn print_bundled_compat(
-    results: &Vec<(&Firmware, &ComponentVerifyResult)>,
+    results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
@@ -569,9 +573,11 @@ fn print_bundled_compat(
 
     let mut table = Table::new();
     table.set_format(out.table_format(out_fmt));
-    table.set_titles(Row::from_iter(iter::once(String::new()).chain(
-        results.iter().map(|(fw, _)| fw.info.release.to_string()),
-    )));
+    table.set_titles(
+        iter::once(String::new())
+            .chain(results.iter().map(|(fw, _)| fw.info.release.to_string()))
+            .collect(),
+    );
 
     // Bundled executables (its own node/ffmpeg/...), one row each.
     for idx in 0..first.bundled.len() {
@@ -705,8 +711,7 @@ fn component_verdict(result: &ComponentVerifyResult) -> &CompatVerdict {
     result
         .detection
         .as_ref()
-        .map(|d| d.verdict())
-        .unwrap_or(&CompatVerdict::Unknown)
+        .map_or(&CompatVerdict::Unknown, verify_lib::ipk::DetectionResult::verdict)
 }
 
 /// The advisory runtime-API verdict for a component result.
@@ -714,8 +719,7 @@ fn api_advisory(result: &ComponentVerifyResult) -> &CompatVerdict {
     result
         .detection
         .as_ref()
-        .map(|d| d.api_advisory())
-        .unwrap_or(&CompatVerdict::Unknown)
+        .map_or(&CompatVerdict::Unknown, verify_lib::ipk::DetectionResult::api_advisory)
 }
 
 fn web_engine_label(result: &ComponentVerifyResult) -> String {

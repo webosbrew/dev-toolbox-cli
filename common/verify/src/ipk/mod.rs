@@ -90,8 +90,7 @@ impl DetectionResult {
     /// The advisory runtime-API verdict — never gates compatibility.
     pub fn api_advisory(&self) -> &CompatVerdict {
         match self {
-            DetectionResult::WebApp { api, .. } => api,
-            DetectionResult::Service { api, .. } => api,
+            DetectionResult::WebApp { api, .. } | DetectionResult::Service { api, .. } => api,
         }
     }
 
@@ -120,7 +119,7 @@ impl Verify<PackageVerifyResult> for Package {
 
 impl VerifyResult for PackageVerifyResult {
     fn is_good(&self) -> bool {
-        return self.app.is_good() && self.services.iter().all(|s| s.is_good());
+        return self.app.is_good() && self.services.iter().all(super::VerifyResult::is_good);
     }
 }
 
@@ -248,7 +247,7 @@ fn service_verdict(es_level: Option<EsLevel>, node: Option<&Version>, verb: &str
 /// The highest ES level a firmware's web engine supports.
 pub fn engine_max_es(engine: &WebEngine) -> EsLevel {
     match engine {
-        WebEngine::Chromium(v) => EsLevel::from_chromium_major(v.major as u32),
+        WebEngine::Chromium(v) => EsLevel::from_chromium_major(u32::try_from(v.major).unwrap_or(u32::MAX)),
         // The LG WebKit port (537.x) predates reliable ES2015 support.
         WebEngine::WebKit(_) => EsLevel::Es5,
     }

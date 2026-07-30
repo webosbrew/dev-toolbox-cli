@@ -190,6 +190,8 @@ re!(RE_WEBOSTV_VER, r"webOSTV(?:-dev)?\.js\s*(?:v(?:ersion)?)?\s*([0-9]+\.[0-9]+
 ///
 /// `webostvjs`: `None` = absent, `Some(None)` = present (version unknown),
 /// `Some(Some(v))` = present with a detected version.
+// `Option<Option<Version>>` carries three states, spelled out above.
+#[allow(clippy::option_option)]
 fn detect_frameworks(
     html: &str,
     js: &[(String, String)],

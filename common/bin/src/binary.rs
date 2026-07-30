@@ -27,16 +27,19 @@ impl BinaryInfo {
         if let Some(dynstr_header) = elf.section_header_by_name(".dynstr")?.copied() {
             let dynstr_table = elf.section_data_as_strtab(&dynstr_header)?;
             for entry in dynamic_entries.iter().cloned() {
-                match entry.d_tag {
+                let tag = entry.d_tag;
+                // Every value read below is a byte offset into `.dynstr`.
+                let offset = usize::try_from(entry.d_val()).unwrap_or(usize::MAX);
+                match tag {
                     abi::DT_NEEDED => {
-                        if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
+                        if let Ok(s) = dynstr_table.get(offset) {
                             needed.push(String::from(s));
                         }
                     }
                     abi::DT_RPATH | abi::DT_RUNPATH => {
                         if with_rpath {
-                            if let Ok(s) = dynstr_table.get(entry.d_val() as usize) {
-                                rpath.extend(s.split(":").map(|s| String::from(s)));
+                            if let Ok(s) = dynstr_table.get(offset) {
+                                rpath.extend(s.split(':').map(String::from));
                             }
                         }
                     }
@@ -69,8 +72,7 @@ impl BinaryInfo {
             }
             let symbol = match ver_table
                 .as_ref()
-                .map(|t| t.get_requirement(index).ok().flatten())
-                .flatten()
+                .and_then(|t| t.get_requirement(index).ok().flatten())
             {
                 Some(ver) => format!("{name}@{}", ver.name),
                 None => name.clone(),

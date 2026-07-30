@@ -2,7 +2,7 @@
 //!
 //! A function called through the PLT gets its relocation resolved on the first
 //! call, so a missing definition does not stop the binary from loading — the
-//! process only aborts if that code path runs. RetroArch, for instance, imports
+//! process only aborts if that code path runs. `RetroArch`, for instance, imports
 //! GLES3 entry points that a GLES2-only firmware lacks, and never calls them
 //! unless it gets a GLES3 context. Anything resolved at load time still fails.
 
@@ -12,7 +12,7 @@ use verify_lib::ipk::ComponentBinVerifyResult;
 use verify_lib::{Verify, VerifyResult};
 
 fn lib(name: &str, symbols: &[&str]) -> LibraryInfo {
-    let mut symbols: Vec<String> = symbols.iter().map(|s| s.to_string()).collect();
+    let mut symbols: Vec<String> = symbols.iter().map(std::string::ToString::to_string).collect();
     symbols.sort_unstable();
     LibraryInfo {
         name: name.to_string(),
@@ -37,8 +37,8 @@ fn app(eager: &[&str], lazy: &[&str], libs: Vec<LibraryInfo>) -> Component<()> {
             name: "app".to_string(),
             rpath: vec![],
             needed: libs.iter().map(|l| l.name.clone()).collect(),
-            undefined: eager.iter().map(|s| s.to_string()).collect(),
-            undefined_lazy: lazy.iter().map(|s| s.to_string()).collect(),
+            undefined: eager.iter().map(std::string::ToString::to_string).collect(),
+            undefined_lazy: lazy.iter().map(std::string::ToString::to_string).collect(),
         }),
         libs,
     }

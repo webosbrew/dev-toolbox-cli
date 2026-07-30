@@ -12,7 +12,7 @@ use crate::{AppInfo, Component, Package, PackageInfo, ServiceInfo, Symlinks};
 
 impl Package {
     pub fn open<P: AsRef<Path>>(path: P) -> Result<Self, Error> {
-        return File::open(path.as_ref()).and_then(|file| Package::parse(file));
+        return File::open(path.as_ref()).and_then(Package::parse);
     }
 
     pub fn parse<R>(read: R) -> Result<Self, Error>
@@ -27,8 +27,7 @@ impl Package {
         let installed_size = control
             .get("Installed-Size")
             .filter(|s| *s != "1234")
-            .map(|s| u64::from_str_radix(s, 10).ok())
-            .flatten();
+            .and_then(|s| s.parse::<u64>().ok());
 
         let tmp = tempfile::TempDir::new()?;
         let mut links = HashMap::new();
@@ -49,7 +48,7 @@ impl Package {
                 println!("Ignore special file {}", entry.path()?.to_string_lossy());
             }
         }
-        let links = Symlinks::new(links);
+        let links = Symlinks::new(&links);
         // The package id and the app/service ids come from untrusted metadata;
         // guard every path joined onto the extraction dir against traversal.
         let root = tmp.as_ref();
@@ -89,6 +88,8 @@ impl Package {
         });
     }
 
+    // Taken by value so it can be passed straight to `map_err`.
+    #[allow(clippy::needless_pass_by_value)]
     fn deb_err(e: debpkg::Error) -> Error {
         return Error::new(ErrorKind::InvalidData, format!("Bad package: {e:?}"));
     }

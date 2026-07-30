@@ -66,26 +66,26 @@ impl BundledArtifact {
         Some(BundledArtifact {
             path: path.into(),
             kind,
-            arch: arch_label(e_machine, class),
+            arch: Some(arch_label(e_machine, class)),
         })
     }
 }
 
 /// Map an ELF machine + class to a readable architecture label.
-fn arch_label(machine: u16, class: Class) -> Option<String> {
+fn arch_label(machine: u16, class: Class) -> String {
     let name = match machine {
         abi::EM_ARM => "ARM (32-bit)",
         abi::EM_AARCH64 => "AArch64 (64-bit)",
         abi::EM_386 => "x86",
         abi::EM_X86_64 => "x86-64",
         _ => {
-            return Some(match class {
+            return match class {
                 Class::ELF32 => "unknown (32-bit)".to_string(),
                 Class::ELF64 => "unknown (64-bit)".to_string(),
-            })
+            }
         }
     };
-    Some(name.to_string())
+    name.to_string()
 }
 
 #[cfg(test)]

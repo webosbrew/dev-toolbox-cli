@@ -10,7 +10,7 @@ use semver::Version;
 use crate::Firmware;
 
 /// The web-app rendering engine a firmware ships. webOS has used two families:
-/// a modern Chromium-based runtime (WAM) and, on the earliest TVs, an LG WebKit
+/// a modern Chromium-based runtime (WAM) and, on the earliest TVs, an LG `WebKit`
 /// port (`webkit-starfish`, versioned like `537.41`).
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum WebEngine {
@@ -19,7 +19,7 @@ pub enum WebEngine {
 }
 
 impl WebEngine {
-    /// Human-readable label, e.g. "Chromium 120" or "WebKit 537.41".
+    /// Human-readable label, e.g. "Chromium 120" or "`WebKit` 537.41".
     pub fn label(&self) -> String {
         match self {
             WebEngine::Chromium(v) => format!("Chromium {}", v.major),
@@ -39,7 +39,7 @@ impl Firmware {
     /// The web-app engine this firmware ships. Resolution order:
     /// 1. Chromium family: `lib32-webruntime` → `webruntime` → highest
     ///    `chromium<NN>` → `chromium-webos` → `chromium`;
-    /// 2. WebKit family: `webkit-starfish` → `qt5-qtwebkit` → `libQt5WebKit`.
+    /// 2. `WebKit` family: `webkit-starfish` → `qt5-qtwebkit` → `libQt5WebKit`.
     ///
     /// `com.webos.app.browser` is deliberately ignored — it is the built-in
     /// browser *app*, not the web-app runtime.
@@ -82,7 +82,7 @@ impl Firmware {
                     continue;
                 }
                 if let Ok(n) = rest.parse::<u32>() {
-                    if best.map_or(true, |(b, _)| n > b) {
+                    if best.is_none_or(|(b, _)| n > b) {
                         best = Some((n, key));
                     }
                 }
