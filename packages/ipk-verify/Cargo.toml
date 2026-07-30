@@ -26,7 +26,7 @@ path-slash = { workspace = true }
 prettytable-rs = "^0.10"
 semver = { workspace = true }
 is-terminal = "0.4.12"
-term = "0.7.0"
+term = "1.2.1"
 clap = { workspace = true, features = ["derive"] }
 verify-lib = { path = "../../common/verify", features = ["ipk"] }
 

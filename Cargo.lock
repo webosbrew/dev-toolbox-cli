@@ -813,7 +813,7 @@ dependencies = [
  "serde",
  "serde_json",
  "tempfile",
- "term",
+ "term 1.2.1",
  "verify-lib",
  "webdetect-lib",
 ]
@@ -992,7 +992,7 @@ dependencies = [
  "encode_unicode",
  "is-terminal",
  "lazy_static",
- "term",
+ "term 0.7.0",
  "unicode-width",
 ]
 
@@ -1256,6 +1256,15 @@ dependencies = [
  "dirs-next",
  "rustversion",
  "winapi",
+]
+
+[[package]]
+name = "term"
+version = "1.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8c27177b12a6399ffc08b98f76f7c9a1f4fe9fc967c784c5a071fa8d93cf7e1"
+dependencies = [
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
