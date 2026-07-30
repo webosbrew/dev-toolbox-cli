@@ -247,6 +247,19 @@ impl<T> Component<T> {
         P: AsRef<Path>,
     {
         let origin = bin_path.as_ref().parent().unwrap();
+        // Compare canonical forms on both sides. `canonicalize` returns a `\\?\`
+        // verbatim path on Windows (and resolves symlinks everywhere), which
+        // shares no prefix with a plain `C:\…` origin, so `common_path` below
+        // would otherwise reject every rpath directory. Substitution still uses
+        // the path as given: Windows takes a verbatim path literally, so a `..`
+        // appended to one never resolves.
+        let origin_canon = origin.canonicalize().unwrap_or_else(|_| origin.to_owned());
+        // An rpath must stay near the package, so the shared ancestor has to be
+        // deeper than the filesystem root: `/` on Unix, `\\?\C:\` on Windows.
+        let root_depth = origin_canon
+            .ancestors()
+            .last()
+            .map_or(1, |root| root.components().count());
         return rpath
             .iter()
             .filter_map(|p| {
@@ -255,10 +268,10 @@ impl<T> Component<T> {
                     .ok()
             })
             .filter(|p| {
-                let Some(common) = common_path(&p, &origin) else {
+                let Some(common) = common_path(&p, &origin_canon) else {
                     return false;
                 };
-                return common.components().count() > 1;
+                return common.components().count() > root_depth;
             })
             .collect();
     }
@@ -393,6 +406,51 @@ mod tests {
 
         let svc = Component::<ServiceInfo>::parse(d, &empty_links()).unwrap();
         assert!(svc.info.bundled.is_empty());
+    }
+
+    #[test]
+    fn rpath_resolves_origin_relative_dirs() {
+        // An app laid out like Moonlight: the executable sits in `bin/` and its
+        // bundled libraries in a sibling `lib/backports/`.
+        let dir = tempfile::TempDir::new().unwrap();
+        let d = dir.path();
+        fs::create_dir_all(d.join("bin")).unwrap();
+        fs::create_dir_all(d.join("lib/backports")).unwrap();
+        let exe = d.join("bin/moonlight");
+        fs::write(&exe, b"x").unwrap();
+
+        let paths = Component::<()>::rpath(
+            &vec![
+                // Does not exist -> dropped.
+                String::from("$ORIGIN/lib/backports"),
+                String::from("$ORIGIN/../lib/backports"),
+                String::from("$ORIGIN"),
+            ],
+            &exe,
+        );
+
+        let backports = d.join("lib/backports").canonicalize().unwrap();
+        let bin = d.join("bin").canonicalize().unwrap();
+        assert_eq!(paths, vec![backports, bin], "got {:?}", paths);
+    }
+
+    #[test]
+    fn rpath_rejects_filesystem_root() {
+        let dir = tempfile::TempDir::new().unwrap();
+        let exe = dir.path().join("app");
+        fs::write(&exe, b"x").unwrap();
+        let root = dir
+            .path()
+            .canonicalize()
+            .unwrap()
+            .ancestors()
+            .last()
+            .unwrap()
+            .to_path_buf();
+
+        let paths = Component::<()>::rpath(&vec![root.to_string_lossy().into_owned()], &exe);
+
+        assert!(paths.is_empty(), "expected no rpath dirs, got {:?}", paths);
     }
 
     #[test]
