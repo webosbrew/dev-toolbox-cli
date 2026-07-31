@@ -1,0 +1,18 @@
+{
+  "name": "libabsl_stacktrace.so.2401.0.0",
+  "package": "lib32-libabsl-stacktrace",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011613GetStackTraceEPPvii",
+    "_ZN4absl12lts_2024011614GetStackFramesEPPvPiii",
+    "_ZN4absl12lts_2024011616SetStackUnwinderEPFiPPvPiiiPKvS3_E",
+    "_ZN4absl12lts_2024011618debugging_internal22StackTraceWorksForTestEv",
+    "_ZN4absl12lts_2024011620DefaultStackUnwinderEPPvPiiiPKvS3_",
+    "_ZN4absl12lts_2024011624GetStackTraceWithContextEPPviiPKvPi",
+    "_ZN4absl12lts_2024011625GetStackFramesWithContextEPPvPiiiPKvS3_"
+  ]
+}

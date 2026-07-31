@@ -1,0 +1,13 @@
+{
+  "name": "libdrmuriconvert.so",
+  "package": "lib32-mediadrm",
+  "needed": [
+    "libc.so.6",
+    "libinkahandler.so.1",
+    "libmediafilecrypto.so",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "DrmUriConvert"
+  ]
+}

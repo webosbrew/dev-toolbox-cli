@@ -1,0 +1,15 @@
+{
+  "name": "libabsl_hash.so.2401.0.0",
+  "package": "lib32-libabsl-hash",
+  "needed": [
+    "libabsl_city.so.2401.0.0",
+    "libabsl_low_level_hash.so.2401.0.0",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011613hash_internal15MixingHashState16LowLevelHashImplEPKhj",
+    "_ZN4absl12lts_2024011613hash_internal15MixingHashState28CombineLargeContiguousImpl32EyPKhj",
+    "_ZN4absl12lts_2024011613hash_internal15MixingHashState28CombineLargeContiguousImpl64EyPKhj",
+    "_ZN4absl12lts_2024011613hash_internal15MixingHashState5kSeedE"
+  ]
+}

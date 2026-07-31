@@ -1,0 +1,22 @@
+{
+  "name": "libfft2d_alloc.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "alloc_1d_double",
+    "alloc_1d_int",
+    "alloc_2d_double",
+    "alloc_2d_int",
+    "alloc_3d_double",
+    "alloc_3d_int",
+    "free_1d_double",
+    "free_1d_int",
+    "free_2d_double",
+    "free_2d_int",
+    "free_3d_double",
+    "free_3d_int"
+  ]
+}

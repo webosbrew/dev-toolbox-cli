@@ -1,0 +1,14 @@
+{
+  "name": "libinih.so.0",
+  "package": "lib32-libinih",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "ini_parse",
+    "ini_parse_file",
+    "ini_parse_stream",
+    "ini_parse_string"
+  ]
+}

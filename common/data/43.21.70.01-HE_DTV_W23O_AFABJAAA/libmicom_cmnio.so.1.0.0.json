@@ -1,0 +1,31 @@
+{
+  "name": "libmicom_cmnio.so.1",
+  "package": "lib32-micom-libs",
+  "needed": [
+    "libPmLogLib.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libnyx.so.7",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_Z10micom_readhtPh",
+    "_Z11micom_writetPh",
+    "_Z13micom_id_readhtPh",
+    "_Z14micom_id_writetPh",
+    "_Z16MICOM_CallbackIRhh",
+    "_Z17micom_id_read_i2chtPh",
+    "_Z17micom_id_read_ipchtPh",
+    "_Z18micom_id_write_i2ctPh",
+    "_Z18micom_id_write_ipctPh",
+    "_Z19MICOM_CallbackLOCALhh",
+    "_Z19MICOM_ID_CallbackIRhh",
+    "_Z20micom_WholeChipResetv",
+    "_Z22MICOM_ID_CallbackLOCALhh",
+    "_Z23micom_IsCommercialModelv",
+    "_Z23micom_id_WholeChipResetv",
+    "_Z28micom_id_isCommerMicomTypeTIv",
+    "_Z29micom_id_isCommerMicomTypePTCv",
+    "_Z34micom_id_isCommerMicomTypeInternalv"
+  ]
+}

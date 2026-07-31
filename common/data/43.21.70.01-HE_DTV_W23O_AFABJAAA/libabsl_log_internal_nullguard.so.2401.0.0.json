@@ -1,0 +1,10 @@
+{
+  "name": "libabsl_log_internal_nullguard.so.2401.0.0",
+  "package": "lib32-libabsl-log-internal-nullguard",
+  "needed": [],
+  "symbols": [
+    "_ZN4absl12lts_2024011612log_internal15kSignedCharNullE",
+    "_ZN4absl12lts_2024011612log_internal17kUnsignedCharNullE",
+    "_ZN4absl12lts_2024011612log_internal9kCharNullE"
+  ]
+}

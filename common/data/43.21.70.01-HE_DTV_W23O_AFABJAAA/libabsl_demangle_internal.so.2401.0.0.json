@@ -1,0 +1,13 @@
+{
+  "name": "libabsl_demangle_internal.so.2401.0.0",
+  "package": "lib32-libabsl-demangle-internal",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011618debugging_internal14DemangleStringB5cxx11EPKc",
+    "_ZN4absl12lts_2024011618debugging_internal8DemangleEPKcPcj"
+  ]
+}

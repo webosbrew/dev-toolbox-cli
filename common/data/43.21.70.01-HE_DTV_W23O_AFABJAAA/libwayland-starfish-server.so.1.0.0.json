@@ -1,0 +1,11 @@
+{
+  "name": "libwayland-starfish-server.so.1",
+  "package": "lib32-starfish-wayland-extensions",
+  "needed": [
+    "libwayland-server.so.0"
+  ],
+  "symbols": [
+    "wl_starfish_output_interface",
+    "wl_starfish_pointer_interface"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "libkbl-te.so.2",
+  "package": "lib32-libkadaptor",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "KADP_TE_GetFwData"
+  ]
+}

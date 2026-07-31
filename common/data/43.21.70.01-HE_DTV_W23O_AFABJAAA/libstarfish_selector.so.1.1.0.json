@@ -1,0 +1,21 @@
+{
+  "name": "libstarfish_selector.so.1",
+  "package": "lib32-configd-data",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libglib-2.0.so.0",
+    "libnyx.so.7"
+  ],
+  "symbols": [
+    "assetResolutionMap",
+    "check_display",
+    "check_distro",
+    "check_machine",
+    "getSysAssetSelection",
+    "getVideoResolution",
+    "printSysAssetSelection",
+    "printVideoResolution",
+    "starfish_selector_sys_asset"
+  ]
+}

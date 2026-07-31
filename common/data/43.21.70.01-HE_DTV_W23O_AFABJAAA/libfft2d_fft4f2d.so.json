@@ -1,0 +1,29 @@
+{
+  "name": "libfft2d_fft4f2d.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "bitrv2",
+    "bitrv2col",
+    "bitrv2row",
+    "cdft2d",
+    "cftbcol",
+    "cftbrow",
+    "cftfcol",
+    "cftfrow",
+    "dctbsub",
+    "dctfsub",
+    "ddct2d",
+    "ddst2d",
+    "dstbsub",
+    "dstfsub",
+    "makect",
+    "makewt",
+    "rdft2d",
+    "rftbcol",
+    "rftfcol"
+  ]
+}

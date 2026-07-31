@@ -1,0 +1,14 @@
+{
+  "name": "libabsl_log_internal_conditions.so.2401.0.0",
+  "package": "lib32-libabsl-log-internal-conditions",
+  "needed": [
+    "libabsl_base.so.2401.0.0",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011612log_internal14LogEveryNState9ShouldLogEi",
+    "_ZN4absl12lts_2024011612log_internal14LogFirstNState9ShouldLogEi",
+    "_ZN4absl12lts_2024011612log_internal17LogEveryNSecState9ShouldLogEd",
+    "_ZN4absl12lts_2024011612log_internal17LogEveryPow2State9ShouldLogEv"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "libhal_ucom.so.2",
+  "package": "lib32-hal-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libkadaptor.so.2"
+  ],
+  "symbols": [
+    "HAL_UCOM_DebugMenu",
+    "HAL_UCOM_Initialize",
+    "HAL_UCOM_ReadCommand",
+    "HAL_UCOM_WholeChipReset",
+    "HAL_UCOM_WriteCommand",
+    "g_hal_ucom_debug_fd"
+  ]
+}

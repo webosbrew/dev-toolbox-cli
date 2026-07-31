@@ -1,0 +1,19 @@
+{
+  "name": "libonnxruntime.so.1.15.0",
+  "package": "lib32-libkrdm",
+  "needed": [
+    "ld-linux.so.3",
+    "libatomic.so.1",
+    "libc.so.6",
+    "libdl.so.2",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "OrtGetApiBase@VERS_1.15.0",
+    "OrtSessionOptionsAppendExecutionProvider_CPU@VERS_1.15.0",
+    "VERS_1.15.0@VERS_1.15.0"
+  ]
+}

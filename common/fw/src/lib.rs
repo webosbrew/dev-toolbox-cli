@@ -56,4 +56,6 @@ pub enum ReleaseCodename {
     Mullet,
     Number1,
     Ombre,
+    Ponytail,
+    Queue,
 }

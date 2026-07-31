@@ -1,0 +1,14 @@
+{
+  "name": "libacsdkCryptoInterfaces.so.1",
+  "package": "lib32-amazon-alexa-adapter-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN14alexaClientSDK21acsdkCryptoInterfaceslsERSoNS0_10DigestTypeE",
+    "_ZN14alexaClientSDK21acsdkCryptoInterfaceslsERSoNS0_13AlgorithmTypeE"
+  ]
+}

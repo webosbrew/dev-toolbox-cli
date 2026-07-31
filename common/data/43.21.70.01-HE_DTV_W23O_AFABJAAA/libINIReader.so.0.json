@@ -1,0 +1,31 @@
+{
+  "name": "libINIReader.so.0",
+  "package": "lib32-libinih",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libinih.so.0",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN9INIReaderC1EPKcj",
+    "_ZN9INIReaderC1ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZN9INIReaderC2EPKcj",
+    "_ZN9INIReaderC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZNK9INIReader10GetBooleanERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_b",
+    "_ZNK9INIReader10GetIntegerERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_l",
+    "_ZNK9INIReader10HasSectionERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE",
+    "_ZNK9INIReader10ParseErrorEv",
+    "_ZNK9INIReader11GetUnsignedERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_m",
+    "_ZNK9INIReader12GetInteger64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_x",
+    "_ZNK9INIReader13GetUnsigned64ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_y",
+    "_ZNK9INIReader3GetERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_",
+    "_ZNK9INIReader7GetRealERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_d",
+    "_ZNK9INIReader8HasValueERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_",
+    "_ZNK9INIReader9GetStringERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_S7_",
+    "_ZNKSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE4findERS7_",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_appendEPKcj",
+    "_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE9_M_mutateEjjPKcj",
+    "_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE24_M_get_insert_unique_posERS7_"
+  ]
+}

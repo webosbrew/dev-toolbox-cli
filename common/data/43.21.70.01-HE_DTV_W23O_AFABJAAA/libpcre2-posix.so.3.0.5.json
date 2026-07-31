@@ -1,0 +1,15 @@
+{
+  "name": "libpcre2-posix.so.3",
+  "package": "lib32-libpcre2",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libpcre2-8.so.0"
+  ],
+  "symbols": [
+    "pcre2_regcomp",
+    "pcre2_regerror",
+    "pcre2_regexec",
+    "pcre2_regfree"
+  ]
+}

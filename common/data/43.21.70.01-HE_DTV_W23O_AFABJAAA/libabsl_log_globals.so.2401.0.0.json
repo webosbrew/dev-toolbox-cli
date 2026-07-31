@@ -1,0 +1,37 @@
+{
+  "name": "libabsl_log_globals.so.2401.0.0",
+  "package": "lib32-libabsl-log-globals",
+  "needed": [
+    "libabsl_city.so.2401.0.0",
+    "libabsl_hash.so.2401.0.0",
+    "libabsl_raw_logging_internal.so.2401.0.0",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011611MinLogLevelEv",
+    "_ZN4absl12lts_2024011612log_internal17RawSetMinLogLevelENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011612log_internal17ScopedMinLogLevelC1ENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011612log_internal17ScopedMinLogLevelC2ENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011612log_internal17ScopedMinLogLevelD1Ev",
+    "_ZN4absl12lts_2024011612log_internal17ScopedMinLogLevelD2Ev",
+    "_ZN4absl12lts_2024011612log_internal18RawEnableLogPrefixEb",
+    "_ZN4absl12lts_2024011612log_internal19GetAndroidNativeTagEv",
+    "_ZN4absl12lts_2024011612log_internal20ShouldLogBacktraceAtESt17basic_string_viewIcSt11char_traitsIcEEi",
+    "_ZN4absl12lts_2024011612log_internal21RawSetStderrThresholdENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011612log_internal25SetLoggingGlobalsListenerEPFvvE",
+    "_ZN4absl12lts_2024011614SetMinLogLevelENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011615EnableLogPrefixEb",
+    "_ZN4absl12lts_2024011615StderrThresholdEv",
+    "_ZN4absl12lts_2024011618SetStderrThresholdENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011619SetAndroidNativeTagEPKc",
+    "_ZN4absl12lts_2024011621ScopedStderrThresholdC1ENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011621ScopedStderrThresholdC2ENS0_18LogSeverityAtLeastE",
+    "_ZN4absl12lts_2024011621ScopedStderrThresholdD1Ev",
+    "_ZN4absl12lts_2024011621ScopedStderrThresholdD2Ev",
+    "_ZN4absl12lts_2024011622ShouldPrependLogPrefixEv",
+    "_ZN4absl12lts_2024011623SetLogBacktraceLocationESt17basic_string_viewIcSt11char_traitsIcEEi",
+    "_ZN4absl12lts_2024011625ClearLogBacktraceLocationEv"
+  ]
+}

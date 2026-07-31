@@ -1,0 +1,10 @@
+{
+  "name": "libicudata.so.74",
+  "package": "lib32-libicudata",
+  "needed": [
+    "libc.so.6"
+  ],
+  "symbols": [
+    "icudt74_dat"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "libkbl-de.so.2",
+  "package": "lib32-libkadaptor",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "de_get_fw_data"
+  ]
+}

@@ -28,6 +28,11 @@ impl FirmwareInfo {
             7 => Some(ReleaseCodename::Mullet),
             8 => Some(ReleaseCodename::Number1),
             9 => Some(ReleaseCodename::Ombre),
+            // webOS TV 25.
+            10 => Some(ReleaseCodename::Ponytail),
+            // webOS TV 26. `etc/starfish-release` names the build queue after
+            // it: "Rockhopper release 11.2.0-37 (queue-qilian)".
+            11 => Some(ReleaseCodename::Queue),
             _ => None,
         }
     }

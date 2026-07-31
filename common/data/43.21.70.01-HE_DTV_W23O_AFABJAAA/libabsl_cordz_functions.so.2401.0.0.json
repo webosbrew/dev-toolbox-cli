@@ -1,0 +1,16 @@
+{
+  "name": "libabsl_cordz_functions.so.2401.0.0",
+  "package": "lib32-libabsl-cordz-functions",
+  "needed": [
+    "ld-linux.so.3",
+    "libabsl_exponential_biased.so.2401.0.0",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011613cord_internal17cordz_next_sampleE",
+    "_ZN4absl12lts_2024011613cord_internal23get_cordz_mean_intervalEv",
+    "_ZN4absl12lts_2024011613cord_internal23set_cordz_mean_intervalEi",
+    "_ZN4absl12lts_2024011613cord_internal25cordz_should_profile_slowEv",
+    "_ZN4absl12lts_2024011613cord_internal33cordz_set_next_sample_for_testingEx"
+  ]
+}

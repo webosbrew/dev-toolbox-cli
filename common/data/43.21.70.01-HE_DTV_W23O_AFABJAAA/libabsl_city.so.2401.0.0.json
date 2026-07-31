@@ -1,0 +1,13 @@
+{
+  "name": "libabsl_city.so.2401.0.0",
+  "package": "lib32-libabsl-city",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011613hash_internal10CityHash32EPKcj",
+    "_ZN4absl12lts_2024011613hash_internal10CityHash64EPKcj",
+    "_ZN4absl12lts_2024011613hash_internal18CityHash64WithSeedEPKcjy",
+    "_ZN4absl12lts_2024011613hash_internal19CityHash64WithSeedsEPKcjyy"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "libnssckbi.so",
+  "package": "lib32-nss",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libnspr4.so",
+    "libplc4.so",
+    "libplds4.so"
+  ],
+  "symbols": [
+    "C_GetFunctionList@NSS_3.1",
+    "NSS_3.1@NSS_3.1"
+  ]
+}

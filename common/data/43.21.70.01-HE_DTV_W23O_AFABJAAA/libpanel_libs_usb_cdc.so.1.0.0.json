@@ -1,0 +1,28 @@
+{
+  "name": "libpanel_libs_usb_cdc.so.1",
+  "package": "lib32-panel-libs",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "dil_panel_get_ld_apl_data",
+    "dil_panel_get_ld_sensor_data",
+    "dil_panel_kldtcon_make_usb_data",
+    "dil_panel_kldtcon_usb_cmd_handler",
+    "dil_panel_kldtcon_usb_read",
+    "dil_panel_kldtcon_usb_write",
+    "dil_panel_set_ld_ai_info",
+    "dil_panel_set_ld_sensor_data",
+    "dil_panel_tcon_usb_close",
+    "dil_panel_tcon_usb_open",
+    "dil_panel_usb_cdc_close",
+    "dil_panel_usb_cdc_open",
+    "dil_panel_usb_cdc_read",
+    "dil_panel_usb_cdc_sema_init",
+    "dil_panel_usb_cdc_sema_uninit",
+    "dil_panel_usb_cdc_write",
+    "gPanelUsbSema"
+  ]
+}

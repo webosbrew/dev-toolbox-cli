@@ -1,0 +1,21 @@
+{
+  "name": "libfft2d_fftsg3d.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libc.so.6",
+    "libfft2d_fftsg.so",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "cdft3d",
+    "cdft3db_sub",
+    "ddct3d",
+    "ddst3d",
+    "ddxt3da_sub",
+    "ddxt3db_sub",
+    "rdft3d",
+    "rdft3d_sub",
+    "rdft3dsort",
+    "xdft3da_sub"
+  ]
+}

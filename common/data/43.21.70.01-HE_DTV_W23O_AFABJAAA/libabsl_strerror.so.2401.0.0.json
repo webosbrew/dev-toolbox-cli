@@ -1,0 +1,12 @@
+{
+  "name": "libabsl_strerror.so.2401.0.0",
+  "package": "lib32-libabsl-strerror",
+  "needed": [
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libstdc++.so.6"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011613base_internal8StrErrorB5cxx11Ei"
+  ]
+}

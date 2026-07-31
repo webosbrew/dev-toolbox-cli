@@ -1,0 +1,25 @@
+{
+  "name": "libaec-fe.so.1",
+  "package": "lib32-libaec-fe",
+  "needed": [
+    "libasound.so.2",
+    "libavutil.so.58",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libm.so.6",
+    "libswresample.so.4"
+  ],
+  "symbols": [
+    "aecfe_configure",
+    "aecfe_configure2",
+    "aecfe_create",
+    "aecfe_get_poll_fd",
+    "aecfe_read_data",
+    "aecfe_release",
+    "aecfe_select_ref_device",
+    "aecfe_set_mix_levels",
+    "aecfe_start",
+    "aecfe_stop",
+    "captures"
+  ]
+}

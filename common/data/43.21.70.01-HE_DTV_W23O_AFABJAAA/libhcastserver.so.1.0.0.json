@@ -1,0 +1,19 @@
+{
+  "name": "libhcastserver.so.1",
+  "package": "lib32-xiaoyou-cast",
+  "needed": [
+    "ld-linux.so.3",
+    "libNDL_log.so.1",
+    "libairplayer.so.1",
+    "libc.so.6",
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "hcastserver_destroy",
+    "hcastserver_get_status",
+    "hcastserver_init",
+    "hcastserver_reset_current_session",
+    "hcastserver_start",
+    "hcastserver_stop"
+  ]
+}

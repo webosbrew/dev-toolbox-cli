@@ -1,0 +1,39 @@
+{
+  "name": "libKardomePreprocessor.so.3.0.18",
+  "package": "lib32-libkrdm",
+  "needed": [
+    "ld-linux.so.3",
+    "libc.so.6",
+    "libgcc_s.so.1",
+    "libonnxruntime.so.1.15.0"
+  ],
+  "symbols": [
+    "KARDOMEPREPROCESSOR@KARDOMEPREPROCESSOR",
+    "krdmAfeGetDoa@KARDOMEPREPROCESSOR",
+    "krdmAfeGetSNR@KARDOMEPREPROCESSOR",
+    "krdmCreateHandle@KARDOMEPREPROCESSOR",
+    "krdmDestroyHandle@KARDOMEPREPROCESSOR",
+    "krdmFeedExternalData@KARDOMEPREPROCESSOR",
+    "krdmGetConfigurePath@KARDOMEPREPROCESSOR",
+    "krdmGetNumOfFrames@KARDOMEPREPROCESSOR",
+    "krdmGetParam@KARDOMEPREPROCESSOR",
+    "krdmGetVAD@KARDOMEPREPROCESSOR",
+    "krdmGetVersion@KARDOMEPREPROCESSOR",
+    "krdmInit@KARDOMEPREPROCESSOR",
+    "krdmProcess@KARDOMEPREPROCESSOR",
+    "krdmReset@KARDOMEPREPROCESSOR",
+    "krdmSetConfigure@KARDOMEPREPROCESSOR",
+    "krdmSetConfigurePath@KARDOMEPREPROCESSOR",
+    "krdmSetExternalMic@KARDOMEPREPROCESSOR",
+    "krdmSetMode@KARDOMEPREPROCESSOR",
+    "krdmSetParam@KARDOMEPREPROCESSOR",
+    "krdmSetTriggerStatus@KARDOMEPREPROCESSOR",
+    "krdmSetVolume@KARDOMEPREPROCESSOR",
+    "krdmUninit@KARDOMEPREPROCESSOR",
+    "krdmVadGetForgettingFactorMsec@KARDOMEPREPROCESSOR",
+    "krdmVadGetLastResult@KARDOMEPREPROCESSOR",
+    "krdmVadGetThreshold@KARDOMEPREPROCESSOR",
+    "krdmVadSetForgettingFactorMsec@KARDOMEPREPROCESSOR",
+    "krdmVadSetThreshold@KARDOMEPREPROCESSOR"
+  ]
+}

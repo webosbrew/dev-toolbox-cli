@@ -1,0 +1,11 @@
+{
+  "name": "libfft2d_shrtdct.so",
+  "package": "lib32-tensorflow-lite",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "ddct16x16s",
+    "ddct8x8s"
+  ]
+}

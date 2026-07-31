@@ -1,0 +1,10 @@
+{
+  "name": "libabsl_low_level_hash.so.2401.0.0",
+  "package": "lib32-libabsl-low-level-hash",
+  "needed": [
+    "libgcc_s.so.1"
+  ],
+  "symbols": [
+    "_ZN4absl12lts_2024011613hash_internal12LowLevelHashEPKvjyPKy"
+  ]
+}

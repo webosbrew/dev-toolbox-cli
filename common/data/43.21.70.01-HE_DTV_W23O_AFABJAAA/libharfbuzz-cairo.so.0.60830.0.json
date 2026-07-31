@@ -1,0 +1,22 @@
+{
+  "name": "libharfbuzz-cairo.so.0",
+  "package": "lib32-harfbuzz",
+  "needed": [
+    "libc.so.6",
+    "libcairo.so.2",
+    "libgcc_s.so.1",
+    "libharfbuzz.so.0",
+    "libm.so.6"
+  ],
+  "symbols": [
+    "hb_cairo_font_face_create_for_face",
+    "hb_cairo_font_face_create_for_font",
+    "hb_cairo_font_face_get_face",
+    "hb_cairo_font_face_get_font",
+    "hb_cairo_font_face_get_scale_factor",
+    "hb_cairo_font_face_set_font_init_func",
+    "hb_cairo_font_face_set_scale_factor",
+    "hb_cairo_glyphs_from_buffer",
+    "hb_cairo_scaled_font_get_font"
+  ]
+}
