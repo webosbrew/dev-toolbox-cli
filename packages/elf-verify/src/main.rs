@@ -6,6 +6,7 @@ use semver::VersionReq;
 
 use bin_lib::BinaryInfo;
 use fw_lib::Firmware;
+use verify_lib::exit::ExitCode;
 use verify_lib::Verify;
 
 #[derive(Parser, Debug)]
@@ -24,31 +25,49 @@ struct Args {
 
 fn main() {
     let args = Args::parse();
-    let firmwares: Vec<Firmware> = Firmware::list(Firmware::data_path())
-        .unwrap()
-        .into_iter()
-        .filter(|fw| {
-            if let Some(fw_releases) = &args.fw_releases {
-                return fw_releases.matches(&fw.info.release);
-            }
-            return true;
-        })
-        .collect();
+    let firmwares: Vec<Firmware> = match Firmware::list(Firmware::data_path()) {
+        Ok(firmwares) => firmwares
+            .into_iter()
+            .filter(|fw| {
+                if let Some(fw_releases) = &args.fw_releases {
+                    return fw_releases.matches(&fw.info.release);
+                }
+                return true;
+            })
+            .collect(),
+        Err(e) => {
+            eprintln!("Failed to read firmware data: {e}");
+            ExitCode::NoFirmware.exit();
+        }
+    };
     if firmwares.is_empty() {
         eprintln!("No firmware found");
-        return;
+        ExitCode::NoFirmware.exit();
     }
+    let mut all_good = true;
+    let mut bad_input = false;
     for executable in args.executables {
         let Ok(file) = File::open(&executable) else {
             eprintln!("Failed to open file {}", executable.to_string_lossy());
+            bad_input = true;
             continue;
         };
-        let mut info = BinaryInfo::parse(
+        let parsed = BinaryInfo::parse(
             file,
             executable.file_name().unwrap().to_string_lossy(),
             !args.skip_rpath,
-        )
-        .expect("parse error");
+        );
+        let mut info = match parsed {
+            Ok(info) => info,
+            Err(e) => {
+                eprintln!(
+                    "Failed to parse {}: {e}",
+                    executable.file_name().unwrap().to_string_lossy()
+                );
+                bad_input = true;
+                continue;
+            }
+        };
         info.rpath.extend(args.lib_paths.clone());
         let mut all_ok = true;
         for firmware in &firmwares {
@@ -70,6 +89,16 @@ fn main() {
         }
         if all_ok {
             println!("All OK.");
+        } else {
+            all_good = false;
         }
+    }
+    // A file the tool could not read outranks an incompatibility: the run did
+    // not answer the question that was asked.
+    if bad_input {
+        ExitCode::BadInput.exit();
+    }
+    if !all_good {
+        ExitCode::Incompatible.exit();
     }
 }

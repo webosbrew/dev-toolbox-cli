@@ -2,7 +2,6 @@ use std::fs::File;
 use std::io::{Error, Write};
 use std::iter;
 use std::path::PathBuf;
-use std::process::exit;
 
 use clap::{Parser, ValueEnum};
 use is_terminal::IsTerminal;
@@ -12,6 +11,7 @@ use semver::VersionReq;
 use fw_lib::Firmware;
 use ipk_lib::Package;
 use verify_lib::bin::BinVerifyResult;
+use verify_lib::exit::ExitCode;
 use verify_lib::ipk::{
     ComponentBinVerifyResult, ComponentVerifyResult, CompatVerdict, DetectionResult,
     PackageVerifyResult, VerifyForFirmware,
@@ -50,39 +50,50 @@ pub enum OutputFormat {
 
 impl Args {
     fn report_output(&self) -> Box<dyn ReportOutput> {
-        return if let Some(path) = &self.output {
-            Box::new(File::create(path).unwrap())
-        } else {
-            Box::new(std::io::stdout())
+        let Some(path) = &self.output else {
+            return Box::new(std::io::stdout());
+        };
+        return match File::create(path) {
+            Ok(file) => Box::new(file),
+            Err(e) => {
+                eprintln!("Failed to create {}: {e}", path.to_string_lossy());
+                ExitCode::OutputError.exit();
+            }
         };
     }
 }
 
 fn main() {
     let args = Args::parse();
-    let to_file: bool = args.output.is_some();
     let mut output = args.report_output();
-    let format = if let Some(format) = args.format {
+    let format = if let Some(format) = args.format.clone() {
         format
     } else if std::io::stdout().is_terminal() {
         OutputFormat::Terminal
     } else {
         OutputFormat::Plain
     };
-    let firmwares: Vec<Firmware> = Firmware::list(Firmware::data_path())
-        .unwrap()
-        .into_iter()
-        .filter(|fw| {
-            if let Some(fw_releases) = &args.fw_releases {
-                return fw_releases.matches(&fw.info.release);
-            }
-            return true;
-        })
-        .collect();
+    let firmwares: Vec<Firmware> = match Firmware::list(Firmware::data_path()) {
+        Ok(firmwares) => firmwares
+            .into_iter()
+            .filter(|fw| {
+                if let Some(fw_releases) = &args.fw_releases {
+                    return fw_releases.matches(&fw.info.release);
+                }
+                return true;
+            })
+            .collect(),
+        Err(e) => {
+            eprintln!("Failed to read firmware data: {e}");
+            ExitCode::NoFirmware.exit();
+        }
+    };
     if firmwares.is_empty() {
         eprintln!("No firmware found");
+        ExitCode::NoFirmware.exit();
     }
     let mut all_good = true;
+    let mut bad_input = false;
     for package in &args.packages {
         eprintln!("Opening package {}...", package.to_string_lossy());
         let package = match Package::open(package) {
@@ -92,7 +103,7 @@ fn main() {
                     "Failed to open {}: {e}",
                     package.file_name().unwrap().to_string_lossy()
                 );
-                all_good = false;
+                bad_input = true;
                 continue;
             }
         };
@@ -108,66 +119,63 @@ fn main() {
                 return (fw, verify);
             })
             .collect();
-        output.h2(&format!("Package {}", package.id)).unwrap();
-
         if all_good && !results.iter().all(|(_, r)| r.is_good()) {
             all_good = false;
         }
-        let (_, result) = results.first().unwrap();
-        if to_file {
-            eprintln!(" - App {}", result.app.id);
+        if let Err(e) = print_package_report(&package.id, &results, &args, &mut output, &format) {
+            eprintln!("Failed to write the report: {e}");
+            ExitCode::OutputError.exit();
         }
-        output.h3(&format!("App {}", result.app.id)).unwrap();
-        if !args.no_summary {
-            print_component_summary(
-                &results.iter().map(|(fw, res)| (*fw, &res.app)).collect::<Vec<_>>(),
-                &mut output,
-                &format,
-            )
-            .unwrap();
-        }
-        if args.details {
-            print_component_details(
-                &results.iter().map(|(fw, res)| (*fw, &res.app)).collect::<Vec<_>>(),
-                &mut output,
-                &format,
-            )
-            .unwrap();
-        }
-        for idx in 0..result.services.len() {
-            if to_file {
-                eprintln!(" - Service {}", result.services.get(idx).unwrap().id);
-            }
-            output
-                .h3(&format!("Service {}", result.services.get(idx).unwrap().id))
-                .unwrap();
-            if !args.no_summary {
-                print_component_summary(
-                    &results
-                        .iter()
-                        .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
-                        .collect::<Vec<_>>(),
-                    &mut output,
-                    &format,
-                )
-                .unwrap();
-            }
-            if args.details {
-                print_component_details(
-                    &results
-                        .iter()
-                        .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
-                        .collect::<Vec<_>>(),
-                    &mut output,
-                    &format,
-                )
-                .unwrap();
-            }
-        }
+    }
+    // A package the tool could not read outranks an incompatibility: the run did
+    // not answer the question that was asked.
+    if bad_input {
+        ExitCode::BadInput.exit();
     }
     if !all_good {
-        exit(1);
+        ExitCode::Incompatible.exit();
     }
+}
+
+/// Write the report for one package: the app, then each of its services.
+fn print_package_report(
+    package_id: &str,
+    results: &[(&Firmware, PackageVerifyResult)],
+    args: &Args,
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    let to_file = args.output.is_some();
+    out.h2(&format!("Package {package_id}"))?;
+    let (_, result) = results.first().unwrap();
+    if to_file {
+        eprintln!(" - App {}", result.app.id);
+    }
+    out.h3(&format!("App {}", result.app.id))?;
+    let app: Vec<_> = results.iter().map(|(fw, res)| (*fw, &res.app)).collect();
+    if !args.no_summary {
+        print_component_summary(&app, out, out_fmt)?;
+    }
+    if args.details {
+        print_component_details(&app, out, out_fmt)?;
+    }
+    for idx in 0..result.services.len() {
+        if to_file {
+            eprintln!(" - Service {}", result.services.get(idx).unwrap().id);
+        }
+        out.h3(&format!("Service {}", result.services.get(idx).unwrap().id))?;
+        let service: Vec<_> = results
+            .iter()
+            .map(|(fw, res)| (*fw, res.services.get(idx).unwrap()))
+            .collect();
+        if !args.no_summary {
+            print_component_summary(&service, out, out_fmt)?;
+        }
+        if args.details {
+            print_component_details(&service, out, out_fmt)?;
+        }
+    }
+    return Ok(());
 }
 
 fn print_component_summary(
