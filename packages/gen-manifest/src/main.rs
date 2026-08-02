@@ -4,7 +4,7 @@ use std::fs::File;
 use std::path::PathBuf;
 
 use clap::{Parser, ValueEnum};
-use cli_lib::{file_label, ExitCode};
+use cli_lib::{ExitCode, file_label};
 use ipk_lib::Package;
 use serde::{Serialize, Serializer};
 

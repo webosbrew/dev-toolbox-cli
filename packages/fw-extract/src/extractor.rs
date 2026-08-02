@@ -1,6 +1,6 @@
-use crate::{output_error, FirmwareExtractor};
+use crate::{FirmwareExtractor, output_error};
 use bin_lib::LibraryInfo;
-use cli_lib::{file_label, ExitCode};
+use cli_lib::{ExitCode, file_label};
 use debian_control::Control;
 use debversion::{AsVersion, Version as DebVersion};
 use fw_lib::FirmwareInfo;
@@ -217,10 +217,8 @@ impl FirmwareExtractor {
             } else if metadata.is_symlink() {
                 match self.final_link_target(&ent_path) {
                     Ok(Some(target)) => {
-                        lib_index.insert(
-                            String::from(name),
-                            format!("{}.json", file_label(&target)),
-                        );
+                        lib_index
+                            .insert(String::from(name), format!("{}.json", file_label(&target)));
                     }
                     Ok(None) => {}
                     Err(e) => {
@@ -329,7 +327,7 @@ impl FirmwareExtractor {
                 .join("etc")
                 .join("starfish-release"),
         )?
-            .read_to_string(&mut starfish_release)?;
+        .read_to_string(&mut starfish_release)?;
         let release_regex = Regex::new("release (\\d+\\.\\d+\\.\\d+)").unwrap();
         let release = release_regex
             .captures(&starfish_release)
@@ -413,9 +411,9 @@ impl FirmwareExtractor {
                     "bsp/var/lib/opkg/info", /*, "var/lib/opkg/info"*/
                 ]
                 .iter()
-                    .map(|x| path.join(PathBuf::from_slash(x)))
-                    .filter(|p| p.is_dir())
-                    .collect();
+                .map(|x| path.join(PathBuf::from_slash(x)))
+                .filter(|p| p.is_dir())
+                .collect();
             })
             .collect())
     }

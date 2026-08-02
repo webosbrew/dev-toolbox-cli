@@ -78,8 +78,10 @@ impl Package {
         let app = Component::<AppInfo>::parse(app_dir, &links)?;
         let mut services = Vec::new();
         for id in &package_info.services {
-            let service_dir =
-                ensure_within(root, &root.join(Cow::from_slash(&format!("usr/palm/services/{id}"))))?;
+            let service_dir = ensure_within(
+                root,
+                &root.join(Cow::from_slash(&format!("usr/palm/services/{id}"))),
+            )?;
             let service = Component::<ServiceInfo>::parse(service_dir, &links)?;
             services.push(service);
         }

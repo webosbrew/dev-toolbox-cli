@@ -4,9 +4,9 @@ use std::io::{Error, Stdout, Write};
 use prettytable::format::{FormatBuilder, LinePosition, LineSeparator, TableFormat};
 // `color` and `Attr` come from prettytable's own `term`, so take them from
 // there. Depending on `term` directly pulls in a second, incompatible copy.
-use prettytable::{color, Attr, Cell, Table};
+use prettytable::{Attr, Cell, Table, color};
 
-use verify_lib::ipk::{ComponentBinVerifyResult, CompatVerdict};
+use verify_lib::ipk::{CompatVerdict, ComponentBinVerifyResult};
 
 use crate::OutputFormat;
 

@@ -1,10 +1,10 @@
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
-use elf::{abi, ElfStream};
+use elf::{ElfStream, abi};
 
-use crate::reloc::lazy_bound_symbols;
 use crate::BinaryInfo;
+use crate::reloc::lazy_bound_symbols;
 
 impl BinaryInfo {
     pub fn parse<S, N>(source: S, name: N, with_rpath: bool) -> Result<Self, elf::ParseError>
@@ -160,4 +160,3 @@ mod tests {
         );
     }
 }
-

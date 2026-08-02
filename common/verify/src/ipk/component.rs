@@ -5,7 +5,7 @@ use ipk_lib::Component;
 
 use crate::bin::binary::recursive_resolve_symbols;
 use crate::ipk::{ComponentBinVerifyResult, ComponentVerifyResult};
-use crate::{bin::BinVerifyResult, Verify, VerifyResult};
+use crate::{Verify, VerifyResult, bin::BinVerifyResult};
 
 trait ComponentImpl {
     fn resolve_lib<F>(&self, name: &str, find_library: &F) -> Option<LibraryInfo>
@@ -138,15 +138,14 @@ impl<T> Verify<ComponentVerifyResult> for Component<T> {
             .map(|lib| {
                 let required = self.is_required(lib);
                 // System library has higher precedence
-                if lib.priority != LibraryPriority::Rpath
-                    && find_library(&lib.name).is_some() {
-                        return (
-                            required,
-                            ComponentBinVerifyResult::Skipped {
-                                name: lib.name.clone(),
-                            },
-                        );
-                    }
+                if lib.priority != LibraryPriority::Rpath && find_library(&lib.name).is_some() {
+                    return (
+                        required,
+                        ComponentBinVerifyResult::Skipped {
+                            name: lib.name.clone(),
+                        },
+                    );
+                }
                 let mut verify_result = self.verify_bin(
                     &BinaryInfo {
                         name: lib.name.clone(),
@@ -199,7 +198,9 @@ impl From<BinVerifyResult> for ComponentBinVerifyResult {
 impl ComponentBinVerifyResult {
     pub fn name(&self) -> &str {
         return match self {
-            ComponentBinVerifyResult::Skipped { name } | ComponentBinVerifyResult::Ok { name } => name,
+            ComponentBinVerifyResult::Skipped { name } | ComponentBinVerifyResult::Ok { name } => {
+                name
+            }
             ComponentBinVerifyResult::Warned(result) | ComponentBinVerifyResult::Failed(result) => {
                 &result.name
             }

@@ -9,19 +9,28 @@
 
 use bin_lib::{BinaryInfo, LibraryInfo, LibraryPriority};
 use ipk_lib::Component;
-use verify_lib::ipk::ComponentBinVerifyResult;
 use verify_lib::Verify;
+use verify_lib::ipk::ComponentBinVerifyResult;
 
 fn bundled_lib(name: &str, needed: &[&str], symbols: &[&str], undefined: &[&str]) -> LibraryInfo {
-    let mut symbols: Vec<String> = symbols.iter().map(std::string::ToString::to_string).collect();
+    let mut symbols: Vec<String> = symbols
+        .iter()
+        .map(std::string::ToString::to_string)
+        .collect();
     symbols.sort_unstable();
     LibraryInfo {
         name: name.to_string(),
         package: None,
-        needed: needed.iter().map(std::string::ToString::to_string).collect(),
+        needed: needed
+            .iter()
+            .map(std::string::ToString::to_string)
+            .collect(),
         symbols,
         names: vec![name.to_string()],
-        undefined: undefined.iter().map(std::string::ToString::to_string).collect(),
+        undefined: undefined
+            .iter()
+            .map(std::string::ToString::to_string)
+            .collect(),
         undefined_lazy: vec![],
         rpath: vec![],
         priority: LibraryPriority::Rpath,
@@ -35,7 +44,10 @@ fn component(exe_needed: &[&str], libs: Vec<LibraryInfo>) -> Component<()> {
         exe: Some(BinaryInfo {
             name: "app".to_string(),
             rpath: vec![],
-            needed: exe_needed.iter().map(std::string::ToString::to_string).collect(),
+            needed: exe_needed
+                .iter()
+                .map(std::string::ToString::to_string)
+                .collect(),
             undefined: vec![],
             undefined_lazy: vec![],
         }),
@@ -69,7 +81,10 @@ fn sibling_library_satisfies_undefined_symbol() {
     let result = component.verify(&|_name| None);
 
     assert!(
-        matches!(lib_result(&result, "libEGL.so.1"), ComponentBinVerifyResult::Ok { .. }),
+        matches!(
+            lib_result(&result, "libEGL.so.1"),
+            ComponentBinVerifyResult::Ok { .. }
+        ),
         "libEGL.so.1 should pass: gl* provided by sibling libGLESv2.so.2; got {:?}",
         lib_result(&result, "libEGL.so.1")
     );
@@ -83,7 +98,12 @@ fn sibling_library_satisfies_undefined_symbol() {
 /// as undefined — the global-scope resolution must not mask genuine misses.
 #[test]
 fn truly_missing_symbol_still_fails() {
-    let libegl = bundled_lib("libEGL.so.1", &[], &["eglGetDisplay"], &["someMissingSymbol"]);
+    let libegl = bundled_lib(
+        "libEGL.so.1",
+        &[],
+        &["eglGetDisplay"],
+        &["someMissingSymbol"],
+    );
     let libgles = bundled_lib("libGLESv2.so.2", &[], &["glActiveTexture@GLES_3_2"], &[]);
     let component = component(&["libEGL.so.1", "libGLESv2.so.2"], vec![libegl, libgles]);
 

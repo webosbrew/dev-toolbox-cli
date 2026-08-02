@@ -12,7 +12,10 @@ use verify_lib::ipk::ComponentBinVerifyResult;
 use verify_lib::{Verify, VerifyResult};
 
 fn lib(name: &str, symbols: &[&str]) -> LibraryInfo {
-    let mut symbols: Vec<String> = symbols.iter().map(std::string::ToString::to_string).collect();
+    let mut symbols: Vec<String> = symbols
+        .iter()
+        .map(std::string::ToString::to_string)
+        .collect();
     symbols.sort_unstable();
     LibraryInfo {
         name: name.to_string(),
@@ -89,9 +92,12 @@ fn resolved_lazy_symbol_passes() {
 /// A failure outranks a warning, and the report still lists both.
 #[test]
 fn eager_and_lazy_together_fail() {
-    let result =
-        app(&["someDataSymbol"], &["glTexStorage2D"], vec![lib("libGLESv2.so.2", &[])])
-            .verify(&|_| None);
+    let result = app(
+        &["someDataSymbol"],
+        &["glTexStorage2D"],
+        vec![lib("libGLESv2.so.2", &[])],
+    )
+    .verify(&|_| None);
 
     match &result.exe {
         ComponentBinVerifyResult::Failed(bin) => {

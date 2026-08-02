@@ -5,8 +5,8 @@ use std::path::Path;
 
 use serde::Deserialize;
 
-use crate::js;
 use crate::ServiceRuntimeDetection;
+use crate::js;
 
 #[derive(Debug, Default, Deserialize)]
 struct PackageJson {
@@ -85,9 +85,17 @@ mod tests {
         // The entry point is plain ES5 and pulls in nothing; a vendored server
         // and node_modules ship modern syntax but never run on the firmware Node.
         let dir = write_pkg(r#"{ "main": "service.js" }"#);
-        write(dir.path(), "service.js", "var x = 1; function f() { return x; }");
+        write(
+            dir.path(),
+            "service.js",
+            "var x = 1; function f() { return x; }",
+        );
         write(dir.path(), "server/index.js", "const y = a?.b ?? c;"); // ES2020, spawned separately
-        write(dir.path(), "node_modules/dep/index.js", "const z = () => 2;"); // ES2015, vendored
+        write(
+            dir.path(),
+            "node_modules/dep/index.js",
+            "const z = () => 2;",
+        ); // ES2015, vendored
         let d = detect_service_runtime(dir.path());
         assert_eq!(d.es_level, Some(EsLevel::Es5));
     }
@@ -95,7 +103,11 @@ mod tests {
     #[test]
     fn follows_relative_require() {
         let dir = write_pkg(r#"{ "main": "service.js" }"#);
-        write(dir.path(), "service.js", "var helper = require('./lib/helper');");
+        write(
+            dir.path(),
+            "service.js",
+            "var helper = require('./lib/helper');",
+        );
         write(dir.path(), "lib/helper.js", "const v = a ?? b;"); // ES2020
         let d = detect_service_runtime(dir.path());
         assert_eq!(d.es_level, Some(EsLevel::Es2020));
@@ -120,7 +132,11 @@ mod tests {
         // `require('modern-dep')` resolves into node_modules — not graded.
         let dir = write_pkg(r#"{ "main": "service.js" }"#);
         write(dir.path(), "service.js", "var d = require('modern-dep');");
-        write(dir.path(), "node_modules/modern-dep/index.js", "const z = a?.b;"); // ES2020
+        write(
+            dir.path(),
+            "node_modules/modern-dep/index.js",
+            "const z = a?.b;",
+        ); // ES2020
         let d = detect_service_runtime(dir.path());
         assert_eq!(d.es_level, Some(EsLevel::Es5));
     }

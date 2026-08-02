@@ -1,5 +1,5 @@
 use semver::Version;
-use serde::{de, Deserialize, Deserializer, Serializer};
+use serde::{Deserialize, Deserializer, Serializer, de};
 
 pub(crate) fn version_serialize<S>(value: &Version, serializer: S) -> Result<S::Ok, S::Error>
 where

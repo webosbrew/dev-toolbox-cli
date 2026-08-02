@@ -8,15 +8,15 @@ use is_terminal::IsTerminal;
 use prettytable::{Cell, Row, Table};
 use semver::VersionReq;
 
-use cli_lib::{file_label, ExitCode};
+use cli_lib::{ExitCode, file_label};
 use fw_lib::Firmware;
 use ipk_lib::Package;
+use verify_lib::VerifyResult;
 use verify_lib::bin::BinVerifyResult;
 use verify_lib::ipk::{
-    ComponentBinVerifyResult, ComponentVerifyResult, CompatVerdict, DetectionResult,
+    CompatVerdict, ComponentBinVerifyResult, ComponentVerifyResult, DetectionResult,
     PackageVerifyResult, VerifyForFirmware,
 };
-use verify_lib::VerifyResult;
 use webdetect_lib::{ServiceRuntimeDetection, WebAppDetection};
 
 use crate::output::ReportOutput;
@@ -383,7 +383,11 @@ fn print_detection_summary(
             if !web.es_apis.is_empty() && web.polyfills.is_empty() {
                 table.add_row(Row::new(
                     iter::once(Cell::new("Runtime APIs"))
-                        .chain(results.iter().map(|(_, r)| out.advisory_cell(api_advisory(r), out_fmt)))
+                        .chain(
+                            results
+                                .iter()
+                                .map(|(_, r)| out.advisory_cell(api_advisory(r), out_fmt)),
+                        )
                         .collect(),
                 ));
             }
@@ -413,7 +417,11 @@ fn print_detection_summary(
             if !svc.es_apis.is_empty() && svc.polyfills.is_empty() {
                 table.add_row(Row::new(
                     iter::once(Cell::new("Runtime APIs"))
-                        .chain(results.iter().map(|(_, r)| out.advisory_cell(api_advisory(r), out_fmt)))
+                        .chain(
+                            results
+                                .iter()
+                                .map(|(_, r)| out.advisory_cell(api_advisory(r), out_fmt)),
+                        )
                         .collect(),
                 ));
             }
@@ -450,7 +458,10 @@ fn print_detection_details(
             }
             if !web.es_features.is_empty() {
                 let feats: Vec<&str> = web.es_features.iter().map(|f| f.label()).collect();
-                out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
+                out.write_fmt(format_args!(
+                    "* Language features used: {}\n",
+                    feats.join(", ")
+                ))?;
             }
             print_api_details(&web.es_apis, &web.polyfills, out)?;
             for url in &web.remote_resources {
@@ -465,7 +476,10 @@ fn print_detection_details(
             out.h4("JS service")?;
             if !svc.es_features.is_empty() {
                 let feats: Vec<&str> = svc.es_features.iter().map(|f| f.label()).collect();
-                out.write_fmt(format_args!("* Language features used: {}\n", feats.join(", ")))?;
+                out.write_fmt(format_args!(
+                    "* Language features used: {}\n",
+                    feats.join(", ")
+                ))?;
             }
             print_api_details(&svc.es_apis, &svc.polyfills, out)?;
             print_bundled_artifacts(bundled, out, out_fmt)?;
@@ -542,7 +556,12 @@ fn print_bundled_artifacts(
     for a in bundled {
         match &a.arch {
             Some(arch) => {
-                out.write_fmt(format_args!("* {} — {}, {}\n", a.path, a.kind.label(), arch))?;
+                out.write_fmt(format_args!(
+                    "* {} — {}, {}\n",
+                    a.path,
+                    a.kind.label(),
+                    arch
+                ))?;
             }
             None => out.write_fmt(format_args!("* {} — {}\n", a.path, a.kind.label()))?,
         }
@@ -713,18 +732,18 @@ fn describe_service(svc: &ServiceRuntimeDetection) -> String {
 /// The gating ES compatibility verdict for a component result (Unknown if
 /// there is no detection).
 fn component_verdict(result: &ComponentVerifyResult) -> &CompatVerdict {
-    result
-        .detection
-        .as_ref()
-        .map_or(&CompatVerdict::Unknown, verify_lib::ipk::DetectionResult::verdict)
+    result.detection.as_ref().map_or(
+        &CompatVerdict::Unknown,
+        verify_lib::ipk::DetectionResult::verdict,
+    )
 }
 
 /// The advisory runtime-API verdict for a component result.
 fn api_advisory(result: &ComponentVerifyResult) -> &CompatVerdict {
-    result
-        .detection
-        .as_ref()
-        .map_or(&CompatVerdict::Unknown, verify_lib::ipk::DetectionResult::api_advisory)
+    result.detection.as_ref().map_or(
+        &CompatVerdict::Unknown,
+        verify_lib::ipk::DetectionResult::api_advisory,
+    )
 }
 
 fn web_engine_label(result: &ComponentVerifyResult) -> String {

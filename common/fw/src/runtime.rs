@@ -117,8 +117,14 @@ mod tests {
 
     #[test]
     fn parses_various_upstream_strings() {
-        assert_eq!(parse_leading_semver("16.20.2"), Some(Version::new(16, 20, 2)));
-        assert_eq!(parse_leading_semver("0.10.15"), Some(Version::new(0, 10, 15)));
+        assert_eq!(
+            parse_leading_semver("16.20.2"),
+            Some(Version::new(16, 20, 2))
+        );
+        assert_eq!(
+            parse_leading_semver("0.10.15"),
+            Some(Version::new(0, 10, 15))
+        );
         assert_eq!(
             parse_leading_semver("120.0.6099.270-137.paparoa.1"),
             Some(Version::new(120, 0, 6099))
@@ -152,13 +158,28 @@ mod tests {
         let node = |rel: &str| by_release.get(rel).and_then(|f| f.node_version());
 
         // Chromium generations, including the version-suffixed names.
-        assert_eq!(engine("10.2.0"), Some(WebEngine::Chromium(Version::new(120, 0, 6099))));
-        assert_eq!(engine("4.4.2"), Some(WebEngine::Chromium(Version::new(53, 0, 2785))));
-        assert_eq!(engine("3.4.0"), Some(WebEngine::Chromium(Version::new(38, 0, 2125))));
-        assert_eq!(engine("1.2.0"), Some(WebEngine::Chromium(Version::new(26, 0, 1410))));
+        assert_eq!(
+            engine("10.2.0"),
+            Some(WebEngine::Chromium(Version::new(120, 0, 6099)))
+        );
+        assert_eq!(
+            engine("4.4.2"),
+            Some(WebEngine::Chromium(Version::new(53, 0, 2785)))
+        );
+        assert_eq!(
+            engine("3.4.0"),
+            Some(WebEngine::Chromium(Version::new(38, 0, 2125)))
+        );
+        assert_eq!(
+            engine("1.2.0"),
+            Some(WebEngine::Chromium(Version::new(26, 0, 1410)))
+        );
 
         // Pre-Chromium WebKit images.
-        assert_eq!(engine("2.2.3"), Some(WebEngine::WebKit(Version::new(537, 41, 0))));
+        assert_eq!(
+            engine("2.2.3"),
+            Some(WebEngine::WebKit(Version::new(537, 41, 0)))
+        );
         assert!(matches!(engine("1.4.0"), Some(WebEngine::WebKit(_))));
 
         // Node.js.

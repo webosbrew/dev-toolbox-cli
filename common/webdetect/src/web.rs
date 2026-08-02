@@ -96,12 +96,7 @@ fn detect_html_signals(html: &str) -> HtmlSignals {
     for node in dom.nodes() {
         let Some(tag) = node.as_tag() else { continue };
         let attrs = tag.attributes();
-        let attr = |k: &str| {
-            attrs
-                .get(k)
-                .flatten()
-                .map(|b| b.as_utf8_str().into_owned())
-        };
+        let attr = |k: &str| attrs.get(k).flatten().map(|b| b.as_utf8_str().into_owned());
 
         if tag.name().as_utf8_str() == "script" {
             let ty = attr("type");
@@ -123,7 +118,10 @@ fn detect_html_signals(html: &str) -> HtmlSignals {
         }
         for key in ["src", "href"] {
             if let Some(url) = attr(key) {
-                if is_remote(&url) && seen.insert(url.clone()) && sig.remote_resources.len() < MAX_REMOTE {
+                if is_remote(&url)
+                    && seen.insert(url.clone())
+                    && sig.remote_resources.len() < MAX_REMOTE
+                {
                     sig.remote_resources.push(url);
                 }
             }
@@ -167,13 +165,31 @@ macro_rules! re {
     };
 }
 
-re!(RE_ANGULARJS, r#"(?:angular\.version|"full"\s*:\s*")\s*[:=]?\s*"?(1\.[0-9]+\.[0-9]+)"#);
-re!(RE_REACT_BANNER, r"@license React v?([0-9]+\.[0-9]+\.[0-9]+)");
-re!(RE_REACT_PRESENT, r"React\.createElement|react-dom(?:\.production)?(?:\.min)?\.js|__reactContainer|data-reactroot");
+re!(
+    RE_ANGULARJS,
+    r#"(?:angular\.version|"full"\s*:\s*")\s*[:=]?\s*"?(1\.[0-9]+\.[0-9]+)"#
+);
+re!(
+    RE_REACT_BANNER,
+    r"@license React v?([0-9]+\.[0-9]+\.[0-9]+)"
+);
+re!(
+    RE_REACT_PRESENT,
+    r"React\.createElement|react-dom(?:\.production)?(?:\.min)?\.js|__reactContainer|data-reactroot"
+);
 re!(RE_VUE_V2, r"Vue\.js v([0-9]+\.[0-9]+\.[0-9]+)");
-re!(RE_VUE_V3, r"@vue/(?:runtime|shared|reactivity)[^\n]{0,40}?v([0-9]+\.[0-9]+\.[0-9]+)");
-re!(RE_VUE_PRESENT, r"__vue__|createElementVNode|Vue\.createApp|\bVue\b");
-re!(RE_JQUERY, r"jQuery(?: JavaScript Library)? v([0-9]+\.[0-9]+\.[0-9]+)");
+re!(
+    RE_VUE_V3,
+    r"@vue/(?:runtime|shared|reactivity)[^\n]{0,40}?v([0-9]+\.[0-9]+\.[0-9]+)"
+);
+re!(
+    RE_VUE_PRESENT,
+    r"__vue__|createElementVNode|Vue\.createApp|\bVue\b"
+);
+re!(
+    RE_JQUERY,
+    r"jQuery(?: JavaScript Library)? v([0-9]+\.[0-9]+\.[0-9]+)"
+);
 re!(RE_JQUERY_PRESENT, r"jquery|jQuery");
 re!(RE_ENACT, r"@enact/|enactVersion|enact_dev|enactMeta");
 // Enyo (the legacy LG/webOS framework Enact descends from): the `enyo.*` API
@@ -182,9 +198,15 @@ re!(
     RE_ENYO,
     r"\benyo\.(?:kind|Control|Component|Application|version|ready|singleton)\b|@enyo/|\benyojs\b|enyo(?:\.min)?\.js"
 );
-re!(RE_ENYO_VER, r#"enyo\.version\s*=\s*\{[^}]*?core["']?\s*:\s*["']([0-9]+\.[0-9]+\.[0-9]+)"#);
+re!(
+    RE_ENYO_VER,
+    r#"enyo\.version\s*=\s*\{[^}]*?core["']?\s*:\s*["']([0-9]+\.[0-9]+\.[0-9]+)"#
+);
 re!(RE_WEBOSTV, r"(?i)webOSTV(?:-dev)?\.js");
-re!(RE_WEBOSTV_VER, r"webOSTV(?:-dev)?\.js\s*(?:v(?:ersion)?)?\s*([0-9]+\.[0-9]+\.[0-9]+)");
+re!(
+    RE_WEBOSTV_VER,
+    r"webOSTV(?:-dev)?\.js\s*(?:v(?:ersion)?)?\s*([0-9]+\.[0-9]+\.[0-9]+)"
+);
 
 /// Returns (primary framework, other frameworks present, webOSTV.js presence).
 ///
@@ -196,7 +218,11 @@ fn detect_frameworks(
     html: &str,
     js: &[(String, String)],
     ng_version: Option<&str>,
-) -> (Option<FrameworkInfo>, Vec<FrameworkInfo>, Option<Option<Version>>) {
+) -> (
+    Option<FrameworkInfo>,
+    Vec<FrameworkInfo>,
+    Option<Option<Version>>,
+) {
     let mut found: Vec<FrameworkInfo> = Vec::new();
 
     let cap_ver = |re: &Regex, hay: &str| -> Option<Version> {
@@ -214,33 +240,35 @@ fn detect_frameworks(
     }
 
     // Everything else: scan HTML + JS contents for a banner/presence marker.
-    let scan = |kind: FrameworkKind,
-                present: &Regex,
-                version: Option<&Regex>|
-     -> Option<FrameworkInfo> {
-        let mut version_found: Option<Version> = None;
-        let mut present_found = false;
-        for hay in std::iter::once(html).chain(js.iter().map(|(_, c)| c.as_str())) {
-            if let Some(re) = version {
-                if version_found.is_none() {
-                    version_found = cap_ver(re, hay);
+    let scan =
+        |kind: FrameworkKind, present: &Regex, version: Option<&Regex>| -> Option<FrameworkInfo> {
+            let mut version_found: Option<Version> = None;
+            let mut present_found = false;
+            for hay in std::iter::once(html).chain(js.iter().map(|(_, c)| c.as_str())) {
+                if let Some(re) = version {
+                    if version_found.is_none() {
+                        version_found = cap_ver(re, hay);
+                    }
+                }
+                if !present_found && present.is_match(hay) {
+                    present_found = true;
+                }
+                if present_found && (version.is_none() || version_found.is_some()) {
+                    break;
                 }
             }
-            if !present_found && present.is_match(hay) {
-                present_found = true;
+            if present_found || version_found.is_some() {
+                Some(FrameworkInfo::new(kind, version_found))
+            } else {
+                None
             }
-            if present_found && (version.is_none() || version_found.is_some()) {
-                break;
-            }
-        }
-        if present_found || version_found.is_some() {
-            Some(FrameworkInfo::new(kind, version_found))
-        } else {
-            None
-        }
-    };
+        };
 
-    if let Some(f) = scan(FrameworkKind::React, &RE_REACT_PRESENT, Some(&RE_REACT_BANNER)) {
+    if let Some(f) = scan(
+        FrameworkKind::React,
+        &RE_REACT_PRESENT,
+        Some(&RE_REACT_BANNER),
+    ) {
         found.push(f);
     }
     if let Some(mut vue) = scan(FrameworkKind::Vue, &RE_VUE_PRESENT, Some(&RE_VUE_V2)) {
@@ -300,7 +328,8 @@ fn detect_frameworks(
         }
     }
 
-    let primary = Some(primary.unwrap_or_else(|| FrameworkInfo::new(FrameworkKind::PlainHtml, None)));
+    let primary =
+        Some(primary.unwrap_or_else(|| FrameworkInfo::new(FrameworkKind::PlainHtml, None)));
     (primary, found, webostvjs)
 }
 
@@ -356,8 +385,11 @@ mod tests {
 
     #[test]
     fn detects_enyo_from_api_usage() {
-        let (primary, _o, _t) =
-            detect_frameworks("", &js("enyo.kind({ name: 'App', kind: enyo.Control });"), None);
+        let (primary, _o, _t) = detect_frameworks(
+            "",
+            &js("enyo.kind({ name: 'App', kind: enyo.Control });"),
+            None,
+        );
         assert_eq!(primary.unwrap().kind, FrameworkKind::Enyo);
     }
 
@@ -409,13 +441,22 @@ mod tests {
             </head></html>"#,
         );
         assert_eq!(sig.remote_resources.len(), 2);
-        assert!(sig.remote_resources.iter().any(|u| u.contains("cdn.example.com/lib.js")));
-        assert!(sig.remote_resources.iter().any(|u| u.starts_with("//fonts.example.com")));
+        assert!(
+            sig.remote_resources
+                .iter()
+                .any(|u| u.contains("cdn.example.com/lib.js"))
+        );
+        assert!(
+            sig.remote_resources
+                .iter()
+                .any(|u| u.starts_with("//fonts.example.com"))
+        );
     }
 
     #[test]
     fn no_remote_resources_when_all_local() {
-        let sig = detect_html_signals(r#"<script src="bundle.js"></script><link href="style.css">"#);
+        let sig =
+            detect_html_signals(r#"<script src="bundle.js"></script><link href="style.css">"#);
         assert!(sig.remote_resources.is_empty());
     }
 

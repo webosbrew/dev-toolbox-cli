@@ -23,7 +23,7 @@ impl EsLevel {
     /// implies. Values are the standard caniuse/V8 landing points.
     pub fn min_chromium_major(self) -> u32 {
         match self {
-            EsLevel::Es5 => 0, // universally supported
+            EsLevel::Es5 => 0,     // universally supported
             EsLevel::Es2015 => 49, // let/const, arrow, class, template, spread
             EsLevel::Es2016 => 52, // ** exponentiation
             EsLevel::Es2017 => 55, // async/await

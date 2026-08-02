@@ -108,17 +108,13 @@ impl Component<ServiceInfo> {
         }
         let executable = info.executable.as_ref().unwrap();
         let exe_path = ensure_within(dir, &dir.join(Cow::from_slash(executable)))?;
-        let bin_info = BinaryInfo::parse(
-            File::open(&exe_path)?,
-            file_label(&exe_path),
-            true,
-        )
-        .map_err(|e| {
-            Error::new(
-                ErrorKind::InvalidData,
-                format!("Bad app executable {executable}: {e:?}"),
-            )
-        })?;
+        let bin_info = BinaryInfo::parse(File::open(&exe_path)?, file_label(&exe_path), true)
+            .map_err(|e| {
+                Error::new(
+                    ErrorKind::InvalidData,
+                    format!("Bad app executable {executable}: {e:?}"),
+                )
+            })?;
         let libs = Self::list_libs(
             dir,
             &Component::<ServiceInfo>::rpath(&bin_info.rpath, &exe_path),
@@ -179,7 +175,9 @@ fn walk_bundled(root: &Path, dir: &Path, depth: usize, links: &Symlinks, scan: &
         if !ft.is_file() {
             continue;
         }
-        let Ok(file) = File::open(&path) else { continue };
+        let Ok(file) = File::open(&path) else {
+            continue;
+        };
         let rel = path
             .strip_prefix(root)
             .unwrap_or(&path)
@@ -204,12 +202,7 @@ fn walk_bundled(root: &Path, dir: &Path, depth: usize, links: &Symlinks, scan: &
 /// than a `DT_RPATH`, so the executable's sibling `lib/` directory is treated as
 /// a search path (rpath precedence) in addition to any real rpath.
 fn verifiable_bundled_exe(path: &Path, rel: String, links: &Symlinks) -> Option<Component<()>> {
-    let bin = BinaryInfo::parse(
-        File::open(path).ok()?,
-        file_label(path),
-        true,
-    )
-    .ok()?;
+    let bin = BinaryInfo::parse(File::open(path).ok()?, file_label(path), true).ok()?;
     let parent = path.parent()?;
     let mut rpath = Component::<()>::rpath(&bin.rpath, path);
     if let Ok(sibling_lib) = parent.join("lib").canonicalize() {
@@ -235,10 +228,7 @@ impl<T> Component<T> {
         let Some(exe) = &self.exe else {
             return false;
         };
-        return exe
-            .needed
-            .iter()
-            .any(|needed| lib.has_name(needed));
+        return exe.needed.iter().any(|needed| lib.has_name(needed));
     }
 
     fn rpath<P>(rpath: &[String], bin_path: P) -> Vec<PathBuf>
@@ -312,11 +302,8 @@ impl<T> Component<T> {
                     continue;
                 }
                 let path = entry.path();
-                let Ok(mut lib) = LibraryInfo::parse(
-                    File::open(&path)?,
-                    true,
-                    file_label(&path),
-                ) else {
+                let Ok(mut lib) = LibraryInfo::parse(File::open(&path)?, true, file_label(&path))
+                else {
                     continue;
                 };
                 lib.priority = if is_rpath {
@@ -336,8 +323,7 @@ impl<T> Component<T> {
         }
 
         for (path, lib) in &mut libs {
-            lib.names
-                .push(String::from(file_label(path)));
+            lib.names.push(String::from(file_label(path)));
             lib.names.extend(
                 links
                     .links(path)
@@ -364,7 +350,11 @@ mod tests {
         let dir = tempfile::TempDir::new().unwrap();
         let d = dir.path();
         // A non-native service: no `engine`/`executable` → runs on system Node.
-        fs::write(d.join("services.json"), r#"{"id":"com.example.app.service"}"#).unwrap();
+        fs::write(
+            d.join("services.json"),
+            r#"{"id":"com.example.app.service"}"#,
+        )
+        .unwrap();
         fs::write(d.join("package.json"), r#"{"main":"launch.js"}"#).unwrap();
         fs::write(d.join("launch.js"), "var x = 1;").unwrap();
         // A bundled native binary next to the scripts.
@@ -391,7 +381,11 @@ mod tests {
                 .iter()
                 .any(|c| c.id == "bin/node" && c.exe.is_some()),
             "expected bin/node as a verifiable component, got {:?}",
-            svc.info.bundled_bins.iter().map(|c| &c.id).collect::<Vec<_>>()
+            svc.info
+                .bundled_bins
+                .iter()
+                .map(|c| &c.id)
+                .collect::<Vec<_>>()
         );
     }
 
@@ -399,7 +393,11 @@ mod tests {
     fn js_service_without_binaries_reports_none() {
         let dir = tempfile::TempDir::new().unwrap();
         let d = dir.path();
-        fs::write(d.join("services.json"), r#"{"id":"com.example.app.service"}"#).unwrap();
+        fs::write(
+            d.join("services.json"),
+            r#"{"id":"com.example.app.service"}"#,
+        )
+        .unwrap();
         fs::write(d.join("package.json"), r#"{"main":"launch.js"}"#).unwrap();
         fs::write(d.join("launch.js"), "var x = 1;").unwrap();
 

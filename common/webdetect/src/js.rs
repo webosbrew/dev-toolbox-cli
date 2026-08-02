@@ -12,8 +12,8 @@ use std::path::{Component, Path, PathBuf};
 
 use ress::prelude::*;
 
-use crate::eslevel::{EsFeature, EsLevel};
 use crate::ApiUse;
+use crate::eslevel::{EsFeature, EsLevel};
 
 /// Skip individual files larger than this.
 pub(crate) const MAX_FILE_BYTES: u64 = 8 * 1024 * 1024;
@@ -128,7 +128,9 @@ fn resolve_module(root: &Path, base: &Path, spec: &str) -> Option<PathBuf> {
     let candidate = base.join(spec);
     // 1. Exact path to an existing JS-family file (an explicit extension).
     if candidate.is_file() {
-        return has_js_ext(&candidate).then(|| contain(root, &candidate)).flatten();
+        return has_js_ext(&candidate)
+            .then(|| contain(root, &candidate))
+            .flatten();
     }
     // 2. Bare specifier + extension (`./foo` → `./foo.js`). Appends rather than
     //    replacing, so a dotted basename (`./foo.bar`) isn't mangled.
@@ -488,7 +490,8 @@ mod tests {
 
     #[test]
     fn detects_static_namespaced_apis() {
-        let a = apis("Object.assign({}, x); Object.entries(y); Array.from(z); Promise.allSettled(p);");
+        let a =
+            apis("Object.assign({}, x); Object.entries(y); Array.from(z); Promise.allSettled(p);");
         assert!(a.contains(&"Object.assign".to_string()));
         assert!(a.contains(&"Object.entries".to_string()));
         assert!(a.contains(&"Array.from".to_string()));
@@ -527,8 +530,14 @@ mod tests {
             detect_polyfills(&js("require('core-js/modules/es.object.assign');")),
             vec!["core-js".to_string()]
         );
-        assert!(detect_polyfills(&js("function _interopRequireDefault(o){}")).contains(&"@babel/runtime".to_string()));
-        assert!(detect_polyfills(&js("var x = regeneratorRuntime.mark(f);")).contains(&"regenerator".to_string()));
+        assert!(
+            detect_polyfills(&js("function _interopRequireDefault(o){}"))
+                .contains(&"@babel/runtime".to_string())
+        );
+        assert!(
+            detect_polyfills(&js("var x = regeneratorRuntime.mark(f);"))
+                .contains(&"regenerator".to_string())
+        );
         assert!(detect_polyfills(&js("var plain = 1;")).is_empty());
     }
 

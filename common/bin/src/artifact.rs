@@ -11,7 +11,7 @@ use std::io::{Read, Seek};
 
 use elf::endian::AnyEndian;
 use elf::file::Class;
-use elf::{abi, ElfStream};
+use elf::{ElfStream, abi};
 use serde::{Deserialize, Serialize};
 
 /// Whether a bundled ELF is a program or a shared library.
@@ -82,7 +82,7 @@ fn arch_label(machine: u16, class: Class) -> String {
             return match class {
                 Class::ELF32 => "unknown (32-bit)".to_string(),
                 Class::ELF64 => "unknown (64-bit)".to_string(),
-            }
+            };
         }
     };
     name.to_string()

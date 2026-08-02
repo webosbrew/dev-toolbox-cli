@@ -50,7 +50,10 @@ pub(crate) fn ensure_within(root: &Path, candidate: &Path) -> Result<PathBuf, Er
     if !candidate.starts_with(&root) {
         return Err(Error::new(
             ErrorKind::InvalidData,
-            format!("unsafe path escapes package directory: {}", candidate.display()),
+            format!(
+                "unsafe path escapes package directory: {}",
+                candidate.display()
+            ),
         ));
     }
     Ok(candidate)

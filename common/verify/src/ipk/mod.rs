@@ -4,7 +4,7 @@ use ipk_lib::{AppInfo, Component, Package, ServiceInfo};
 use semver::Version;
 use webdetect_lib::{EsLevel, ServiceRuntimeDetection, WebAppDetection};
 
-use crate::{bin::BinVerifyResult, Verify, VerifyResult};
+use crate::{Verify, VerifyResult, bin::BinVerifyResult};
 
 pub mod component;
 
@@ -30,8 +30,12 @@ pub struct ComponentVerifyResult {
 
 #[derive(Debug, Eq, PartialEq)]
 pub enum ComponentBinVerifyResult {
-    Skipped { name: String },
-    Ok { name: String },
+    Skipped {
+        name: String,
+    },
+    Ok {
+        name: String,
+    },
     /// Loads, but something is off — an import the loader binds lazily has no
     /// definition, so a call to it aborts the process. Never gates the verdict.
     Warned(BinVerifyResult),
@@ -171,9 +175,8 @@ fn web_detection(app: &Component<AppInfo>, engine: Option<&WebEngine>) -> Option
     let es = web_verdict(detection.es_level, engine, "app uses");
     // Advisory: highest ES level implied by the runtime APIs used.
     let api_level = detection.es_apis.iter().map(|a| a.level).max();
-    let api = web_verdict(api_level, engine, "app calls APIs from").demote_reason(
-        "may need polyfills",
-    );
+    let api =
+        web_verdict(api_level, engine, "app calls APIs from").demote_reason("may need polyfills");
     return Some(DetectionResult::WebApp {
         detection,
         engine: engine.cloned(),
@@ -247,7 +250,9 @@ fn service_verdict(es_level: Option<EsLevel>, node: Option<&Version>, verb: &str
 /// The highest ES level a firmware's web engine supports.
 pub fn engine_max_es(engine: &WebEngine) -> EsLevel {
     match engine {
-        WebEngine::Chromium(v) => EsLevel::from_chromium_major(u32::try_from(v.major).unwrap_or(u32::MAX)),
+        WebEngine::Chromium(v) => {
+            EsLevel::from_chromium_major(u32::try_from(v.major).unwrap_or(u32::MAX))
+        }
         // The LG WebKit port (537.x) predates reliable ES2015 support.
         WebEngine::WebKit(_) => EsLevel::Es5,
     }
@@ -265,4 +270,3 @@ impl CompatVerdict {
         }
     }
 }
-

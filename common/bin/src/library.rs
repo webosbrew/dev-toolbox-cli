@@ -4,7 +4,7 @@ use std::collections::HashSet;
 use elf::dynamic::Dyn;
 use elf::endian::AnyEndian;
 use elf::symbol::Symbol;
-use elf::{abi, ElfStream, ParseError};
+use elf::{ElfStream, ParseError, abi};
 
 use crate::reloc::lazy_bound_symbols;
 use crate::{LibraryInfo, LibraryPriority};
@@ -185,7 +185,10 @@ mod tests {
         let mut content = Cursor::new(include_bytes!("fixtures/lib_runpath.so"));
         let info = LibraryInfo::parse(&mut content, true, "lib_runpath.so")
             .expect("should not have any error");
-        assert_eq!(info.name, "libfixture.so.1", "name should come from DT_SONAME");
+        assert_eq!(
+            info.name, "libfixture.so.1",
+            "name should come from DT_SONAME"
+        );
         assert!(
             info.rpath.iter().any(|p| p == "$ORIGIN/pulseaudio"),
             "rpath should capture DT_RUNPATH, got {:?}",

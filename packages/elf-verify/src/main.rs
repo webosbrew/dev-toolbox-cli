@@ -5,7 +5,7 @@ use clap::Parser;
 use semver::VersionReq;
 
 use bin_lib::BinaryInfo;
-use cli_lib::{file_label, ExitCode};
+use cli_lib::{ExitCode, file_label};
 use fw_lib::Firmware;
 use verify_lib::Verify;
 
