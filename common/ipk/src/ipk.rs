@@ -20,7 +20,8 @@ impl Package {
         R: Read,
     {
         let mut deb = DebPkg::parse(read).map_err(Self::deb_err)?;
-        let control = Control::extract(deb.control().unwrap()).map_err(Self::deb_err)?;
+        let control =
+            Control::extract(deb.control().map_err(Self::deb_err)?).map_err(Self::deb_err)?;
         let mut data = deb.data().map_err(Self::deb_err)?;
 
         let id = String::from(control.name());
@@ -38,9 +39,11 @@ impl Package {
                 let path = tmp
                     .as_ref()
                     .join(Cow::from_slash(&entry.path()?.to_string_lossy()));
-                let target = path.parent().unwrap().join(Cow::from_slash(
-                    &entry.link_name()?.unwrap().to_string_lossy(),
-                ));
+                // A symlink header without a target is malformed. Ignore it.
+                let (Some(parent), Some(link_name)) = (path.parent(), entry.link_name()?) else {
+                    continue;
+                };
+                let target = parent.join(Cow::from_slash(&link_name.to_string_lossy()));
                 links.insert(path, target);
             } else if entry_type.is_file() {
                 entry.unpack_in(&tmp)?;

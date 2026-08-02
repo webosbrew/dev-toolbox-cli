@@ -9,8 +9,18 @@
 //! already blocks traversal when *writing* extracted files; this guards the
 //! *reads* we do afterwards.
 
+use std::borrow::Cow;
 use std::io::{Error, ErrorKind};
 use std::path::{Component, Path, PathBuf};
+
+/// The name to show for a path. A path from package metadata can end in `..`,
+/// which has no file name, so fall back to the whole path.
+pub(crate) fn file_label(path: &Path) -> Cow<'_, str> {
+    return path
+        .file_name()
+        .unwrap_or(path.as_os_str())
+        .to_string_lossy();
+}
 
 /// Lexically resolve `.` / `..` components without touching the filesystem.
 ///

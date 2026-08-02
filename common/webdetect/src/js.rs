@@ -113,8 +113,10 @@ pub(crate) fn collect_service_js(dir: &Path, main: Option<&str>, out: &mut Vec<(
                 }
             }
         }
-        let name = path.file_name().unwrap().to_string_lossy().into_owned();
-        out.push((name, content));
+        let Some(name) = path.file_name() else {
+            continue;
+        };
+        out.push((name.to_string_lossy().into_owned(), content));
     }
 }
 

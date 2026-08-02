@@ -1,11 +1,12 @@
 use std::collections::BTreeMap;
+use std::fmt::Display;
 use std::fs;
 use std::fs::File;
-use std::io::{BufWriter, Error, ErrorKind};
+use std::io::BufWriter;
 use std::path::PathBuf;
-use std::process::exit;
 
 use clap::Parser;
+use cli_lib::ExitCode;
 use fw_lib::FirmwareInfo;
 use regex::Regex;
 
@@ -33,20 +34,27 @@ struct FirmwareExtractor {
 
 fn main() {
     let args = Args::parse();
-    if let Err(e) = run(args) {
-        eprintln!("{e}");
-        exit(1);
+    if let Err((code, message)) = run(args) {
+        eprintln!("{message}");
+        code.exit();
     }
 }
 
-fn run(args: Args) -> Result<(), Error> {
+/// An output failure, with the code to exit with.
+fn output_error<E: Display>(what: &str, e: &E) -> (ExitCode, String) {
+    return (ExitCode::OutputError, format!("Failed to {what}: {e}"));
+}
+
+fn run(args: Args) -> Result<(), (ExitCode, String)> {
+    let mut bad_input = false;
     for input in args.inputs {
-        let Ok(extractor) = FirmwareExtractor::create(&input).map_err(|e| {
-            let msg = format!("Failed to read input {}: {:?}", input.to_string_lossy(), e);
-            eprintln!("{msg}");
-            Error::new(e.kind(), msg)
-        }) else {
-            continue;
+        let extractor = match FirmwareExtractor::create(&input) {
+            Ok(extractor) => extractor,
+            Err(e) => {
+                eprintln!("Failed to read input {}: {e}", input.to_string_lossy());
+                bad_input = true;
+                continue;
+            }
         };
 
         let output = args.output.join(format!(
@@ -54,12 +62,8 @@ fn run(args: Args) -> Result<(), Error> {
             extractor.fw_info.version, extractor.fw_info.ota_id
         ));
         if !output.exists() {
-            fs::create_dir_all(output.clone()).map_err(|e| {
-                Error::new(
-                    e.kind(),
-                    format!("Failed to create directory for output: {e:?}"),
-                )
-            })?;
+            fs::create_dir_all(&output)
+                .map_err(|e| output_error("create the output directory", &e))?;
         } else if !args.rewrite {
             println!("Skipping existing {}", extractor.fw_info);
             continue;
@@ -68,28 +72,23 @@ fn run(args: Args) -> Result<(), Error> {
 
         let mut lib_index: BTreeMap<String, String> = BTreeMap::new();
         let mut files_pkg_index: BTreeMap<PathBuf, String> = BTreeMap::new();
-        extractor.extract_pkgs(&mut files_pkg_index, &output);
-        extractor.extract_libs(&files_pkg_index, &mut lib_index, &output);
-        let writer =
-            BufWriter::new(File::create(output.join("index.json")).map_err(|e| {
-                Error::new(e.kind(), format!("Failed to open index.json: {e:?}"))
-            })?);
-        serde_json::to_writer_pretty(writer, &lib_index).map_err(|e| {
-            Error::new(
-                ErrorKind::InvalidData,
-                format!("Failed to write index {e:?}"),
-            )
-        })?;
+        extractor.extract_pkgs(&mut files_pkg_index, &output)?;
+        extractor.extract_libs(&files_pkg_index, &mut lib_index, &output)?;
+        let writer = BufWriter::new(
+            File::create(output.join("index.json"))
+                .map_err(|e| output_error("open index.json", &e))?,
+        );
+        serde_json::to_writer_pretty(writer, &lib_index)
+            .map_err(|e| output_error("write index.json", &e))?;
         let writer = BufWriter::new(
             File::create(output.join("info.json"))
-                .map_err(|e| Error::new(e.kind(), format!("Failed to open info.json: {e:?}")))?,
+                .map_err(|e| output_error("open info.json", &e))?,
         );
-        serde_json::to_writer_pretty(writer, &extractor.fw_info).map_err(|e| {
-            Error::new(
-                ErrorKind::InvalidData,
-                format!("Failed to write firmware info {e:?}"),
-            )
-        })?;
+        serde_json::to_writer_pretty(writer, &extractor.fw_info)
+            .map_err(|e| output_error("write info.json", &e))?;
     }
-    Ok(())
+    if bad_input {
+        ExitCode::BadInput.exit();
+    }
+    return Ok(());
 }

@@ -21,6 +21,7 @@ workspace = true
 serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
 clap = { workspace = true, features = ["derive"] }
+cli-lib = { path = "../../common/cli" }
 ipk-lib = { path = "../../common/ipk" }
 sha256 = { version = "1.5.0", default-features = false }
 

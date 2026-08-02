@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+    "common/cli",
     "common/fw",
     "common/bin",
     "common/ipk",

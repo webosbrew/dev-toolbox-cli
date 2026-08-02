@@ -26,6 +26,9 @@ semver = { workspace = true }
 workspace = true
 features = ["derive"]
 
+[dependencies.cli-lib]
+path = "../../common/cli"
+
 [dependencies.bin-lib]
 path = "../../common/bin"
 

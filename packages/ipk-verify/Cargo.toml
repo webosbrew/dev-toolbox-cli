@@ -29,6 +29,9 @@ is-terminal = "0.4.12"
 clap = { workspace = true, features = ["derive"] }
 verify-lib = { path = "../../common/verify", features = ["ipk"] }
 
+[dependencies.cli-lib]
+path = "../../common/cli"
+
 [dependencies.fw-lib]
 path = "../../common/fw"
 

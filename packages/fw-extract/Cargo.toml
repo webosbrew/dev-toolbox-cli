@@ -23,6 +23,7 @@ path-slash = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 semver = { workspace = true }
+cli-lib = { path = "../../common/cli" }
 fw-lib = { path = "../../common/fw" }
 bin-lib = { path = "../../common/bin" }
 debian-control = "0.1.44"

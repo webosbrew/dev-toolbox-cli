@@ -2,7 +2,6 @@ use bin_lib::LibraryInfo;
 
 #[cfg(feature = "bin")]
 pub mod bin;
-pub mod exit;
 #[cfg(feature = "ipk")]
 pub mod ipk;
 

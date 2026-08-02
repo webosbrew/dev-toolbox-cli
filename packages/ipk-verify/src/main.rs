@@ -8,10 +8,10 @@ use is_terminal::IsTerminal;
 use prettytable::{Cell, Row, Table};
 use semver::VersionReq;
 
+use cli_lib::{file_label, ExitCode};
 use fw_lib::Firmware;
 use ipk_lib::Package;
 use verify_lib::bin::BinVerifyResult;
-use verify_lib::exit::ExitCode;
 use verify_lib::ipk::{
     ComponentBinVerifyResult, ComponentVerifyResult, CompatVerdict, DetectionResult,
     PackageVerifyResult, VerifyForFirmware,
@@ -99,10 +99,7 @@ fn main() {
         let package = match Package::open(package) {
             Ok(package) => package,
             Err(e) => {
-                eprintln!(
-                    "Failed to open {}: {e}",
-                    package.file_name().unwrap().to_string_lossy()
-                );
+                eprintln!("Failed to open {}: {e}", file_label(package));
                 bad_input = true;
                 continue;
             }

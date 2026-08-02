@@ -10,7 +10,7 @@ use path_slash::{CowExt, PathExt};
 
 use bin_lib::{BinaryInfo, BundledArtifact, LibraryInfo, LibraryPriority};
 
-use crate::path::ensure_within;
+use crate::path::{ensure_within, file_label};
 use crate::{AppInfo, Component, ServiceInfo, Symlinks};
 
 impl AppInfo {
@@ -63,7 +63,7 @@ impl Component<AppInfo> {
                     format!("Failed to open main executable {}: {e}", info.main),
                 )
             })?,
-            exe_path.file_name().unwrap().to_string_lossy(),
+            file_label(&exe_path),
             true,
         )
         .map_err(|e| {
@@ -110,7 +110,7 @@ impl Component<ServiceInfo> {
         let exe_path = ensure_within(dir, &dir.join(Cow::from_slash(executable)))?;
         let bin_info = BinaryInfo::parse(
             File::open(&exe_path)?,
-            exe_path.file_name().unwrap().to_string_lossy(),
+            file_label(&exe_path),
             true,
         )
         .map_err(|e| {
@@ -206,7 +206,7 @@ fn walk_bundled(root: &Path, dir: &Path, depth: usize, links: &Symlinks, scan: &
 fn verifiable_bundled_exe(path: &Path, rel: String, links: &Symlinks) -> Option<Component<()>> {
     let bin = BinaryInfo::parse(
         File::open(path).ok()?,
-        path.file_name().unwrap().to_string_lossy(),
+        file_label(path),
         true,
     )
     .ok()?;
@@ -245,7 +245,7 @@ impl<T> Component<T> {
     where
         P: AsRef<Path>,
     {
-        let origin = bin_path.as_ref().parent().unwrap();
+        let origin = bin_path.as_ref().parent().unwrap_or(Path::new("."));
         // Compare canonical forms on both sides. `canonicalize` returns a `\\?\`
         // verbatim path on Windows (and resolves symlinks everywhere), which
         // shares no prefix with a plain `C:\…` origin, so `common_path` below
@@ -315,7 +315,7 @@ impl<T> Component<T> {
                 let Ok(mut lib) = LibraryInfo::parse(
                     File::open(&path)?,
                     true,
-                    path.file_name().unwrap().to_string_lossy(),
+                    file_label(&path),
                 ) else {
                     continue;
                 };
@@ -337,12 +337,12 @@ impl<T> Component<T> {
 
         for (path, lib) in &mut libs {
             lib.names
-                .push(String::from(path.file_name().unwrap().to_string_lossy()));
+                .push(String::from(file_label(path)));
             lib.names.extend(
                 links
                     .links(path)
                     .iter()
-                    .map(|p| String::from(p.file_name().unwrap().to_string_lossy())),
+                    .map(|p| String::from(file_label(p))),
             );
         }
         Ok(libs.into_values().collect())

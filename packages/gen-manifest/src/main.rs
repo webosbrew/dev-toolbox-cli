@@ -4,6 +4,7 @@ use std::fs::File;
 use std::path::PathBuf;
 
 use clap::{Parser, ValueEnum};
+use cli_lib::{file_label, ExitCode};
 use ipk_lib::Package;
 use serde::{Serialize, Serializer};
 
@@ -75,7 +76,25 @@ fn main() {
     if args.appinfo.is_some() {
         eprintln!("--appinfo option is not needed anymore.");
     }
-    let package = Package::open(&args.pkgfile).unwrap();
+    if let Err((code, message)) = run(args) {
+        eprintln!("{message}");
+        code.exit();
+    }
+}
+
+/// Build the manifest and write it. The error carries the code to exit with.
+fn run(args: Args) -> Result<(), (ExitCode, String)> {
+    let name = file_label(&args.pkgfile).to_string();
+    let bad_input = |what: &str, e: &dyn std::fmt::Display| {
+        return (ExitCode::BadInput, format!("Failed to {what} {name}: {e}"));
+    };
+    let package = Package::open(&args.pkgfile).map_err(|e| bad_input("open", &e))?;
+    let hash = IpkHash::from(&args.pkgfile).map_err(|e| bad_input("hash", &e))?;
+    let size = args
+        .pkgfile
+        .metadata()
+        .map_err(|e| bad_input("read", &e))?
+        .len();
     let app_info = package.app.info;
     let manifest = HomebrewManifest {
         id: app_info.id,
@@ -86,14 +105,34 @@ fn main() {
         icon_uri: args.icon,
         source_url: args.link,
         root_required: args.root,
-        ipk_url: String::from(args.pkgfile.file_name().unwrap().to_string_lossy()),
-        ipk_hash: IpkHash::from(&args.pkgfile).unwrap(),
-        ipk_size: args.pkgfile.metadata().unwrap().len(),
+        ipk_url: name.clone(),
+        ipk_hash: hash,
+        ipk_size: size,
         installed_size: package.installed_size,
     };
-    if let Some(output) = args.output {
-        serde_json::to_writer_pretty(&mut File::create(&output).unwrap(), &manifest).unwrap();
+    let write = if let Some(output) = &args.output {
+        File::create(output)
+            .map_err(|e| {
+                (
+                    ExitCode::OutputError,
+                    format!("Failed to create {}: {e}", file_label(output)),
+                )
+            })
+            .and_then(|mut file| {
+                return serde_json::to_writer_pretty(&mut file, &manifest).map_err(|e| {
+                    (
+                        ExitCode::OutputError,
+                        format!("Failed to write {}: {e}", file_label(output)),
+                    )
+                });
+            })
     } else {
-        serde_json::to_writer_pretty(&mut std::io::stdout(), &manifest).unwrap();
-    }
+        serde_json::to_writer_pretty(&mut std::io::stdout(), &manifest).map_err(|e| {
+            (
+                ExitCode::OutputError,
+                format!("Failed to write the manifest: {e}"),
+            )
+        })
+    };
+    return write;
 }

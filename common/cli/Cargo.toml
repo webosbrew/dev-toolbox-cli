@@ -1,0 +1,16 @@
+[package]
+name = "cli-lib"
+version.workspace = true
+edition.workspace = true
+description = "Shared exit codes and helpers for the command line tools"
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]

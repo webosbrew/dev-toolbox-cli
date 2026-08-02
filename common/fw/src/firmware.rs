@@ -125,11 +125,12 @@ impl Firmware {
         if cfg!(feature = "linux-install") {
             PathBuf::from("/usr/share/webosbrew/compat-checker/data")
         } else {
-            PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
                 .join("..")
-                .join("data")
-                .canonicalize()
-                .unwrap()
+                .join("data");
+            // Keep the path as built when it does not exist. The caller reports
+            // the missing data instead of the tool crashing here.
+            path.canonicalize().unwrap_or(path)
         }
     }
 }

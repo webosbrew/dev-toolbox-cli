@@ -5,8 +5,8 @@ use clap::Parser;
 use semver::VersionReq;
 
 use bin_lib::BinaryInfo;
+use cli_lib::{file_label, ExitCode};
 use fw_lib::Firmware;
-use verify_lib::exit::ExitCode;
 use verify_lib::Verify;
 
 #[derive(Parser, Debug)]
@@ -52,18 +52,11 @@ fn main() {
             bad_input = true;
             continue;
         };
-        let parsed = BinaryInfo::parse(
-            file,
-            executable.file_name().unwrap().to_string_lossy(),
-            !args.skip_rpath,
-        );
+        let parsed = BinaryInfo::parse(file, file_label(&executable), !args.skip_rpath);
         let mut info = match parsed {
             Ok(info) => info,
             Err(e) => {
-                eprintln!(
-                    "Failed to parse {}: {e}",
-                    executable.file_name().unwrap().to_string_lossy()
-                );
+                eprintln!("Failed to parse {}: {e}", file_label(&executable));
                 bad_input = true;
                 continue;
             }
