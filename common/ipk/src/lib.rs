@@ -46,6 +46,17 @@ pub struct AppInfo {
     /// time; not part of appinfo.json).
     #[serde(skip)]
     pub web: Option<WebAppDetection>,
+    /// Native ELF files a web app ships next to its HTML/JS — a payload of
+    /// helper binaries it starts through the root service. Supplementary report
+    /// info; filled at parse time, not part of appinfo.json.
+    #[serde(skip)]
+    pub bundled: Vec<BundledArtifact>,
+    /// Each bundled executable as its own verifiable unit (its `exe` plus the
+    /// libraries reachable via its rpath), so the payload can be checked against
+    /// a firmware's libraries the same way a native component is. Filled at
+    /// parse time; supplementary (never gates the verdict).
+    #[serde(skip)]
+    pub bundled_bins: Vec<Component<()>>,
 }
 
 #[derive(Debug, Deserialize, Clone)]

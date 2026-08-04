@@ -22,8 +22,8 @@ pub struct ComponentVerifyResult {
     /// Non-native technology detection + per-firmware compatibility. `None` for
     /// native components (which go through the exe/libs path instead).
     pub detection: Option<DetectionResult>,
-    /// A JS service's bundled native binaries, each verified against the
-    /// firmware's libraries like a native component. Supplementary — these
+    /// A non-native component's bundled native binaries, each verified against
+    /// the firmware's libraries like a native component. Supplementary — these
     /// results never gate the package verdict. Empty for everything else.
     pub bundled: Vec<ComponentVerifyResult>,
 }
@@ -56,6 +56,9 @@ pub enum DetectionResult {
         /// Whether the firmware's engine natively provides the runtime APIs the
         /// app uses (advisory — APIs can be polyfilled).
         api: CompatVerdict,
+        /// Native ELF files the app bundles next to its HTML/JS.
+        /// Supplementary info; does not affect the verdict.
+        bundled: Vec<BundledArtifact>,
     },
     Service {
         detection: ServiceRuntimeDetection,
@@ -88,6 +91,15 @@ impl DetectionResult {
         match self {
             DetectionResult::WebApp { es, .. } => es,
             DetectionResult::Service { node, .. } => node,
+        }
+    }
+
+    /// The native ELF files this component bundles. Supplementary report info.
+    pub fn bundled(&self) -> &[BundledArtifact] {
+        match self {
+            DetectionResult::WebApp { bundled, .. } | DetectionResult::Service { bundled, .. } => {
+                bundled
+            }
         }
     }
 
@@ -154,6 +166,15 @@ impl VerifyForFirmware for Package {
     {
         let mut result = self.verify(find_library);
         result.app.detection = web_detection(&self.app, engine);
+        // Same as for a service below: verify a web app's payload binaries
+        // against the firmware. Supplementary, never gates the verdict.
+        result.app.bundled = self
+            .app
+            .info
+            .bundled_bins
+            .iter()
+            .map(|component| component.verify(find_library))
+            .collect();
         for (svc_result, svc) in result.services.iter_mut().zip(self.services.iter()) {
             svc_result.detection = service_detection(svc, node);
             // Verify each bundled native binary like a native component, so the
@@ -182,6 +203,7 @@ fn web_detection(app: &Component<AppInfo>, engine: Option<&WebEngine>) -> Option
         engine: engine.cloned(),
         es,
         api,
+        bundled: app.info.bundled.clone(),
     });
 }
 

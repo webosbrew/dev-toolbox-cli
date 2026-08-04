@@ -360,7 +360,10 @@ fn print_detection_summary(
 
     match detection {
         DetectionResult::WebApp { detection: web, .. } => {
-            out.write_fmt(format_args!("Web app — {}\n\n", describe_web(web)))?;
+            out.write_fmt(format_args!(
+                "Web app — {}\n\n",
+                join_notes(describe_web(web), describe_bundled(detection.bundled()))
+            ))?;
             // Each firmware's web engine.
             table.add_row(Row::new(
                 iter::once(Cell::new("Web engine"))
@@ -393,7 +396,10 @@ fn print_detection_summary(
             }
         }
         DetectionResult::Service { detection: svc, .. } => {
-            out.write_fmt(format_args!("JS service — {}\n\n", describe_service(svc)))?;
+            out.write_fmt(format_args!(
+                "JS service — {}\n\n",
+                join_notes(describe_service(svc), describe_bundled(detection.bundled()))
+            ))?;
             // Each firmware's Node.js version.
             table.add_row(Row::new(
                 iter::once(Cell::new("Node.js (firmware)"))
@@ -448,7 +454,11 @@ fn print_detection_details(
     let (_, first) = results.first().unwrap();
     let detection = first.detection.as_ref().unwrap();
     match detection {
-        DetectionResult::WebApp { detection: web, .. } => {
+        DetectionResult::WebApp {
+            detection: web,
+            bundled,
+            ..
+        } => {
             out.h4("Web app")?;
             if let Some(fw) = &web.framework {
                 out.write_fmt(format_args!("* Framework: {}\n", framework_label(fw)))?;
@@ -467,6 +477,8 @@ fn print_detection_details(
             for url in &web.remote_resources {
                 out.write_fmt(format_args!("* Remote resource: {url}\n"))?;
             }
+            print_bundled_artifacts(bundled, out, out_fmt)?;
+            print_bundled_compat(results, out, out_fmt)?;
         }
         DetectionResult::Service {
             detection: svc,
@@ -531,10 +543,57 @@ fn print_api_details(
     return Ok(());
 }
 
-/// List the native binaries a JS service bundles (its own node/ffmpeg/.so).
-/// Supplementary info — never affects the verdict. On Markdown it is folded into
-/// a `<details>` block so the report stays scannable; other formats get a plain
-/// bulleted list.
+/// Summarize a component's bundled native binaries for the one-line
+/// description: how many, and which architectures. `None` when it bundles none.
+///
+/// A package may ship binaries for more than one architecture and pick at run
+/// time — `ares-package` labels every package `all` regardless — so several
+/// architectures are normal, not a fault. Each gets its own count.
+fn describe_bundled(bundled: &[bin_lib::BundledArtifact]) -> Option<String> {
+    if bundled.is_empty() {
+        return None;
+    }
+    // Count per architecture, in first-seen (path) order for a stable line.
+    let mut arches: Vec<(&str, usize)> = Vec::new();
+    for arch in bundled.iter().filter_map(|a| a.arch.as_deref()) {
+        match arches.iter_mut().find(|(name, _)| *name == arch) {
+            Some((_, count)) => *count += 1,
+            None => arches.push((arch, 1)),
+        }
+    }
+    let total = format!(
+        "bundles {} native binar{}",
+        bundled.len(),
+        if bundled.len() == 1 { "y" } else { "ies" }
+    );
+    if arches.is_empty() {
+        return Some(total);
+    }
+    // One architecture that accounts for every binary needs no count.
+    let labels: Vec<String> = if arches.len() == 1 && arches[0].1 == bundled.len() {
+        vec![arches[0].0.to_string()]
+    } else {
+        arches
+            .iter()
+            .map(|(name, count)| format!("{count} {name}"))
+            .collect()
+    };
+    return Some(format!("{total} ({})", labels.join(", ")));
+}
+
+/// Append an optional note to a description, keeping the `; ` separator the
+/// description itself uses.
+fn join_notes(description: String, note: Option<String>) -> String {
+    match note {
+        Some(note) => format!("{description}; {note}"),
+        None => description,
+    }
+}
+
+/// List the native binaries a component bundles (a service's own node/ffmpeg,
+/// or a web app's payload). Supplementary info — never affects the verdict. On
+/// Markdown it is folded into a `<details>` block so the report stays scannable;
+/// other formats get a plain bulleted list.
 fn print_bundled_artifacts(
     bundled: &[bin_lib::BundledArtifact],
     out: &mut Box<dyn ReportOutput>,
@@ -572,11 +631,11 @@ fn print_bundled_artifacts(
     return Ok(());
 }
 
-/// Verify report for a JS service's bundled native binaries — a single
-/// native-style table whose rows are the bundled executables (its own
-/// node/ffmpeg) followed by the unique bundled libraries, each OK/failed per
-/// firmware. Folded into a `<details>` block on Markdown. Supplementary: this
-/// table never changes the package verdict.
+/// Verify report for a component's bundled native binaries — a single
+/// native-style table whose rows are the bundled executables followed by the
+/// unique bundled libraries, each OK/failed per firmware. Folded into a
+/// `<details>` block on Markdown. Supplementary: this table never changes the
+/// package verdict.
 fn print_bundled_compat(
     results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
@@ -763,5 +822,51 @@ fn node_label(result: &ComponentVerifyResult) -> String {
             ..
         }) => format!("Node {v}"),
         _ => "unknown".to_string(),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::describe_bundled;
+    use bin_lib::{ArtifactKind, BundledArtifact};
+
+    fn artifact(path: &str, arch: &str) -> BundledArtifact {
+        BundledArtifact {
+            path: path.to_string(),
+            kind: ArtifactKind::Executable,
+            arch: Some(arch.to_string()),
+        }
+    }
+
+    #[test]
+    fn describes_no_bundled_binaries() {
+        assert_eq!(describe_bundled(&[]), None);
+    }
+
+    #[test]
+    fn describes_one_architecture_without_counts() {
+        let bundled = [
+            artifact("bin/wg", "AArch64 (64-bit)"),
+            artifact("bin/wireguard-go", "AArch64 (64-bit)"),
+        ];
+        assert_eq!(
+            describe_bundled(&bundled).unwrap(),
+            "bundles 2 native binaries (AArch64 (64-bit))"
+        );
+    }
+
+    #[test]
+    fn describes_each_architecture_of_a_mixed_payload() {
+        // Shipping one payload per architecture is normal: the app picks at run
+        // time. Count them separately instead of calling it a fault.
+        let bundled = [
+            artifact("payload/arm/wg", "ARM (32-bit)"),
+            artifact("payload/arm/wireguard-go", "ARM (32-bit)"),
+            artifact("payload/arm64/wg", "AArch64 (64-bit)"),
+        ];
+        assert_eq!(
+            describe_bundled(&bundled).unwrap(),
+            "bundles 3 native binaries (2 ARM (32-bit), 1 AArch64 (64-bit))"
+        );
     }
 }

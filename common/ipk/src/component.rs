@@ -48,6 +48,12 @@ impl Component<AppInfo> {
             let index_html = ensure_within(dir, &dir.join(Cow::from_slash(&info.main)))?;
             let mut info = info;
             info.web = Some(webdetect_lib::detect_web_app(dir, &index_html));
+            // A web app can still ship native binaries (a payload it starts
+            // through the root service). Note them the same way as a JS
+            // service's.
+            let scan = scan_bundled(dir, links);
+            info.bundled = scan.artifacts;
+            info.bundled_bins = scan.bins;
             return Ok(Self {
                 id: info.id.clone(),
                 info,
@@ -134,17 +140,18 @@ const BUNDLED_MAX_DEPTH: usize = 12;
 /// Stop after collecting this many bundled artifacts.
 const BUNDLED_MAX: usize = 256;
 
-/// The bundled native content of a JS service: an inventory of every ELF (kind +
-/// arch, for a quick listing) and, for each bundled *executable*, a verifiable
-/// unit (its `exe` plus the libraries reachable via its rpath / sibling `lib`
-/// dir) so the bundled runtime can be checked against a firmware's libraries.
+/// The bundled native content of a non-native component: an inventory of every
+/// ELF (kind + arch, for a quick listing) and, for each bundled *executable*, a
+/// verifiable unit (its `exe` plus the libraries reachable via its rpath /
+/// sibling `lib` dir) so the bundled runtime can be checked against a firmware's
+/// libraries.
 #[derive(Default)]
 pub(crate) struct BundledScan {
     pub artifacts: Vec<BundledArtifact>,
     pub bins: Vec<Component<()>>,
 }
 
-/// Walk a service directory: classify every bundled ELF and, for each
+/// Walk a component directory: classify every bundled ELF and, for each
 /// executable, build a verifiable [`Component`]. Non-ELF files (scripts, JSON,
 /// assets) are skipped. Output is sorted by path for stable report ordering.
 pub(crate) fn scan_bundled(dir: &Path, links: &Symlinks) -> BundledScan {
@@ -387,6 +394,106 @@ mod tests {
                 .map(|c| &c.id)
                 .collect::<Vec<_>>()
         );
+    }
+
+    #[test]
+    fn web_app_reports_bundled_binaries() {
+        // A web app that ships a native payload it starts through the root
+        // service (e.g. the WireGuard app's wireguard-go).
+        let dir = tempfile::TempDir::new().unwrap();
+        let d = dir.path();
+        fs::write(
+            d.join("appinfo.json"),
+            r#"{"id":"com.example.app","version":"1.0.0","type":"web","title":"Example","main":"index.html"}"#,
+        )
+        .unwrap();
+        fs::write(d.join("index.html"), "<html><body></body></html>").unwrap();
+        fs::create_dir_all(d.join("payload/bin")).unwrap();
+        fs::write(
+            d.join("payload/bin/helper"),
+            &include_bytes!("../../bin/src/fixtures/sample.bin")[..],
+        )
+        .unwrap();
+
+        let app = Component::<AppInfo>::parse(d, &empty_links()).unwrap();
+        assert!(
+            app.info
+                .bundled
+                .iter()
+                .any(|a| a.path == "payload/bin/helper" && a.arch.is_some()),
+            "expected payload/bin/helper to be reported, got {:?}",
+            app.info.bundled
+        );
+        assert!(
+            app.info
+                .bundled_bins
+                .iter()
+                .any(|c| c.id == "payload/bin/helper" && c.exe.is_some()),
+            "expected payload/bin/helper as a verifiable component, got {:?}",
+            app.info
+                .bundled_bins
+                .iter()
+                .map(|c| &c.id)
+                .collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn mixed_architectures_are_all_reported() {
+        // A package may ship a payload per architecture and pick at run time.
+        // Report every binary with its own arch — the package-level
+        // `Architecture` field says nothing, `ares-package` always writes `all`.
+        let dir = tempfile::TempDir::new().unwrap();
+        let d = dir.path();
+        fs::write(
+            d.join("appinfo.json"),
+            r#"{"id":"com.example.app","version":"1.0.0","type":"web","title":"Example","main":"index.html"}"#,
+        )
+        .unwrap();
+        fs::write(d.join("index.html"), "<html><body></body></html>").unwrap();
+        fs::create_dir_all(d.join("payload/arm")).unwrap();
+        fs::create_dir_all(d.join("payload/x86_64")).unwrap();
+        fs::write(
+            d.join("payload/arm/helper"),
+            &include_bytes!("../../bin/src/fixtures/sample.bin")[..],
+        )
+        .unwrap();
+        fs::write(
+            d.join("payload/x86_64/helper.so"),
+            &include_bytes!("../../bin/src/fixtures/lib_runpath.so")[..],
+        )
+        .unwrap();
+
+        let app = Component::<AppInfo>::parse(d, &empty_links()).unwrap();
+        let arches: Vec<(&str, &str)> = app
+            .info
+            .bundled
+            .iter()
+            .map(|a| (a.path.as_str(), a.arch.as_deref().unwrap_or("unknown")))
+            .collect();
+        assert_eq!(
+            arches,
+            vec![
+                ("payload/arm/helper", "ARM (32-bit)"),
+                ("payload/x86_64/helper.so", "x86-64"),
+            ],
+            "expected both architectures reported"
+        );
+    }
+
+    #[test]
+    fn web_app_without_binaries_reports_none() {
+        let dir = tempfile::TempDir::new().unwrap();
+        let d = dir.path();
+        fs::write(
+            d.join("appinfo.json"),
+            r#"{"id":"com.example.app","version":"1.0.0","type":"web","title":"Example","main":"index.html"}"#,
+        )
+        .unwrap();
+        fs::write(d.join("index.html"), "<html><body></body></html>").unwrap();
+
+        let app = Component::<AppInfo>::parse(d, &empty_links()).unwrap();
+        assert!(app.info.bundled.is_empty());
     }
 
     #[test]

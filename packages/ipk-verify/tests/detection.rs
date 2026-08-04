@@ -37,6 +37,8 @@ fn web_app(es: EsLevel) -> Component<AppInfo> {
                 polyfills: vec![],
                 remote_resources: vec![],
             }),
+            bundled: vec![],
+            bundled_bins: vec![],
         },
         exe: None,
         libs: vec![],
