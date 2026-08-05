@@ -633,9 +633,9 @@ fn print_bundled_artifacts(
 
 /// Verify report for a component's bundled native binaries — a single
 /// native-style table whose rows are the bundled executables followed by the
-/// unique bundled libraries, each OK/failed per firmware. Folded into a
-/// `<details>` block on Markdown. Supplementary: this table never changes the
-/// package verdict.
+/// unique bundled libraries, each OK/failed per firmware, then the reason
+/// behind every cell that is not OK. Folded into a `<details>` block on
+/// Markdown. Supplementary: none of this changes the package verdict.
 fn print_bundled_compat(
     results: &[(&Firmware, &ComponentVerifyResult)],
     out: &mut Box<dyn ReportOutput>,
@@ -662,9 +662,11 @@ fn print_bundled_compat(
             .collect(),
     );
 
-    // Bundled executables (its own node/ffmpeg/...), one row each.
+    // Bundled executables (its own node/ffmpeg/...), one row each. The row is
+    // named by path: a payload built for several architectures ships the same
+    // file name more than once.
     for idx in 0..first.bundled.len() {
-        let name = first.bundled[idx].exe.name().to_string();
+        let name = first.bundled[idx].id.clone();
         table.add_row(Row::new(
             iter::once(Cell::new(&name))
                 .chain(
@@ -676,18 +678,7 @@ fn print_bundled_compat(
         ));
     }
 
-    // Bundled libraries, deduped by name (versioned file + soname alias resolve
-    // to the same library) and sorted.
-    let mut lib_names: Vec<String> = Vec::new();
-    for comp in &first.bundled {
-        for (_, lib) in &comp.libs {
-            let n = lib.name().to_string();
-            if !lib_names.contains(&n) {
-                lib_names.push(n);
-            }
-        }
-    }
-    lib_names.sort();
+    let lib_names = bundled_lib_names(first);
     for lib_name in &lib_names {
         table.add_row(Row::new(
             iter::once(Cell::new(&format!("lib {lib_name}")))
@@ -701,13 +692,95 @@ fn print_bundled_compat(
     }
 
     out.print_table(&table)?;
+    print_bundled_reasons(results, &lib_names, out, out_fmt)?;
     if fold {
         out.write_fmt(format_args!("</details>\n"))?;
     }
     return Ok(());
 }
 
-/// The status of a bundled library across all of a service's bundled binaries:
+/// The bundled libraries of a component, deduped by name (a versioned file and
+/// its soname alias resolve to the same library) and sorted.
+fn bundled_lib_names(result: &ComponentVerifyResult) -> Vec<String> {
+    let mut names: Vec<String> = Vec::new();
+    for comp in &result.bundled {
+        for (_, lib) in &comp.libs {
+            let name = lib.name().to_string();
+            if !names.contains(&name) {
+                names.push(name);
+            }
+        }
+    }
+    names.sort();
+    return names;
+}
+
+/// Explain every cell of the bundled table that is not OK: the missing
+/// libraries and undefined symbols behind it, the same facts `elf-verify`
+/// prints for a standalone binary. Rows and headings use the same names, so a
+/// reader can match a cell to its reason. These are hints — a bundled binary
+/// never gates the package verdict.
+fn print_bundled_reasons(
+    results: &[(&Firmware, &ComponentVerifyResult)],
+    lib_names: &[String],
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    let (_, first) = results.first().unwrap();
+    for idx in 0..first.bundled.len() {
+        let name = first.bundled[idx].id.clone();
+        print_bundled_bin_reasons(results, &name, |r| &r.bundled[idx].exe, out, out_fmt)?;
+    }
+    for lib_name in lib_names {
+        let heading = format!("lib {lib_name}");
+        print_bundled_bin_reasons(
+            results,
+            &heading,
+            |r| worst_bundled_lib(r, lib_name),
+            out,
+            out_fmt,
+        )?;
+    }
+    return Ok(());
+}
+
+/// One bundled row's reasons. `pick` selects that row's result out of a
+/// firmware's component result. Writes nothing when every firmware is happy
+/// with the row.
+///
+/// A bundled binary usually fails the same way on every firmware that lacks the
+/// library, so firmwares that report the same thing share one block. Repeating
+/// an identical list per column buries the finding.
+fn print_bundled_bin_reasons<F>(
+    results: &[(&Firmware, &ComponentVerifyResult)],
+    heading: &str,
+    pick: F,
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error>
+where
+    F: Fn(&ComponentVerifyResult) -> &ComponentBinVerifyResult,
+{
+    let mut groups: Vec<(&BinVerifyResult, Vec<String>)> = Vec::new();
+    for (fw, result) in results {
+        let Some(bin) = notes(pick(result)) else {
+            continue;
+        };
+        let release = fw.info.release.to_string();
+        match groups.iter_mut().find(|(seen, _)| *seen == bin) {
+            Some((_, releases)) => releases.push(release),
+            None => groups.push((bin, vec![release])),
+        }
+    }
+    for (bin, releases) in groups {
+        out.h5(&format!("{heading} on webOS {}", releases.join(", ")))?;
+        print_bin_verify_details(bin, out, out_fmt)?;
+        out.write_fmt(format_args!("\n"))?;
+    }
+    return Ok(());
+}
+
+/// The status of a bundled library across all of a component's bundled binaries:
 /// `Failed` if it fails to resolve for any of them, otherwise the first result.
 /// The same library file resolves identically for every binary on a given
 /// firmware, so this only ever collapses duplicate rows.
