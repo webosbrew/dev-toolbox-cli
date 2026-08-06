@@ -71,6 +71,8 @@ fn package(app: Component<AppInfo>, services: Vec<Component<ServiceInfo>>) -> Pa
     Package {
         id: "com.example.app".to_string(),
         installed_size: None,
+        install_hooks: vec![],
+        hand_rolled: false,
         app,
         services,
     }

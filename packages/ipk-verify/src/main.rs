@@ -119,7 +119,7 @@ fn main() {
         if all_good && !results.iter().all(|(_, r)| r.is_good()) {
             all_good = false;
         }
-        if let Err(e) = print_package_report(&package.id, &results, &args, &mut output, &format) {
+        if let Err(e) = print_package_report(&package, &results, &args, &mut output, &format) {
             eprintln!("Failed to write the report: {e}");
             ExitCode::OutputError.exit();
         }
@@ -136,14 +136,16 @@ fn main() {
 
 /// Write the report for one package: the app, then each of its services.
 fn print_package_report(
-    package_id: &str,
+    package: &Package,
     results: &[(&Firmware, PackageVerifyResult)],
     args: &Args,
     out: &mut Box<dyn ReportOutput>,
     out_fmt: &OutputFormat,
 ) -> Result<(), Error> {
     let to_file = args.output.is_some();
-    out.h2(&format!("Package {package_id}"))?;
+    out.h2(&format!("Package {}", package.id))?;
+    print_packager_warning(package.hand_rolled, out, out_fmt)?;
+    print_install_hooks(&package.install_hooks, out, out_fmt)?;
     let (_, result) = results.first().unwrap();
     if to_file {
         eprintln!(" - App {}", result.app.id);
@@ -172,6 +174,56 @@ fn print_package_report(
             print_component_details(&service, out, out_fmt)?;
         }
     }
+    return Ok(());
+}
+
+/// Warn when the package was not built by a webOS packager. Which control
+/// fields gave it away is of no use to the author — say what to do instead.
+fn print_packager_warning(
+    hand_rolled: bool,
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    if !hand_rolled {
+        return Ok(());
+    }
+    let mark = if *out_fmt == OutputFormat::Markdown {
+        ":warning:"
+    } else {
+        "Warning:"
+    };
+    out.write_fmt(format_args!(
+        "{mark} This package looks hand-rolled. Please build it with `ares-package`.\n\n"
+    ))?;
+    return Ok(());
+}
+
+/// Warn about the maintainer scripts a package carries. The webOS installer
+/// runs none of them, so a package that puts its setup in one installs and does
+/// nothing it meant to do. A warning only — the package still installs, and the
+/// tool cannot tell what the script was for.
+fn print_install_hooks(
+    hooks: &[String],
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    if hooks.is_empty() {
+        return Ok(());
+    }
+    let mark = if *out_fmt == OutputFormat::Markdown {
+        ":warning:"
+    } else {
+        "Warning:"
+    };
+    let what = if hooks.len() == 1 {
+        format!("an install hook ({}). webOS does not run it", hooks[0])
+    } else {
+        format!(
+            "install hooks ({}). webOS runs none of them",
+            hooks.join(", ")
+        )
+    };
+    out.write_fmt(format_args!("{mark} This package carries {what}.\n\n"))?;
     return Ok(());
 }
 

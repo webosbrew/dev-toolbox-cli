@@ -14,6 +14,13 @@ mod path;
 pub struct Package {
     pub id: String,
     pub installed_size: Option<u64>,
+    /// Maintainer scripts found in the control archive, sorted. The webOS
+    /// installer runs none of them, so the report warns about each one.
+    pub install_hooks: Vec<String>,
+    /// Whether the package was put together by hand. Every official packager
+    /// writes `Installed-Size` and both `webOS-*` control fields, so a package
+    /// without one of them was built some other way.
+    pub hand_rolled: bool,
     pub app: Component<AppInfo>,
     pub services: Vec<Component<ServiceInfo>>,
 }
