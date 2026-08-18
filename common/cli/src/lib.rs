@@ -21,6 +21,9 @@ pub enum ExitCode {
     NoFirmware = 4,
     /// The tool could not write its output.
     OutputError = 5,
+    /// The tool read the package, and it is built in a way no TV will install.
+    /// Not an incompatibility: no choice of firmware makes it installable.
+    MalformedPackage = 6,
 }
 
 impl ExitCode {

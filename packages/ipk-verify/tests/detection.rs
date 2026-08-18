@@ -73,6 +73,7 @@ fn package(app: Component<AppInfo>, services: Vec<Component<ServiceInfo>>) -> Pa
         installed_size: None,
         install_hooks: vec![],
         hand_rolled: false,
+        epoch_mtimes: false,
         app,
         services,
     }

@@ -26,12 +26,14 @@ what tells a real package from one somebody assembled.
 
 ## `hand_rolled.ipk`
 
-The same app, put together by hand, with the two faults this warns about:
+The same app, put together by hand, with the three faults this warns about:
 
 * the control file stops after `Description` — no `Installed-Size`, no
   `webOS-Package-Format-Version`, no `webOS-Packager-Version`
 * the control archive also holds a `postinst` and a `prerm`
+* every data entry is stamped 1970-01-01, which some TVs refuse to install
 
 It follows the shape of a real submission that was turned away for this
 (webosbrew/apps-repo#218). The `ar` and `tar` members are written directly, with
-mtime 0 and `root:root` ownership so the file stays byte-stable if it is rebuilt.
+mtime 0 and `root:root` ownership so the file stays byte-stable if it is rebuilt
+— and that mtime 0 is what the epoch-timestamp check reads, so leave it alone.

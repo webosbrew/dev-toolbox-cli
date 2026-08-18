@@ -59,9 +59,17 @@ impl Package {
 
         let tmp = tempfile::TempDir::new()?;
         let mut links = HashMap::new();
+        let mut entries = 0usize;
+        let mut epoch_entries = 0usize;
         for entry in data.entries()? {
             let mut entry = entry?;
             let entry_type = entry.header().entry_type();
+            entries += 1;
+            // An unreadable mtime is not an epoch one — count only what parses,
+            // so a malformed header cannot raise the warning on its own.
+            if entry.header().mtime().is_ok_and(|mtime| mtime == 0) {
+                epoch_entries += 1;
+            }
             if entry_type.is_symlink() {
                 let path = tmp
                     .as_ref()
@@ -78,6 +86,9 @@ impl Package {
                 println!("Ignore special file {}", entry.path()?.to_string_lossy());
             }
         }
+        // One stray epoch timestamp is an oddity; every entry carrying one means
+        // the packager stamped nothing at all, which is the shape firmware rejects.
+        let epoch_mtimes = entries > 0 && epoch_entries == entries;
         let links = Symlinks::new(&links);
         // The package id and the app/service ids come from untrusted metadata;
         // guard every path joined onto the extraction dir against traversal.
@@ -117,6 +128,7 @@ impl Package {
             installed_size,
             install_hooks,
             hand_rolled,
+            epoch_mtimes,
             app,
             services,
         });
@@ -155,7 +167,8 @@ mod tests {
 
     /// `ares_packaged.ipk` is the output of `ares-package` on a two-file web
     /// app. `hand_rolled.ipk` holds the same app, assembled by hand: no
-    /// `Installed-Size`, no `webOS-*` fields, and a `postinst`/`prerm` pair.
+    /// `Installed-Size`, no `webOS-*` fields, a `postinst`/`prerm` pair, and
+    /// every entry stamped 1970-01-01.
     /// Both are the real thing, not a mock.
     fn parse(bytes: &[u8]) -> Package {
         return Package::parse(Cursor::new(bytes)).expect("fixture parses");
@@ -167,16 +180,18 @@ mod tests {
         assert_eq!(pkg.id, "com.example.fixture");
         assert!(!pkg.hand_rolled, "ares-package writes every packager field");
         assert!(pkg.install_hooks.is_empty());
+        assert!(!pkg.epoch_mtimes, "ares-package stamps the files it packs");
         // The report still describes it: the app parsed, the web app detected.
         assert!(pkg.app.info.web.is_some());
     }
 
     #[test]
-    fn hand_assembled_package_raises_both_warnings() {
+    fn hand_assembled_package_raises_every_warning() {
         let pkg = parse(include_bytes!("fixtures/hand_rolled.ipk"));
         assert_eq!(pkg.id, "com.example.fixture");
         assert!(pkg.hand_rolled, "no Installed-Size, no webOS-* fields");
         assert_eq!(pkg.install_hooks, vec!["postinst", "prerm"]);
+        assert!(pkg.epoch_mtimes, "every entry is written with mtime 0");
         // A package the tool warns about is still a package it reads.
         assert!(pkg.app.info.web.is_some());
     }

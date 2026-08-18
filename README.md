@@ -16,8 +16,12 @@ exits. It does not panic.
 | 3    | An input file is missing, unreadable, or not in the expected format.                                |
 | 4    | No firmware data to check against. Either the data is not installed, or `--fw-releases` matched none. |
 | 5    | The tool could not write its output.                                                                |
+| 6    | The package is built in a way no TV will install.                                                   |
 
-Only `webosbrew-ipk-verify` and `webosbrew-elf-verify` use codes 1 and 4.
+Only `webosbrew-ipk-verify` and `webosbrew-elf-verify` use codes 1 and 4. Only
+`webosbrew-ipk-verify` uses code 6.
 
-Code 3 wins over code 1. If the tool cannot read one input, it does not answer the
-question you asked, so it reports that first.
+Code 3 wins over code 6, which wins over code 1. If the tool cannot read one input,
+it does not answer the question you asked, so it reports that first. A package no TV
+will install comes next: that is a fault in the package, not a question of which
+firmware it runs on.

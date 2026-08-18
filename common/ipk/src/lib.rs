@@ -21,6 +21,9 @@ pub struct Package {
     /// writes `Installed-Size` and both `webOS-*` control fields, so a package
     /// without one of them was built some other way.
     pub hand_rolled: bool,
+    /// Whether every entry in the data archive is stamped 1970-01-01. Firmware
+    /// refuses to install a package like this, so the report fails it.
+    pub epoch_mtimes: bool,
     pub app: Component<AppInfo>,
     pub services: Vec<Component<ServiceInfo>>,
 }

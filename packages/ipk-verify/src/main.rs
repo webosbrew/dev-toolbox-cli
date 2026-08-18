@@ -94,6 +94,7 @@ fn main() {
     }
     let mut all_good = true;
     let mut bad_input = false;
+    let mut malformed = false;
     for package in &args.packages {
         eprintln!("Opening package {}...", package.to_string_lossy());
         let package = match Package::open(package) {
@@ -119,15 +120,24 @@ fn main() {
         if all_good && !results.iter().all(|(_, r)| r.is_good()) {
             all_good = false;
         }
+        // Not an incompatibility: no TV installs this one, so it gets its own
+        // code rather than joining the per-firmware verdict.
+        if package.epoch_mtimes {
+            malformed = true;
+        }
         if let Err(e) = print_package_report(&package, &results, &args, &mut output, &format) {
             eprintln!("Failed to write the report: {e}");
             ExitCode::OutputError.exit();
         }
     }
-    // A package the tool could not read outranks an incompatibility: the run did
-    // not answer the question that was asked.
+    // A package the tool could not read outranks the rest: the run did not
+    // answer the question that was asked. A package no TV will install outranks
+    // an incompatibility, which is a question about which TVs.
     if bad_input {
         ExitCode::BadInput.exit();
+    }
+    if malformed {
+        ExitCode::MalformedPackage.exit();
     }
     if !all_good {
         ExitCode::Incompatible.exit();
@@ -146,6 +156,7 @@ fn print_package_report(
     out.h2(&format!("Package {}", package.id))?;
     print_packager_warning(package.hand_rolled, out, out_fmt)?;
     print_install_hooks(&package.install_hooks, out, out_fmt)?;
+    print_epoch_mtime_error(package.epoch_mtimes, out, out_fmt)?;
     let (_, result) = results.first().unwrap();
     if to_file {
         eprintln!(" - App {}", result.app.id);
@@ -224,6 +235,32 @@ fn print_install_hooks(
         )
     };
     out.write_fmt(format_args!("{mark} This package carries {what}.\n\n"))?;
+    return Ok(());
+}
+
+/// Fail a package in which nothing carries a real timestamp. Firmware refuses
+/// to install one, and it refuses per-TV: the package looks fine everywhere the
+/// author tested and fails for whoever is on an older set. Nothing in the
+/// package's contents can make up for that, so this gates the verdict on its
+/// own rather than joining the per-firmware columns.
+fn print_epoch_mtime_error(
+    epoch_mtimes: bool,
+    out: &mut Box<dyn ReportOutput>,
+    out_fmt: &OutputFormat,
+) -> Result<(), Error> {
+    if !epoch_mtimes {
+        return Ok(());
+    }
+    let mark = if *out_fmt == OutputFormat::Markdown {
+        ":x:"
+    } else {
+        "Error:"
+    };
+    out.write_fmt(format_args!(
+        "{mark} Every file in this package is dated 1970-01-01, and TVs refuse to \
+         install a package like this. Rebuild it from a source tree whose files have \
+         real timestamps.\n\n"
+    ))?;
     return Ok(());
 }
 
