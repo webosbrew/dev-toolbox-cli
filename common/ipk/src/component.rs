@@ -309,6 +309,18 @@ impl<T> Component<T> {
                     continue;
                 }
                 let path = entry.path();
+                // An rpath may include the executable's own directory. Do not
+                // feed every ELF there to LibraryInfo: PIE executables are
+                // ET_DYN too and would otherwise be reported a second time as
+                // bundled libraries.
+                let Some(artifact) =
+                    BundledArtifact::identify(File::open(&path)?, file_label(&path))
+                else {
+                    continue;
+                };
+                if artifact.kind != bin_lib::ArtifactKind::SharedLibrary {
+                    continue;
+                }
                 let Ok(mut lib) = LibraryInfo::parse(File::open(&path)?, true, file_label(&path))
                 else {
                     continue;
@@ -570,5 +582,27 @@ mod tests {
             BundledArtifact::identify(File::open(d.path().join("f")).unwrap(), "lib_runpath.so")
                 .unwrap();
         assert_eq!(a.kind, ArtifactKind::SharedLibrary);
+    }
+
+    #[test]
+    fn library_scan_ignores_executables_in_search_dirs() {
+        let dir = tempfile::TempDir::new().unwrap();
+        let d = dir.path();
+        fs::write(
+            d.join("app"),
+            &include_bytes!("../../bin/src/fixtures/sample.bin")[..],
+        )
+        .unwrap();
+        fs::write(
+            d.join("libfixture.so"),
+            &include_bytes!("../../bin/src/fixtures/lib_runpath.so")[..],
+        )
+        .unwrap();
+
+        let libs = Component::<()>::list_libs(d, &vec![d.canonicalize().unwrap()], &empty_links())
+            .unwrap();
+
+        assert_eq!(libs.len(), 1, "got {libs:?}");
+        assert_eq!(libs[0].name, "libfixture.so.1");
     }
 }
